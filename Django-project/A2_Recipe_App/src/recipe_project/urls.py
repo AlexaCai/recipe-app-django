@@ -19,9 +19,9 @@ from django.urls import path
 from django.urls import include
 
 
-# The empty quotes '' indicate that this path refers to the home page 'http://127.0.0.1:8000/' and \
-# include('recipes.urls') will link the URL with the app and view information available at \ 
-# 'recipes.urls' (the 'recipes/urls.py' file). 
+# The empty quotes '' indicate that this path refers to the home page 'http://127.0.0.1:8000/' while \
+# 'include('recipes.urls')' will link the URL with the app and view information available at \ 
+# 'recipes.urls' (which is 'recipes/urls.py' file). 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('recipes.urls'))
