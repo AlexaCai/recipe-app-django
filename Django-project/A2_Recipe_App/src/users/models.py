@@ -8,6 +8,8 @@ class User(models.Model):
     email = models.CharField(max_length=75)
     favorite_recipes = models.ManyToManyField(Recipe)
     notes = models.TextField(blank=True)
+    pic = models.ImageField(upload_to='users', default='no_picture.jpg')
+
 
     def __str__(self):
         return self.name
