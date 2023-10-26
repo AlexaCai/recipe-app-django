@@ -2,6 +2,21 @@ from django.db import models
 
 # Create your models here.
 
+unit_measure_choices= (
+('ml - milliliter', 'ml - Milliliter'), 
+('fl oz - fluid ounce', 'fl oz - Fluid Ounce'), 
+('tbsp - tablespoon', 'tbsp - Tablespoon'), 
+('tsp - teaspoon', 'tsp - Teaspoon'), 
+('L - liter', 'L - Liter'), 
+('pt - pint', 'pt - Pint'), 
+('g - gram', 'g - Gram'), 
+('oz - ounce', 'oz - Ounce'), 
+('lb - pound', 'lb - Pound'), 
+('kg - kilogram', 'kg - Kilogram'), 
+('unit', 'Unit'),
+('units', 'Units'), 
+)
+
 category_choices= (
 ('afghan', 'Afghan'), 
 ('albanian', 'Albanian '), 
@@ -191,26 +206,37 @@ class Recipe(models.Model):
     name = models.CharField(max_length=50) 
     description = models.TextField(blank=True) 
     cooking_time = models.IntegerField(help_text= 'in minutes') 
-    ingredients = models.CharField(max_length=255, default='', help_text='Each ingredients must be separated by a comma.') # ok
     difficulty = models.CharField(max_length=20, blank=True, null=True, help_text='This value is calculated automatically, not input require here.')  # New field to store difficulty
     cooking_instructions = models.TextField() 
     origin_country = models.CharField(max_length=30, choices=category_choices, default='other', help_text= 'select the country associated to the recipe') # ok 
     creation_date = models.DateField(auto_now_add=True) 
+    pic = models.ImageField(upload_to='recipes', default='no_picture.jpg')
 
-    def calculate_difficulty(self):
-        ingredients = self.ingredients.split(', ')
-        if self.cooking_time < 10 and len(ingredients) < 4:
-            return "easy"
-        elif self.cooking_time < 10 and len(ingredients) >= 4:
-            return "medium"
-        elif self.cooking_time >= 10 and len(ingredients) < 4:
-            return "intermediate"
-        elif self.cooking_time >= 10 and len(ingredients) >= 4:
-            return "hard"
+
 
     def save(self, *args, **kwargs):
+        super(Recipe, self).save(*args, **kwargs)
         self.difficulty = self.calculate_difficulty()
-        super().save(*args, **kwargs)
+        super(Recipe, self).save(update_fields=['difficulty'])
+
+    def calculate_difficulty(self):
+        # Count the number of related RecipeIngredients objects for this recipe
+        ingredient_count = self.recipe_ingredients.count()
+        if self.cooking_time < 10 and ingredient_count < 4:
+            return "easy"
+        elif self.cooking_time < 10 and ingredient_count >= 4:
+            return "medium"
+        elif self.cooking_time >= 10 and ingredient_count < 4:
+            return "intermediate"
+        elif self.cooking_time >= 10 and ingredient_count >= 4:
+            return "hard"
     
     def __str__(self):
         return self.name
+    
+class RecipeIngredients(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='recipe_ingredients')  # Specify a custom related_name
+    ingredient_name = models.CharField(max_length=100)
+    quantity = models.FloatField(default='')
+    unit_of_measurement = models.CharField(max_length=20, choices=unit_measure_choices)
+
