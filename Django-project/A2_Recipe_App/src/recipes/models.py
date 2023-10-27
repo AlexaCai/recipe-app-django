@@ -207,6 +207,7 @@ category_choices = (
     ("baked", "Baked"),
     ("breakfast", "Breakfast"),
     ("brunch", "Brunch"),
+    ("cafe/tea", "Cafe/Tea"),
     ("condiment", "Condiment"),
     ("dinner", "Dinner"),
     ("dessert", "Dessert"),
@@ -214,6 +215,7 @@ category_choices = (
     ("fish", "Fish"),
     ("fruit", "Fruit"),
     ("holiday", "Holiday"),
+    ("hot beverage", "Hot beverages"),
     ("juice", "Juice"),
     ("lunch", "Lunch"),
     ("meat", "Meat"),
@@ -284,6 +286,8 @@ class RecipeIngredients(models.Model):
     ingredient_name = models.CharField(max_length=100)
     quantity = models.FloatField(default="")
     unit_of_measurement = models.CharField(max_length=20, choices=unit_measure_choices)
+    possible_substitute = models.CharField(max_length=100, blank=True, help_text="Optional - Indicate here which ingredient could replace the one mentionned if not available")
+    substitue_special_note = models.CharField(max_length=300, blank=True, help_text="This field is optional")
 
     # Used to ensure that the name of this section in Django admin interface is written without an 's'
     class Meta:
@@ -304,6 +308,8 @@ class RecipeCookingInstructions(models.Model):
 class RecipeToolsNeeded(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe_tools")
     cooking_tool_name = models.CharField(max_length=100)
+    cooking_tool_pic = models.ImageField(upload_to="cooking_tools", default="no_picture.jpg")
+
 
     class Meta:
         verbose_name = "Recipe required tool"
@@ -314,6 +320,7 @@ class RecipeSimilarComplementary(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe_complementary")
     complementary_recipe_name = models.CharField(max_length=100, blank=True)
     complementary_recipe_link = models.URLField(max_length=500, blank=True)
+    similar_recipe_pic = models.ImageField(upload_to="recipes", default="no_picture.jpg")
 
     def clean(self):
         super().clean()
