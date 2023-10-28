@@ -246,7 +246,7 @@ class Recipe(models.Model):
     recipe_estimated_cost = models.FloatField(default=10, help_text="Estimated total cost in dollar $")
     cooking_instructions = models.TextField()
     origin_country = models.CharField(max_length=30, choices=country_choices, default="other", help_text="Select the country associated to this recipe",)
-    recipe_category = models.CharField(max_length=30, choices=category_choices, default="other", help_text="Select the category associated to this recipe",)
+    recipe_category = models.CharField(max_length=100, choices=category_choices, default="other", help_text="Select the category associated to this recipe",)
     allergens = models.CharField(max_length=100, default="None", help_text="Indicate all allergens contained in this recipe",)
     creation_date = models.DateField(auto_now_add=True)
     pic = models.ImageField(upload_to="recipes", default="no_picture.jpg")
