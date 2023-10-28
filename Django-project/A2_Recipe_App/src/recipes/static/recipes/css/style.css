@@ -1,3 +1,5 @@
+/* CSS for the welcome page */
+
 .header-display {
     padding: 20px;
     padding-left: 40px;
@@ -58,12 +60,12 @@
 
 .image-background {
     position: relative;
-    background-image: url('../../../../media/food-world-map.jpg');
-    background-size: 100% 100%; 
+    background-image: url('../../../../media/welcome-page-background.jpg');
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center center;
-    height: 100vh; 
-    margin: 0; 
+    height: 110vh;
+    margin: 0;
 }
 
 .welcome-boxes {
@@ -77,16 +79,81 @@
 
 .welcome-box-1 {
     text-align: center;
-    border: 2px solid black; 
+    border: 2px solid black;
     position: relative;
     padding: 20px;
     background-color: white;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
+
+.website-title {
+    font-family: 'Lobster', sans-serif;
+    font-weight: 400;
+    font-size: 90px;
+  }
 
 .welcome-box-2 {
     text-align: center;
-    padding-top: 50px;
+    padding-top: 40px;
     margin-top: 50px;
-    border-top: 4px solid black; 
+    border-top: 4px solid black;
 }
+
+.website-subtitle {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
+  }
+
+  /* CSS for the main recipes page */
+
+
+.recipe-page-intro-sentence {
+    background: url("../../../media/welcome-page-background.jpg") center/cover no-repeat;
+    text-align: center; 
+    color: white; 
+    padding: 100px 0; 
+    height: 120vh; 
+  }
+  
+  .intro-text {
+    font-family: 'Lobster', sans-serif;
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 20px; 
+    margin: 10px auto; 
+    max-width: 80%; 
+    border-radius: 10px;
+  }
+
+  .intro-search-box {
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 20px; 
+    margin: 10px auto; 
+    max-width: 80%; 
+    border-radius: 10px;
+    text-align: center; 
+    color: white; 
+    margin-top: 5%;
+}
+
+.search-title {
+    font-family: 'Cinzel', sans-serif;
+  }
+
+.recipes-continent-title-section{
+    font-family: 'Cinzel', sans-serif;
+    text-align: center;
+    font-weight: 600;
+  }
+
+.card-padding {
+    padding: 20px;
+  }
+
+.card-text {
+    background-color: rgb(255, 255, 255, 0.97); 
+    padding: 10px;
+    color: black;
+    width: 30%;
+    border: solid 1px black;
+    border-radius: 10px;
+  }
