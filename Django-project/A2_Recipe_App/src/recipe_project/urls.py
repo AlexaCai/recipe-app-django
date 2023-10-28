@@ -26,7 +26,8 @@ from django.conf.urls.static import static
 # 'recipes.urls' (which is 'recipes/urls.py' file). 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('recipes.urls'))
+    path('', include('recipes.urls')),
+    path('recipes/', include('recipes.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
