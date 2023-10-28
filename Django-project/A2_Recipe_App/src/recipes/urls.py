@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import home
+from .views import RecipeListView
+
 
 app_name = "recipes"
 
@@ -10,4 +12,5 @@ app_name = "recipes"
 # home will be seen, rather than the default Django welcome page.
 urlpatterns = [
     path("", home),
+    path('list/', RecipeListView.as_view(), name='list'),
 ]
