@@ -1,0 +1,92 @@
+.header-display {
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+@media (max-width: 325px) {
+    .header-display {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 280px) {
+    .header-display {
+        font-size: 12px;
+    }
+}
+
+.logo-container {
+    position: absolute;
+    left: 1px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 900px) {
+    .logo-image {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 325px) {
+    .logo-image {
+        height: 80%;
+    }
+}
+
+@media (max-width: 325px) {
+    .logo-image {
+        height: 70%;
+    }
+}
+
+.navbar-nav li.nav-item {
+    margin-left: auto;
+    padding-right: 8px;
+    font-weight: bold;
+}
+
+.image-background {
+    position: relative;
+    background-image: url('../../../../media/food-world-map.jpg');
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh; 
+    margin: 0; 
+}
+
+.welcome-boxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin: 0;
+}
+
+.welcome-box-1 {
+    text-align: center;
+    border: 2px solid black; 
+    position: relative;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px; 
+}
+
+.welcome-box-2 {
+    text-align: center;
+    padding-top: 50px;
+    margin-top: 50px;
+    border-top: 4px solid black; 
+}
