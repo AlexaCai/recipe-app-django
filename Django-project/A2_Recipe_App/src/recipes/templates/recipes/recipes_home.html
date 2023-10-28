@@ -52,7 +52,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
                                     data-bs-target="#loginModal">
                                     Log in
                                 </button>
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
                                     data-bs-target="#signupModal">
                                     Sign up
                                 </button>
@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
                                     data-bs-target="#recipesModal">
                                     See recipes
                                 </button>
@@ -132,11 +132,30 @@
                         </div>
                     </div>
                     <div class="welcome-box-2">
-                        <button type="button" class="btn btn-light" data-bs-container="body" data-toggle="popover"
-                            data-bs-placement="bottom"
-                            data-bs-content="Signed up users can create their own recipes, add recipes to their list of favorites and comment recipes.">
+                        <button type="button" class="btn btn-dark w-33" data-bs-toggle="modal"
+                            data-bs-target="#signupquestionModal">
                             Why signing up?
                         </button>
+                        <div class="modal fade" id="signupquestionModal" tabindex="-1"
+                            aria-labelledby="signupquestionModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="signupquestionModalLabel">Why signing up?</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Test</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">View Recipes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
