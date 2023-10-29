@@ -106,7 +106,7 @@
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
                     {% if object.origin_country in country_list_split %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12">
+                    <div class="col-xl-4 col-lg-6 col-sm-12 card-padding">
                         <div class="card text-bg-dark">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                             <div class="card-img-overlay">
@@ -168,7 +168,7 @@
                 <br>
                 <br>
                 <div class="row card-padding">
-                    {% with country_list="brazilian, peruvian, bolivian, colombian" %}
+                    {% with country_list="argentine, bolivian, brazilian, chilean, colombian, peruvian, ecuadorian, guyanese, paraguayan, surinamese, uruguaya, venezuelan" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
                     {% if object.origin_country in country_list_split %}
