@@ -31,10 +31,7 @@
                 <div class="collapse navbar-collapse nav justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about-section">Recipes</a>
+                            <a class="nav-link" href="{% url 'recipes:home' %}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#projects-section">About</a>
@@ -60,9 +57,9 @@
                     </h1>
                     <br>
                     <form class="row justify-content-center" role="search">
-                        <div class="col-md-6 col-sm-8">
+                        <div class="col-md-8 col-sm-8">
                             <div class="input-group input-group-lg">
-                                <input id="recipe-search-input" type="text" class="form-control" placeholder="Enter a recipe name"
+                                <input id="recipe-search-input" type="text" class="form-control" placeholder="Enter a recipe"
                                     aria-label="Search" aria-describedby="button-addon2">
                                 <button class="btn btn-light" type="button" id="button-addon2">Search</button>
                             </div>
@@ -119,15 +116,15 @@
                                 <div class="card-text">
                                     <h5 class="card-title">{{ object.recipe_name }}</h5>
                                     <div class="line-background">
-                                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.origin_country }}</span>
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                                     </div>
                                     <br>
                                     <div class="line-background">
-                                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.difficulty }}</span>
+                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="flag-icon" ><span>{{ object.difficulty }}</span>
                                     </div>
                                     <br>
                                     <div class="line-background">
-                                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.recipe_category }}</span>
+                                    <img src="../../../media/category-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.recipe_category }}</span>
                                     </div>
                                 </div>
                             </div>
