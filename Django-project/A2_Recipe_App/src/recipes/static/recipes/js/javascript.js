@@ -10,6 +10,11 @@ function performSearch() {
     var searchQuery = document.getElementById('recipe-search-input').value;
     console.log(searchQuery)
 
+    if (!searchQuery) {
+        console.log('Search query is empty');
+        return;
+    }
+
     fetch(`/search-recipe-name/?query=${searchQuery}`)
         .then(response => response.json())
         .then(data => {
