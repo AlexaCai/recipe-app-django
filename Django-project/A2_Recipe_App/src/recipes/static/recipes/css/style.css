@@ -114,6 +114,12 @@
     padding: 100px 0; 
     height: 120vh; 
   }
+
+  @media (max-width: 325px) {
+    .recipe-page-intro-sentence {
+        padding-top: 20px;
+    }
+}
   
   .intro-text {
     font-family: 'Lobster', sans-serif;
@@ -145,22 +151,105 @@
     font-weight: 600;
   }
 
+.icon-legend {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding-right: 3px;
+    font-size: 20px;
+  }
+
+ @media (max-width: 450px) {
+    .icon-legend {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 280px) {
+    .icon-legend {
+        font-size: 10px;
+    }
+}
+
+.vertical-line {
+    margin: 0 20px; 
+    font-weight: bold;
+    font-size: 20px;
+}
+
+@media (max-width: 350px) {
+    .vertical-line {
+        margin: 0 8px; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 280px) {
+    .vertical-line {
+        margin: 0 6px; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+
 .card-padding {
     padding: 20px;
-
   }
 
 .card-text {
+    color: black;
+  }
+
+.card-title {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
     background-color: rgb(255, 255, 255, 0.97); 
     padding: 10px;
     color: black;
     border: solid 1px black;
     border-radius: 10px;
-    width: 50%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
   }
-  
-  @media (max-width: 768px) {
-    .card-text {
-        font-size: 3vw; /* You can adjust the size as needed for smaller screens */
-    }
+
+  @media (max-width: 400px) {
+    .card-title {
+        font-size: 13px;
+        padding: 5px;
+      }
 }
+
+@media (max-width: 280px) {
+    .card-title {
+        font-size: 11px;
+        padding: 5px;
+      }
+}
+
+.line-background {
+    background: rgba(255, 255, 255, 0.97); 
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px; 
+    display: inline-block;
+    margin-bottom: unset;
+    border: solid 1px black;
+    font-weight: bold;
+}
+
+@media (max-width: 400px) {
+    .line-background {
+        font-size: 10px;
+        padding: 5px;
+      }
+}
+
+@media (max-width: 280px) {
+    .line-background {
+        font-size: 9px;
+        padding: 3px;
+      }
+}
+
