@@ -31,10 +31,10 @@
                 <div class="collapse navbar-collapse nav justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="{% url 'recipes:home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about-section">Recipes</a>
+                            <a class="nav-link" href="{% url 'recipes:recipes-list-unsigned-users' %}">Recipes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#projects-section">About</a>
@@ -47,115 +47,95 @@
 
     <body>
         <div class="image-background">
-            <div class="welcome-boxes">
-                <div class="welcome-box-1">
-                    <h1 class="website-title">A tablespoon of discovery</h1>
-                    <br>
-                    <h2 class="website-subtitle">Your atlas of the world cuisines</h2>
-                    <br>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
-                                    data-bs-target="#loginModal">
-                                    Log in
-                                </button>
-                                <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="loginModalLabel">Log in</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Test</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Log in</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
-                                    data-bs-target="#signupModal">
-                                    Sign up
-                                </button>
-                                <div class="modal fade" id="signupModal" tabindex="-1"
-                                    aria-labelledby="signupModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="signupModalLabel">Sign up</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Test</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Sign up</button>
+            <div class="row welcome-boxes">
+                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8">
+                    <div class="welcome-box-1">
+                        <h1 class="website-title">A tablespoon of discovery</h1>
+                        <br>
+                        <h2 class="website-subtitle">Your atlas of the world cuisines</h2>
+                        <br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
+                                        data-bs-target="#loginModal">
+                                        Log in
+                                    </button>
+                                    <div class="modal fade" id="loginModal" tabindex="-1"
+                                        aria-labelledby="loginModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="loginModalLabel">Log in</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Test</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Log in</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
-                                    data-bs-target="#recipesModal">
-                                    See recipes
-                                </button>
-                                <div class="modal fade" id="recipesModal" tabindex="-1"
-                                    aria-labelledby="recipesModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="recipesModalLabel">See recipes</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Test</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">View Recipes</button>
+                                <div class="col">
+                                    <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
+                                        data-bs-target="#signupModal">
+                                        Sign up
+                                    </button>
+                                    <div class="modal fade" id="signupModal" tabindex="-1"
+                                        aria-labelledby="signupModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="signupModalLabel">Sign up</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Test</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Sign up</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col">
+                                    <a href="{% url 'recipes:recipes-list-unsigned-users' %}"
+                                        class="btn btn-dark w-100">See recipes</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="welcome-box-2">
-                        <button type="button" class="btn btn-dark w-33" data-bs-toggle="modal"
-                            data-bs-target="#signupquestionModal">
-                            Why signing up?
-                        </button>
-                        <div class="modal fade" id="signupquestionModal" tabindex="-1"
-                            aria-labelledby="signupquestionModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="signupquestionModalLabel">Why signing up?</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Test</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">View Recipes</button>
+                        <div class="welcome-box-2">
+                            <button type="button" class="btn btn-dark w-33" data-bs-toggle="modal"
+                                data-bs-target="#signupquestionModal">
+                                Why signing up?
+                            </button>
+                            <div class="modal fade" id="signupquestionModal" tabindex="-1"
+                                aria-labelledby="signupquestionModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="signupquestionModalLabel">Why signing up?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Test</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">View Recipes</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
