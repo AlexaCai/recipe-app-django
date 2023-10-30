@@ -62,7 +62,7 @@
                     <form class="row justify-content-center" role="search">
                         <div class="col-md-6 col-sm-8">
                             <div class="input-group input-group-lg">
-                                <input type="text" class="form-control" placeholder="Enter a recipe name"
+                                <input id="recipe-search-input" type="text" class="form-control" placeholder="Enter a recipe name"
                                     aria-label="Search" aria-describedby="button-addon2">
                                 <button class="btn btn-light" type="button" id="button-addon2">Search</button>
                             </div>
@@ -94,12 +94,18 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="default-content">
                 <br>
                 <br>
                 <br>
                 <h1 class="recipes-continent-title-section">North America</h1>
-                <br>
+                <div class="icon-legend">
+                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>                
                 <br>
                 <div class="row card-padding">
                     {% with country_list="american, bahamian, barbadian, canadian, cuban, dominican, dominican republic, grenadian, haitian, jamaican, mexican, saint kitts and nevis, saint lucian, saint vincent and the grenadines, trinidadian and tobagonian" %}
@@ -112,11 +118,17 @@
                             <div class="card-img-overlay">
                                 <div class="card-text">
                                     <h5 class="card-title">{{ object.recipe_name }}</h5>
-                                    <p>
-                                        Country: {{ object.origin_country }} <br>
-                                        Difficulty: {{ object.difficulty }} <br>
-                                        Category: {{ object.recipe_category }}
-                                    </p>
+                                    <div class="line-background">
+                                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.origin_country }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.difficulty }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.recipe_category }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -127,12 +139,18 @@
                     {% endwith %}
                 </div>
             </div>
-            <div>
+            <div class="default-content">
                 <br>
                 <br>
                 <br>
                 <h1 class="recipes-continent-title-section">Central America</h1>
-                <br>
+                <div class="icon-legend">
+                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>                
                 <br>
                 <div class="row card-padding">
                     {% with country_list="belizean, costa rican, salvadoran, guatemalan, honduran, nicaraguan, panamanian" %}
@@ -145,11 +163,17 @@
                             <div class="card-img-overlay">
                                 <div class="card-text">
                                     <h5 class="card-title">{{ object.recipe_name }}</h5>
-                                    <p>
-                                        Country: {{ object.origin_country }} <br>
-                                        Difficulty: {{ object.difficulty }} <br>
-                                        Category: {{ object.recipe_category }}
-                                    </p>
+                                    <div class="line-background">
+                                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.origin_country }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.difficulty }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.recipe_category }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -160,12 +184,18 @@
                     {% endwith %}
                 </div>
             </div>
-            <div>
+            <div class="default-content">
                 <br>
                 <br>
                 <br>
                 <h1 class="recipes-continent-title-section">South America</h1>
-                <br>
+                <div class="icon-legend">
+                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div> 
                 <br>
                 <div class="row card-padding">
                     {% with country_list="argentine, bolivian, brazilian, chilean, colombian, peruvian, ecuadorian, guyanese, paraguayan, surinamese, uruguaya, venezuelan" %}
@@ -178,11 +208,17 @@
                             <div class="card-img-overlay">
                                 <div class="card-text">
                                     <h5 class="card-title">{{ object.recipe_name }}</h5>
-                                    <p>
-                                        Country: {{ object.origin_country }} <br>
-                                        Difficulty: {{ object.difficulty }} <br>
-                                        Category: {{ object.recipe_category }}
-                                    </p>
+                                    <div class="line-background">
+                                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.origin_country }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.difficulty }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.recipe_category }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -193,6 +229,9 @@
                     {% endwith %}
                 </div>
             </div>
+
+            <div id="search-results"></div>
+
         </div>
     </body>
     <footer>
