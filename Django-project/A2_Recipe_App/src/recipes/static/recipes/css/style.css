@@ -89,8 +89,13 @@
 .website-title {
     font-family: 'Lobster', sans-serif;
     font-weight: 400;
-    font-size: 90px;
-  }
+    font-size: 50px;
+}
+
+.website-subtitle {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
+}
 
 .welcome-box-2 {
     text-align: center;
@@ -99,67 +104,75 @@
     border-top: 4px solid black;
 }
 
-.website-subtitle {
-    font-family: 'Cinzel', sans-serif;
-    font-weight: 600;
-  }
-
-  /* CSS for the main recipes page */
+/* CSS for the main recipes page */
 
 
 .recipe-page-intro-sentence {
     background: url("../../../media/welcome-page-background.jpg") center/cover no-repeat;
-    text-align: center; 
-    color: white; 
-    padding: 100px 0; 
-    height: 120vh; 
-  }
+    text-align: center;
+    color: white;
+    padding: 100px 0;
+    height: 120vh;
+}
 
-  @media (max-width: 325px) {
+@media (max-width: 325px) {
     .recipe-page-intro-sentence {
         padding-top: 20px;
     }
 }
-  
-  .intro-text {
-    font-family: 'Lobster', sans-serif;
-    background-color: rgba(0, 0, 0, 0.7); 
-    padding: 20px; 
-    margin: 10px auto; 
-    max-width: 80%; 
-    border-radius: 10px;
-  }
 
-  .intro-search-box {
-    background-color: rgba(0, 0, 0, 0.7); 
-    padding: 20px; 
-    margin: 10px auto; 
-    max-width: 80%; 
+.intro-text {
+    font-family: 'Lobster', sans-serif;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    margin: 10px auto;
+    max-width: 80%;
     border-radius: 10px;
-    text-align: center; 
-    color: white; 
+}
+
+.intro-search-box {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    margin: 10px auto;
+    max-width: 60%;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
     margin-top: 5%;
+}
+
+@media (max-width: 500px) {
+    .intro-search-box {
+        max-width: 80%;
+    }
 }
 
 .search-title {
     font-family: 'Cinzel', sans-serif;
-  }
+}
 
-.recipes-continent-title-section{
+@media (max-width: 500px) {
+    .input-group input.form-control {
+        font-size: 15px; 
+        padding: 5px; 
+    }
+}
+
+.recipes-continent-title-section {
     font-family: 'Cinzel', sans-serif;
     text-align: center;
     font-weight: 600;
-  }
+}
 
 .icon-legend {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     padding-right: 3px;
     font-size: 20px;
-  }
+}
 
- @media (max-width: 450px) {
+@media (max-width: 450px) {
     .icon-legend {
         font-size: 12px;
     }
@@ -172,14 +185,14 @@
 }
 
 .vertical-line {
-    margin: 0 20px; 
+    margin: 0 20px;
     font-weight: bold;
     font-size: 20px;
 }
 
 @media (max-width: 350px) {
     .vertical-line {
-        margin: 0 8px; 
+        margin: 0 8px;
         font-weight: bold;
         font-size: 20px;
     }
@@ -187,69 +200,112 @@
 
 @media (max-width: 280px) {
     .vertical-line {
-        margin: 0 6px; 
+        margin: 0 6px;
         font-weight: bold;
         font-size: 20px;
     }
 }
 
+.search-result-not-found {
+    text-align: center;
+    font-size: 25px;
+}
+
+@media (max-width: 700px) {
+    .search-result-not-found {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 450px) {
+    .search-result-not-found {
+        font-size: 15px;
+      }
+}
+
+@media (max-width: 280px) {
+    .search-result-not-found {
+        font-size: 12px;
+      }
+}
+
 .card-padding {
     padding: 20px;
-  }
+}
 
 .card-text {
     color: black;
-  }
+}
 
 .card-title {
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
-    background-color: rgb(255, 255, 255, 0.97); 
+    background-color: rgb(255, 255, 255, 0.97);
     padding: 10px;
     color: black;
     border: solid 1px black;
     border-radius: 10px;
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-  }
+    justify-content: center;
+    align-items: center;
+}
 
-  @media (max-width: 400px) {
+@media (max-width: 450px) {
     .card-title {
         font-size: 13px;
         padding: 5px;
-      }
+    }
 }
 
 @media (max-width: 280px) {
     .card-title {
-        font-size: 11px;
-        padding: 5px;
-      }
+        font-size: 10px;
+        padding: 4px;
+    }
 }
 
 .line-background {
-    background: rgba(255, 255, 255, 0.97); 
+    background: rgba(255, 255, 255, 0.97);
     padding: 10px;
     margin: 5px 0;
-    border-radius: 10px; 
+    border-radius: 10px;
     display: inline-block;
     margin-bottom: unset;
     border: solid 1px black;
     font-weight: bold;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
     .line-background {
-        font-size: 10px;
+        font-size: 13px;
         padding: 5px;
-      }
+    }
 }
 
-@media (max-width: 280px) {
+@media (max-width: 350px) {
     .line-background {
         font-size: 9px;
-        padding: 3px;
-      }
+        padding: 4px;
+    }
 }
 
+.card-icons {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+
+@media (max-width: 450px) {
+    .card-icons {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media (max-width: 350px) {
+    .card-icons {
+        width: 10px;
+        height: 10px;
+    }
+}
