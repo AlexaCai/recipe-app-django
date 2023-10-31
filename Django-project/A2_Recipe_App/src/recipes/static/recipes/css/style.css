@@ -153,10 +153,38 @@
 
 @media (max-width: 500px) {
     .input-group input.form-control {
-        font-size: 15px; 
-        padding: 5px; 
+        font-size: 15px;
+        padding: 5px;
     }
 }
+
+.modal-advanced-search-title {
+    font-family: 'Cinzel', sans-serif;
+    text-align: center;
+    font-weight: 600;
+    padding-bottom: 10px;
+    color: black;
+}
+
+.modal-advanced-search-content {
+    text-align: center;
+    font-weight: 600;
+    color: black;
+    padding-top: 15px;
+}
+
+.advanced-search-modal-head {
+    display: flex;
+    padding: 20px;
+    justify-content: flex-end;
+}
+
+
+.advanced-search-modal-button {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 
 .recipes-continent-title-section {
     font-family: 'Cinzel', sans-serif;
@@ -220,17 +248,22 @@
 @media (max-width: 450px) {
     .search-result-not-found {
         font-size: 15px;
-      }
+    }
 }
 
 @media (max-width: 280px) {
     .search-result-not-found {
         font-size: 12px;
-      }
+    }
 }
 
-.card-padding {
+.card-general-padding {
     padding: 20px;
+    padding-bottom: 15px;
+}
+
+.card-bottom-padding {
+    padding-bottom: 50px;
 }
 
 .card-text {
