@@ -26,6 +26,7 @@ function performMainSearch() {
 }
 
 
+
 //***Logic below to handle the advanced search functionality - with filters
 
 document.getElementById('advanced-search-filters-modal-button').addEventListener('click', function () {
@@ -49,7 +50,7 @@ function performSearchByFilters() {
     }
 
     //***Used to build a URL dynamically based on how many and which filters are selected by users
-    var url = '/search-recipe-by-filters/?';
+    var url = '/search-recipe-filters/?';
 
     if (searchFilter1) {
         url += 'query1=' + searchFilter1;
@@ -97,14 +98,15 @@ function performSearchByFilters() {
 }
 
 
+
 //***Logic below to handle the advanced search functionality - by ingredients
 
 document.getElementById('button-addon3').addEventListener('click', function () {
     console.log('Button clicked');
-    performMainSearch();
+    performIngredientsSearch();
 });
 
-function performMainSearch() {
+function performIngredientsSearch() {
     var searchQuery = document.getElementById('recipe-search-by-ingredients-input').value;
     console.log(searchQuery)
 
@@ -123,6 +125,7 @@ function performMainSearch() {
             console.error('Error:', error);
         });
 }
+
 
 
 //***Function below used to change dynamically the recipes UI to display the searched results, whether it \
@@ -250,9 +253,9 @@ function displaySearchResults(data) {
 }
 
 
+
 //***Function below used to hide the default content sections and display the search results section
 //***dynamically when users are doing researches. 
-
 
 function showSearchResultsSection() {
     var defaultContentSections = document.getElementsByClassName('default-content');
@@ -264,6 +267,7 @@ function showSearchResultsSection() {
     var searchResultsSection = document.getElementById('search-results');
     searchResultsSection.style.display = 'block';
 }
+
 
 
 //***Function below used to return to main recipes list page when users click on the clear search button
