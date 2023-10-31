@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView     
-from .models import Recipe
+from .models import Recipe, RecipeIngredients
 from django.http import JsonResponse
 
 # Takes the request coming from the web app and returns the template available at \
@@ -72,14 +72,38 @@ def search_recipes_by_filters(request):
 
     return JsonResponse({'recipes': recipes_json})
 
-# Takes the request coming from the web app on recipes that are searched by name \
+# Takes the request coming from the web app on recipes that are searched by ingredients
 # and returns the JSON response containing the recipes that match the search query.
 def search_recipes_by_ingredients(request):
+    # Retrieves the 'query' parameter from the GET request
     search_query = request.GET.get('query')
-    matching_recipes = Recipe.objects.filter(ingredient_name__icontains=search_query)
+    # Splits the search query (a comma-separated list of ingredients) into individual ingredients \
+    # and stores them in a list called 'ingredients'. The strip() function is used to remove \
+    # any leading or trailing whitespaces from each ingredient.
+    ingredients = [ingredient.strip() for ingredient in search_query.split(',')]
 
-    recipes_json = [{'recipe_name': recipe.recipe_name, 'recipe_origin_country': recipe.origin_country, 'recipe_difficulty': recipe.difficulty, 'recipe_category': recipe.recipe_category, 'pic': recipe.pic.url} for recipe in matching_recipes]
-    print(recipes_json)
+    # Retrieves all recipes that contain the first ingredient in the ingredients list.
+    matching_recipes = Recipe.objects.filter(recipe_ingredients__ingredient_name__icontains=ingredients[0])
+
+    # Code iterates over the remaining ingredients of the list (if any) using a for loop.
+    # 'for ingredient in ingredients[1:]:' iterates over each ingredient in the list, skipping the \
+    # first one.
+    for ingredient in ingredients[1:]:
+        # For each ingredient in the loop, it further filters the recipes to find those containing \
+        # the current ingredient.
+        matching_recipes = matching_recipes.filter(recipe_ingredients__ingredient_name__icontains=ingredient)
+
+    recipes_json = [
+        {
+            'recipe_name': recipe.recipe_name, 
+            'recipe_origin_country': recipe.origin_country, 
+            'recipe_difficulty': recipe.difficulty, 
+            'recipe_category': recipe.recipe_category, 
+            'pic': recipe.pic.url
+        } 
+        for recipe in matching_recipes
+    ]
+
     return JsonResponse({'recipes': recipes_json})
 
 class RecipeListView(ListView):                             
