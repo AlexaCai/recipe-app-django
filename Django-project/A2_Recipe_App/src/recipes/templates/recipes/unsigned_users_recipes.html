@@ -59,7 +59,7 @@
                     <form class="row justify-content-center" role="search">
                         <div class="col-md-8 col-sm-8">
                             <div class="input-group input-group-lg">
-                                <input id="recipe-search-input" type="text" class="form-control" placeholder="Enter a recipe"
+                                <input id="recipe-search-by-name-input" type="text" class="form-control" placeholder="Enter a recipe"
                                     aria-label="Search" aria-describedby="button-addon2">
                                 <button class="btn btn-light" type="button" id="button-addon2">Search</button>
                             </div>
@@ -71,20 +71,85 @@
                     </button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Advanced search</h1>
+                                <div class="advanced-search-modal-head">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>test</p>
+                                    <h4 class="modal-advanced-search-title">Search by filters</h4>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                            <p class="modal-advanced-search-content">Country</p>
+                                            <select class="form-select" id="filter-option-selected1" aria-label="Default select example">
+                                                <option value="">Select an origin country</option>
+                                                {% for object in object_list|dictsort:"origin_country" %}
+                                                    {% ifchanged %}
+                                                        <option value="{{ object.origin_country }}">{{ object.origin_country }}</option>
+                                                    {% endifchanged %}
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                            <p class="modal-advanced-search-content">Category</p>
+                                            <select class="form-select" id="filter-option-selected2" aria-label="Default select example">
+                                                <option value="">Select a category</option>
+                                                {% for object in object_list|dictsort:"recipe_category" %}
+                                                    {% ifchanged %}
+                                                        <option value="{{ object.recipe_category }}">{{ object.recipe_category }}</option>
+                                                    {% endifchanged %}
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                            <p class="modal-advanced-search-content">Cooking time</p>
+                                            <select class="form-select" id="filter-option-selected3" aria-label="Default select example">
+                                                <option value="">Select a cooking time</option>
+                                                <option value="1">15 min or less</option>
+                                                <option value="2">30 min or less</option>
+                                                <option value="3">45 min or less</option>
+                                                <option value="4">60 min or less</option>
+                                                <option value="5">60 min or more</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                            <p class="modal-advanced-search-content">Estimated cost</p>
+                                            <select class="form-select" id="filter-option-selected4" aria-label="Default select example">
+                                                <option value="">Select an estimated cost</option>
+                                                <option value="1">5$ or less</option>
+                                                <option value="2">10$ or less</option>
+                                                <option value="3">20$ or less</option>
+                                                <option value="4">30$ or less</option>
+                                                <option value="5">30$ or more</option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-dark advanced-search-modal-button" id="advanced-search-filters-modal-button">Search</button>
+                                    <br>
+                                    <span class="modal-advanced-search-content">***</span>
+                                    <br>
+                                    <br>
+                                    <h4 class="modal-advanced-search-title">Search by ingredient(s)</h4>
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                            <span class="modal-advanced-search-content">Ingredients</span>
+                                            <p class="modal-advanced-search-content" style="font-size: 15px;">*When searching with more than one ingredient, each ingredients must be separeted by a comma</p>
+                                            <form class="row justify-content-center" role="search">
+                                                <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
+                                                    <div class="input-group input-group-lg">
+                                                        <input id="recipe-search-by-ingredients-input" type="text" class="form-control" placeholder="Ingredient(s): chicken, rice, tomato"
+                                                            aria-label="Search" aria-describedby="button-addon3">                                                    
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <button type="button" class="btn btn-dark advanced-search-modal-button" id="button-addon3">Search</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
+                                    <button type="button" class="btn btn-dark"
                                         data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Search</button>
                                 </div>
                             </div>
                         </div>
@@ -104,12 +169,12 @@
                     <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
                 </div>                
                 <br>
-                <div class="row card-padding">
+                <div class="row card-general-padding">
                     {% with country_list="american, bahamian, barbadian, canadian, cuban, dominican, dominican republic, grenadian, haitian, jamaican, mexican, saint kitts and nevis, saint lucian, saint vincent and the grenadines, trinidadian and tobagonian" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
                     {% if object.origin_country in country_list_split %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-padding">
+                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
                         <div class="card text-bg-dark">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                             <div class="card-img-overlay">
@@ -149,7 +214,7 @@
                     <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
                 </div>                
                 <br>
-                <div class="row card-padding">
+                <div class="row card-general-padding">
                     {% with country_list="belizean, costa rican, salvadoran, guatemalan, honduran, nicaraguan, panamanian" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
@@ -194,7 +259,7 @@
                     <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
                 </div> 
                 <br>
-                <div class="row card-padding">
+                <div class="row card-general-padding">
                     {% with country_list="argentine, bolivian, brazilian, chilean, colombian, peruvian, ecuadorian, guyanese, paraguayan, surinamese, uruguaya, venezuelan" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}

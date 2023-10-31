@@ -1,13 +1,12 @@
-//***Logic to handle the main search functionality
+//***Logic below to handle the main search functionality
 
 document.getElementById('button-addon2').addEventListener('click', function () {
     console.log('Button clicked');
-    performSearch();
+    performMainSearch();
 });
 
-
-function performSearch() {
-    var searchQuery = document.getElementById('recipe-search-input').value;
+function performMainSearch() {
+    var searchQuery = document.getElementById('recipe-search-by-name-input').value;
     console.log(searchQuery)
 
     if (!searchQuery) {
@@ -26,6 +25,109 @@ function performSearch() {
         });
 }
 
+
+//***Logic below to handle the advanced search functionality - with filters
+
+document.getElementById('advanced-search-filters-modal-button').addEventListener('click', function () {
+    console.log('Button clicked');
+    performSearchByFilters();
+});
+
+function performSearchByFilters() {
+    var searchFilter1 = document.getElementById('filter-option-selected1').value;
+    console.log(searchFilter1)
+    var searchFilter2 = document.getElementById('filter-option-selected2').value;
+    console.log(searchFilter2)
+    var searchFilter3 = document.getElementById('filter-option-selected3').value;
+    console.log(searchFilter3)
+    var searchFilter4 = document.getElementById('filter-option-selected4').value;
+    console.log(searchFilter4)
+
+    if (!searchFilter1 && !searchFilter2 && !searchFilter3 && !searchFilter4) {
+        console.log('Search query is empty');
+        return;
+    }
+
+    //***Used to build a URL dynamically based on how many and which filters are selected by users
+    var url = '/search-recipe-by-filters/?';
+
+    if (searchFilter1) {
+        url += 'query1=' + searchFilter1;
+    }
+
+    if (searchFilter2) {
+        if (searchFilter1) {
+            url += '&';
+        }
+        url += 'query2=' + searchFilter2;
+    }
+
+    if (searchFilter3) {
+        if (searchFilter1) {
+            url += '&';
+        }
+        if (searchFilter2) {
+            url += '&';
+        }
+        url += 'query3=' + searchFilter3;
+    }
+
+    if (searchFilter4) {
+        if (searchFilter1) {
+            url += '&';
+        }
+        if (searchFilter2) {
+            url += '&';
+        }
+        if (searchFilter3) {
+            url += '&';
+        }
+        url += 'query4=' + searchFilter4;
+    }
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            displaySearchResults(data);
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+
+//***Logic below to handle the advanced search functionality - by ingredients
+
+document.getElementById('button-addon3').addEventListener('click', function () {
+    console.log('Button clicked');
+    performMainSearch();
+});
+
+function performMainSearch() {
+    var searchQuery = document.getElementById('recipe-search-by-ingredients-input').value;
+    console.log(searchQuery)
+
+    if (!searchQuery) {
+        console.log('Search query is empty');
+        return;
+    }
+
+    fetch(`/search-recipe-ingredients/?query=${searchQuery}`)
+        .then(response => response.json())
+        .then(data => {
+            displaySearchResults(data);
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+
+//***Function below used to change dynamically the recipes UI to display the searched results, whether it \
+//***is a search by name, by filters or by ingredients.
+
 function displaySearchResults(data) {
     var recipes = data.recipes;
     var searchResultsContainer = document.getElementById('search-results');
@@ -38,28 +140,28 @@ function displaySearchResults(data) {
         searchResultsRow.className = 'row';
 
         var leftColumn = document.createElement('div');
-        leftColumn.className = 'col-sm-1 col-md-2'; 
+        leftColumn.className = 'col-sm-1 col-md-2';
 
         var middleColumn = document.createElement('div');
         middleColumn.className = 'col-sm-10 col-md-8 text-center';
 
-            var mainSearchNotFound = document.createElement('div');
-            mainSearchNotFound.className = 'card-padding';
+        var mainSearchNotFound = document.createElement('div');
+        mainSearchNotFound.className = 'card-general-padding';
 
-            mainSearchNotFound.innerHTML = `
+        mainSearchNotFound.innerHTML = `
             <br>
             <br>
             <h1 class="recipes-continent-title-section">Recipe(s) not found</h1> 
             <br>
             <br>
             <div class="search-result-not-found">
-                <span>Make sure you have written the name of your recipe correctly without mistakes.</span>
+                <span>For recipes searched by name or ingredient name, make sure there's are not spelling mistake in your text.</span>
                 <br>
                 <br>
                 <span>***</span>
                 <br>
                 <br>
-                <span>You can also search using the filters in the 'Advanced Search' option for potentially more similar results.</span>
+                <span>For recipes searched by filters (advanced search), consider reducing the number of filters applied for potentially more results.</span>
                 <br>
                 <br>
                 <span>***</span>
@@ -76,7 +178,7 @@ function displaySearchResults(data) {
             `;
 
         var rightColumn = document.createElement('div');
-        rightColumn.className = 'col-sm-1 col-md-2'; 
+        rightColumn.className = 'col-sm-1 col-md-2';
 
         middleColumn.appendChild(mainSearchNotFound);
 
@@ -87,25 +189,37 @@ function displaySearchResults(data) {
         searchResultsContainer.appendChild(searchResultsRow);
 
     } else {
+        var headingContainer = document.createElement('div');
+        headingContainer.style.textAlign = 'center';
+
+        headingContainer.innerHTML = `
+        <br>
+        <br>
+        <h1 class="recipes-continent-title-section">Search results</h1> 
+        <div class="icon-legend">
+            <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+            <span class="vertical-line">|</span>
+            <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+            <span class="vertical-line">|</span>
+            <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+        </div> 
+        <br>
+        <br>
+        <div class="search-result-not-found">
+            <button type="button" class="btn btn-danger" onclick="clearSearch()">Clear search</button>
+            <br>
+            <br>
+        </div>
+        `;
+
+        searchResultsContainer.appendChild(headingContainer);
+
+        var recipeRow = document.createElement('div');
+        recipeRow.className = 'row card-general-padding';
+
         recipes.forEach(function (recipe) {
             var recipeCard = document.createElement('div');
-            recipeCard.className = 'col-xl-4 col-lg-6 col-sm-12 card-padding';
-
-            var headingContainer = document.createElement('div');
-            headingContainer.style.textAlign = 'center';
-            headingContainer.innerHTML = `
-            <br>
-            <br>
-            <h1 class="recipes-continent-title-section">Search results</h1> 
-            <div class="icon-legend">
-                <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
-                <span class="vertical-line">|</span>
-                <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
-                <span class="vertical-line">|</span>
-                <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
-            </div> 
-            <br>
-            <br>`;
+            recipeCard.className = 'col-xl-4 col-lg-6 col-sm-12 card-bottom-padding';
 
             recipeCard.innerHTML = `
                 <br>
@@ -129,11 +243,16 @@ function displaySearchResults(data) {
                     </div>
                 </div>
             `;
-            searchResultsContainer.appendChild(headingContainer);
-            searchResultsContainer.appendChild(recipeCard);
+            recipeRow.appendChild(recipeCard);
         });
+        searchResultsContainer.appendChild(recipeRow);
     }
 }
+
+
+//***Function below used to hide the default content sections and display the search results section
+//***dynamically when users are doing researches. 
+
 
 function showSearchResultsSection() {
     var defaultContentSections = document.getElementsByClassName('default-content');
@@ -146,17 +265,12 @@ function showSearchResultsSection() {
     searchResultsSection.style.display = 'block';
 }
 
+
+//***Function below used to return to main recipes list page when users click on the clear search button
+
 function clearSearch() {
-    var searchInput = document.getElementById('recipe-search-input');
+    var searchInput = document.getElementById('recipe-search-by-name-input');
     searchInput.value = '';
 
-    window.location.href = '/recipes-list-unsigned-users'; 
+    window.location.href = '/recipes-list-unsigned-users';
 }
-
-//***Logic to handle the search by ingredients functionality
-
-//***In progress
-
-//***Logic to handle the main search by filters functionality
-
-//***In progress
