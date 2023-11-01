@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.shortcuts import reverse
+
 
 unit_measure_choices = (
     ("ml - milliliter", "ml - Milliliter"),
@@ -278,6 +280,9 @@ class Recipe(models.Model):
     @property
     def recipe_url(self):
         return self.generate_url()
+    
+    def get_absolute_url(self):
+       return reverse ('recipes:recipes_detail_unsigned_users', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.recipe_name
