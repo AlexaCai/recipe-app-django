@@ -342,3 +342,65 @@
         height: 10px;
     }
 }
+
+/* CSS for the detail recipe page */
+
+.basic-recipe-info-section {
+    padding-top: 80px;
+}
+
+@media (max-width: 1199px) {
+    .basic-recipe-info-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.detailed-page-image {
+    margin-bottom: 30px;
+}
+
+.detailed-recipe-titles {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.recipe-icon-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-icon-text {
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.97);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    border: solid 1px black;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 1280px) {
+    .recipe-icon-text {
+        font-size: 15px;
+        padding: 5px;
+    }
+}
+
+.detailed-page-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.detailed-page-share-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+}
