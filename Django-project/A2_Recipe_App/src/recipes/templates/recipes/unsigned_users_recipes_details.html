@@ -143,16 +143,16 @@
             </div>
 
             <div class="row text-center ingredients-instructions-section detailed-page-section-bottom-margin">
-                <div class="col-xl-1">
+                <div class="col-xl-2">
                 </div>
-                <div class="col-xl-5 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-xs-10">
                     <h1 class="text-center detailed-recipe-titles">Ingredients</h1>
                     <br>
                     {% for ingredient in object.recipe_ingredients.all %}
                     <div class="row">
                         <div class="col-xl-1">
                         </div>
-                        <div class="col-xl-9">
+                        <div class="col-xl-10">
                             <ol class="list-group">
                                 <li
                                     class="list-group-item justify-content-between align-items-start ingredient-list-margin">
@@ -175,13 +175,13 @@
                                 </li>
                             </ol>
                         </div>
+                        <div class="col-xl-1">
+                        </div>
                     </div>
                     {% endfor %}
                 </div>
-                <div class="col-xl-1">
-                </div>
 
-                <div class="col-xl-5 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-xs-10">
                     <h1 class="text-center detailed-recipe-titles instructions-section">Instructions</h1>
                     <br>
                     {% for instructions in object.recipe_instructions.all %}
@@ -256,7 +256,9 @@
                     <br>
                     {% for recipes in object.recipe_complementary.all %}
                     <div class="row instructions-section-bottom-margin">
-                        <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6">
                             <ol class="list-group">
                                 <li
                                     class="list-group-item justify-content-between align-items-start instruction-list-margin">
@@ -273,6 +275,8 @@
 
                                 </li>
                             </ol>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-3">
                         </div>
                     </div>
                     {% endfor %}
