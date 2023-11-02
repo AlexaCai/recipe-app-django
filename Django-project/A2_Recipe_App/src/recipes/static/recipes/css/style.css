@@ -358,13 +358,19 @@
 }
 
 .detailed-page-image {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .detailed-recipe-titles {
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
     padding-bottom: 10px;
+}
+
+@media (max-width: 1500px) {
+    .detailed-recipe-titles {
+        font-size: 35px;
+    }
 }
 
 .recipe-icon-centered {
@@ -386,7 +392,7 @@
     align-items: center;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1500px) {
     .recipe-icon-text {
         font-size: 15px;
         padding: 5px;
@@ -399,8 +405,53 @@
     margin-right: 5px;
 }
 
+.detailed-page-section-bottom-margin {
+    margin-bottom: 40px;
+}
+
 .detailed-page-share-icon {
     width: 25px;
     height: 25px;
     margin-left: 5px;
+}
+
+.section-break-line {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-top: solid 1px black;
+}
+
+.detailed-page-text-content {
+    font-size: 25px;
+    padding-bottom: 20px;
+    text-align: justify;
+}
+
+@media (max-width: 1199px) {
+    .ingredients-instructions-section {
+        justify-content: center;
+    }
+}
+
+.ingredient-list-margin {
+    margin-bottom: 10px;
+}
+
+.ingredient-fields {
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+@media (max-width: 1199px) {
+    .instructions-section {
+        margin-top: 30px;
+    }
+}
+
+.instruction-list-margin {
+    margin-bottom: 10px;
+}
+
+.instruction-section-bottom-margin {
+    margin-bottom: 10px;
 }
