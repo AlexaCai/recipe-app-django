@@ -46,15 +46,14 @@
     </header>
 
     <body>
-        <div class="row">
-            <div class="row basic-recipe-info-section text-center">
+            <div class="row basic-recipe-info-section text-center align-items-center">
                 <div class="col-xl-1 d-none d-lg-block">
                 </div>
-            
+
                 <div class="col-xl-6 col-lg-10 col-md-10 col-sm-10 col-10">
                     <img src="{{ object.pic.url }}" class="img-fluid detailed-page-image" alt="recipe-image" />
                 </div>
-            
+
                 <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-10">
                     <div class="row text-center">
                         <div class="col-12">
@@ -62,11 +61,11 @@
                             <br>
                         </div>
                     </div>
-                    <!-- On lg and smaller screens, use col-6 to split into two columns -->
                     <div class="row text-center recipe-icon-centered">
                         <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-10">
                             <div class="recipe-icon-text">
-                                <img src="../../../media/flag-icon.png" class="detailed-page-icon" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                <img src="../../../media/flag-icon.png" class="detailed-page-icon"
+                                    alt="flag-icon"><span>{{ object.origin_country }}</span>
                             </div>
                             <div class="recipe-icon-text">
                                 <img src="../../../media/category-icon.png" class="detailed-page-icon"
@@ -79,44 +78,253 @@
                         </div>
                         <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-10">
                             <div class="recipe-icon-text">
-                                <img src="../../../media/difficulty-icon.png" class="detailed-page-icon" alt="difficulty-icon"><span>{{ object.difficulty }}</span>
+                                <img src="../../../media/difficulty-icon.png" class="detailed-page-icon"
+                                    alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                             </div>
                             <div class="recipe-icon-text">
-                                <img src="../../../media/number-portion-icon.png" class="detailed-page-icon" alt="number-portion-icon"><span>{{ object.number_of_portions }} portions</span>
+                                <img src="../../../media/number-portion-icon.png" class="detailed-page-icon"
+                                    alt="number-portion-icon"><span>{{ object.number_of_portions }} portions</span>
                             </div>
                             <div class="recipe-icon-text">
-                                <img src="../../../media/dollar-icon.png" class="detailed-page-icon" alt="dollar-icon"><span>{{ object.recipe_estimated_cost }}</span>
+                                <img src="../../../media/dollar-icon.png" class="detailed-page-icon"
+                                    alt="dollar-icon"><span>{{ object.recipe_estimated_cost }}</span>
                             </div>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-12">
-                            <h4>Share recipe <img src="../../../media/share-icon.png" class="detailed-page-share-icon" alt="share-icon"></h4>
+                            <h4 class="detailed-page-section-bottom-margin">Share recipe <img
+                                    src="../../../media/share-icon.png" class="detailed-page-share-icon"
+                                    alt="share-icon"></h4>
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="col-xl-1 d-none d-lg-block">
                 </div>
             </div>
-            
-        </div>            
-        </body>
 
-        <footer>
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 section-break-line d-xl-none">
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
+                </div>
+            </div>
 
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"></script>
-        <script src="{% static 'recipes/js/javascript.js' %}"></script>
+            <div class="row">
+                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10">
+                    <h1 class="text-center detailed-recipe-titles">Description</h1>
+                    <br>
+                    <p class="detailed-page-text-content">{{ object.description }}</p>
+                </div>
+                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10">
+                    <h1 class="text-center detailed-recipe-titles">Special notes</h1>
+                    {% if ingredient.possible_substitute %}
+                    <br>
+                    <p class="detailed-page-text-content">{{ ingredient.special_note }}</p>
+                    {% else %}
+                    <p class="detailed-page-text-content text-center">No special note.</p>
+                    {% endif %}
+                </div>
+                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                </div>
+            </div>
+
+            <div class="row text-center ingredients-instructions-section detailed-page-section-bottom-margin">
+                <div class="col-xl-1">
+                </div>
+                <div class="col-xl-5 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                    <h1 class="text-center detailed-recipe-titles">Ingredients</h1>
+                    <br>
+                    {% for ingredient in object.recipe_ingredients.all %}
+                    <div class="row">
+                        <div class="col-xl-1">
+                        </div>
+                        <div class="col-xl-9">
+                            <ol class="list-group">
+                                <li
+                                    class="list-group-item justify-content-between align-items-start ingredient-list-margin">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">
+                                            {{ ingredient.ingredient_name }}
+                                        </div>
+                                        <div>
+                                            <span>{{ ingredient.quantity }}</span>
+                                            <span>{{ ingredient.unit_of_measurement }}</span>
+                                        </div>
+                                        <div>
+                                            {% if ingredient.possible_substitute %}
+                                            <br>
+                                            <span class="ingredient-fields">Possible substitute: {{ ingredient.possible_substitute }}</span> <br>
+                                            {% endif %}
+                                            <span>{{ ingredient.substitue_special_note }}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="col-xl-1">
+                </div>
+
+                <div class="col-xl-5 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                    <h1 class="text-center detailed-recipe-titles instructions-section">Instructions</h1>
+                    <br>
+                    {% for instructions in object.recipe_instructions.all %}
+                    <div class="row instructions-section-bottom-margin">
+                        <div class="col-xl-1">
+                        </div>
+                        <div class="col-xl-10">
+                            <ol class="list-group">
+                                <li
+                                    class="list-group-item justify-content-between align-items-start instruction-list-margin">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">{{ instructions.step_name }}</div>
+                                        <br>
+                                        <span>{{ instructions.step_instruction }}</span>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="col-xl-1">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-xl-1">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 section-break-line d-xl-none">
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
+                </div>
+            </div>
+
+            <div class="row detailed-page-section-bottom-margin">
+                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
+                </div>
+                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-10">
+                    <h1 class="text-center detailed-recipe-titles instructions-section">Tools needed</h1>
+                    <br>
+                    <div class="row">
+                        {% for tool in object.recipe_tools.all %}
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <ol class="list-group">
+                                <li
+                                    class="list-group-item justify-content-between align-items-start instruction-list-margin">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold text detailed-page-text-content text-center">{{ tool.cooking_tool_name }}</div>
+                                        <br>
+                                        <br>
+                                        <img src="{{ tool.cooking_tool_pic.url }}" class="img-fluid"
+                                            alt="recipe-image" />
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
+                </div>
+            </div>
+
+            <div class="row detailed-page-section-bottom-margin">
+                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
+                </div>
+                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-10">
+                    <h1 class="text-center detailed-recipe-titles instructions-section">Complementay recipes</h1>
+                    <br>
+                    {% for recipes in object.recipe_complementary.all %}
+                    <div class="row instructions-section-bottom-margin">
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <ol class="list-group">
+                                <li
+                                    class="list-group-item justify-content-between align-items-start instruction-list-margin">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold detailed-page-text-content text-center">
+                                            <a href="{{ recipes.complementary_recipe_link }}">{{ recipes.complementary_recipe_name }}</a>
+                                        </div>
+                                        <br>
+                                        <a href="{{ recipes.complementary_recipe_link }}">
+                                            <img src="{{ recipes.similar_recipe_pic.url }}" class="img-fluid"
+                                                alt="recipe-image" />
+                                        </a>
+                                    </div>
+
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
+                </div>
+            </div>
+
+                <div class="row">
+                    <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                    </div>
+                    <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10">
+                        <h1 class="text-center detailed-recipe-titles">Comment(s)</h1>
+                        <br>
+                        {% for comment in object.comments.all %}
+                        <div class="col-12">
+                            <ol class="list-group">
+                                <li
+                                    class="list-group-item justify-content-between align-items-start instruction-list-margin">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold text detailed-page-text-content text-center">
+                                            Written by {{ comment.user }} <br>
+                                            On {{ comment.created_at }}
+                                        </div>
+                                        <br>
+                                        <br>
+                                        {{ comment.text }}
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <br>
+                        {% endfor %}
+                    </div>
+                    <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                    </div>
+                </div>
+            </body>
+
+    <footer>
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'recipes/js/javascript.js' %}"></script>
 </main>
 
 </html>
