@@ -52,18 +52,18 @@
                 <div class="col-xl-1 d-none d-lg-block">
                 </div>
 
-                <div class="col-xl-6 col-lg-10 col-md-10 col-sm-10 col-10">
+                <div class="col-xl-6 col-lg-10 col-md-10 col-sm-10 col-12">
                     <img src="{{ object.pic.url }}" class="img-fluid detailed-page-image" alt="recipe-image" />
                 </div>
 
-                <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-10">
+                <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-12">
                     <div class="row text-center">
                         <div class="col-12">
                             <h1 class="detailed-recipe-titles">{{ object.recipe_name }}</h1>
                         </div>
                     </div>
                     <div class="row text-center recipe-icon-centered">
-                        <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-10">
+                        <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-12">
                             <div class="recipe-icon-text">
                                 <img src="../../../media/flag-icon.png" class="detailed-page-icon"
                                     alt="flag-icon"><span>{{ object.origin_country }}</span>
@@ -77,7 +77,7 @@
                                     alt="cooking-time-icon"><span>{{ object.cooking_time }} min</span>
                             </div>
                         </div>
-                        <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-10">
+                        <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-12">
                             <div class="recipe-icon-text">
                                 <img src="../../../media/difficulty-icon.png" class="detailed-page-icon"
                                     alt="difficulty-icon"><span>{{ object.difficulty }}</span>
@@ -120,21 +120,21 @@
         </div>
 
         <div class="row detailed-page-section-bottom-margin">
-            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
-            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10">
+            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
                 <h1 class="text-center detailed-recipe-titles detailed-page-description-title">Description</h1>
                 <br>
                 <p class="detailed-page-text-content">{{ object.description }}</p>
             </div>
-            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
         </div>
 
         <div class="row detailed-page-section-bottom-margin">
-            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
-            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10">
+            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
                 <h1 class="text-center detailed-recipe-titles">Special notes</h1>
                 {% if ingredient.possible_substitute %}
                 <br>
@@ -143,7 +143,7 @@
                 <p class="detailed-page-text-content text-center">No special note.</p>
                 {% endif %}
             </div>
-            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
         </div>
 
@@ -154,7 +154,7 @@
                 <h1 class="text-center detailed-recipe-titles">Ingredients</h1>
                 <br>
                 {% for ingredient in object.recipe_ingredients.all %}
-                <div class="row">
+                <div class="row ingredients-instructions-section-padding">
                     <div class="col-xl-1">
                     </div>
                     <div class="col-xl-10">
@@ -190,7 +190,7 @@
                 <h1 class="text-center detailed-recipe-titles instructions-section">Instructions</h1>
                 <br>
                 {% for instructions in object.recipe_instructions.all %}
-                <div class="row instructions-section-bottom-margin">
+                <div class="row instructions-section-bottom-margin ingredients-instructions-section-padding">
                     <div class="col-xl-1">
                     </div>
                     <div class="col-xl-10">
@@ -211,7 +211,7 @@
                 {% endfor %}
             </div>
 
-            <div class="col-xl-1">
+            <div class="col-xl-2">
             </div>
         </div>
 
@@ -259,30 +259,29 @@
                 <h1 class="text-center detailed-recipe-titles instructions-section">Complementay recipes</h1>
                 <br>
                 {% for recipes in object.recipe_complementary.all %}
-                <div class="row instructions-section-bottom-margin">
-                    <div class="col-xl-2 col-lg-2 col-md-3">
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <ol class="list-group">
-                            <li
-                                class="list-group-item justify-content-between align-items-start instruction-list-margin">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold detailed-page-text-content text-center">
-                                        <a href="{{ recipes.complementary_recipe_link }}">{{ recipes.complementary_recipe_name }}</a>
+                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                        <div class="card text-bg-dark">
+                            <img src="{{ recipes.similar_recipe_pic.url }}" class="img-fluid" alt="recipe-image">
+                            <div class="card-img-overlay">
+                                <div class="card-text">
+                                    <div>
+                                        <a href ="{{ recipes.complementary_recipe_link }}"><h5 class="card-title">{{ recipes.complementary_recipe_name }}</h5></a>
+                                    </div>
+                                    <div class="line-background">
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                                     </div>
                                     <br>
-                                    <a href="{{ recipes.complementary_recipe_link }}">
-                                        <img src="{{ recipes.similar_recipe_pic.url }}" class="img-fluid"
-                                            alt="recipe-image" />
-                                    </a>
+                                    <div class="line-background">
+                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon" ><span>{{ object.difficulty }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
+                                    </div>
                                 </div>
-
-                            </li>
-                        </ol>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-xl-2 col-lg-2 col-md-3">
-                    </div>
-                </div>
                 {% endfor %}
             </div>
             <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
@@ -290,16 +289,16 @@
         </div>
 
         <div class="row detailed-page-section-bottom-margin">
-            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
-            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10">
+            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
                 <h1 class="text-center detailed-recipe-titles">Comment(s)</h1>
                 <br>
                 {% if object.comments.all|length > 0 %}
                 <div class="col-12">
-                    <ol class="list-group">
+                    <ul class="comments-list">
                         {% for comment in object.comments.all %}
-                        <li class="list-group-item justify-content-between align-items-start instruction-list-margin">
+                        <li class="justify-content-between align-items-start users-comments">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold text detailed-page-text-content text-center">
                                     Written by {{ comment.user }} <br>
@@ -311,13 +310,13 @@
                             </div>
                         </li>
                         {% endfor %}
-                    </ol>
+                    </ul>
                 </div>
                 {% else %}
                 <p class="detailed-page-text-content text-center">No comments yet.</p>
                 {% endif %}
             </div>
-            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
         </div>
     </body>
