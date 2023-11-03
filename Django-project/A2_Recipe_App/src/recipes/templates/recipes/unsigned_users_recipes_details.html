@@ -19,7 +19,7 @@
 </head>
 
 <main>
-    <header>
+    <header id="topsection">
         <div class="header-display">
             <nav class="navbar navbar-expand-md navbar-light nav justify-content-end">
                 <div class="logo-container">
@@ -46,278 +46,394 @@
     </header>
 
     <body>
-            <div class="row basic-recipe-info-section text-center align-items-center">
-                <div class="col-xl-1 d-none d-lg-block">
-                </div>
+        <div class="row basic-recipe-info-section text-center align-items-center recipe-intro-background">
+            <div class="col-xl-1 d-none d-lg-block">
+            </div>
 
-                <div class="col-xl-6 col-lg-10 col-md-10 col-sm-10 col-10">
-                    <img src="{{ object.pic.url }}" class="img-fluid detailed-page-image" alt="recipe-image" />
-                </div>
+            <div class="col-xl-6 col-lg-10 col-md-10 col-sm-10 col-10">
+                <img src="{{ object.pic.url }}" class="img-fluid detailed-page-image" alt="recipe-image" />
+            </div>
 
-                <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-10">
-                    <div class="row text-center">
-                        <div class="col-12">
-                            <h1 class="detailed-recipe-titles">{{ object.recipe_name }}</h1>
-                            <br>
+            <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-10">
+                <div class="row text-center">
+                    <div class="col-12">
+                        <h1 class="detailed-recipe-titles">{{ object.recipe_name }}</h1>
+                    </div>
+                </div>
+                <div class="row text-center recipe-icon-centered">
+                    <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-10">
+                        <div class="recipe-icon-text">
+                            <img src="../../../media/flag-icon.png" class="detailed-page-icon" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                        </div>
+                        <div class="recipe-icon-text">
+                            <img src="../../../media/category-icon.png" class="detailed-page-icon"
+                                alt="category-icon"><span>{{ object.recipe_category }}</span>
+                        </div>
+                        <div class="recipe-icon-text">
+                            <img src="../../../media/cooking-time-icon.png" class="detailed-page-icon"
+                                alt="cooking-time-icon"><span>{{ object.cooking_time }} min</span>
                         </div>
                     </div>
-                    <div class="row text-center recipe-icon-centered">
-                        <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-10">
-                            <div class="recipe-icon-text">
-                                <img src="../../../media/flag-icon.png" class="detailed-page-icon"
-                                    alt="flag-icon"><span>{{ object.origin_country }}</span>
-                            </div>
-                            <div class="recipe-icon-text">
-                                <img src="../../../media/category-icon.png" class="detailed-page-icon"
-                                    alt="category-icon"><span>{{ object.recipe_category }}</span>
-                            </div>
-                            <div class="recipe-icon-text">
-                                <img src="../../../media/cooking-time-icon.png" class="detailed-page-icon"
-                                    alt="cooking-time-icon"><span>{{ object.cooking_time }} min</span>
-                            </div>
+                    <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-10">
+                        <div class="recipe-icon-text">
+                            <img src="../../../media/difficulty-icon.png" class="detailed-page-icon"
+                                alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                         </div>
-                        <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-10">
-                            <div class="recipe-icon-text">
-                                <img src="../../../media/difficulty-icon.png" class="detailed-page-icon"
-                                    alt="difficulty-icon"><span>{{ object.difficulty }}</span>
-                            </div>
-                            <div class="recipe-icon-text">
-                                <img src="../../../media/number-portion-icon.png" class="detailed-page-icon"
-                                    alt="number-portion-icon"><span>{{ object.number_of_portions }} portions</span>
-                            </div>
-                            <div class="recipe-icon-text">
-                                <img src="../../../media/dollar-icon.png" class="detailed-page-icon"
-                                    alt="dollar-icon"><span>{{ object.recipe_estimated_cost }}</span>
-                            </div>
+                        <div class="recipe-icon-text">
+                            <img src="../../../media/number-portion-icon.png" class="detailed-page-icon"
+                                alt="number-portion-icon"><span>{{ object.number_of_portions }} portions</span>
                         </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-12">
-                            <h4 class="detailed-page-section-bottom-margin">Share recipe <img
-                                    src="../../../media/share-icon.png" class="detailed-page-share-icon"
-                                    alt="share-icon"></h4>
+                        <div class="recipe-icon-text">
+                            <img src="../../../media/dollar-icon.png" class="detailed-page-icon"
+                                alt="dollar-icon"><span>{{ object.recipe_estimated_cost }}</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-xl-1 d-none d-lg-block">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 section-break-line d-xl-none">
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
-                </div>
-                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10">
-                    <h1 class="text-center detailed-recipe-titles">Description</h1>
-                    <br>
-                    <p class="detailed-page-text-content">{{ object.description }}</p>
-                </div>
-                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
-                </div>
-                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10">
-                    <h1 class="text-center detailed-recipe-titles">Special notes</h1>
-                    {% if ingredient.possible_substitute %}
-                    <br>
-                    <p class="detailed-page-text-content">{{ ingredient.special_note }}</p>
-                    {% else %}
-                    <p class="detailed-page-text-content text-center">No special note.</p>
-                    {% endif %}
-                </div>
-                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
-                </div>
-            </div>
-
-            <div class="row text-center ingredients-instructions-section detailed-page-section-bottom-margin">
-                <div class="col-xl-2">
-                </div>
-                <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    <h1 class="text-center detailed-recipe-titles">Ingredients</h1>
-                    <br>
-                    {% for ingredient in object.recipe_ingredients.all %}
-                    <div class="row">
-                        <div class="col-xl-1">
-                        </div>
-                        <div class="col-xl-10">
-                            <ol class="list-group">
-                                <li
-                                    class="list-group-item justify-content-between align-items-start ingredient-list-margin">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">
-                                            {{ ingredient.ingredient_name }}
-                                        </div>
-                                        <div>
-                                            <span>{{ ingredient.quantity }}</span>
-                                            <span>{{ ingredient.unit_of_measurement }}</span>
-                                        </div>
-                                        <div>
-                                            {% if ingredient.possible_substitute %}
-                                            <br>
-                                            <span class="ingredient-fields">Possible substitute: {{ ingredient.possible_substitute }}</span> <br>
-                                            {% endif %}
-                                            <span>{{ ingredient.substitue_special_note }}</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ol>
-                        </div>
-                        <div class="col-xl-1">
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-
-                <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    <h1 class="text-center detailed-recipe-titles instructions-section">Instructions</h1>
-                    <br>
-                    {% for instructions in object.recipe_instructions.all %}
-                    <div class="row instructions-section-bottom-margin">
-                        <div class="col-xl-1">
-                        </div>
-                        <div class="col-xl-10">
-                            <ol class="list-group">
-                                <li
-                                    class="list-group-item justify-content-between align-items-start instruction-list-margin">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">{{ instructions.step_name }}</div>
-                                        <br>
-                                        <span>{{ instructions.step_instruction }}</span>
-                                    </div>
-                                </li>
-                            </ol>
-                        </div>
-                        <div class="col-xl-1">
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-
-                <div class="col-xl-1">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 section-break-line d-xl-none">
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
-                </div>
-            </div>
-
-            <div class="row detailed-page-section-bottom-margin">
-                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
-                </div>
-                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-10">
-                    <h1 class="text-center detailed-recipe-titles instructions-section">Tools needed</h1>
-                    <br>
-                    <div class="row">
-                        {% for tool in object.recipe_tools.all %}
-                        <div class="col-xl-4 col-lg-6 col-md-6">
-                            <ol class="list-group">
-                                <li
-                                    class="list-group-item justify-content-between align-items-start instruction-list-margin">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold text detailed-page-text-content text-center">{{ tool.cooking_tool_name }}</div>
-                                        <br>
-                                        <br>
-                                        <img src="{{ tool.cooking_tool_pic.url }}" class="img-fluid"
-                                            alt="recipe-image" />
-                                    </div>
-                                </li>
-                            </ol>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
-                </div>
-            </div>
-
-            <div class="row detailed-page-section-bottom-margin">
-                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
-                </div>
-                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-10">
-                    <h1 class="text-center detailed-recipe-titles instructions-section">Complementay recipes</h1>
-                    <br>
-                    {% for recipes in object.recipe_complementary.all %}
-                    <div class="row instructions-section-bottom-margin">
-                        <div class="col-xl-2 col-lg-2 col-md-3">
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6">
-                            <ol class="list-group">
-                                <li
-                                    class="list-group-item justify-content-between align-items-start instruction-list-margin">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold detailed-page-text-content text-center">
-                                            <a href="{{ recipes.complementary_recipe_link }}">{{ recipes.complementary_recipe_name }}</a>
-                                        </div>
-                                        <br>
-                                        <a href="{{ recipes.complementary_recipe_link }}">
-                                            <img src="{{ recipes.similar_recipe_pic.url }}" class="img-fluid"
-                                                alt="recipe-image" />
-                                        </a>
-                                    </div>
-
-                                </li>
-                            </ol>
-                        </div>
-                        <div class="col-xl-2 col-lg-2 col-md-3">
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
-                </div>
-            </div>
-
+                <br>
                 <div class="row">
-                    <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
-                    </div>
-                    <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10">
-                        <h1 class="text-center detailed-recipe-titles">Comment(s)</h1>
-                        <br>
-                        {% for comment in object.comments.all %}
-                        <div class="col-12">
-                            <ol class="list-group">
-                                <li
-                                    class="list-group-item justify-content-between align-items-start instruction-list-margin">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold text detailed-page-text-content text-center">
-                                            Written by {{ comment.user }} <br>
-                                            On {{ comment.created_at }}
-                                        </div>
-                                        <br>
-                                        <br>
-                                        {{ comment.text }}
-                                    </div>
-                                </li>
-                            </ol>
-                        </div>
-                        <br>
-                        {% endfor %}
-                    </div>
-                    <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+                    <div class="col-12">
+                        <h4 class="detailed-page-share-text">Share recipe</h4>
                     </div>
                 </div>
-            </body>
+                <div class="row">
+                    <div class="col-12 detailed-page-section-bottom-margin d-flex justify-content-center">
+                        <!-- AddToAny BEGIN -->
+                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style detailed-page-share-icons">
+                            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                            <a class="a2a_button_whatsapp"></a>
+                            <a class="a2a_button_facebook"></a>
+                            <a class="a2a_button_facebook_messenger"></a>
+                            <a class="a2a_button_google_gmail"></a>
+                            <a class="a2a_button_email"></a>
+                            <a class="a2a_button_copy_link"></a>
+                        </div>
+                        <script async src="https://static.addtoany.com/menu/page.js"></script>
+                        <!-- AddToAny END -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-1 d-none d-lg-block">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 section-break-line d-xl-none">
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            </div>
+            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10">
+                <h1 class="text-center detailed-recipe-titles detailed-page-description-title">Description</h1>
+                <br>
+                <p class="detailed-page-text-content">{{ object.description }}</p>
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            </div>
+            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10">
+                <h1 class="text-center detailed-recipe-titles">Special notes</h1>
+                {% if ingredient.possible_substitute %}
+                <br>
+                <p class="detailed-page-text-content">{{ ingredient.special_note }}</p>
+                {% else %}
+                <p class="detailed-page-text-content text-center">No special note.</p>
+                {% endif %}
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            </div>
+        </div>
+
+        <div class="row text-center ingredients-instructions-section detailed-page-section-bottom-margin">
+            <div class="col-xl-2">
+            </div>
+            <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <h1 class="text-center detailed-recipe-titles">Ingredients</h1>
+                <br>
+                {% for ingredient in object.recipe_ingredients.all %}
+                <div class="row">
+                    <div class="col-xl-1">
+                    </div>
+                    <div class="col-xl-10">
+                        <ol class="list-group">
+                            <li
+                                class="list-group-item justify-content-between align-items-start ingredient-list-margin">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        {{ ingredient.ingredient_name }}
+                                    </div>
+                                    <div>
+                                        <span>{{ ingredient.quantity }}</span>
+                                        <span>{{ ingredient.unit_of_measurement }}</span>
+                                    </div>
+                                    <div>
+                                        {% if ingredient.possible_substitute %}
+                                        <br>
+                                        <span class="ingredient-fields">Possible substitute: {{
+                                            ingredient.possible_substitute }}</span> <br>
+                                        {% endif %}
+                                        <span>{{ ingredient.substitue_special_note }}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-xl-1">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <h1 class="text-center detailed-recipe-titles instructions-section">Instructions</h1>
+                <br>
+                {% for instructions in object.recipe_instructions.all %}
+                <div class="row instructions-section-bottom-margin">
+                    <div class="col-xl-1">
+                    </div>
+                    <div class="col-xl-10">
+                        <ol class="list-group">
+                            <li
+                                class="list-group-item justify-content-between align-items-start instruction-list-margin">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">{{ instructions.step_name }}</div>
+                                    <br>
+                                    <span>{{ instructions.step_instruction }}</span>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-xl-1">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-xl-1">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 section-break-line d-xl-none">
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
+            </div>
+        </div>
+
+        <div class="row detailed-page-section-bottom-margin">
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
+            </div>
+            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-10">
+                <h1 class="text-center detailed-recipe-titles instructions-section">Tools needed</h1>
+                <br>
+                <div class="row">
+                    {% for tool in object.recipe_tools.all %}
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <ol class="list-group">
+                            <li
+                                class="list-group-item justify-content-between align-items-start instruction-list-margin">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold text detailed-page-text-content text-center">{{ tool.cooking_tool_name }}</div>
+                                    <br>
+                                    <br>
+                                    <img src="{{ tool.cooking_tool_pic.url }}" class="img-fluid" alt="recipe-image" />
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
+            </div>
+        </div>
+
+        <div class="row detailed-page-section-bottom-margin">
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
+            </div>
+            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-10">
+                <h1 class="text-center detailed-recipe-titles instructions-section">Complementay recipes</h1>
+                <br>
+                {% for recipes in object.recipe_complementary.all %}
+                <div class="row instructions-section-bottom-margin">
+                    <div class="col-xl-2 col-lg-2 col-md-3">
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <ol class="list-group">
+                            <li
+                                class="list-group-item justify-content-between align-items-start instruction-list-margin">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold detailed-page-text-content text-center">
+                                        <a href="{{ recipes.complementary_recipe_link }}">{{ recipes.complementary_recipe_name }}</a>
+                                    </div>
+                                    <br>
+                                    <a href="{{ recipes.complementary_recipe_link }}">
+                                        <img src="{{ recipes.similar_recipe_pic.url }}" class="img-fluid"
+                                            alt="recipe-image" />
+                                    </a>
+                                </div>
+
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-3">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            </div>
+            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-10 detailed-page-section-bottom-margin">
+                <h1 class="text-center detailed-recipe-titles">Comment(s)</h1>
+                <br>
+                {% for comment in object.comments.all %}
+                <div class="col-12">
+                    <ol class="list-group">
+                        <li class="list-group-item justify-content-between align-items-start instruction-list-margin">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold text detailed-page-text-content text-center">
+                                    Written by {{ comment.user }} <br>
+                                    On {{ comment.created_at }}
+                                </div>
+                                <br>
+                                <br>
+                                {{ comment.text }}
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <br>
+                {% endfor %}
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-1">
+            </div>
+        </div>
+    </body>
 
     <footer>
+        <div class="footer-background">
+            <div class="row">
+                <div class="col-2">
+                </div>
+                <div class="col-8 text-center">
+                    <br>
+                    <br>
+                    <h1 class="website-title">A tablespoon of discovery</h1>
+                </div>
+                <div class="col-2">
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-2">
+                </div>
+                <div class="col-8 text-center">
+                    <br>
+                    <h4>Want to create your own recipes and share it with the world?
+                        Proud of one of your local recipe delight? <br>
+                        Submit your recipe to our catalog right now quickly and easily.</h4> <br>
+                    <button>Submit a recipe</button>
+                    <br>
+                    <br>
+                    <h4>Want to create your own list of recipes?
+                        Want to create your own list of favorite from our catalog?
+                        Want to add comments on recipes? <br>
+                        Create an account now! Its free and it takes 2 minutes</h4> <br>
+                    <button>Sign up</button>
+                </div>
+                <div class="col-2">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center">
+                    <br>
+                    <br>
+                    <p>*****</p>
+                    <br>
+                    <h4 class="detailed-page-share-text">Share recipe</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 detailed-page-section-bottom-margin d-flex justify-content-center">
+                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style detailed-page-share-icons">
+                        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                        <a class="a2a_button_whatsapp"></a>
+                        <a class="a2a_button_facebook"></a>
+                        <a class="a2a_button_facebook_messenger"></a>
+                        <a class="a2a_button_google_gmail"></a>
+                        <a class="a2a_button_email"></a>
+                        <a class="a2a_button_copy_link"></a>
+                    </div>
+                    <script async src="https://static.addtoany.com/menu/page.js"></script>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h4 class="detailed-page-share-text">Share website</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style detailed-page-share-icons">
+                        <a href="https://www.addtoany.com/share#url=http%3A%2F%2F127.0.0.1%3A8000%2Fhome%2F&amp;title="
+                            target="_blank"><img src="https://static.addtoany.com/buttons/a2a.svg" width="32"
+                                height="32" style="background-color:#0166ff" class="website-share-icons"></a>
+                        <a href="https://www.addtoany.com/add_to/whatsapp?linkurl=http%3A%2F%2F127.0.0.1%3A8000%2Fhome%2F&amp;linkname="
+                            target="_blank"><img src="https://static.addtoany.com/buttons/whatsapp.svg" width="32"
+                                height="32" style="background-color:#12af0a" class="website-share-icons"></a>
+                        <a href="https://www.addtoany.com/add_to/facebook?linkurl=http%3A%2F%2F127.0.0.1%3A8000%2Fhome%2F&amp;linkname="
+                            target="_blank"><img src="https://static.addtoany.com/buttons/facebook.svg" width="32"
+                                height="32" style="background-color:#0866ff" class="website-share-icons"></a>
+                        <a href="https://www.addtoany.com/add_to/facebook_messenger?linkurl=http%3A%2F%2F127.0.0.1%3A8000%2Fhome%2F&amp;linkname="
+                            target="_blank"><img src="https://static.addtoany.com/buttons/facebook_messenger.svg"
+                                width="32" height="32" style="background-color:#0084ff" class="website-share-icons"></a>
+                        <a href="https://www.addtoany.com/add_to/google_gmail?linkurl=http%3A%2F%2F127.0.0.1%3A8000%2Fhome%2F&amp;linkname="
+                            target="_blank"><img src="https://static.addtoany.com/buttons/gmail.svg" width="32"
+                                height="32" style="background-color:#ea4335" class="website-share-icons"></a>
+                        <a href="https://www.addtoany.com/add_to/email?linkurl=http%3A%2F%2F127.0.0.1%3A8000%2Fhome%2F&amp;linkname="
+                            target="_blank"><img src="https://static.addtoany.com/buttons/email.svg" width="32"
+                                height="32" style="background-color:#888990" class="website-share-icons"></a>
+                        <a href="https://www.addtoany.com/add_to/copy_link?linkurl=http%3A%2F%2F127.0.0.1%3A8000%2Fhome%2F&amp;linkname="
+                            target="_blank"><img src="https://static.addtoany.com/buttons/link.svg" width="32"
+                                height="32" style="background-color: #888990" class="website-share-icons"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row back-to-top">
+                <div class="col-2">
+                </div>
+                <div class="col-8 text-center back-to-top-link-bottom-margin">
+                    <br>
+                    <br>
+                    <p>*****</p>
+                    <br>
+                    <a href="#topsection" class="back-to-top-link">Back to top</a>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+
+        </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
