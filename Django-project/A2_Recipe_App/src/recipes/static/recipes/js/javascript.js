@@ -278,3 +278,24 @@ function clearSearch() {
 
     window.location.href = '/recipes-list-unsigned-users';
 }
+
+
+
+//***Code to ensure smooth transition in the page when user click on the back to top link at the \
+//***bottom of the detailed page.
+
+    function scrollToSection(event, targetSectionId) {
+        event.preventDefault();
+        var targetSection = document.querySelector(targetSectionId);
+        var offset = targetSection.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+            top: offset,
+            behavior: 'smooth'
+        });
+    }
+
+        var backToTopLink1 = document.querySelector('.back-to-top a');
+
+        backToTopLink1.addEventListener('click', function (event) {
+            scrollToSection(event, '#topsection');
+        });
