@@ -253,41 +253,32 @@
         </div>
 
         <div class="row detailed-page-section-bottom-margin">
-            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
+            <div class="col-xl-2 col-lg-1 col-md-2 col-sm-2 col-1">
             </div>
-            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-10">
-                <h1 class="text-center detailed-recipe-titles instructions-section">Complementay recipes</h1>
+            <div class="col-xl-8 col-lg-10 col-md-8 col-sm-8 col-10">
+                <h1 class="text-center detailed-recipe-titles instructions-section">Related recipes</h1>
                 <br>
-                {% for recipes in object.recipe_complementary.all %}
+                <div class="row">
+                    {% for recipe in object.recipe_complementary.all %}
                     <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
                         <div class="card text-bg-dark">
-                            <img src="{{ recipes.similar_recipe_pic.url }}" class="img-fluid" alt="recipe-image">
+                            <img src="{{ recipe.similar_recipe_pic.url }}" class="img-fluid" alt="recipe-image">
                             <div class="card-img-overlay">
                                 <div class="card-text">
                                     <div>
-                                        <a href ="{{ recipes.complementary_recipe_link }}"><h5 class="card-title">{{ recipes.complementary_recipe_name }}</h5></a>
-                                    </div>
-                                    <div class="line-background">
-                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
-                                    </div>
-                                    <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon" ><span>{{ object.difficulty }}</span>
-                                    </div>
-                                    <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
+                                        <a href ="{{ recipe.complementary_recipe_link }}"><h5 class="detailed-page-similar-recipe-card-title">{{ recipe.complementary_recipe_name }}</h5></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
-            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
+            <div class="col-xl-2 col-lg-1 col-md-2 col-sm-2 col-1">
             </div>
         </div>
-
+        
         <div class="row detailed-page-section-bottom-margin">
             <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
