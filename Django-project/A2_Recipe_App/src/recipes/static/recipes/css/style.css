@@ -345,8 +345,13 @@
 
 /* CSS for the detail recipe page */
 
-.recipe-intro-background {
+.detailed-page-recipe-intro-padding {
+    padding: 20px;
+}
+
+.detailed-page-recipe-intro-background {
     background-color: rgb(240, 238, 168);
+    border: solid 3px black;
 }
 
 .basic-recipe-info-section {
@@ -362,7 +367,7 @@
 }
 
 .detailed-page-image {
-    margin-bottom: 40px;
+    margin-bottom: 80px;
     border-radius: 15px;
 }
 
@@ -399,7 +404,7 @@
 
 .recipe-icon-text {
     font-size: 20px;
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(255, 255, 255, 0.99);
     padding: 10px;
     margin: 5px 0;
     border-radius: 10px;
@@ -438,15 +443,20 @@
     font-weight: bold;
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
     .detailed-page-description-title {
-        margin-top: 30px;
+        margin-top: 80px;
     }
 }
 
+@media (min-width: 1200px) {
+    .detailed-page-description-title {
+        margin-top: 80px;
+    }
+}
 
 .detailed-page-section-bottom-margin {
-    margin-bottom: 40px;
+    margin-bottom: 80px;
 }
 
 .section-break-line {
@@ -457,7 +467,6 @@
 
 .detailed-page-text-content {
     font-size: 25px;
-    padding-bottom: 20px;
     text-align: justify;
 }
 
@@ -490,8 +499,13 @@
     margin-bottom: 10px;
 }
 
+.footer-padding {
+    padding: 8px;
+}
+
 .footer-background {
     background-color: rgb(240, 238, 168);
+    border: solid 3px black;
 }
 
 .website-share-icons {
@@ -500,7 +514,7 @@
 
 .back-to-top-link {
     margin-bottom: 70px;
-    font-size: 25px;
+    font-size: 20px;
     color: black;
 }
 
