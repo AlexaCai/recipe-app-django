@@ -226,7 +226,7 @@
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                             <div class="card-img-overlay">
                                 <div class="card-text">
-                                    <h5 class="card-title">{{ object.recipe_name }}</h5>
+                                    <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
                                     <div class="line-background">
                                     <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.origin_country }}</span>
                                     </div>
@@ -271,7 +271,7 @@
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                             <div class="card-img-overlay">
                                 <div class="card-text">
-                                    <h5 class="card-title">{{ object.recipe_name }}</h5>
+                                    <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
                                     <div class="line-background">
                                     <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>{{ object.origin_country }}</span>
                                     </div>
@@ -316,7 +316,7 @@
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                             <div class="card-img-overlay">
                                 <div class="card-text">
-                                    <h5 class="card-title">{{ object.recipe_name }}</h5>
+                                    <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
                                     <div class="line-background">
                                     <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                                     </div>
@@ -327,6 +327,53 @@
                                     <br>
                                     <div class="line-background">
                                     <img src="../../../media/category-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.recipe_category }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endwith %}
+                    {% endwith %}
+                </div>
+            </div>
+            <div class="default-content">
+                <br>
+                <br>
+                <br>
+                <h1 class="recipes-continent-title-section">Africa</h1>
+                <div class="icon-legend">
+                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>                
+                <br>
+                <div class="row card-general-padding">
+                    {% with country_list="algerian, angolan, beninese, botswanan, burkinabe, burundian, cameroonian, cape verdean, central african, chadian, comoran, congolese, djiboutian, egyptian, equ. guinean, eritrean, ethiopian, gabonese, gambian, ghanaian, guinean, guinea-bi., ivorian, kenyan, lesotho, liberian, libyan, malagasy, malawian, malian, mauritanian, mauritian, moroccan, mozambican, namibian, niger, nigerian, rwandan, sao tomean, senegalese, seychellois, sierra leonean, somali, south african, south sudanese, sudanese, swazi, tanzanian, togolese, tunisian, ugandan, zambian, zimbabwean" %}
+                    {% with country_list_split=country_list|slice:" " %}
+                    {% for object in object_list %}
+                    {% if object.origin_country in country_list_split %}
+                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                        <div class="card text-bg-dark">
+                            <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
+                            <div class="card-img-overlay">
+                                <div class="card-text">
+                                    <div>
+                                        <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
+                                    </div>
+                                    <div class="line-background">
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon" ><span>{{ object.difficulty }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
                                     </div>
                                 </div>
                             </div>
