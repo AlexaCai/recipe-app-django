@@ -345,6 +345,10 @@
 
 /* CSS for the detail recipe page */
 
+.recipe-intro-background {
+    background-color: rgb(240, 238, 168);
+}
+
 .basic-recipe-info-section {
     padding-top: 80px;
 }
@@ -359,17 +363,31 @@
 
 .detailed-page-image {
     margin-bottom: 40px;
+    border-radius: 15px;
 }
 
 .detailed-recipe-titles {
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
-    padding-bottom: 10px;
+    text-align: center; 
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(240, 238, 168); 
+    padding: 5px 10px; 
+    border-radius: 10px; */
 }
+
 
 @media (max-width: 1500px) {
     .detailed-recipe-titles {
         font-size: 35px;
+    }
+}
+
+@media (max-width: 1250px) {
+    .detailed-recipe-titles {
+        padding-bottom: 10px;
     }
 }
 
@@ -405,14 +423,30 @@
     margin-right: 5px;
 }
 
-.detailed-page-section-bottom-margin {
-    margin-bottom: 40px;
+.detailed-page-share-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.detailed-page-share-icon {
-    width: 25px;
-    height: 25px;
-    margin-left: 5px;
+.detailed-page-share-icons a {
+    margin: 0 5px;
+}
+
+.detailed-page-share-text {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: bold;
+}
+
+@media (min-width: 1200px) {
+    .detailed-page-description-title {
+        margin-top: 30px;
+    }
+}
+
+
+.detailed-page-section-bottom-margin {
+    margin-bottom: 40px;
 }
 
 .section-break-line {
@@ -454,4 +488,22 @@
 
 .instruction-section-bottom-margin {
     margin-bottom: 10px;
+}
+
+.footer-background {
+    background-color: rgb(240, 238, 168);
+}
+
+.website-share-icons {
+    border-radius: 4px;
+}
+
+.back-to-top-link {
+    margin-bottom: 70px;
+    font-size: 25px;
+    color: black;
+}
+
+.back-to-top-link-bottom-margin {
+    margin-bottom: 50px;
 }
