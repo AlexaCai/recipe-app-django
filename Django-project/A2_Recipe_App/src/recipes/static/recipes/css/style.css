@@ -88,7 +88,7 @@
     font-size: 50px;
 }
 
-@media (max-width: 355px) {
+@media (max-width: 405px) {
     .website-title {
         font-size: 40px;
     }
@@ -419,6 +419,7 @@
     }
 }
 
+
 /* CSS for the detail recipe page */
 
 .detailed-page-recipe-intro-padding {
@@ -599,6 +600,10 @@
     margin-bottom: 10px;
 }
 
+.cooking-tools-padding {
+    padding: 10px;
+}
+
 .detailed-page-similar-recipe-card-title {
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
@@ -660,6 +665,7 @@
 }
 
 .footer-padding {
+    margin-top: 80px;
     padding: 8px;
 }
 
@@ -678,6 +684,17 @@
     color: black;
 }
 
+@media (max-width: 350px) {
+    .back-to-top-link {
+        font-size: 17px;
+    }
+}
+
 .back-to-top-link-bottom-margin {
     margin-bottom: 50px;
+}
+
+.footer-buttons-action-call {
+    text-decoration: underline;
+    font-weight: 600;
 }
