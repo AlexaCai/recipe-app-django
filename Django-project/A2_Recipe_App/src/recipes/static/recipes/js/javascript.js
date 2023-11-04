@@ -229,9 +229,9 @@ function displaySearchResults(data) {
                 <div class="card text-bg-dark">
                     <img src="${recipe.pic}" class="img-fluid" alt="recipe-image">
                     <div class="card-img-overlay">
-                        <div class="card-text">
-                            <h5 class="card-title">${recipe.recipe_name}</h5>
-                            <div class="line-background">
+                    <div class="card-text">
+                        <a href="${recipe.recipe_url}"><h5 class="card-title">${recipe.recipe_name}</h5></a>
+                        <div class="line-background">
                                 <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>${recipe.recipe_origin_country}</span>
                             </div>
                             <br>
