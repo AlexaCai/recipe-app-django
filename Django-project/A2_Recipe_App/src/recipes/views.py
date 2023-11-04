@@ -22,6 +22,7 @@ def search_recipes_by_name(request):
             "recipe_origin_country": recipe.origin_country,
             "recipe_difficulty": recipe.difficulty,
             "recipe_category": recipe.recipe_category,
+            "recipe_url": recipe.get_absolute_url(),
             "pic": recipe.pic.url,
         }
         for recipe in matching_recipes
@@ -82,6 +83,7 @@ def search_recipes_by_filters(request):
             "recipe_origin_country": recipe.origin_country,
             "recipe_difficulty": recipe.difficulty,
             "recipe_category": recipe.recipe_category,
+            "recipe_url": recipe.get_absolute_url(),
             "pic": recipe.pic.url,
         }
         for recipe in matching_recipes
@@ -121,6 +123,7 @@ def search_recipes_by_ingredients(request):
             "recipe_origin_country": recipe.origin_country,
             "recipe_difficulty": recipe.difficulty,
             "recipe_category": recipe.recipe_category,
+            "recipe_url": recipe.get_absolute_url(),
             "pic": recipe.pic.url,
         }
         for recipe in matching_recipes
