@@ -48,6 +48,7 @@ country_choices = (
     ("bruneian", "Bruneian"),
     ("bulgarian", "Bulgarian"),
     ("burkinabe", "Burkinabe"),
+    ("burmese", "Burmese"),
     ("burundian", "Burundian"),
     ("cambodian", "Cambodian"),
     ("cameroonian", "Cameroonian"),
@@ -110,6 +111,7 @@ country_choices = (
     ("jordanian", "Jordanian"),
     ("kazakhstani", "Kazakhstani"),
     ("kenyan", "Kenyan"),
+    ("kiribatian", "Kiribatian"),
     ("kuwaiti", "Kuwaiti"),
     ("kyrgyz", "Kyrgyz"),
     ("laotian", "Laotian"),
@@ -128,9 +130,11 @@ country_choices = (
     ("maldivian", "Maldivian"),
     ("malian", "Malian"),
     ("maltese", "Maltese"),
+    ("marshallese", "Marshallese"),
     ("mauritanian", "Mauritanian"),
     ("mauritian", "Mauritian"),
     ("mexican", "Mexican"),
+    ("micronesian", "Micronesian"),
     ("moldovan", "Moldovan"),
     ("monegasque", "Monegasque"),
     ("mongolian", "Mongolian"),
@@ -138,6 +142,7 @@ country_choices = (
     ("moroccan", "Moroccan"),
     ("mozambican", "Mozambican"),
     ("namibian", "Namibian"),
+    ("nauruan", "Nauruan"),
     ("nepalese", "Nepalese"),
     ("new zealand", "New Zealand"),
     ("nicaraguan", "Nicaraguan"),
@@ -164,6 +169,7 @@ country_choices = (
     ("saint vincent and the grenadines", "Saint Vincent and the Grenadines"),
     ("salvadoran", "Salvadoran"),
     ("sammarinese", "Sammarinese"),
+    ("samoan", "Samoan"),
     ("sao tomean", "Sao Tomean"),
     ("saudi arabian", "Saudi Arabian"),
     ("senegalese", "Senegalese"),
@@ -186,6 +192,7 @@ country_choices = (
     ("swedish", "Swedish"),
     ("swiss", "Swiss"),
     ("syrian", "Syrian"),
+    ("taiwanese", "Taiwanese"),
     ("tajik", "Tajik"),
     ("tanzanian", "Tanzanian"),
     ("thai", "Thai"),
@@ -272,13 +279,6 @@ class Recipe(models.Model):
     @property
     def difficulty(self):
         return self.calculate_difficulty()
-
-    # Generates a URL for a recipe instance created
-    def generate_url(self):
-        if self.id:
-            return f"http://127.0.0.1:8000/admin/recipes/recipe/{self.id}"
-        else:
-            return ""
         
     # Display the url as a property, not an input field
     @property
