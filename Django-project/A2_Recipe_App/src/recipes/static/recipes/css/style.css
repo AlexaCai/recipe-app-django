@@ -176,7 +176,7 @@
 
 @media (max-width: 750px) {
     .intro-text {
-     margin-bottom: 40px;
+        margin-bottom: 40px;
     }
 }
 
@@ -208,15 +208,15 @@
     }
 }
 
-@media (max-width: 649px) { 
+@media (max-width: 649px) {
     .main-search-field {
-        height: 45px; 
+        height: 45px;
     }
 }
 
-@media (min-width: 650px) { 
+@media (min-width: 650px) {
     .main-search-field {
-        height: 50px; 
+        height: 50px;
     }
 }
 
@@ -347,14 +347,14 @@
 
 @media (max-width: 450px) {
     .card-title {
-        font-size: 13px;
+        font-size: 18px;
         padding: 5px;
     }
 }
 
 @media (max-width: 280px) {
     .card-title {
-        font-size: 10px;
+        font-size: 12px;
         padding: 4px;
     }
 }
@@ -372,14 +372,21 @@
 
 @media (max-width: 450px) {
     .line-background {
-        font-size: 13px;
+        font-size: 15px;
         padding: 5px;
     }
 }
 
 @media (max-width: 350px) {
     .line-background {
-        font-size: 9px;
+        font-size: 14px;
+        padding: 4px;
+    }
+}
+
+@media (max-width: 350px) {
+    .line-background {
+        font-size: 12px;
         padding: 4px;
     }
 }
@@ -393,15 +400,22 @@
 
 @media (max-width: 450px) {
     .card-icons {
-        width: 15px;
-        height: 15px;
+        width: 20px;
+        height: 20px;
     }
 }
 
 @media (max-width: 350px) {
     .card-icons {
-        width: 10px;
-        height: 10px;
+        width: 17px;
+        height: 17px;
+    }
+}
+
+@media (max-width: 300px) {
+    .card-icons {
+        width: 14px;
+        height: 12px;
     }
 }
 
@@ -437,7 +451,7 @@
 .detailed-recipe-titles {
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
-    text-align: center; 
+    text-align: center;
 }
 
 
@@ -504,7 +518,7 @@
 
 @media (max-width: 350px) {
     .detailed-page-share-icons a {
-     margin-top: 15px;
+        margin-top: 15px;
     }
 }
 
@@ -547,21 +561,22 @@
 }
 
 @media (max-width: 550px) {
-    .ingredients-instructions-section-padding    {
+    .ingredients-instructions-section-padding {
         padding-left: 35px;
         padding-right: 35px;
     }
 }
 
 @media (max-width: 350px) {
-    .ingredients-instructions-section-padding    {
+    .ingredients-instructions-section-padding {
         padding-left: 25px;
         padding-right: 25px;
     }
 }
 
-.ingredient-list-margin {
+.ingredient-list-margin-font-size {
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .ingredient-fields {
@@ -575,8 +590,9 @@
     }
 }
 
-.instruction-list-margin {
+.instruction-list-margin-font-size {
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .instruction-section-bottom-margin {
@@ -597,7 +613,7 @@
 }
 
 @media (max-width: 280px) {
-.detailed-page-similar-recipe-card-title  {
+    .detailed-page-similar-recipe-card-title {
         font-size: 16px;
         padding: 4px;
     }
@@ -608,12 +624,39 @@
     padding-left: 0;
 }
 
-.users-comments {
+.users-comments-section {
     margin-bottom: 50px;
     background: url("../../../media/detailed-recipe-page-background2.jpg") center/cover no-repeat;
     padding: 10px;
     border: solid 1px black;
     border-radius: 10px;
+    text-align: center;
+}
+
+.users-comments-title {
+    font-size: 23px;
+}
+
+@media (max-width: 500px) {
+    .users-comments-title {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 300px) {
+    .users-comments-title {
+        font-size: 19px;
+    }
+}
+
+.users-comments-text {
+    font-size: 21px;
+}
+
+@media (max-width: 500px) {
+    .users-comments-text {
+        font-size: 18px;
+    }
 }
 
 .footer-padding {
@@ -638,4 +681,3 @@
 .back-to-top-link-bottom-margin {
     margin-bottom: 50px;
 }
-

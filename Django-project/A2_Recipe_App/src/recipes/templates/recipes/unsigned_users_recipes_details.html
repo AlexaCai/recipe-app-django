@@ -160,7 +160,7 @@
                     <div class="col-xl-10">
                         <ol class="list-group">
                             <li
-                                class="list-group-item justify-content-between align-items-start ingredient-list-margin">
+                                class="list-group-item justify-content-between align-items-start ingredient-list-margin-font-size">
                                 <div class="ms-2 me-auto">
                                     <div class="fw-bold">
                                         {{ ingredient.ingredient_name }}
@@ -172,8 +172,7 @@
                                     <div>
                                         {% if ingredient.possible_substitute %}
                                         <br>
-                                        <span class="ingredient-fields">Possible substitute: {{
-                                            ingredient.possible_substitute }}</span> <br>
+                                        <span class="ingredient-fields">Possible substitute: {{ ingredient.possible_substitute }}</span> <br>
                                         {% endif %}
                                         <span>{{ ingredient.substitue_special_note }}</span>
                                     </div>
@@ -197,7 +196,7 @@
                     <div class="col-xl-10">
                         <ol class="list-group">
                             <li
-                                class="list-group-item justify-content-between align-items-start instruction-list-margin">
+                                class="list-group-item justify-content-between align-items-start instruction-list-margin-font-size">
                                 <div class="ms-2 me-auto">
                                     <div class="fw-bold">{{ instructions.step_name }}</div>
                                     <br>
@@ -238,8 +237,7 @@
                             <li
                                 class="list-group-item justify-content-between align-items-start instruction-list-margin">
                                 <div class="ms-2 me-auto">
-                                    <div class="fw-bold text detailed-page-text-content text-center">{{
-                                        tool.cooking_tool_name }}</div>
+                                    <div class="fw-bold text detailed-page-text-content text-center">{{ tool.cooking_tool_name }}</div>
                                     <br>
                                     <br>
                                     <img src="{{ tool.cooking_tool_pic.url }}" class="img-fluid" alt="recipe-image" />
@@ -270,8 +268,7 @@
                                 <div class="card-text">
                                     <div>
                                         <a href="{{ recipe.complementary_recipe_link }}">
-                                            <h5 class="detailed-page-similar-recipe-card-title">{{
-                                                recipe.complementary_recipe_name }}</h5>
+                                            <h5 class="detailed-page-similar-recipe-card-title">{{ recipe.complementary_recipe_name }}</h5>
                                         </a>
                                     </div>
                                 </div>
@@ -298,15 +295,16 @@
                 <div class="col-12">
                     <ul class="comments-list">
                         {% for comment in object.comments.all %}
-                        <li class="justify-content-between align-items-start users-comments">
+                        <li class="justify-content-between users-comments-section">
                             <div class="ms-2 me-auto">
-                                <div class="fw-bold text detailed-page-text-content text-center">
+                                <div class="fw-bold users-comments-title text-center">
                                     Written by {{ comment.user }} <br>
                                     On {{ comment.created_at }}
                                 </div>
-                                <br>
+                                <div class="users-comments-text">
                                 <br>
                                 {{ comment.text }}
+                            </div>
                             </div>
                         </li>
                         {% endfor %}
