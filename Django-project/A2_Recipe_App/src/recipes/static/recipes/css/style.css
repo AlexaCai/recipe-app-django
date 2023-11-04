@@ -59,11 +59,7 @@
 }
 
 .image-background {
-    position: relative;
-    background-image: url('../../../../media/welcome-page-background.jpg');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
+    background: url("../../../media/welcome-page-background.jpg") center/cover no-repeat;
     height: 110vh;
     margin: 0;
 }
@@ -82,7 +78,7 @@
     border: 2px solid black;
     position: relative;
     padding: 20px;
-    background-color: white;
+    background-color: rgb(255, 255, 255, 0.80);
     border-radius: 10px;
 }
 
