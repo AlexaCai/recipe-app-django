@@ -258,6 +258,7 @@
             <div class="col-xl-8 col-lg-10 col-md-8 col-sm-8 col-10">
                 <h1 class="text-center detailed-recipe-titles instructions-section">Related recipes</h1>
                 <br>
+                {% if object.recipe_complementary.all|length > 0 %}
                 <div class="row">
                     {% for recipe in object.recipe_complementary.all %}
                     <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
@@ -274,6 +275,9 @@
                     </div>
                     {% endfor %}
                 </div>
+                {% else %}
+                <p class="detailed-page-text-content text-center">No similar recipes yet.</p>
+                {% endif %}
             </div>
             <div class="col-xl-2 col-lg-1 col-md-2 col-sm-2 col-1">
             </div>
