@@ -385,6 +385,96 @@
                     {% endwith %}
                 </div>
             </div>
+            <div class="default-content">
+                <br>
+                <br>
+                <br>
+                <h1 class="recipes-continent-title-section">Asia</h1>
+                <div class="icon-legend">
+                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>                
+                <br>
+                <div class="row card-general-padding">
+                    {% with country_list="afghan, armenian, azerbaijani, bahraini, bangladeshi, bhutanese, bruneian, burmese, cambodian, chinese, emirati, filipino, georgian, indian, indonesian, iranian, iraqi, israeli, japanese, jordanian, kazakhstani, kuwaiti, kyrgyz, laotian, lebanese, malaysian, maldivian, mongolian, nepalese, omani, pakistani, palestinian, qatari, saudi arabian, singaporean, south korean, sri lankan, syrian, taiwanese, tajik, east timorese, turkmen, uzbek, vietnamese, yemeni" %}
+                    {% with country_list_split=country_list|slice:" " %}
+                    {% for object in object_list %}
+                    {% if object.origin_country in country_list_split %}
+                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                        <div class="card text-bg-dark">
+                            <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
+                            <div class="card-img-overlay">
+                                <div class="card-text">
+                                    <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
+                                    <div class="line-background">
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="flag-icon" ><span>{{ object.difficulty }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/category-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.recipe_category }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endwith %}
+                    {% endwith %}
+                </div>
+            </div>
+            <div class="default-content">
+                <br>
+                <br>
+                <br>
+                <h1 class="recipes-continent-title-section">Oceania</h1>
+                <div class="icon-legend">
+                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>                
+                <br>
+                <div class="row card-general-padding">
+                    {% with country_list="australian, fijian, kiribatian, marshallese, micronesian, nauruan, new zealand, palauan, papua new guinean, samoan, solomon islands, tongan, tuvaluan, vanuatuan" %}
+                    {% with country_list_split=country_list|slice:" " %}
+                    {% for object in object_list %}
+                    {% if object.origin_country in country_list_split %}
+                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                        <div class="card text-bg-dark">
+                            <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
+                            <div class="card-img-overlay">
+                                <div class="card-text">
+                                    <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
+                                    <div class="line-background">
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="flag-icon" ><span>{{ object.difficulty }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/category-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.recipe_category }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endwith %}
+                    {% endwith %}
+                </div>
+            </div>
 
             <!-- Used to dynamically display search results (opposite to the static display of recipes above) -->
             <div id="search-results"></div>
@@ -404,6 +494,7 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
     <script src="{% static 'recipes/js/javascript.js' %}"></script>
+    
 </main>
 
 </html>
