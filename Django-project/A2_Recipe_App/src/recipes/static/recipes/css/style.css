@@ -60,7 +60,7 @@
 
 .image-background {
     background: url("../../../media/welcome-page-background.jpg") center/cover no-repeat;
-    height: 110vh;
+    height: 120vh;
     margin: 0;
 }
 
@@ -152,7 +152,7 @@
 
 
 .recipe-page-intro-section {
-    background: url("../../../media/welcome-page-background.jpg") center/cover no-repeat;
+    background: url("../../../media/recipe-list-page-background.jpg") center/cover no-repeat;
     text-align: center;
     color: white;
     padding: 100px 0;
@@ -412,9 +412,10 @@
 }
 
 .detailed-page-recipe-intro-background {
-    background-color: rgb(240, 238, 168);
+    background: url("../../../media/detailed-recipe-page-background1.jpg") center/cover no-repeat;
     border: solid 3px black;
 }
+
 
 .basic-recipe-info-section {
     padding-top: 80px;
@@ -437,12 +438,6 @@
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
     text-align: center; 
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgb(240, 238, 168); 
-    padding: 5px 10px; 
-    border-radius: 10px; */
 }
 
 
@@ -615,7 +610,7 @@
 
 .users-comments {
     margin-bottom: 50px;
-    background-color: rgb(240, 238, 168);
+    background: url("../../../media/detailed-recipe-page-background2.jpg") center/cover no-repeat;
     padding: 10px;
     border: solid 1px black;
     border-radius: 10px;
@@ -626,7 +621,7 @@
 }
 
 .footer-background {
-    background-color: rgb(240, 238, 168);
+    background: url("../../../media/detailed-recipe-page-background1.jpg") center/cover no-repeat;
     border: solid 3px black;
 }
 
