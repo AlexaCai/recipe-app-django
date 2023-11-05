@@ -419,6 +419,10 @@
     }
 }
 
+.recipes-list-page-add-to-favorite-button {
+    margin-top: 20px;
+}
+
 
 /* CSS for the detail recipe page */
 
@@ -430,7 +434,6 @@
     background: url("../../../media/detailed-recipe-page-background1.jpg") center/cover no-repeat;
     border: solid 3px black;
 }
-
 
 .basic-recipe-info-section {
     padding-top: 80px;
@@ -528,16 +531,13 @@
     font-weight: bold;
 }
 
-@media (max-width: 1200px) {
-    .detailed-page-description-title {
-        margin-top: 80px;
-    }
+.detailed-page-add-favorite-button {
+    margin-top: 60px;
+    width: 100%;
 }
 
-@media (min-width: 1200px) {
-    .detailed-page-description-title {
-        margin-top: 80px;
-    }
+.unsigned-users-detailed-page-description-title {
+    margin-top: 80px;
 }
 
 .detailed-page-section-bottom-margin {
@@ -663,6 +663,26 @@
         font-size: 18px;
     }
 }
+
+.add-comment-title {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
+}
+
+.add-comment-box {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #e4e4e4;
+    border-radius: 10px;
+    border: solid 0.5px black;
+}
+
+.detailed-page-add-comment-button {
+    margin-top: 20px;
+}
+
 
 .footer-padding {
     margin-top: 80px;
