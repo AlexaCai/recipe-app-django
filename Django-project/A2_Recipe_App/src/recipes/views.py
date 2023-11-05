@@ -132,11 +132,19 @@ def search_recipes_by_ingredients(request):
     return JsonResponse({"recipes": recipes_json})
 
 
-class RecipeListView(ListView):
+class RecipeListViewUnsignedUsers(ListView):
     model = Recipe
     template_name = "recipes/unsigned_users_recipes.html"
 
+class RecipeListViewSignedUsers(ListView):
+    model = Recipe
+    template_name = "recipes/signed_users_recipes.html"
 
-class RecipeDetailView(DetailView):
+class RecipeDetailViewUnsignedUsers(DetailView):
     model = Recipe
     template_name = "recipes/unsigned_users_recipes_details.html"
+
+class RecipeDetailViewSignedUsers(DetailView):
+    model = Recipe
+    template_name = "recipes/signed_users_recipes_details.html"
+
