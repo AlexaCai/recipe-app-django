@@ -287,6 +287,13 @@ class Recipe(models.Model):
     
     def get_absolute_url(self):
        return reverse ('recipes:recipes_detail_unsigned_users', kwargs={'pk': self.pk})
+    
+    @property
+    def recipe_url_signed_users(self):
+        return self.generate_url_signed_users()
+    
+    def get_absolute_url_signed_users(self):
+       return reverse ('recipes:recipes_detail_signed_users', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.recipe_name
@@ -330,20 +337,26 @@ class RecipeToolsNeeded(models.Model):
 class RecipeSimilarComplementary(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe_complementary")
     complementary_recipe_name = models.CharField(max_length=100, blank=True)
-    complementary_recipe_link = models.URLField(max_length=500, blank=True)
+    complementary_recipe_link_unsigned_users = models.URLField(max_length=500, blank=True)
+    complementary_recipe_link_signed_users = models.URLField(max_length=500, blank=True)
     similar_recipe_pic = models.ImageField(upload_to="recipes", default="no_picture.jpg")
 
     def clean(self):
         super().clean()
 
         if self.complementary_recipe_name:
-            # If complementary_recipe_name has a value, complementary_recipe_link must also have a value
-            if not self.complementary_recipe_link:
-                raise ValidationError({"complementary_recipe_link": "Complementary recipe link is required if complementary recipe name is provided."})
+            # If complementary_recipe_name has a value, both complementary_recipe_link_unsigned_users and complementary_recipe_link_signed_users must also have a value
+            if not self.complementary_recipe_link_unsigned_users and not self.complementary_recipe_link_signed_users:
+                raise ValidationError({
+                    "complementary_recipe_link_unsigned_users": "Complementary recipe link is required if complementary recipe name is provided.",
+                    "complementary_recipe_link_signed_users": "Complementary recipe link is required if complementary recipe name is provided."
+                })
         else:
-            # If complementary_recipe_name is empty, complementary_recipe_link should also be empty
-            if self.complementary_recipe_link:
-                raise ValidationError({"complementary_recipe_name": "Complementary recipe name must be provided if a complementary recipe link is provided."})
+            # If complementary_recipe_name is empty, both complementary_recipe_link_unsigned_users and complementary_recipe_link_signed_users should also be empty
+            if self.complementary_recipe_link_unsigned_users or self.complementary_recipe_link_signed_users:
+                raise ValidationError({
+                    "complementary_recipe_name": "Complementary recipe name must be provided if a complementary recipe link is provided."
+                })
 
     def save(self, *args, **kwargs):
         self.full_clean()
