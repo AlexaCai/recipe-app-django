@@ -123,7 +123,7 @@
             <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
             <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
-                <h1 class="text-center detailed-recipe-titles detailed-page-description-title">Description</h1>
+                <h1 class="text-center detailed-recipe-titles unsigned-users-detailed-page-description-title">Description</h1>
                 <br>
                 <p class="detailed-page-text-content">{{ object.description }}</p>
             </div>
@@ -267,9 +267,11 @@
                             <div class="card-img-overlay">
                                 <div class="card-text">
                                     <div>
-                                        <a href="{{ recipe.complementary_recipe_link }}">
-                                            <h5 class="detailed-page-similar-recipe-card-title">{{ recipe.complementary_recipe_name }}</h5>
-                                        </a>
+                                        {% if '/recipes-detail-unsigned-users/' in request.path %}
+                                        <a href="{{ recipe.complementary_recipe_link_unsigned_users }}"><h5 class="detailed-page-similar-recipe-card-title">{{ recipe.complementary_recipe_name }}</h5></a>
+                                        {% elif '/recipes-detail-signed-users/' in request.path %}
+                                        <a href="{{ recipe.complementary_recipe_link_signed_users }}"><h5 class="detailed-page-similar-recipe-card-title">{{ recipe.complementary_recipe_name }}</h5></a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
