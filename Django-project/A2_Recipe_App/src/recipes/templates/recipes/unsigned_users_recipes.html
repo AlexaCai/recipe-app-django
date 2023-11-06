@@ -182,7 +182,7 @@
                     {% with country_list="american, bahamian, barbadian, canadian, cuban, dominican, dominican republic, grenadian, haitian, jamaican, mexican, saint kitts and nevis, saint lucian, saint vincent and the grenadines, trinidadian and tobagonian" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split %}
+                    {% if object.origin_country in country_list_split and object.is_public %}
                     <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
                         <div class="card text-bg-dark">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -238,7 +238,7 @@
                     {% with country_list="belizean, costa rican, salvadoran, guatemalan, honduran, nicaraguan, panamanian" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split %}
+                    {% if object.origin_country in country_list_split and object.is_public %}
                     <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
                         <div class="card text-bg-dark">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -292,7 +292,7 @@
                     {% with country_list="argentine, bolivian, brazilian, chilean, colombian, peruvian, ecuadorian, guyanese, paraguayan, surinamese, uruguaya, venezuelan" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split %}
+                    {% if object.origin_country in country_list_split and object.is_public %}
                     <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
                         <div class="card text-bg-dark">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -346,7 +346,7 @@
                     {% with country_list="albanian, andorran, austrian, belarusian, belgian, bosnian, british, bulgarian, croatian, cyprio, czech, danish, dutch, estonian, finnish, french, german, greek, hungarian, icelandic, irish, italian, latvian, liechtensteiner, lithuanian, luxembourgish, macedonian, maltese, moldovan, monegasque, montenegrin, norwegian, polish, portuguese, romanian, russian, sammarinese, serbian, slovak, slovenian, spanish, swedish, swiss, turkish, ukrainian " %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split %}
+                    {% if object.origin_country in country_list_split and object.is_public %}
                     <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
                         <div class="card text-bg-dark">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -400,7 +400,7 @@
                     {% with country_list="algerian, angolan, beninese, botswanan, burkinabe, burundian, cameroonian, cape verdean, central african, chadian, comoran, congolese, djiboutian, egyptian, equ. guinean, eritrean, ethiopian, gabonese, gambian, ghanaian, guinean, guinea-bi., ivorian, kenyan, lesotho, liberian, libyan, malagasy, malawian, malian, mauritanian, mauritian, moroccan, mozambican, namibian, niger, nigerian, rwandan, sao tomean, senegalese, seychellois, sierra leonean, somali, south african, south sudanese, sudanese, swazi, tanzanian, togolese, tunisian, ugandan, zambian, zimbabwean" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split %}
+                    {% if object.origin_country in country_list_split and object.is_public %}
                     <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
                         <div class="card text-bg-dark">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -456,7 +456,7 @@
                     {% with country_list="afghan, armenian, azerbaijani, bahraini, bangladeshi, bhutanese, bruneian, burmese, cambodian, chinese, emirati, filipino, georgian, indian, indonesian, iranian, iraqi, israeli, japanese, jordanian, kazakhstani, kuwaiti, kyrgyz, laotian, lebanese, malaysian, maldivian, mongolian, nepalese, omani, pakistani, palestinian, qatari, saudi arabian, singaporean, south korean, sri lankan, syrian, taiwanese, tajik, east timorese, turkmen, uzbek, vietnamese, yemeni" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split %}
+                    {% if object.origin_country in country_list_split and object.is_public %}
                     <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
                         <div class="card text-bg-dark">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -510,7 +510,7 @@
                     {% with country_list="australian, fijian, kiribatian, marshallese, micronesian, nauruan, new zealand, palauan, papua new guinean, samoan, solomon islands, tongan, tuvaluan, vanuatuan" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split %}
+                    {% if object.origin_country in country_list_split and object.is_public %}
                     <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
                         <div class="card text-bg-dark">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
