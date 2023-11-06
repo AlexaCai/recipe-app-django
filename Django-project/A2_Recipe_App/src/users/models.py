@@ -6,7 +6,7 @@ from recipes.models import Recipe
 class User(models.Model):
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=75)
-    favorite_recipes = models.ManyToManyField(Recipe)
+    favorite_recipes = models.ManyToManyField(Recipe, related_name='users_favorite_recipes', blank=True)
     notes = models.TextField(blank=True)
     pic = models.ImageField(upload_to='users', default='no_picture.jpg')
 
