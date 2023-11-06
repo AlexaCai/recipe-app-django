@@ -19,15 +19,14 @@ from django.urls import path
 from django.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import login_view, logout_view
 
-
-# The empty quotes '' indicate that this path refers to the home page 'http://127.0.0.1:8000/' while \
-# 'include('recipes.urls')' will link the URL with the app and view information available at \ 
-# 'recipes.urls' (which is 'recipes/urls.py' file). 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('recipes.urls')),
-    path('recipes/', include('recipes.urls'))
+    path('recipes/', include('recipes.urls')),
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

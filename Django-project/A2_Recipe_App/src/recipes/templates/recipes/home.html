@@ -57,30 +57,10 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 home-page-buttons-bottom-padding">
-                                    <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
-                                        data-bs-target="#loginModal">Log in
-                                    </button>
-                                    <div class="modal fade" id="loginModal" tabindex="-1"
-                                        aria-labelledby="loginModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="loginModalLabel">Log in</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Test</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary"><a class="nav-link" href="{% url 'recipes:recipes_list_signed_users' %}">Log in</a></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <a class="welcome-page-login-button btn btn-dark w-100" href="{% url 'login' %}">
+                                        Log in
+                                    </a>
+                                </div>                                
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 home-page-buttons-bottom-padding">
                                     <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
                                         data-bs-target="#signupModal">
