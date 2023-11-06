@@ -258,7 +258,6 @@ class Recipe(models.Model):
     cooking_time = models.IntegerField(help_text="Indicates in minutes")
     number_of_portions = models.IntegerField(default=4, help_text="Indicates how many servings this recipe is for")
     recipe_estimated_cost = models.FloatField(default=10, help_text="Estimated total cost in dollar $")
-    cooking_instructions = models.TextField()
     origin_country = models.CharField(max_length=50, choices=country_choices, default="other", help_text="Select the country associated with this recipe")
     recipe_category = models.CharField(max_length=100, choices=category_choices, default="other", help_text="Select the category associated to this recipe",)
     allergens = models.CharField(max_length=100, default="None", help_text="Indicate all allergens contained in this recipe",)
@@ -284,14 +283,14 @@ class Recipe(models.Model):
     # Display the url as a property, not an input field
     @property
     def recipe_url(self):
-        return self.generate_url()
+        return self.get_absolute_url()
     
     def get_absolute_url(self):
        return reverse ('recipes:recipes_detail_unsigned_users', kwargs={'pk': self.pk})
     
     @property
     def recipe_url_signed_users(self):
-        return self.generate_url_signed_users()
+        return self.get_absolute_url_signed_users()
     
     def get_absolute_url_signed_users(self):
        return reverse ('recipes:recipes_detail_signed_users', kwargs={'pk': self.pk})
