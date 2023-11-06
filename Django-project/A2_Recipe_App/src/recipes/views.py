@@ -23,6 +23,7 @@ def search_recipes_by_name(request):
             "recipe_difficulty": recipe.difficulty,
             "recipe_category": recipe.recipe_category,
             "recipe_url": recipe.get_absolute_url(),
+            "recipe_url_signed_users": recipe.get_absolute_url_signed_users(),
             "pic": recipe.pic.url,
         }
         for recipe in matching_recipes
@@ -84,6 +85,7 @@ def search_recipes_by_filters(request):
             "recipe_difficulty": recipe.difficulty,
             "recipe_category": recipe.recipe_category,
             "recipe_url": recipe.get_absolute_url(),
+            "recipe_url_signed_users": recipe.get_absolute_url_signed_users(),
             "pic": recipe.pic.url,
         }
         for recipe in matching_recipes
@@ -124,6 +126,7 @@ def search_recipes_by_ingredients(request):
             "recipe_difficulty": recipe.difficulty,
             "recipe_category": recipe.recipe_category,
             "recipe_url": recipe.get_absolute_url(),
+            "recipe_url_signed_users": recipe.get_absolute_url_signed_users(),
             "pic": recipe.pic.url,
         }
         for recipe in matching_recipes
