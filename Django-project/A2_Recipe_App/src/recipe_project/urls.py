@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 # The empty quotes '' indicate that this path refers to the home page 'http://127.0.0.1:8000/' while \
@@ -24,5 +26,8 @@ from django.urls import include
 # 'recipes.urls' (which is 'recipes/urls.py' file). 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('recipes.urls'))
+    path('', include('recipes.urls')),
+    path('recipes/', include('recipes.urls'))
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
