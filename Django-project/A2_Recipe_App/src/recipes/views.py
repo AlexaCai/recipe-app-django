@@ -1,13 +1,50 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import Recipe, RecipeIngredients
+from .models import Recipe
 from django.http import JsonResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
 
 
 # Takes the request coming from the web app and returns the template available at \
 # recipes/home.html as a response.
 def home(request):
     return render(request, "recipes/home.html")
+
+class RecipeListViewUnsignedUsers(ListView):
+    model = Recipe
+    template_name = "recipes/unsigned_users_recipes.html"
+
+def unsigned_user_redirect_recipes_list_page(request):
+    view = RecipeListViewUnsignedUsers.as_view()
+    return view(request)
+
+class RecipeListViewSignedUsers(LoginRequiredMixin, ListView):
+    model = Recipe
+    template_name = "recipes/signed_users_recipes.html"
+
+@login_required
+def signed_user_redirect_recipes_list_page(request):
+    view = RecipeListViewSignedUsers.as_view()
+    return view(request)
+
+class RecipeDetailViewUnsignedUsers(DetailView):
+    model = Recipe
+    template_name = "recipes/unsigned_users_recipes_details.html"
+
+def unsigned_user_redirect_recipes_detailed_page(request, pk):
+    view = RecipeDetailViewUnsignedUsers.as_view()
+    return view(request, pk=pk)
+
+class RecipeDetailViewSignedUsers(LoginRequiredMixin, DetailView):
+    model = Recipe
+    template_name = "recipes/signed_users_recipes_details.html"
+
+@login_required
+def signed_user_redirect_recipes_detailed_page(request, pk):
+    view = RecipeDetailViewSignedUsers.as_view()
+    return view(request, pk=pk)
 
 
 # Takes the request coming from the web app on recipes that are searched by name \
@@ -133,21 +170,4 @@ def search_recipes_by_ingredients(request):
     ]
 
     return JsonResponse({"recipes": recipes_json})
-
-
-class RecipeListViewUnsignedUsers(ListView):
-    model = Recipe
-    template_name = "recipes/unsigned_users_recipes.html"
-
-class RecipeListViewSignedUsers(ListView):
-    model = Recipe
-    template_name = "recipes/signed_users_recipes.html"
-
-class RecipeDetailViewUnsignedUsers(DetailView):
-    model = Recipe
-    template_name = "recipes/unsigned_users_recipes_details.html"
-
-class RecipeDetailViewSignedUsers(DetailView):
-    model = Recipe
-    template_name = "recipes/signed_users_recipes_details.html"
 
