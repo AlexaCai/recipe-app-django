@@ -23,7 +23,7 @@ class RecipeAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Recipe basic information', {
-            'fields': ('recipe_name', 'creator_name', 'description','special_note', 'cooking_time', 'number_of_portions', 'origin_country', 'recipe_category', 'allergens', 'recipe_estimated_cost', 'pic'),
+            'fields': ('recipe_name', 'user', 'is_public', 'description','special_note', 'cooking_time', 'number_of_portions', 'origin_country', 'recipe_category', 'allergens', 'recipe_estimated_cost', 'pic'),
         }),
         ('Automatic fields (values generated automatically after recipe creation)', {
             'fields': ('difficulty', 'creation_date', 'recipe_url')

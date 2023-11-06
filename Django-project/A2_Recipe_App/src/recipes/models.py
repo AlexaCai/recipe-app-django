@@ -251,7 +251,8 @@ category_choices = (
 
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=50)
-    creator_name = models.CharField(max_length=50, blank=True, help_text="This field is optional")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    is_public = models.BooleanField(default=False)
     description = models.TextField(blank=True, help_text="This field is optional")
     special_note = models.TextField(blank=True, help_text="This field is optional")
     cooking_time = models.IntegerField(help_text="Indicates in minutes")
