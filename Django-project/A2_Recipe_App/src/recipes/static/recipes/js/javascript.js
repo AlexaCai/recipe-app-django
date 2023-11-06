@@ -229,9 +229,9 @@ function displaySearchResults(data) {
                 <div class="card text-bg-dark">
                     <img src="${recipe.pic}" class="img-fluid" alt="recipe-image">
                     <div class="card-img-overlay">
-                    <div class="card-text">
-                        <a href="${recipe.recipe_url}"><h5 class="card-title">${recipe.recipe_name}</h5></a>
-                        <div class="line-background">
+                        <div class="card-text">
+                            <a href="${recipe.recipe_url}"><h5 class="card-title">${recipe.recipe_name}</h5></a>
+                            <div class="line-background">
                                 <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>${recipe.recipe_origin_country}</span>
                             </div>
                             <br>
@@ -241,11 +241,19 @@ function displaySearchResults(data) {
                             <br>
                             <div class="line-background">
                                 <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>${recipe.recipe_category}</span>
-                            </div>                        
+                            </div>
                         </div>
                     </div>
                 </div>
             `;
+
+            var currentPath = window.location.pathname;
+            if (currentPath.includes('/recipes-list-signed-users/')) {
+                var buttonContainer = document.createElement('div');
+                buttonContainer.className = 'd-flex justify-content-center';
+                buttonContainer.innerHTML = '<button type="button" class="btn btn-dark recipes-list-page-add-to-favorite-button">Add to favorite</button>';
+                recipeCard.appendChild(buttonContainer);
+            }
             recipeRow.appendChild(recipeCard);
         });
         searchResultsContainer.appendChild(recipeRow);
@@ -276,7 +284,14 @@ function clearSearch() {
     var searchInput = document.getElementById('recipe-search-by-name-input');
     searchInput.value = '';
 
-    window.location.href = '/recipes-list-unsigned-users';
+    var currentPath = window.location.pathname; 
+
+    if (currentPath.includes('/recipes-list-signed-users/')) {
+        window.location.href = '/recipes-list-signed-users';
+    }
+    else if (currentPath.includes('/recipes-list-unsigned-users/')) {
+        window.location.href = '/recipes-list-unsigned-users';
+    }
 }
 
 
@@ -284,18 +299,18 @@ function clearSearch() {
 //***Code to ensure smooth transition in the page when user click on the back to top link at the \
 //***bottom of the detailed page.
 
-    function scrollToSection(event, targetSectionId) {
-        event.preventDefault();
-        var targetSection = document.querySelector(targetSectionId);
-        var offset = targetSection.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-            top: offset,
-            behavior: 'smooth'
-        });
-    }
+function scrollToSection(event, targetSectionId) {
+    event.preventDefault();
+    var targetSection = document.querySelector(targetSectionId);
+    var offset = targetSection.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+    });
+}
 
-        var backToTopLink1 = document.querySelector('.back-to-top a');
+var backToTopLink1 = document.querySelector('.back-to-top a');
 
-        backToTopLink1.addEventListener('click', function (event) {
-            scrollToSection(event, '#topsection');
-        });
+backToTopLink1.addEventListener('click', function (event) {
+    scrollToSection(event, '#topsection');
+});
