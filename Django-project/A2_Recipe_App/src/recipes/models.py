@@ -260,7 +260,6 @@ class Recipe(models.Model):
     recipe_estimated_cost = models.FloatField(default=10, help_text="Estimated total cost in dollar $")
     origin_country = models.CharField(max_length=50, choices=country_choices, default="other", help_text="Select the country associated with this recipe")
     recipe_category = models.CharField(max_length=100, choices=category_choices, default="other", help_text="Select the category associated to this recipe",)
-    allergens = models.CharField(max_length=100, default="None", help_text="Indicate all allergens contained in this recipe",)
     creation_date = models.DateField(auto_now_add=True)
     pic = models.ImageField(upload_to="recipes", default="no_picture.jpg")
 
@@ -311,6 +310,16 @@ class RecipeIngredients(models.Model):
     class Meta:
         verbose_name = "Recipe ingredient"
         verbose_name_plural = "Recipe Ingredient"
+
+# Ensure users can enter potential allergens for each recipe, one by one
+class RecipeAllergens(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe_allergens")
+    allergen = models.CharField(max_length=100)
+
+    # Used to ensure that the name of this section in Django admin interface is written without an 's'
+    class Meta:
+        verbose_name = "Recipe allergen"
+        verbose_name_plural = "Recipe Allergen"
 
 # Ensure users can enter cooking instructions for the recipe, one by one
 class RecipeCookingInstructions(models.Model):
