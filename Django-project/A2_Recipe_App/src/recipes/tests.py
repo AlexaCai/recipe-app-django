@@ -1,4 +1,5 @@
 from django.test import TestCase
+from .forms import RecipeSearchForm
 from .models import (
     Recipe,
     RecipeIngredients,
@@ -235,3 +236,29 @@ class RecipeModelTest(TestCase):
         similar_recipe = RecipeSimilarComplementary.objects.get(id=1)
         max_length = similar_recipe._meta.get_field('complementary_recipe_name').max_length
         self.assertEqual(max_length, 100)
+
+class RecipeFormTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.form_data = {
+            'allergens': 'cheese',
+            'chart_type': '#1',
+        }
+
+    def setUp(self):
+        # Create an initially empty form
+        empty_form_data = {
+            'allergens': '',
+            'chart_type': '',
+        }
+        self.empty_form = RecipeSearchForm(data=empty_form_data)
+
+    def test_search(self):
+        self.form = RecipeSearchForm(data=self.form_data)
+        self.assertTrue(self.form.is_valid())
+
+    def test_search_max_length(self):
+        form = RecipeSearchForm()
+        allergens_field = form.fields['allergens']
+        max_length = allergens_field.max_length
+        self.assertEqual(max_length, 120)
