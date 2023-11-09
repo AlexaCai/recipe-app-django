@@ -4,7 +4,7 @@ from .models import Recipe
 from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from .forms import RecipeSearchForm
+from .forms import SearchAllergensForm
 import pandas as pd
 from django.db.models import Q
 from .utils import get_chart
@@ -27,7 +27,7 @@ def make_recipe_name_clickable_unsigned_detail(row):
     return f'<a href="{recipe_url}">{row["recipe_name"]}</a> (Difficulty: {difficulty})'
 
 def unsigned_user_redirect_recipes_list_page(request):
-    form = RecipeSearchForm(request.POST or None)
+    form = SearchAllergensForm(request.POST or None)
     recipes_df = None
     chart = None
 
@@ -54,7 +54,6 @@ def unsigned_user_redirect_recipes_list_page(request):
                 chart = get_chart(chart_type, recipes_df, labels=recipes_df['recipe_category'].values)
                 recipes_df = recipes_df.to_html(escape=False)
 
-
     view = RecipeListViewUnsignedUsers()
     view.queryset = Recipe.objects.all()
     recipes = view.get_queryset()
@@ -80,7 +79,7 @@ class RecipeListViewSignedUsers(LoginRequiredMixin, ListView):
 
 @login_required
 def signed_user_redirect_recipes_list_page(request):
-    form = RecipeSearchForm(request.POST or None)
+    form = SearchAllergensForm(request.POST or None)
     recipes_df = None
     chart = None
 
