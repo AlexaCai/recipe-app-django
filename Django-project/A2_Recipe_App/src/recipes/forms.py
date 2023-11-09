@@ -7,7 +7,7 @@ CHART__CHOICES = (          #specify choices as a tuple
    )
 
 #define class-based Form imported from Django forms
-class RecipeSearchForm(forms.Form): 
+class SearchAllergensForm(forms.Form): 
    allergens = forms.CharField(        
         label="Potential allergen(s)",
         max_length=120,
