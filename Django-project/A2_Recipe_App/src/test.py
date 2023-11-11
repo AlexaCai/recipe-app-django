@@ -46,7 +46,7 @@ class LoginFormTest(TestCase):
         expected_url = reverse('login') + '?next=' + reverse('recipes:recipes_detail_signed_users', kwargs={'pk': 1})
         self.assertRedirects(response, expected_url)
 
-    # Ensure users are not redirected to the recipes list page after failed log in
+    # Ensure users are redirected to the logout page after clicking on the logout button
     def test_logout(self):
         client = Client()
         response = client.post(reverse('logout'))
