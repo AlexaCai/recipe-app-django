@@ -4,21 +4,74 @@ from .models import Recipe
 from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from .forms import SearchAllergensForm
+import pandas as pd
+from django.db.models import Q
+from .utils import get_chart
 
 
 
-# Takes the request coming from the web app and returns the template available at \
-# recipes/home.html as a response.
+# Functions used to return appropriate views/html template for the recipes app depending on the URL
 def home(request):
     return render(request, "recipes/home.html")
 
 class RecipeListViewUnsignedUsers(ListView):
     model = Recipe
     template_name = "recipes/unsigned_users_recipes.html"
+    context_object_name = "recipes"
+
+def make_recipe_name_clickable_unsigned_detail(row):
+    recipe = Recipe.objects.get(pk=row['id'])
+    recipe_url = recipe.get_absolute_url()
+    difficulty = recipe.calculate_difficulty()
+    return f'<a href="{recipe_url}">{row["recipe_name"]}</a> (Difficulty: {difficulty})'
 
 def unsigned_user_redirect_recipes_list_page(request):
-    view = RecipeListViewUnsignedUsers.as_view()
-    return view(request)
+    form = SearchAllergensForm(request.POST or None)
+    recipes_df = None
+    chart = None
+
+    if request.method == 'POST':
+        if form.is_valid():
+            allergens_input = request.POST.get('allergens')
+            chart_type = request.POST.get('chart_type')
+            print(allergens_input, chart_type)
+
+            allergens_list = [allergen.strip() for allergen in allergens_input.split(',')]
+
+            allergen_queries = Q()
+
+            for allergen in allergens_list:
+                allergen_query = Q(recipe_allergens__allergen__icontains=allergen)
+                allergen_queries |= allergen_query
+
+            qs = Recipe.objects.exclude(allergen_queries).values(
+                'id', 'recipe_name', 'origin_country', 'cooking_time', 'recipe_category', 'recipe_estimated_cost')
+            
+            if qs:
+                recipes_df = pd.DataFrame(qs)
+                recipes_df['recipe_name'] = recipes_df.apply(make_recipe_name_clickable_unsigned_detail, axis=1)
+                chart = get_chart(chart_type, recipes_df, labels=recipes_df['recipe_category'].values)
+                recipes_df = recipes_df.to_html(escape=False)
+
+    view = RecipeListViewUnsignedUsers()
+    view.queryset = Recipe.objects.all()
+    recipes = view.get_queryset()
+
+    context = {
+        'form': form,
+        'object_list': recipes,
+        'recipes_df': recipes_df,
+        'chart': chart
+
+    }
+    return render(request, 'recipes/unsigned_users_recipes.html', context)
+
+def make_recipe_name_clickable_signed_detail(row):
+    recipe = Recipe.objects.get(pk=row['id'])
+    recipe_url_signed_users = recipe.get_absolute_url_signed_users()
+    difficulty = recipe.calculate_difficulty()
+    return f'<a href="{recipe_url_signed_users}">{row["recipe_name"]}</a> (Difficulty: {difficulty})'
 
 class RecipeListViewSignedUsers(LoginRequiredMixin, ListView):
     model = Recipe
@@ -26,8 +79,46 @@ class RecipeListViewSignedUsers(LoginRequiredMixin, ListView):
 
 @login_required
 def signed_user_redirect_recipes_list_page(request):
-    view = RecipeListViewSignedUsers.as_view()
-    return view(request)
+    form = SearchAllergensForm(request.POST or None)
+    recipes_df = None
+    chart = None
+
+    if request.method == 'POST':
+        if form.is_valid():
+            allergens_input = request.POST.get('allergens')
+            chart_type = request.POST.get('chart_type')
+            print(allergens_input, chart_type)
+
+            allergens_list = [allergen.strip() for allergen in allergens_input.split(',')]
+
+            allergen_queries = Q()
+
+            for allergen in allergens_list:
+                allergen_query = Q(recipe_allergens__allergen__icontains=allergen)
+                allergen_queries |= allergen_query
+
+            qs = Recipe.objects.exclude(allergen_queries).values(
+                'id', 'recipe_name', 'origin_country', 'cooking_time', 'recipe_category', 'recipe_estimated_cost')
+            
+            if qs:
+                recipes_df = pd.DataFrame(qs)
+                recipes_df['recipe_name'] = recipes_df.apply(make_recipe_name_clickable_signed_detail, axis=1)
+                chart = get_chart(chart_type, recipes_df, labels=recipes_df['recipe_category'].values)
+                recipes_df = recipes_df.to_html(escape=False)
+
+
+    view = RecipeListViewSignedUsers()
+    view.queryset = Recipe.objects.all()
+    recipes = view.get_queryset()
+
+    context = {
+        'form': form,
+        'object_list': recipes,
+        'recipes_df': recipes_df,
+        'chart': chart
+
+    }
+    return render(request, 'recipes/signed_users_recipes.html', context)
 
 class RecipeDetailViewUnsignedUsers(DetailView):
     model = Recipe
@@ -45,6 +136,7 @@ class RecipeDetailViewSignedUsers(LoginRequiredMixin, DetailView):
 def signed_user_redirect_recipes_detailed_page(request, pk):
     view = RecipeDetailViewSignedUsers.as_view()
     return view(request, pk=pk)
+
 
 
 # Takes the request coming from the web app on recipes that are searched by name \
