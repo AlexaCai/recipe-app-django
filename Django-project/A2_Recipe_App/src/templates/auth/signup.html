@@ -59,40 +59,49 @@
                                 <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2">
                                 </div>
                                 <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-8">
-                                    <form action="{% url 'signup' %}" method="POST" class="row justify-content-center">
-                                        {% csrf_token %}
-                                        <h5>Username</h5>
-                                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12 signup-form">
-                                            <div class="input-group input-group-lg">
-                                                <input id="username-field" name="{{ form.username.name }}" type="text"
-                                                    class="form-control"
-                                                    placeholder="Username"
-                                                    aria-label="username-login" aria-describedby="username-field">
-                                            </div>
+                                    {% if form.errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>Error(s):</strong>
+                                        <ul>
+                                            {% for field, errors in form.errors.items %}
+                                                {% for error in errors %}
+                                                    <p>{{ field|title }}: {{ error }}</p>
+                                                {% endfor %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endif %}                                
+                                <form action="{% url 'signup' %}" method="POST" class="row justify-content-center">
+                                    {% csrf_token %}
+                                    <h5>Username</h5>
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12 signup-form">
+                                        <div class="input-group input-group-lg">
+                                            <input id="username-field" name="username" type="text" class="form-control" placeholder="Username" aria-label="username-login" aria-describedby="username-field">
                                         </div>
-                                        <h5>Password</h5>
-                                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12 signup-form">
-                                            <div class="input-group input-group-lg">
-                                                <input id="password-field" name="{{ form.password1.name }}"
-                                                    type="password" class="form-control"
-                                                    placeholder="Password"
-                                                    aria-label="password-login" aria-describedby="password-field">
-                                            </div>
+                                    </div>
+                                    <h5>Password</h5>
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12 signup-form">
+                                        <div class="input-group input-group-lg">
+                                            <input id="password-field" name="password1" type="password" class="form-control" placeholder="Password" aria-label="password-login" aria-describedby="password-field">
                                         </div>
-                                        <h5>Confirm Password</h5>
-                                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12 signup-form">
-                                            <div class="input-group input-group-lg">
-                                                <input id="password2-field" name="{{ form.password2.name }}"
-                                                    type="password" class="form-control"
-                                                    placeholder="Confirm Password"
-                                                    aria-label="password2-login" aria-describedby="password2-field">
-                                            </div>
-                                        </div>                                        
-                                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-10">
-                                            <button type="submit" class="btn btn-dark mt-3 advanced-search-modal-button"
-                                                id="button-addon3" data-bs-dismiss="modal">Sign up</button>
+                                    </div>
+                                    <h5>Confirm Password</h5>
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12 signup-form">
+                                        <div class="input-group input-group-lg">
+                                            <input id="password2-field" name="password2" type="password" class="form-control" placeholder="Confirm Password" aria-label="password2-login" aria-describedby="password2-field">
                                         </div>
-                                    </form>
+                                    </div>
+                                    <h5>Email</h5>
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12 signup-form">
+                                        <div class="input-group input-group-lg">
+                                            <input id="email-field" name="email" type="email" class="form-control" placeholder="Email" aria-label="email" aria-describedby="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-10">
+                                        <button type="submit" class="btn btn-dark mt-3 advanced-search-modal-button" id="button-addon3" data-bs-dismiss="modal">Sign up</button>
+                                    </div>
+                                </form>
+                                
                                 </div>
                                 <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2">
                                 </div>

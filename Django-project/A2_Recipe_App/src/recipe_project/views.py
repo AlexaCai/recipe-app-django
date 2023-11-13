@@ -3,28 +3,22 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 # Django Form for authentication
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib import messages
+
 
 def signup_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
-        for field in form.fields:
-            print(f"Field Name: {field}, Field Type: {type(form.fields[field])}")
-
         if form.is_valid():
             form.save()
-            messages.success(request, 'Account created successfully. Please log in.')
+            print("User created successfully")
             return redirect('login')
         else:
-            for field, errors in form.errors.items():
-                for error in errors:
-                    messages.error(request, f"{field}: {error}")
+            print("User creation failed")
+            print(form.errors)
     else:
         form = UserCreationForm()
-        print('Failed to create account')
 
     return render(request, 'auth/signup.html', {'form': form})
-
 
 # define a function view called login_view that takes a request from user
 def login_view(request):
