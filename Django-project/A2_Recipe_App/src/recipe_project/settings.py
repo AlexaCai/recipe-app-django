@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     #recipe-application-related apps
     'recipes',
     'users',
+    'accounts',
 ]
+
+AUTH_USER_MODEL = 'accounts.User' #changes the default Django built-in user model to our custom user model
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

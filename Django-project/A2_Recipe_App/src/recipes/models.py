@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.shortcuts import reverse
+from django.conf import settings
+
 
 
 unit_measure_choices = (
@@ -251,7 +253,7 @@ category_choices = (
 
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=50)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     is_public = models.BooleanField(default=False)
     description = models.TextField(blank=True, help_text="This field is optional")
     special_note = models.TextField(blank=True, help_text="This field is optional")
@@ -379,7 +381,7 @@ class RecipeSimilarComplementary(models.Model):
 # Model used to allow users to comment recipes
 class RecipeComments(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="comments")
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 

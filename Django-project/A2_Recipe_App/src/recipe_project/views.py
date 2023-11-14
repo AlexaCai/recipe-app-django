@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect
 # Django authentication libraries
 from django.contrib.auth import authenticate, login, logout
 # Django Form for authentication
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-
+from django.contrib.auth.forms import AuthenticationForm
+from accounts.forms import UserAdminCreationForm  # Import your custom form
 
 def signup_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserAdminCreationForm(request.POST)  # Use the custom form
         if form.is_valid():
             form.save()
             print("User created successfully")
@@ -16,7 +16,7 @@ def signup_view(request):
             print("User creation failed")
             print(form.errors)
     else:
-        form = UserCreationForm()
+        form = UserAdminCreationForm()  # Use the custom form
 
     return render(request, 'auth/signup.html', {'form': form})
 
