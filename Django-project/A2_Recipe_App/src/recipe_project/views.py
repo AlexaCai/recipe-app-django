@@ -43,6 +43,9 @@ def login_view(request):
     context = {"form": form, "error_message": error_message}
     return render(request, "auth/login.html", context)
 
+# define a function view called profile_view that takes a request from user
+def profile_view(request):
+    return render(request, 'accounts/profile.html')
 
 # define a function view called logout_view that takes a request from user
 def logout_view(request):

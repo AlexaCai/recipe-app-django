@@ -54,11 +54,11 @@ class UserAdminChangeForm(forms.ModelForm):
         # field does not have access to the initial value
         return self.initial["password"]
     
-    class RegisterForm(forms.ModelForm):
-        """
-        A form for creating new users. Includes all the required
-        fields, plus a repeated password.
-        """
+class RegisterForm(forms.ModelForm):
+    """
+    A form for creating new users. Includes all the required
+    fields, plus a repeated password.
+    """
     password = forms.CharField(widget=forms.PasswordInput)
     password_2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
 
@@ -81,7 +81,7 @@ class UserAdminChangeForm(forms.ModelForm):
         # Save the provided password in hashed format
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password"])
-        user.active = False # send confirmation email
+        user._is_active = False # send confirmation email
         if commit:
             user.save()
         return user
