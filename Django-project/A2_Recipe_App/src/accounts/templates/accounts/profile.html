@@ -86,8 +86,9 @@
                         </div>
                     </div>
                 </div>
+                <br>
                 <div id="favourite-section">
-                    <a href="{% url 'accounts:favorite_add' object.id %}" class="btn btn-dark">Remove</a>
+                    <a href="{% url 'accounts:favorite_add' object.id %}" class="btn btn-danger">Remove</a>
                 </div>
             </div>
             {% endfor %}

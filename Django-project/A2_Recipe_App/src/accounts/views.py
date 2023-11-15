@@ -25,11 +25,7 @@ def favorite_add(request, id):
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 # Used to determined if a recipe is in the user's favorites, and update the ''add to favorites'' button accordingly.
-def detailed_recipe_view(request, id):
-    recipe = get_object_or_404(Recipe, id=id)
-    print('This is the recipe: ', recipe)
-
-    is_favorite = recipe.favorites.filter(id=request.user.id).exists()
-    print('This is the is_favorite: ', is_favorite)
-
-    return render(request, 'your_template.html', {'recipe': recipe, 'is_favorite': is_favorite})
+# def detailed_recipe_view(request, recipe_id):
+#     recipe = get_object_or_404(Recipe, id=recipe_id)
+#     is_favorite = recipe.favorites.filter(id=request.user.id).exists()
+#     return render(request, 'signed_users_recipes_details.html', {'recipe': recipe, 'is_favorite': is_favorite})
