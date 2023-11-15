@@ -264,6 +264,7 @@ class Recipe(models.Model):
     recipe_category = models.CharField(max_length=100, choices=category_choices, default="other", help_text="Select the category associated to this recipe",)
     creation_date = models.DateField(auto_now_add=True)
     pic = models.ImageField(upload_to="recipes", default="no_picture.jpg")
+    favorites = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='favorites', default=None, blank=True)
 
     def calculate_difficulty(self):
         ingredient_count = self.recipe_ingredients.count()

@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 # Django Form for authentication
 from django.contrib.auth.forms import AuthenticationForm
 from accounts.forms import UserAdminCreationForm  # Import your custom form
+from accounts.views import favorite_list
+
 
 def signup_view(request):
     if request.method == 'POST':
@@ -45,7 +47,7 @@ def login_view(request):
 
 # define a function view called profile_view that takes a request from user
 def profile_view(request):
-    return render(request, 'accounts/profile.html')
+    return favorite_list(request)
 
 # define a function view called logout_view that takes a request from user
 def logout_view(request):

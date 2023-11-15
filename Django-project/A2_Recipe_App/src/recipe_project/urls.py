@@ -28,7 +28,8 @@ urlpatterns = [
     path('signup/', signup_view, name='signup'),
     path('login/', login_view, name='login'),
     path('profile/', profile_view, name='profile'),
-    path('logout/', logout_view, name='logout')
+    path('accounts/', include('accounts.urls', namespace='accounts')), 
+    path('logout/', logout_view, name='logout'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

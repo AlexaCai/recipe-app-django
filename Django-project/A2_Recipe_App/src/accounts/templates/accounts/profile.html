@@ -50,29 +50,53 @@
     </header>
 
     <body>
-<h1>Welcome to your profile page</h1>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br>
-<br>
-<br>
-<br><br>
-<br>
-<br>
-<br>
-<br><br>
-<br>
-<br>
-<br>
-<br>
+        <h1 class="text-center">Welcome to your profile page</h1>
+        <br>
+        <br>
+        <h1>Personal recipes</h1>
+        <br>
+        <br>
+        <h1>Favorite recipes</h1>
+        <div class="row">
+            {% for object in new %}
+            <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                <div class="card text-bg-dark">
+                    <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
+                    <div class="card-img-overlay">
+                        <div class="card-text">
+                            <div>
+                                <a href="{{ object.get_absolute_url_signed_users }}">
+                                    <h5 class="card-title">{{ object.recipe_name }}</h5>
+                                </a>
+                            </div>
+                            <div class="line-background">
+                                <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon">
+                                <span>{{ object.origin_country }}</span>
+                            </div>
+                            <br>
+                            <div class="line-background">
+                                <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon">
+                                <span>{{ object.difficulty }}</span>
+                            </div>
+                            <br>
+                            <div class="line-background">
+                                <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon">
+                                <span>{{ object.recipe_category }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="favourite-section">
+                    <a href="{% url 'accounts:favorite_add' object.id %}" class="btn btn-dark">Remove</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <br>
+        <br>
+        <h1>Account settings</h1>
+        <br>
+        <br>
     </body>
 
     <footer>
