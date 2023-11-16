@@ -91,9 +91,13 @@
                     </div>
                 </div>
                 <br>
-                <div id="created-recipes-section">
-                    <a href="#" class="btn btn-danger">Delete</a>
-                </div>
+                <div class="btn-group" id="created-recipes-section-buttons" role="group">
+                    <div id="created-recipes-section-update-button">
+                        <a href="#" class="btn btn-dark">Update</a>
+                    </div>
+                    <div id="created-recipes-section-delete-button">
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
             </div>
             {% empty %}
             <h5 class="text-center">No created recipes available.</h5>
@@ -211,45 +215,6 @@
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
                                         <button type="button" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <h4>Want to create your own list of recipes?
-                            Want to create your own list of favorite from our catalog?
-                            Want to add comments on recipes? <br><br></h4>
-                        <h4 class="footer-buttons-action-call">Create an account now! Its free and it only takes 2
-                            minutes.</h4><br>
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
-                            </div>
-                            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
-                                <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
-                                    data-bs-target="#signupModal">
-                                    Sign up
-                                </button>
-                            </div>
-                            <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
-                            </div>
-                        </div>
-                        <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="signupModalLabel">Sign up</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Test</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Sign up</button>
                                     </div>
                                 </div>
                             </div>

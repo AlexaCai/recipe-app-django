@@ -233,9 +233,20 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-dark recipes-list-page-add-to-favorite-button">Add to favorite</button>
+                        <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
                         </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center">
+                            {% if object in request.user.favorites.all %}
+                                <a href="{% url 'accounts:favorite_add' object.id %}" class="btn btn-danger recipes-list-page-add-to-favorite-button">Remove from favorite</a>
+                            {% else %}
+                                <a href="{% url 'accounts:favorite_add' object.id %}" class="btn btn-dark recipes-list-page-add-to-favorite-button">Add to favorite</a>
+                            {% endif %}
+                        </div> 
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                        </div>  
+                    </div>
+
                         </div>
                     {% endif %}
                     {% endfor %}
@@ -615,61 +626,28 @@
                         <br>
                         <h4>Want to create your own recipes and share it with the world?
                             Proud of one of your local recipe delight? <br><br></h4>
-                            <h4 class="footer-buttons-action-call">Submit your recipe to our catalog right now quickly and easily.</h4> <br>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
-                                    </div>
-                                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
-                                        <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal" data-bs-target="#submitModal">
-                                            Submit recipe
-                                        </button>
-                                    </div>
-                                    <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
-                                    </div>
+                        <h4 class="footer-buttons-action-call">Submit your recipe to our catalog right now quickly and
+                            easily.</h4> <br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
                                 </div>
-                            </div>
-                            <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="SubmitModalLabel">Submit</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Test</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Submit</button>
-                                        </div>
-                                    </div>
+                                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
+                                    <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
+                                        data-bs-target="#submitModal">
+                                        Submit recipe
+                                    </button>
                                 </div>
-                            </div>
-                        <br>
-                        <br>
-                        <h4>Want to create your own list of recipes?
-                            Want to create your own list of favorite from our catalog?
-                            Want to add comments on recipes? <br><br></h4> 
-                            <h4 class="footer-buttons-action-call">Create an account now! Its free and it only takes 2 minutes.</h4><br>
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
-                            </div>
-                            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
-                                <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
-                                    data-bs-target="#signupModal">
-                                    Sign up
-                                </button>
-                            </div>
-                            <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
+                                <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
+                                </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel"
+                        <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="signupModalLabel">Sign up</h5>
+                                        <h5 class="modal-title" id="SubmitModalLabel">Submit</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -679,7 +657,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Sign up</button>
+                                        <button type="button" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
                             </div>
