@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 # Django Form for authentication
 from django.contrib.auth.forms import AuthenticationForm
 from accounts.forms import UserAdminCreationForm  # Import your custom form
-from accounts.views import favorite_list, created_recipe
+from accounts.views import favorite_list, created_recipe, delete_recipe
 
 
 def signup_view(request):
@@ -48,7 +48,6 @@ def login_view(request):
 def profile_view(request):
     favorite_recipes = favorite_list(request)
     created_recipes = created_recipe(request)
-
     return render(request, 'accounts/profile.html', {'favorite_recipes': favorite_recipes, 'created_recipes': created_recipes})
 
 

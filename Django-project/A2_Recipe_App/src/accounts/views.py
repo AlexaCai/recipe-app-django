@@ -24,6 +24,11 @@ def favorite_add(request, id):
 
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
+def delete_recipe(request, id):
+    recipe = get_object_or_404(Recipe, id=id)
+    recipe.delete()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
 # Used to display recipes that are favorited by the user.
 def created_recipe(request):
     created_recipes = request.user.created_recipes.all()
