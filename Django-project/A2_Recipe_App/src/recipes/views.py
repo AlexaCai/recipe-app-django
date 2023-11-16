@@ -266,7 +266,7 @@ def search_recipes_by_ingredients(request):
 # Logic to allow users to add comments to recipes
 def publish_comment(request, pk):
     if request.method == 'POST':
-        comment_text = request.POST.get('comment')  # Update this line
+        comment_text = request.POST.get('comment') 
         recipe = Recipe.objects.get(pk=pk)
         recipe.comments.create(text=comment_text, user=request.user)
     return HttpResponseRedirect(request.META['HTTP_REFERER'])

@@ -63,7 +63,7 @@
         <h2 class="text-center">Created recipes</h2>
         <div class="row">
             {% for object in created_recipes %}
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 card-general-padding">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 card-general-padding">
                 <div class="card text-bg-dark">
                     <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                     <div class="card-img-overlay">
@@ -141,7 +141,7 @@
         <h2 class="text-center">Favorite recipes</h2>
         <div class="row">
             {% for object in favorite_recipes %}
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 card-general-padding">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 card-general-padding">
                 <div class="card text-bg-dark">
                     <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                     <div class="card-img-overlay">
