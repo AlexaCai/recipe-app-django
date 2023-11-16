@@ -53,12 +53,57 @@
         <h1 class="text-center">Welcome to your profile page</h1>
         <br>
         <br>
-        <h1>Personal recipes</h1>
+        <div class="text-center">
+            <h3>Create your own recipes</h3>
+            <p>These recipe will only be seen by you and won't be public</p>
+        </div>
         <br>
         <br>
-        <h1>Favorite recipes</h1>
+        <br>
+        <h2 class="text-center">Created recipes</h2>
         <div class="row">
-            {% for object in new %}
+            {% for object in created_recipes %}
+            <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                <div class="card text-bg-dark">
+                    <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
+                    <div class="card-img-overlay">
+                        <div class="card-text">
+                            <div>
+                                <a href="{{ object.get_absolute_url_signed_users }}">
+                                    <h5 class="card-title">{{ object.recipe_name }}</h5>
+                                </a>
+                            </div>
+                            <div class="line-background">
+                                <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon">
+                                <span>{{ object.origin_country }}</span>
+                            </div>
+                            <br>
+                            <div class="line-background">
+                                <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon">
+                                <span>{{ object.difficulty }}</span>
+                            </div>
+                            <br>
+                            <div class="line-background">
+                                <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon">
+                                <span>{{ object.recipe_category }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div id="created-recipes-section">
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+            {% empty %}
+            <h5 class="text-center">No created recipes available.</h5>
+            {% endfor %}
+        </div>
+        <br>
+        <br>
+        <h2 class="text-center">Favorite recipes</h2>
+        <div class="row">
+            {% for object in favorite_recipes %}
             <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
                 <div class="card text-bg-dark">
                     <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -91,11 +136,23 @@
                     <a href="{% url 'accounts:favorite_add' object.id %}" class="btn btn-danger">Remove</a>
                 </div>
             </div>
+            {% empty %}
+            <h5 class="text-center">No favorite recipes yet.</h5>
             {% endfor %}
         </div>
         <br>
         <br>
-        <h1>Account settings</h1>
+        <div class="text-center">
+            <h1>Account settings</h1>
+            <div id="account-delete-section">
+                <br>
+                <p>Are you sure you want to leave us?</p>
+                <p>If you delete your account, this action is irreversible and you will loose your delete permenatly.
+                </p>
+                <br>
+                <a href="#" class="btn btn-danger">Delete account</a>
+            </div>
+        </div>
         <br>
         <br>
     </body>

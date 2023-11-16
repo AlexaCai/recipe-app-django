@@ -53,6 +53,9 @@ class User(AbstractBaseUser):
         admin = models.BooleanField(default=False)
         timestamp = models.DateTimeField(auto_now_add=True)
 
+        favorite_recipes = models.ManyToManyField(Recipe, related_name='user_favorite_recipes',  default=[], blank=True)
+        user_created_recipes = models.ManyToManyField(Recipe, related_name='created_by',  default=[], blank=True)
+
         # USERNAME_FIELD and password are required by default
         USERNAME_FIELD = 'email'
         REQUIRED_FIELDS = ['full_name']
