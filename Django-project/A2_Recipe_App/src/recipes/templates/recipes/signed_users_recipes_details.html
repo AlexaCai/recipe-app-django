@@ -131,15 +131,17 @@
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 d-flex flex-column align-items-center">
                 {% if recipe in request.user.favorites.all %}
-                    <a href="{% url 'accounts:favorite_add' recipe.id %}" class="btn btn-danger detailed-page-add-favorite-button">Remove from favorite</a>
+                <a href="{% url 'accounts:favorite_add' recipe.id %}"
+                    class="btn btn-danger detailed-page-add-favorite-button">Remove from favorite</a>
                 {% else %}
-                    <a href="{% url 'accounts:favorite_add' recipe.id %}" class="btn btn-dark detailed-page-add-favorite-button">Add to favorite</a>
+                <a href="{% url 'accounts:favorite_add' recipe.id %}"
+                    class="btn btn-dark detailed-page-add-favorite-button">Add to favorite</a>
                 {% endif %}
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
             </div>
-        </div>        
-        
+        </div>
+
         <div class="row detailed-page-section-bottom-margin">
             <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
@@ -345,15 +347,18 @@
                 <p class="detailed-page-text-content text-center">No comments yet.</p>
                 {% endif %}
                 <div class="col-12">
-                    <div class="mb-3 d-flex flex-column align-items-center">
-                        <br>
-                        <br>
-                        <h3 class="text-center add-comment-title">Add a comment</h3>
-                        <textarea class="add-comment-box" id="exampleFormControlTextarea1" rows="6"
+                    <br>
+                    <br>
+                    <h3 class="text-center add-comment-title">Add a comment</h3>
+                    <form method="post" action="{% url 'recipes:publish_comment' pk=recipe.pk %}">
+                        {% csrf_token %}
+                        <textarea name="comment" class="add-comment-box" id="exampleFormControlTextarea1" rows="6"
                             placeholder="Your comment here..."></textarea>
-                        <button type="button" class="btn btn-dark detailed-page-add-comment-button">Publish
-                            comment</button>
-                    </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-dark detailed-page-add-comment-button">Publish
+                                comment</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="col-xl-2 col-lg-2 col-md-1 col-sm-1 col-1">
@@ -499,7 +504,7 @@
             </div>
         </div>
     </footer>
-    
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

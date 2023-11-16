@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import ListView, DetailView
 from .models import Recipe
 from django.http import JsonResponse
@@ -263,3 +263,10 @@ def search_recipes_by_ingredients(request):
 
     return JsonResponse({"recipes": recipes_json})
 
+# Logic to allow users to add comments to recipes
+def publish_comment(request, pk):
+    if request.method == 'POST':
+        comment_text = request.POST.get('comment')  # Update this line
+        recipe = Recipe.objects.get(pk=pk)
+        recipe.comments.create(text=comment_text, user=request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])

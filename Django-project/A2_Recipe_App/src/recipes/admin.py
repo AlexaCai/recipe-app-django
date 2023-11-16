@@ -27,12 +27,18 @@ class RecipeAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Recipe basic information', {
-            'fields': ('recipe_name', 'user', 'is_public', 'description','special_note', 'cooking_time', 'number_of_portions', 'origin_country', 'recipe_category', 'recipe_estimated_cost', 'pic', 'favorites'),
+            'fields': ('recipe_name', 'user', 'is_public', 'description','special_note', 'cooking_time', 'number_of_portions', 'origin_country', 'recipe_category', 'recipe_estimated_cost', 'pic'),
         }),
         ('Automatic fields (values generated automatically after recipe creation)', {
             'fields': ('difficulty', 'creation_date', 'recipe_url', 'recipe_url_signed_users')
         }),
     )
 
+class RecipeCommentsAdmin(admin.ModelAdmin):
+    list_display = ('recipe', 'user', 'text', 'created_at')
+    list_filter = ('recipe', 'user', 'created_at')
+    search_fields = ('recipe__recipe_name', 'user__username', 'text')
+    date_hierarchy = 'created_at'
+
 admin.site.register(Recipe, RecipeAdmin)
-admin.site.register(RecipeComments)
+admin.site.register(RecipeComments, RecipeCommentsAdmin)
