@@ -53,10 +53,29 @@
         <h1 class="text-center">Welcome to your profile page</h1>
         <br>
         <br>
+        <div id="favourite-section" class="d-flex justify-content-center align-items-center">
+            <a href="#" class="btn btn-success">Create recipe</a>
+        </div>
         <div class="text-center">
             <h3>Create your own recipes</h3>
             <p>These recipe will only be seen by you and won't be public</p>
         </div>
+        <br>
+        <br>
+        <form method="POST" class="post-form" action="{% url 'accounts:user_private_recipe_new' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_recipe_name">Recipe Name:</label>
+                <input type="text" id="id_recipe_name" class="form-control" name="recipe_name" required>
+            </div>
+            <div class="form-group">
+                <label for="id_cooking_time">Cooking Time:</label>
+                <input type="number" id="id_cooking_time" class="form-control" name="cooking_time" required>
+            </div>
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>        
+        <br>
+        <br>
         <br>
         <br>
         <br>

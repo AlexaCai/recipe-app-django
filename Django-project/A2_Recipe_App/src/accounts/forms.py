@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from .models import User
+from recipes.models import Recipe
 
 User = get_user_model()
 
@@ -85,3 +86,12 @@ class RegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+class UserCreatePrivateRecipe(forms.ModelForm):
+    recipe_name = forms.CharField(required=True)
+    cooking_time = forms.IntegerField(required=True)
+
+    class Meta:
+        model = Recipe
+        fields = ['recipe_name', 'cooking_time']
+
