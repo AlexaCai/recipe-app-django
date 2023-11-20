@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from recipes.models import Recipe
-from .forms import UserCreatePrivateRecipe 
+from .forms import UserCreatePrivateRecipe, RecipeIngredientsFormSet
 
 # Used to display recipes that are favorited by the user.
 def favorite_list(request):
@@ -38,17 +38,24 @@ def delete_recipe(request, id):
 
 def user_private_recipe_new(request):
     if request.method == "POST":
-        form = UserCreatePrivateRecipe(request.POST)
-        if form.is_valid():
+        form = UserCreatePrivateRecipe(request.POST, request.FILES)
+        formset = RecipeIngredientsFormSet(request.POST, prefix='formset')
+
+        if form.is_valid() and formset.is_valid():
             recipe = form.save(commit=False)
             recipe.user = request.user
             recipe.save()
-            print(f'User created recipe. Recipe ID: {recipe.id}, User: {recipe.user}, User_ID: {request.user.id}')
+
+            formset.instance = recipe
+            formset.save()
+
             return HttpResponseRedirect(request.META['HTTP_REFERER'])
         else:
-            print(f'Form errors: {form.errors}')
+            print(form.errors)
+            print(formset.errors)
     else:
         form = UserCreatePrivateRecipe()
+        formset = RecipeIngredientsFormSet(prefix='formset')
 
-    return render(request, 'accounts/profile.html', {'form': form})
+    return render(request, 'accounts/profile.html', {'form': form, 'formset': formset})
 
