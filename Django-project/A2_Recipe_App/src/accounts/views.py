@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from recipes.models import Recipe
-from .forms import UserCreatePrivateRecipe, RecipeIngredientsFormSet
+from .forms import UserCreatePrivateRecipe, RecipeIngredientsFormSet, RecipeAllergensFormSet, RecipeCookingInstructionsFormSet
 
 # Used to display recipes that are favorited by the user.
 def favorite_list(request):
@@ -40,8 +40,10 @@ def user_private_recipe_new(request):
     if request.method == "POST":
         form = UserCreatePrivateRecipe(request.POST, request.FILES)
         formset = RecipeIngredientsFormSet(request.POST, prefix='formset')
+        allergens_formset = RecipeAllergensFormSet(request.POST, prefix='allergens')
+        cooking_instructions_formset = RecipeCookingInstructionsFormSet(request.POST, prefix='cooking_instructions')
 
-        if form.is_valid() and formset.is_valid():
+        if form.is_valid() and formset.is_valid() and allergens_formset.is_valid() and cooking_instructions_formset.is_valid():
             recipe = form.save(commit=False)
             recipe.user = request.user
             recipe.save()
@@ -49,13 +51,24 @@ def user_private_recipe_new(request):
             formset.instance = recipe
             formset.save()
 
+            allergens_formset.instance = recipe
+            allergens_formset.save()
+
+            cooking_instructions_formset.instance = recipe
+            cooking_instructions_formset.save()
+
             return HttpResponseRedirect(request.META['HTTP_REFERER'])
         else:
             print(form.errors)
             print(formset.errors)
+            print(allergens_formset.errors)
+            print(cooking_instructions_formset.errors)
+
     else:
         form = UserCreatePrivateRecipe()
         formset = RecipeIngredientsFormSet(prefix='formset')
+        allergens_formset = RecipeAllergensFormSet(prefix='allergens')
+        cooking_instructions_formset = RecipeCookingInstructionsFormSet(prefix='cooking_instructions')
 
-    return render(request, 'accounts/profile.html', {'form': form, 'formset': formset})
+    return render(request, 'accounts/profile.html', {'form': form, 'formset': formset, 'allergens_formset': allergens_formset, 'cooking_instructions_formset': cooking_instructions_formset})
 

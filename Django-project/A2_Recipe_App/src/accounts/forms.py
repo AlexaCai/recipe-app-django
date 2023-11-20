@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from .models import User
-from recipes.models import Recipe, RecipeIngredients
+from recipes.models import Recipe, RecipeIngredients, RecipeAllergens, RecipeCookingInstructions
 from django.forms import inlineformset_factory
 
 
@@ -339,3 +339,17 @@ class RecipeIngredientsForm(forms.ModelForm):
         fields = ['ingredient_name', 'quantity', 'unit_of_measurement', 'possible_substitute', 'substitue_special_note']
 
 RecipeIngredientsFormSet = inlineformset_factory(Recipe, RecipeIngredients, form=RecipeIngredientsForm, extra=1, can_delete=True)
+
+class RecipeAllergensForm(forms.ModelForm):
+    class Meta:
+        model = RecipeAllergens
+        fields = ['allergen']
+
+RecipeAllergensFormSet = inlineformset_factory(Recipe, RecipeAllergens, form=RecipeAllergensForm, extra=1, can_delete=True)
+
+class RecipeCookingInstructionsForm(forms.ModelForm):
+    class Meta:
+        model = RecipeCookingInstructions
+        fields = ['step_name', 'step_instruction']
+
+RecipeCookingInstructionsFormSet = inlineformset_factory(Recipe, RecipeCookingInstructions, form=RecipeCookingInstructionsForm, extra=1, can_delete=True)
