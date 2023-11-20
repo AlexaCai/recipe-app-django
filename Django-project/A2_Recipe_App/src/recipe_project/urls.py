@@ -19,17 +19,12 @@ from django.urls import path
 from django.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import signup_view, login_view, profile_view, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('recipes.urls')),
     path('recipes/', include('recipes.urls')),
-    path('signup/', signup_view, name='signup'),
-    path('login/', login_view, name='login'),
-    path('profile/', profile_view, name='profile'),
-    path('accounts/', include('accounts.urls', namespace='accounts')), 
-    path('logout/', logout_view, name='logout'),
+    path('', include('accounts.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

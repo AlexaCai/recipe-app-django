@@ -71,7 +71,7 @@
                                         </ul>
                                     </div>
                                 {% endif %}                                
-                                <form action="{% url 'signup' %}" method="POST" class="row justify-content-center">
+                                <form action="{% url 'accounts:signup' %}" method="POST" class="row justify-content-center">
                                     {% csrf_token %}
                                     <h5>Username</h5>
                                     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12 signup-form">
