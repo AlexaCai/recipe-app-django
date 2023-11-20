@@ -59,7 +59,7 @@ def logout_view(request):
 def profile_view(request):
     favorite_recipes = favorite_list(request)
     created_recipes = created_recipe(request)
-    create_private_recipe_form = UserCreatePrivateRecipe()
+    form = UserCreatePrivateRecipe()
     formset = RecipeIngredientsFormSet(prefix='formset')
     allergens_formset = RecipeAllergensFormSet(prefix='allergens')
     cooking_instructions_formset = RecipeCookingInstructionsFormSet(prefix='cooking_instructions')
@@ -70,7 +70,7 @@ def profile_view(request):
         {
             'favorite_recipes': favorite_recipes,
             'created_recipes': created_recipes,
-            'create_private_recipe_form': create_private_recipe_form,
+            'form': form,
             'formset': formset,
             'allergens_formset': allergens_formset,
             'cooking_instructions_formset': cooking_instructions_formset,
@@ -122,6 +122,12 @@ def user_private_recipe_new(request):
         allergens_formset = RecipeAllergensFormSet(request.POST, prefix='allergens')
         cooking_instructions_formset = RecipeCookingInstructionsFormSet(request.POST, prefix='cooking_instructions')
 
+        print("Form Data:", request.POST)
+        print("Form Files:", request.FILES)
+        print("Formset Data:", formset.data)
+        print("Allergens Formset Data:", allergens_formset.data)
+        print("Cooking Instructions Formset Data:", cooking_instructions_formset.data)
+
         if form.is_valid() and formset.is_valid() and allergens_formset.is_valid() and cooking_instructions_formset.is_valid():
             recipe = form.save(commit=False)
             recipe.user = request.user
@@ -148,5 +154,10 @@ def user_private_recipe_new(request):
         formset = RecipeIngredientsFormSet(prefix='formset')
         allergens_formset = RecipeAllergensFormSet(prefix='allergens')
         cooking_instructions_formset = RecipeCookingInstructionsFormSet(prefix='cooking_instructions')
+
+    print("Form Fields:", form.fields)
+    print("Formset Fields:", formset.form.fields)
+    print("Allergens Formset Fields:", allergens_formset.form.fields)
+    print("Cooking Instructions Formset Fields:", cooking_instructions_formset.form.fields)
 
     return render(request, 'accounts/profile.html', {'form': form, 'formset': formset, 'allergens_formset': allergens_formset, 'cooking_instructions_formset': cooking_instructions_formset})
