@@ -334,10 +334,108 @@
                                     Written by {{ comment.user }} <br>
                                     On {{ comment.created_at }}
                                 </div>
+                                {% if comment.updated_at != comment.created_at %}
+                                <br>
+                                <p>Modified on {{ comment.updated_at }}</p>
+                                {% endif %}
                                 <div class="users-comments-text">
                                     <br>
                                     {{ comment.text }}
                                 </div>
+                                <br>
+                                {% if comment.user == request.user %}
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                                    </div>
+                                    <div
+                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center">
+                                        <button type="button" class="btn btn-danger w-33" data-bs-toggle="modal"
+                                            data-bs-target="#deleteCommentModal{{ object.id }}{{ comment.id }}">
+                                            Delete
+                                        </button>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="deleteCommentModal{{ object.id }}{{ comment.id }}"
+                                    tabindex="-1" aria-labelledby="deleteCommentModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="home-page-modal-head">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4 class="modal-title-home-page">Delete comment</h4>
+                                                <div class="row">
+                                                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                                    </div>
+                                                    <div
+                                                        class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-home-page text-center">
+                                                        <p>Are you sure you want to delete this comment? This action is
+                                                            irreversible.</p>
+                                                    </div>
+                                                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="{% url 'recipes:delete_comment' comment.id %}"
+                                                    class="btn btn-danger">Delete</a>
+                                                <button type="button" class="btn btn-dark"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                                    </div>
+                                    <div
+                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center">
+                                        <button type="button" class="btn btn-danger w-33" data-bs-toggle="modal"
+                                            data-bs-target="#updateCommentModal{{ object.id }}{{ comment.id }}">
+                                            Edit
+                                        </button>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="updateCommentModal{{ object.id }}{{ comment.id }}"
+                                    tabindex="-1" aria-labelledby="updateCommentModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="home-page-modal-head">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4 class="modal-title-home-page">Update comment</h4>
+                                                <form method="post"
+                                                    action="{% url 'recipes:update_comment' comment.id %}">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
+                                                        <div
+                                                            class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-home-page text-center">
+                                                            <textarea name="comment"
+                                                                class="form-control">{{ comment.text }}</textarea>
+                                                        </div>
+                                                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-danger">Update</button>
+                                                        <button type="button" class="btn btn-dark"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
                             </div>
                         </li>
                         {% endfor %}

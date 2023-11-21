@@ -161,4 +161,4 @@ def user_private_recipe_new(request):
 def user_private_recipe_update(request, recipe_id):
     existing_recipe = Recipe.objects.get(pk=recipe_id)
     form = UserCreatePrivateRecipe(instance=existing_recipe)
-    return render(request, 'update_recipe.html', {'existing_recipe': existing_recipe, 'form': form})
+    return render(request, 'profile.html', {'existing_recipe': existing_recipe, 'form': form})

@@ -1,6 +1,6 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.views.generic import ListView, DetailView
-from .models import Recipe
+from .models import Recipe, RecipeComments
 from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -8,6 +8,7 @@ from .forms import SearchAllergensForm
 import pandas as pd
 from django.db.models import Q
 from .utils import get_chart
+from django.utils import timezone
 
 
 
@@ -269,4 +270,16 @@ def publish_comment(request, pk):
         comment_text = request.POST.get('comment') 
         recipe = Recipe.objects.get(pk=pk)
         recipe.comments.create(text=comment_text, user=request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+def delete_comment(request, id):
+    comment = get_object_or_404(RecipeComments, id=id)
+    comment.delete()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+def update_comment(request, id):
+    comment = get_object_or_404(RecipeComments, id=id)
+    comment.text = request.POST.get('comment')
+    comment.updated_at = timezone.now() 
+    comment.save()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
