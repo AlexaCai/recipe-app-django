@@ -53,112 +53,141 @@
         <h1 class="text-center profile-title">Welcome to your profile page</h1>
         <br>
         <br>
-        <div id="favourite-section" class="d-flex justify-content-center align-items-center">
-            <a href="#" class="btn btn-success">Create recipe</a>
-        </div>
         <div class="text-center">
             <h3>Create your own recipes</h3>
             <p>These recipe will only be seen by you and won't be public</p>
         </div>
         <br>
         <br>
-        <form method="POST" enctype="multipart/form-data" class="post-form"
-            action="{% url 'accounts:user_private_recipe_new' %}">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="id_recipe_name">Recipe Name:</label>
-                <input type="text" id="id_recipe_name" class="form-control" name="recipe_name" required>
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3 col-3">
             </div>
-            <div class="form-group">
-                <label for="id_description">Description:</label>
-                <input type="text" id="id_description" class="form-control" name="description" required>
+            <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#createPrivateRecipe">
+                    Create recipe
+                </button>
             </div>
-            <div class="form-group">
-                <label for="id_special_note">Special note:</label>
-                <input type="text" id="id_special_note" class="form-control" name="special_note" required>
+            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3 col-3">
             </div>
-            <div class="form-group">
-                <label for="id_cooking_time">Cooking Time:</label>
-                <input type="number" id="id_cooking_time" class="form-control" name="cooking_time" required>
-            </div>
-            <div class="form-group">
-                <label for="id_number_of_portions">Number of Portions:</label>
-                <input type="number" id="id_number_of_portions" class="form-control" name="number_of_portions" required>
-            </div>
-            <div class="form-group">
-                <label for="id_recipe_estimated_cost">Estimated cost:</label>
-                <input type="number" id="id_recipe_estimated_cost" class="form-control" name="recipe_estimated_cost"
-                    required>
-            </div>
-            <div class="form-group">
-                <label for="id_origin_country">Origin country:</label>
-                {{ form.origin_country }}
-            </div>
-            <div class="form-group">
-                <label for="id_recipe_category">Recipe category:</label>
-                {{ form.recipe_category }}
-            </div>
-            <div class="form-group">
-                <label for="id_pic">Recipe picture:</label>
-                <input type="file" id="id_pic" name="pic" class="form-control">
-            </div>
-            <div id="ingredients-formset-container">
-                <div class="formset">
-                    {{ formset.management_form }}
-                    {% for form in formset %}
-                        <div class="formset">
-                            {{ form.id }}
-                            <label for="id_ingredient_name">Ingrdedient</label>
-                            {{ form.ingredient_name }}
-                            <label for="id_quantity">Quantity</label>
-                            {{ form.quantity }}
-                            <label for="id_measurement_unit">Measurement unit</label>
-                            {{ form.unit_of_measurement }}
-                            <label for="id_substitute">Substitute</label>
-                            {{ form.possible_substitute }}
-                            <label for="id_substitute_special_note">Substitute special note</label>
-                            {{ form.substitue_special_note }}
-                        </div>
-                    {% endfor %}
+        </div>
+        <div class="modal fade" id="createPrivateRecipe" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Create recipe</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" enctype="multipart/form-data" class="post-form"
+                            action="{% url 'accounts:user_private_recipe_new' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_recipe_name">Recipe Name:</label>
+                                <input type="text" id="id_recipe_name" class="form-control" name="recipe_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_description">Description:</label>
+                                <input type="text" id="id_description" class="form-control" name="description" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_special_note">Special note:</label>
+                                <input type="text" id="id_special_note" class="form-control" name="special_note"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_cooking_time">Cooking Time:</label>
+                                <input type="number" id="id_cooking_time" class="form-control" name="cooking_time"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_number_of_portions">Number of Portions:</label>
+                                <input type="number" id="id_number_of_portions" class="form-control"
+                                    name="number_of_portions" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_recipe_estimated_cost">Estimated cost:</label>
+                                <input type="number" id="id_recipe_estimated_cost" class="form-control"
+                                    name="recipe_estimated_cost" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_origin_country">Origin country:</label>
+                                {{ form.origin_country }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_recipe_category">Recipe category:</label>
+                                {{ form.recipe_category }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_pic">Recipe picture:</label>
+                                <input type="file" id="id_pic" name="pic" class="form-control">
+                            </div>
+                            <div id="ingredients-formset-container">
+                                <div class="formset">
+                                    {{ formset.management_form }}
+                                    {% for form in formset %}
+                                    <div class="formset">
+                                        {{ form.id }}
+                                        <label for="id_ingredient_name">Ingrdedient</label>
+                                        {{ form.ingredient_name }}
+                                        <label for="id_quantity">Quantity</label>
+                                        {{ form.quantity }}
+                                        <label for="id_measurement_unit">Measurement unit</label>
+                                        {{ form.unit_of_measurement }}
+                                        <label for="id_substitute">Substitute</label>
+                                        {{ form.possible_substitute }}
+                                        <label for="id_substitute_special_note">Substitute special note</label>
+                                        {{ form.substitue_special_note }}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <button type="button" id="add-form" class="btn btn-secondary">Add Ingredient</button>
+                            <br>
+                            <br>
+                            <div id="allergens-formset-container">
+                                <div class="allergen_formset">
+                                    {{ allergens_formset.management_form }}
+                                    {% for form in allergens_formset %}
+                                    <div class="allergen_formset">
+                                        {{ form.id }}
+                                        <label for="id_allergen">Allergen</label>
+                                        {{ form.allergen }}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <button type="button" id="allergen-form" class="btn btn-secondary">Add allergen</button>
+                            <br>
+                            <br>
+                            <div id="cooking-instructions-formset-container">
+                                <div class="cooking_instructions_formset">
+                                    {{ cooking_instructions_formset.management_form }}
+                                    {% for form in cooking_instructions_formset %}
+                                    <div class="cooking_instructions_formset">
+                                        {{ form.id }}
+                                        <label for="id_step_name">Step</label>
+                                        {{ form.step_name }}
+                                        <label for="id_step_instruction">Instruction</label>
+                                        {{ form.step_instruction }}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <button type="button" id="cooking-instructions-form" class="btn btn-secondary">Add
+                                step</button>
+                            <br>
+                            <br>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <button type="button" id="add-form" class="btn btn-secondary">Add Ingredient</button>
-            <br>
-            <br>
-            <div id="allergens-formset-container">
-                <div class="allergen_formset">
-                    {{ allergens_formset.management_form }}
-                    {% for form in allergens_formset %}
-                        <div class="allergen_formset">
-                            {{ form.id }}
-                            <label for="id_allergen">Allergen</label>
-                            {{ form.allergen }}
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <button type="button" id="allergen-form" class="btn btn-secondary">Add allergen</button>
-            <br>
-            <br>
-            <div id="cooking-instructions-formset-container">
-                <div class="cooking_instructions_formset">
-                    {{ cooking_instructions_formset.management_form }}
-                    {% for form in cooking_instructions_formset %}
-                        <div class="cooking_instructions_formset">
-                            {{ form.id }}
-                            <label for="id_step_name">Step</label>
-                            {{ form.step_name }}
-                            <label for="id_step_instruction">Instruction</label>
-                            {{ form.step_instruction }}
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <button type="button" id="cooking-instructions-form" class="btn btn-secondary">Add step</button>
-            <br>
-            <br>
-            <button type="submit" class="btn btn-success">Save</button>
-        </form>
+        </div>
         <br>
         <br>
         <br>
@@ -199,7 +228,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center">
-                        <button type="button" class="btn btn-dark w-33" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-danger w-33" data-bs-toggle="modal"
                             data-bs-target="#deleteRecipeModal{{ object.id }}">
                             Delete
                         </button>
@@ -231,6 +260,144 @@
                             <div class="modal-footer">
                                 <a href="{% url 'accounts:delete_recipe' object.id %}" class="btn btn-danger">Delete</a>
                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3 col-3">
+                    </div>
+                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#updatePrivateRecipe"
+                            onclick="fillUpdateForm('{{ object.recipe_name }}', '{{ object.description }}', '{{ object.special_note }}', '{{ object.cooking_time }}', '{{ object.number_of_portions }}', '{{ object.recipe_estimated_cost }}', '{{ object.origin_country }}', '{{ object.recipe_category }}', '{{ object.pic }}')">
+                            Update
+                        </button>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3 col-3">
+                    </div>
+                </div>
+                <div class="modal fade" id="updatePrivateRecipe" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="updatePrivateRecipeTitle">Update recipe</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" enctype="multipart/form-data" class="post-form"
+                                    action="{% url 'accounts:user_private_recipe_new' %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="id_recipe_name">Recipe Name:</label>
+                                        <input type="text" id="id_recipe_name_update" class="form-control"
+                                            name="recipe_name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_description">Description:</label>
+                                        <input type="text" id="id_description_update" class="form-control"
+                                            name="description" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_special_note">Special note:</label>
+                                        <input type="text" id="id_special_note_update" class="form-control"
+                                            name="special_note" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_cooking_time">Cooking Time:</label>
+                                        <input type="number" id="id_cooking_time_update" class="form-control"
+                                            name="cooking_time" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_number_of_portions">Number of Portions:</label>
+                                        <input type="number" id="id_number_of_portions_update" class="form-control"
+                                            name="number_of_portions" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_recipe_estimated_cost">Estimated cost:</label>
+                                        <input type="number" id="id_recipe_estimated_cost_update" class="form-control"
+                                            name="recipe_estimated_cost" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_origin_country_update">Origin country:</label>
+                                        {{ form.origin_country }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_recipe_category_update">Recipe category:</label>
+                                        {{ form.recipe_category }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_pic">Recipe picture:</label>
+                                        <input type="file" id="id_pic_update" name="pic" class="form-control">
+                                    </div>
+                                    <div id="ingredients-formset-update-container">
+                                        <div class="formset">
+                                            {{ formset.management_form }}
+                                            {% for form in formset %}
+                                            <div class="formset">
+                                                {{ form.id }}
+                                                <label for="id_ingredient_name">Ingrdedient</label>
+                                                {{ form.ingredient_name }}
+                                                <label for="id_quantity">Quantity</label>
+                                                {{ form.quantity }}
+                                                <label for="id_measurement_unit">Measurement unit</label>
+                                                {{ form.unit_of_measurement }}
+                                                <label for="id_substitute">Substitute</label>
+                                                {{ form.possible_substitute }}
+                                                <label for="id_substitute_special_note">Substitute special note</label>
+                                                {{ form.substitue_special_note }}
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <button type="button" id="add-ingredient-update-form" class="btn btn-secondary">Add
+                                        Ingredient</button>
+                                    <br>
+                                    <br>
+                                    <div id="allergens-formset-update-container">
+                                        <div class="allergen_formset">
+                                            {{ allergens_formset.management_form }}
+                                            {% for form in allergens_formset %}
+                                            <div class="allergen_formset">
+                                                {{ form.id }}
+                                                <label for="id_allergen">Allergen</label>
+                                                {{ form.allergen }}
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <button type="button" id="allergen-update-form" class="btn btn-secondary">Add
+                                        allergen</button>
+                                    <br>
+                                    <br>
+                                    <div id="cooking-instructions-formset-update-container">
+                                        <div class="cooking_instructions_formset">
+                                            {{ cooking_instructions_formset.management_form }}
+                                            {% for form in cooking_instructions_formset %}
+                                            <div class="cooking_instructions_formset">
+                                                {{ form.id }}
+                                                <label for="id_step_name">Step</label>
+                                                {{ form.step_name }}
+                                                <label for="id_step_instruction">Instruction</label>
+                                                {{ form.step_instruction }}
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <button type="button" id="cooking-instructions-update-form"
+                                        class="btn btn-secondary">Add
+                                        step</button>
+                                    <br>
+                                    <br>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

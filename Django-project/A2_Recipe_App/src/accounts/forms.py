@@ -325,8 +325,8 @@ class UserCreatePrivateRecipe(forms.ModelForm):
     cooking_time = forms.IntegerField(required=True)
     number_of_portions = forms.IntegerField(required=True)
     recipe_estimated_cost = forms.DecimalField(required=True, max_digits=5, decimal_places=2)
-    origin_country = forms.ChoiceField(choices=country_choices, required=False)
-    recipe_category = forms.ChoiceField(choices=category_choices, required=False)
+    origin_country = forms.ChoiceField(choices=country_choices, required=False, widget=forms.Select(attrs={'id': 'id_origin_country_update'}))
+    recipe_category = forms.ChoiceField(choices=category_choices, required=False, widget=forms.Select(attrs={'id': 'id_recipe_category_update'}))
     pic = forms.ImageField(required=False)
 
     class Meta:

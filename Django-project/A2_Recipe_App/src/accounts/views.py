@@ -155,9 +155,10 @@ def user_private_recipe_new(request):
         allergens_formset = RecipeAllergensFormSet(prefix='allergens')
         cooking_instructions_formset = RecipeCookingInstructionsFormSet(prefix='cooking_instructions')
 
-    print("Form Fields:", form.fields)
-    print("Formset Fields:", formset.form.fields)
-    print("Allergens Formset Fields:", allergens_formset.form.fields)
-    print("Cooking Instructions Formset Fields:", cooking_instructions_formset.form.fields)
 
     return render(request, 'accounts/profile.html', {'form': form, 'formset': formset, 'allergens_formset': allergens_formset, 'cooking_instructions_formset': cooking_instructions_formset})
+
+def user_private_recipe_update(request, recipe_id):
+    existing_recipe = Recipe.objects.get(pk=recipe_id)
+    form = UserCreatePrivateRecipe(instance=existing_recipe)
+    return render(request, 'update_recipe.html', {'existing_recipe': existing_recipe, 'form': form})
