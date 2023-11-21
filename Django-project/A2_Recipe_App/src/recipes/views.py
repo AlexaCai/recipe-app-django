@@ -4,13 +4,13 @@ from .models import Recipe, RecipeComments
 from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from .forms import SearchAllergensForm
+from .forms import SearchAllergensForm, UserSubmitRecipe
 import pandas as pd
 from django.db.models import Q
 from .utils import get_chart
 from django.utils import timezone
-
-
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 # Functions used to return appropriate views/html template for the recipes app depending on the URL
 def home(request):
@@ -283,3 +283,42 @@ def update_comment(request, id):
     comment.updated_at = timezone.now() 
     comment.save()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+
+def user_submit_recipe(request):
+    if request.method == 'POST':
+        form = UserSubmitRecipe(request.POST, request.FILES)
+
+        if form.is_valid():
+            recipe_name = form.cleaned_data['recipe_name']
+            description = form.cleaned_data['description']
+            special_note = form.cleaned_data['special_note']
+            cooking_time = form.cleaned_data['cooking_time']
+            number_of_portions = form.cleaned_data['number_of_portions']
+            recipe_estimated_cost = form.cleaned_data['recipe_estimated_cost']
+
+            print('the form is valid')
+
+            html = render_to_string('recipes/user_submit_recipe_email.html', {
+                'recipe_name': recipe_name, 
+                'description': description, 
+                'special_note': special_note, 
+                'cooking_time': cooking_time, 
+                'number_of_portions': number_of_portions, 
+                'recipe_estimated_cost': recipe_estimated_cost
+                }
+                )
+
+            send_mail('The email subject', 'The email message', 'alexandre.cailhier@hotmail.com', ['alexandre.cailhier@hotmail.com'], html_message=html)
+            
+            return HttpResponseRedirect(request.META['HTTP_REFERER'])
+        
+        else:
+            print('the form is not valid')
+    else:
+        form = UserSubmitRecipe()
+
+    return render(request, "recipes/user_submit_recipe.html",{
+        'form': form
+    })

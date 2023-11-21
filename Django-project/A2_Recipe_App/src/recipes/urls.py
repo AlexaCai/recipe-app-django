@@ -10,7 +10,8 @@ from .views import (
     search_recipes_by_ingredients,
     publish_comment,
     delete_comment,
-    update_comment
+    update_comment,
+    user_submit_recipe
 )
 
 app_name = "recipes"
@@ -27,6 +28,11 @@ urlpatterns = [
         "recipes-list-signed-users/",
         signed_user_redirect_recipes_list_page,
         name="recipes_list_signed_users",
+    ),
+    path(
+        "recipes-submit/",
+        user_submit_recipe,
+        name="user_submit_recipe",
     ),
     path("search-recipe-name/", 
          search_recipes_by_name, 

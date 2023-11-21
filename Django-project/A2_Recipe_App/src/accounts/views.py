@@ -8,7 +8,6 @@ from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from recipes.models import Recipe
 from .forms import UserCreatePrivateRecipe, RecipeIngredientsFormSet, RecipeAllergensFormSet, RecipeCookingInstructionsFormSet
 
-
 def signup_view(request):
     if request.method == 'POST':
         form = UserAdminCreationForm(request.POST)  # Use the custom form
@@ -158,7 +157,8 @@ def user_private_recipe_new(request):
 
     return render(request, 'accounts/profile.html', {'form': form, 'formset': formset, 'allergens_formset': allergens_formset, 'cooking_instructions_formset': cooking_instructions_formset})
 
-def user_private_recipe_update(request, recipe_id):
-    existing_recipe = Recipe.objects.get(pk=recipe_id)
-    form = UserCreatePrivateRecipe(instance=existing_recipe)
-    return render(request, 'profile.html', {'existing_recipe': existing_recipe, 'form': form})
+
+# def user_private_recipe_update(request, recipe_id):
+#     existing_recipe = Recipe.objects.get(pk=recipe_id)
+#     form = UserCreatePrivateRecipe(instance=existing_recipe)
+#     return render(request, 'profile.html', {'existing_recipe': existing_recipe, 'form': form})
