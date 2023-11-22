@@ -1,16 +1,18 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.views.generic import ListView, DetailView
-from .models import Recipe, RecipeComments
+from .models import Recipe, RecipeComments, RecipeIngredients, RecipeAllergens, RecipeCookingInstructions, RecipeToolsNeeded, RecipeSimilarComplementary
 from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from .forms import SearchAllergensForm, UserSubmitRecipe
+from .forms import SearchAllergensForm, UserSubmitRecipe, RecipeIngredientsForm, RecipeAllergensForm, RecipeCookingInstructionsForm, RecipeToolsForm, RecipeSimilarComplementaryForm
 import pandas as pd
 from django.db.models import Q
 from .utils import get_chart
 from django.utils import timezone
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.forms import inlineformset_factory
+
 
 # Functions used to return appropriate views/html template for the recipes app depending on the URL
 def home(request):
@@ -287,30 +289,103 @@ def update_comment(request, id):
 
 
 def user_submit_recipe(request):
+    RecipeIngredientsFormSet = inlineformset_factory(Recipe, RecipeIngredients, form=RecipeIngredientsForm, extra=1, can_delete=True)
+    RecipeAllergensFormSet = inlineformset_factory(Recipe, RecipeAllergens, form=RecipeAllergensForm, extra=1, can_delete=True)
+    RecipeCookingInstructionsFormSet = inlineformset_factory(Recipe, RecipeCookingInstructions, form=RecipeCookingInstructionsForm, extra=1, can_delete=True)
+    RecipeToolsFormSet = inlineformset_factory(Recipe, RecipeToolsNeeded, form=RecipeToolsForm, extra=1, can_delete=True)
+    RecipeSimilarComplementaryFormSet = inlineformset_factory(Recipe, RecipeSimilarComplementary, form=RecipeSimilarComplementaryForm, extra=1, can_delete=True)
+
     if request.method == 'POST':
         form = UserSubmitRecipe(request.POST, request.FILES)
+        formset = RecipeIngredientsFormSet(request.POST, request.FILES, prefix='ingredients')
+        allergens_formset = RecipeAllergensFormSet(request.POST, request.FILES, prefix='allergens')
+        cooking_instructions_formset = RecipeCookingInstructionsFormSet(request.POST, request.FILES, prefix='cooking_instructions')
+        recipe_tools_formset = RecipeToolsFormSet(request.POST, request.FILES, prefix='recipe_tools')
+        recipe_similar_complementary_formset = RecipeSimilarComplementaryFormSet(request.POST, request.FILES, prefix='recipe_similar_complementary')
 
-        if form.is_valid():
+
+        if form.is_valid() and formset.is_valid() and allergens_formset.is_valid() and cooking_instructions_formset.is_valid() and recipe_tools_formset.is_valid() and recipe_similar_complementary_formset.is_valid():
             recipe_name = form.cleaned_data['recipe_name']
             description = form.cleaned_data['description']
             special_note = form.cleaned_data['special_note']
             cooking_time = form.cleaned_data['cooking_time']
             number_of_portions = form.cleaned_data['number_of_portions']
             recipe_estimated_cost = form.cleaned_data['recipe_estimated_cost']
+            origin_country = form.cleaned_data['origin_country']
+            recipe_category = form.cleaned_data['recipe_category']
+            pic = form.cleaned_data['pic']
 
-            print('the form is valid')
+            recipe = form.save()
 
+            formset.instance = recipe
+            formset.save()
+
+            allergens_formset.instance = recipe
+            allergens_formset.save()
+
+            cooking_instructions_formset.instance = recipe
+            cooking_instructions_formset.save()
+
+            recipe_tools_formset.instance = recipe
+            recipe_tools_formset.save()
+
+            recipe_similar_complementary_formset.instance = recipe
+            recipe_similar_complementary_formset.save()
+
+            ingredients = [
+                {
+                    'ingredient_name': form.cleaned_data['ingredient_name'],
+                    'quantity': form.cleaned_data['quantity'],
+                    'unit_of_measurement': form.cleaned_data['unit_of_measurement'],
+                    'possible_substitute': form.cleaned_data['possible_substitute'],
+                    'substitute_special_note': form.cleaned_data['substitue_special_note']
+                } for form in formset if form.cleaned_data
+]
+            
+            allergens = [
+                {
+                    'allergen': form.cleaned_data['allergen']
+                } for form in allergens_formset if form.cleaned_data
+]
+            
+            cooking_instructions = [
+                {
+                    'step_name': form.cleaned_data['step_name'],
+                    'step_instruction': form.cleaned_data['step_instruction']
+                } for form in cooking_instructions_formset if form.cleaned_data
+]
+            
+            recipe_tools = [
+                {
+                    'cooking_tool_name': form.cleaned_data['cooking_tool_name']
+                } for form in recipe_tools_formset if form.cleaned_data
+]
+            
+            recipe_similar_complementary = [
+                {
+                    'complementary_recipe_name': form.cleaned_data['complementary_recipe_name'],
+                    'complementary_recipe_link_unsigned_users': form.cleaned_data['complementary_recipe_link_unsigned_users']
+                } for form in recipe_similar_complementary_formset if form.cleaned_data
+]
+            
             html = render_to_string('recipes/user_submit_recipe_email.html', {
                 'recipe_name': recipe_name, 
                 'description': description, 
                 'special_note': special_note, 
                 'cooking_time': cooking_time, 
                 'number_of_portions': number_of_portions, 
-                'recipe_estimated_cost': recipe_estimated_cost
-                }
-                )
+                'recipe_estimated_cost': recipe_estimated_cost,
+                'origin_country': origin_country,
+                'recipe_category': recipe_category,
+                'pic': pic,
+                'ingredients': ingredients,
+                'allergens': allergens,
+                'cooking_instructions': cooking_instructions,
+                'recipe_tools': recipe_tools,
+                'recipe_similar_complementary': recipe_similar_complementary
+                })
 
-            send_mail('The email subject', 'The email message', 'alexandre.cailhier@hotmail.com', ['alexandre.cailhier@hotmail.com'], html_message=html)
+            send_mail(f'New recipe submitted from {request.user.email}','The email message', 'atablespoonofdiscovery@gmail.com', ['atablespoonofdiscovery@gmail.com'], html_message=html)
             
             return HttpResponseRedirect(request.META['HTTP_REFERER'])
         
@@ -318,7 +393,17 @@ def user_submit_recipe(request):
             print('the form is not valid')
     else:
         form = UserSubmitRecipe()
+        formset = RecipeIngredientsFormSet(prefix='ingredients')
+        allergens_formset = RecipeAllergensFormSet(prefix='allergens')
+        cooking_instructions_formset = RecipeCookingInstructionsFormSet(prefix='cooking_instructions')
+        recipe_tools_formset = RecipeToolsFormSet(prefix='recipe_tools')
+        recipe_similar_complementary_formset = RecipeSimilarComplementaryFormSet(prefix='recipe_similar_complementary')
 
     return render(request, "recipes/user_submit_recipe.html",{
-        'form': form
+        'form': form,
+        'formset': formset,
+        'allergens_formset': allergens_formset,
+        'cooking_instructions_formset': cooking_instructions_formset,
+        'recipe_tools_formset': recipe_tools_formset,
+        'recipe_similar_complementary_formset': recipe_similar_complementary_formset
     })

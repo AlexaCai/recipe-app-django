@@ -305,7 +305,6 @@ function clearSearch() {
 }
 
 
-
 //***Code to ensure smooth transition in the page when user click on the back to top link at the \
 //***bottom of the detailed page.
 
