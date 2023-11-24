@@ -12,6 +12,7 @@ from django.utils import timezone
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.forms import inlineformset_factory
+from django.core.mail import EmailMessage
 
 
 # Functions used to return appropriate views/html template for the recipes app depending on the URL
@@ -315,23 +316,6 @@ def user_submit_recipe(request):
             recipe_category = form.cleaned_data['recipe_category']
             pic = form.cleaned_data['pic']
 
-            recipe = form.save()
-
-            formset.instance = recipe
-            formset.save()
-
-            allergens_formset.instance = recipe
-            allergens_formset.save()
-
-            cooking_instructions_formset.instance = recipe
-            cooking_instructions_formset.save()
-
-            recipe_tools_formset.instance = recipe
-            recipe_tools_formset.save()
-
-            recipe_similar_complementary_formset.instance = recipe
-            recipe_similar_complementary_formset.save()
-
             ingredients = [
                 {
                     'ingredient_name': form.cleaned_data['ingredient_name'],
@@ -385,8 +369,19 @@ def user_submit_recipe(request):
                 'recipe_similar_complementary': recipe_similar_complementary
                 })
 
-            send_mail(f'New recipe submitted from {request.user.email}','The email message', 'atablespoonofdiscovery@gmail.com', ['atablespoonofdiscovery@gmail.com'], html_message=html)
-            
+            email = EmailMessage(
+                f'New recipe submitted from {request.user.email}',
+                html,
+                'atablespoonofdiscovery@gmail.com',
+                ['atablespoonofdiscovery@gmail.com'],
+            )
+            email.content_subtype = 'html'
+
+            if 'pic' in request.FILES:
+                email.attach(request.FILES['pic'].name, request.FILES['pic'].read())
+
+            email.send()
+
             return HttpResponseRedirect(request.META['HTTP_REFERER'])
         
         else:

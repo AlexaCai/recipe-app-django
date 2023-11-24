@@ -83,7 +83,7 @@
             <div class="recipe_similar_complementary_formset">
                 {{ recipe_similar_complementary_formset.management_form }}
                 {% for form in recipe_similar_complementary_formset %}
-                <div class="recipe_tools_formset">
+                <div class="recipe_similar_complementary_formset">
                     {{ form.id }}
                     <label for="id_step_name">Similar/complementary recipe name</label>
                     {{ form.complementary_recipe_name }}

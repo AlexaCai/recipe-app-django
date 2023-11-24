@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Logic used to add dynamically more forms/lines to the cooking tools formset on frontend, 
-// to allow users to add as much cooking instructions to their recipe as they want when SUBMITTING recipes.
+// to allow users to add as much cooking tools to their recipe as they want when SUBMITTING recipes.
 
 document.addEventListener('DOMContentLoaded', function () {
     var formsetContainer = document.getElementById('recipe-tools-formset-container');
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Logic used to add dynamically more forms/lines to the similar recipes formset on frontend, 
-// to allow users to add as much cooking instructions to their recipe as they want when SUBMITTING recipes.
+// to allow users to add as much similar recipes to their recipe as they want when SUBMITTING recipes.
 
 document.addEventListener('DOMContentLoaded', function () {
     var formsetContainer = document.getElementById('recipe-similar-complementary-formset-container');

@@ -17,8 +17,11 @@ from .views import (
 app_name = "recipes"
 
 urlpatterns = [
-    path("", home),
-    path("home/", home, name="home"),
+    path("", 
+         home),
+    path("home/", 
+         home, 
+         name="home"),
     path(
         "recipes-list-unsigned-users/",
         unsigned_user_redirect_recipes_list_page,
