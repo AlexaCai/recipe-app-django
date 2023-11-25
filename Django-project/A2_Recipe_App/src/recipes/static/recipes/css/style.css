@@ -726,39 +726,27 @@
 
 /* CSS for the submit recipe page */
 
-.image-background-submit-page {
+.first-image-background-submit-page {
     background: url("../../../media/pears-background.jpg") center/cover no-repeat;
-    height: 262vh;
+    height: 119vh;
     margin: 0;
 }
 
 .second-image-background {
     background: url("../../../media/strawberry-background.jpg") center/cover no-repeat;
-    height: 200vh;
+    height: 119vh;
     margin: 0;
 }
 
 .third-image-background {
-    background: url("../../../media/lemon-background.jpg") center/cover no-repeat;
-    height: 200vh;
+    background: url("../../../media/blueberries-background.jpg") center/cover no-repeat;
+    height: 119vh;
     margin: 0;
 }
 
 .fourth-image-background {
-    background: url("../../../media/blueberries-background.jpg") center/cover no-repeat;
-    height: 200vh;
-    margin: 0;
-}
-
-.fifth-image-background {
-    background: url("../../../media/lime-background.jpg") center/cover no-repeat;
-    height: 200vh;
-    margin: 0;
-}
-
-.sixth-image-background {
-    background: url("../../../media/cherries-background.jpg") center/cover no-repeat;
-    height: 200vh;
+    background: url("../../../media/oranges-background.jpg") center/cover no-repeat;
+    height: 119vh;
     margin: 0;
 }
 
@@ -779,10 +767,35 @@
     font-weight: 600;
 }
 
+.submit-recipe-form {
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 2955px; 
+    overflow-y: auto;
+}
+
+.form-group-space {
+    margin-bottom: 20px;
+}
+
+.submit-recipe-form-directives {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 /* CSS for the sucess submit recipe page */
 
 .image-background-recipe-submit-success-page {
-    background: url("../../../media/pexels-quang-nguyen-vinh-2135677.jpg") center/cover no-repeat;
+    background: url("../../../media/cherries-background.jpg") center/cover no-repeat;
+    height: 120vh;
+    margin: 0;
+}
+
+/* CSS for the failed submit recipe page */
+
+.image-background-recipe-submit-failed-page {
+    background: url("../../../media/lemon-background.jpg") center/cover no-repeat;
     height: 120vh;
     margin: 0;
 }

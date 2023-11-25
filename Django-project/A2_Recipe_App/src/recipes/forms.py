@@ -297,4 +297,4 @@ class RecipeSimilarComplementaryForm(forms.ModelForm):
         model = RecipeSimilarComplementary
         fields = ['complementary_recipe_name', 'complementary_recipe_link_unsigned_users']
 
-RecipeToolsFormSet = inlineformset_factory(Recipe, RecipeSimilarComplementary, form=RecipeSimilarComplementaryForm, extra=1, can_delete=True)
+RecipeSimilarComplementaryFormSet = inlineformset_factory(Recipe, RecipeSimilarComplementary, form=RecipeSimilarComplementaryForm, extra=1, can_delete=True)
