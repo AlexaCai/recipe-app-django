@@ -13,6 +13,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.forms import inlineformset_factory
 from django.core.mail import EmailMessage
+from django.shortcuts import redirect
 
 
 # Functions used to return appropriate views/html template for the recipes app depending on the URL
@@ -288,7 +289,6 @@ def update_comment(request, id):
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
-
 def user_submit_recipe(request):
     RecipeIngredientsFormSet = inlineformset_factory(Recipe, RecipeIngredients, form=RecipeIngredientsForm, extra=1, can_delete=True)
     RecipeAllergensFormSet = inlineformset_factory(Recipe, RecipeAllergens, form=RecipeAllergensForm, extra=1, can_delete=True)
@@ -382,10 +382,10 @@ def user_submit_recipe(request):
 
             email.send()
 
-            return HttpResponseRedirect(request.META['HTTP_REFERER'])
-        
+            return redirect('recipes:user_submitted_recipe_success')
         else:
-            print('the form is not valid')
+            return redirect('recipes:user_submitted_recipe_failed')
+        
     else:
         form = UserSubmitRecipe()
         formset = RecipeIngredientsFormSet(prefix='ingredients')
@@ -402,3 +402,13 @@ def user_submit_recipe(request):
         'recipe_tools_formset': recipe_tools_formset,
         'recipe_similar_complementary_formset': recipe_similar_complementary_formset
     })
+
+# def user_submit_recipe_redirection_success(request):
+#     response = user_submit_recipe(request)
+#     if response.status_code in [302, 200]:
+#         return render(request, 'accounts/recipe_submitted_success.html')
+
+# def user_submit_recipe_redirection_failed(request):
+#     response = user_submit_recipe(request)
+#     if response.status_code not in [302, 200]:
+#         return render(request, 'accounts/recipe_submitted_failed.html')

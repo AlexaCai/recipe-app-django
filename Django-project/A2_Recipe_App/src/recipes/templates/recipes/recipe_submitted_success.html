@@ -47,39 +47,43 @@
     </header>
 
     <body>
-        <div class="image-background">
+        <div class="image-background-recipe-submit-success-page">
             <div class="row welcome-boxes">
                 <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-10">
                     <div class="welcome-box-1">
                         <h1 class="website-title">A tablespoon of discovery</h1>
                         <br>
-                        <h2 class="website-subtitle">Your atlas of the world cuisines</h2>
+                        <h2 class="website-subtitle">Your recipe has been successfully submitted!</h2>
                         <br>
                         <div class="container">
                             <div class="row">
                                 <div
                                     class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 home-page-buttons-bottom-padding">
-                                    <a class="welcome-page-login-signup-button btn btn-dark w-100" href="{% url 'accounts:login' %}">
-                                        Log in
+                                    <a class="welcome-page-login-signup-button btn btn-dark w-100"
+                                        href="{% url 'recipes:home' %}">
+                                        Return home
                                     </a>
                                 </div>
                                 <div
                                     class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 home-page-buttons-bottom-padding">
-                                    <a class="welcome-page-login-signup-button btn btn-dark w-100" href="{% url 'accounts:signup' %}">
-                                        Sign up
+                                    <a class="welcome-page-login-signup-button btn btn-dark w-100"
+                                        href="{% url 'recipes:recipes_list_signed_users' %}">
+                                        See recipes
                                     </a>
                                 </div>
                                 <div
                                     class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 home-page-buttons-bottom-padding">
-                                    <a href="{% url 'recipes:recipes_list_unsigned_users' %}"
-                                        class="btn btn-dark w-100">See recipes</a>
+                                    <a href="{% url 'recipes:user_submit_recipe' %}"
+                                        class="btn btn-dark w-100">
+                                        Submit another recipe
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="welcome-box-2">
                             <button type="button" class="btn btn-dark w-33" data-bs-toggle="modal"
                                 data-bs-target="#signupquestionModal">
-                                Why signing up?
+                                I've submitted, what's next?
                             </button>
                             <div class="modal fade" id="signupquestionModal" tabindex="-1"
                                 aria-labelledby="signupquestionModalLabel" aria-hidden="true">
@@ -90,15 +94,23 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <h4 class="modal-title-home-page">Why signing up?</h4>
+                                            <h4 class="modal-title-home-page">Submitted recipe</h4>
                                             <div class="row">
                                                 <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                                 </div>
                                                 <div
                                                     class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-home-page">
-                                                    <p>Signed up users can create their own list of recipes, add recipes
-                                                        from our catalog to their list of favorite and comment on
-                                                        recipes.</p>
+                                                    <p><i>A table spoon of discovery</i> will analyze your recipe, and
+                                                        if it does not already exist in our catalog and it appears
+                                                        complete, it will be published shortly.</p>
+                                                    <br>
+                                                    <p><b>*Note:</b> Among the reasons which could explain non-publication:</p>
+                                                    <br>
+                                                    <span>-Already existing recipe</span> <br>
+                                                    <span>-Missing information</span> <br>
+                                                    <span>-Recipe not detailed enough</span> <br>
+                                                    <span>-Any other reason which would not allow the suggested recipe to
+                                                        have the required level of quality</span>
                                                 </div>
                                                 <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                                 </div>

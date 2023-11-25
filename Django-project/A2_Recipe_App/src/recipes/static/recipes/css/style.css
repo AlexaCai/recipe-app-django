@@ -127,7 +127,6 @@
     text-decoration: none;
 }
 
-
 .welcome-box-2 {
     text-align: center;
     padding-top: 40px;
@@ -162,7 +161,7 @@
     text-align: center;
     color: white;
     padding: 100px 0;
-    height: 120vh;
+    height: 140vh;
 }
 
 @media (max-width: 325px) {
@@ -723,4 +722,67 @@
 .footer-buttons-action-call {
     text-decoration: underline;
     font-weight: 600;
+}
+
+/* CSS for the submit recipe page */
+
+.image-background-submit-page {
+    background: url("../../../media/pears-background.jpg") center/cover no-repeat;
+    height: 262vh;
+    margin: 0;
+}
+
+.second-image-background {
+    background: url("../../../media/strawberry-background.jpg") center/cover no-repeat;
+    height: 200vh;
+    margin: 0;
+}
+
+.third-image-background {
+    background: url("../../../media/lemon-background.jpg") center/cover no-repeat;
+    height: 200vh;
+    margin: 0;
+}
+
+.fourth-image-background {
+    background: url("../../../media/blueberries-background.jpg") center/cover no-repeat;
+    height: 200vh;
+    margin: 0;
+}
+
+.fifth-image-background {
+    background: url("../../../media/lime-background.jpg") center/cover no-repeat;
+    height: 200vh;
+    margin: 0;
+}
+
+.sixth-image-background {
+    background: url("../../../media/cherries-background.jpg") center/cover no-repeat;
+    height: 200vh;
+    margin: 0;
+}
+
+.submit-recipe-form-background {
+    background: rgba(255, 255, 255, 0.7);
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.page-title {
+    font-family: 'Lobster', sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+}
+
+.page-subtitle {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
+}
+
+/* CSS for the sucess submit recipe page */
+
+.image-background-recipe-submit-success-page {
+    background: url("../../../media/pexels-quang-nguyen-vinh-2135677.jpg") center/cover no-repeat;
+    height: 120vh;
+    margin: 0;
 }

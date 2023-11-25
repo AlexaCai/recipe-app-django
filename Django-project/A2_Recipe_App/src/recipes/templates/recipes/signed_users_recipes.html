@@ -76,6 +76,13 @@
                     <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Advanced search
                     </button>
+                    <br>
+                    <br>
+                    <h1 class="search-title">
+                        Submit your recipe
+                    </h1>
+                    <br>
+                    <button type="button" class="btn btn-light" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered">

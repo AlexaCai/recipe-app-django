@@ -5,99 +5,275 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'recipes/css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="{% static 'recipes/js/user-submit-recipe.js' %}" defer></script>
-    <title>Document</title>
+    <title>Cuisine atlas</title>
+    <link rel="shortcut icon" href="../../../media/temporary-logo.jpg" type="image/x-icon">
 </head>
 
-<body>
-    <h1>Submit a recipe</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div id="ingredients-formset-container">
-            <div class="formset">
-                {{ formset.management_form }}
-                {% for form in formset %}
-                <div class="formset">
-                    {{ form.id }}
-                    <label for="id_ingredient_name">Ingrdedient</label>
-                    {{ form.ingredient_name }}
-                    <label for="id_quantity">Quantity</label>
-                    {{ form.quantity }}
-                    <label for="id_measurement_unit">Measurement unit</label>
-                    {{ form.unit_of_measurement }}
-                    <label for="id_substitute">Substitute</label>
-                    {{ form.possible_substitute }}
-                    <label for="id_substitute_special_note">Substitute special note</label>
-                    {{ form.substitue_special_note }}
+<main>
+    <header id="topsection">
+        <div class="header-display">
+            <nav class="navbar navbar-expand-md navbar-light nav justify-content-end">
+                <div class="logo-container">
+                    <img src="../../../media/temporary-logo.jpg" alt="ac-logo" class="logo-image">
                 </div>
-                {% endfor %}
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'recipes:home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'recipes:recipes_list_signed_users' %}">Recipes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:profile' %}">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects-section">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'accounts:logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <body>
+        <div class="image-background-submit-page text-center justify-content-center">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-3 col-sm-2 col-2">
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-3 col-sm-2 col-2 submit-recipe-form-background">
+                    <h1 class="page-title">Submit a recipe</h1>
+                    <br>
+                    <h3 class="page-subtitle">Basic information</h3>
+                    <br>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_recipe_name">Recipe Name:</label>
+                            <input type="text" id="id_recipe_name" class="form-control" name="recipe_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_description">Description:</label>
+                            <input type="text" id="id_description" class="form-control" name="description" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_special_note">Special note:</label>
+                            <input type="text" id="id_special_note" class="form-control" name="special_note"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_cooking_time">Cooking Time:</label>
+                            <input type="number" id="id_cooking_time" class="form-control" name="cooking_time"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_number_of_portions">Number of Portions:</label>
+                            <input type="number" id="id_number_of_portions" class="form-control"
+                                name="number_of_portions" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_recipe_estimated_cost">Estimated cost:</label>
+                            <input type="number" id="id_recipe_estimated_cost" class="form-control"
+                                name="recipe_estimated_cost" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.origin_country.id_for_label }}">Origin country:</label>
+                            <select name="{{ form.origin_country.html_name }}" id="{{ form.origin_country.auto_id }}" class="form-select">
+                                {% for choice in form.origin_country.field.choices %}
+                                    <option value="{{ choice.0 }}" {% if form.origin_country.value == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.recipe_category.id_for_label }}">Recipe category:</label>
+                            <select name="{{ form.recipe_category.html_name }}" id="{{ form.recipe_category.auto_id }}" class="form-select">
+                                {% for choice in form.recipe_category.field.choices %}
+                                    <option value="{{ choice.0 }}" {% if form.recipe_category.value == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_pic">Recipe picture:</label>
+                            <input type="file" id="id_pic" name="pic" class="form-control">
+                        </div>  
+                        <br>
+                        <h3 class="page-subtitle">Ingredients</h3>
+                        <br>                     
+                        <div id="ingredients-formset-container">
+                            <div class="formset">
+                                {{ formset.management_form }}
+                                {% for form in formset %}
+                                    <div class="formset">
+                                        {{ form.id }}
+                                        <div class="form-group">
+                                            <label for="{{ form.ingredient_name.id_for_label }}">Ingredient:</label>
+                                                <input type="text" id="{{ form.ingredient_name.auto_id }}" class="form-control" name="{{ form.ingredient_name.html_name }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="{{ form.quantity.id_for_label }}">Quantity:</label>
+                                                <input type="number" id="{{ form.quantity.auto_id }}" class="form-control" name="{{ form.quantity.html_name }}" required>                                            </div>
+                                        <div class="form-group">
+                                            <label for="{{ form.unit_of_measurement.id_for_label }}">Measurement unit:</label>
+                                            <select name="{{ form.unit_of_measurement.html_name }}" id="{{ form.unit_of_measurement.auto_id }}" class="form-select">
+                                                {% for choice in form.unit_of_measurement.field.choices %}
+                                                    <option value="{{ choice.0 }}" {% if form.unit_of_measurement.value == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="{{ form.possible_substitute.id_for_label }}">Substitute:</label>
+                                            <input type="text" id="{{ form.possible_substitute.auto_id }}" class="form-control" name="{{ form.possible_substitute.html_name }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="{{ form.substitue_special_note.id_for_label }}">Substitute special note:</label>
+                                            <input type="text" id="{{ form.substitue_special_note.auto_id }}" class="form-control" name="{{ form.substitue_special_note.html_name }}" required>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <br>
+                        <button type="button" id="add-form" class="btn btn-dark">Add Ingredient</button>
+                        <br>
+                        <br>
+                        <h3 class="page-subtitle">Allergen(s)</h3>
+                        <br>
+                        <div id="allergens-formset-container">
+                            <div class="allergen_formset">
+                                {{ allergens_formset.management_form }}
+                                {% for form in allergens_formset %}
+                                <div class="allergen_formset">
+                                    {{ form.id }}
+                                    <div class="form-group">
+                                        <label for="{{ form.allergen.id_for_label }}">Allergen:</label>
+                                            <input type="text" id="{{ form.allergen.auto_id }}" class="form-control" name="{{ form.allergen.html_name }}" required>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <br>
+                        <button type="button" id="allergen-form" class="btn btn-dark">Add allergen</button>
+                        <br>
+                        <br>
+                        <h3 class="page-subtitle">Instructions</h3>
+                        <br>
+                        <div id="cooking-instructions-formset-container">
+                            <div class="cooking_instructions_formset">
+                                {{ cooking_instructions_formset.management_form }}
+                                {% for form in cooking_instructions_formset %}
+                                <div class="cooking_instructions_formset">
+                                    {{ form.id }}
+                                    <div class="form-group">
+                                        <label for="{{ form.step_name.id_for_label }}">Step:</label>
+                                            <input type="text" id="{{ form.step_name.auto_id }}" class="form-control" name="{{ form.step_name.html_name }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="{{ form.step_instruction.id_for_label }}">Description:</label>
+                                            <input type="text" id="{{ form.step_instruction.auto_id }}" class="form-control" name="{{ form.step_instruction.html_name }}" required>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <br>
+                        <button type="button" id="cooking-instructions-form" class="btn btn-dark">Add step</button>
+                        <br>
+                        <br>
+                        <h3 class="page-subtitle">Cooking tool</h3>
+                        <br>
+                        <div id="recipe-tools-formset-container">
+                            <div class="recipe_tools_formset">
+                                {{ recipe_tools_formset.management_form }}
+                                {% for form in recipe_tools_formset %}
+                                <div class="recipe_tools_formset">
+                                    {{ form.id }}
+                                    <div class="form-group">
+                                        <label for="{{ form.cooking_tool_name.id_for_label }}">Cooking tool (ex: measure cup)</label>
+                                            <input type="text" id="{{ form.cooking_tool_name.auto_id }}" class="form-control" name="{{ form.cooking_tool_name.html_name }}" required>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <br>
+                        <button type="button" id="recipe-tools-form" class="btn btn-dark">Add tool</button>
+                        <br>
+                        <br>
+                        <h3 class="page-subtitle">Similar recipes</h3>
+                        <br>
+                        <div id="recipe-similar-complementary-formset-container">
+                            <div class="recipe_similar_complementary_formset">
+                                {{ recipe_similar_complementary_formset.management_form }}
+                                {% for form in recipe_similar_complementary_formset %}
+                                <div class="recipe_similar_complementary_formset">
+                                    {{ form.id }}
+                                    <div class="form-group">
+                                        <label for="{{ form.complementary_recipe_name.id_for_label }}">Similar recipe</label>
+                                            <input type="text" id="{{ form.complementary_recipe_name.auto_id }}" class="form-control" name="{{ form.complementary_recipe_name.html_name }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="{{ form.complementary_recipe_link_unsigned_users.id_for_label }}">Similar recipe url</label>
+                                            <input type="text" id="{{ form.complementary_recipe_link_unsigned_users.auto_id }}" class="form-control" name="{{ form.complementary_recipe_link_unsigned_users.html_name }}" required>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <br>
+                        <button type="button" id="recipe-similar-complementary-form" class="btn btn-dark">Add similar
+                            recipe</button>
+                        <br>
+                        <br>
+                        <button type="submit" value="submit" class="btn btn-dark">Submit recipe</button>
+                    </form>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-3 col-sm-2 col-2">
+                </div>
             </div>
         </div>
-        <button type="button" id="add-form" class="btn btn-secondary">Add Ingredient</button>
-        <br>
-        <div id="allergens-formset-container">
-            <div class="allergen_formset">
-                {{ allergens_formset.management_form }}
-                {% for form in allergens_formset %}
-                <div class="allergen_formset">
-                    {{ form.id }}
-                    <label for="id_allergen">Allergen</label>
-                    {{ form.allergen }}
-                </div>
-                {% endfor %}
-            </div>
+        <div class=" row second-image-background">
         </div>
-        <button type="button" id="allergen-form" class="btn btn-secondary">Add allergen</button>
-        <div id="cooking-instructions-formset-container">
-            <div class="cooking_instructions_formset">
-                {{ cooking_instructions_formset.management_form }}
-                {% for form in cooking_instructions_formset %}
-                <div class="cooking_instructions_formset">
-                    {{ form.id }}
-                    <label for="id_step_name">Step</label>
-                    {{ form.step_name }}
-                    <label for="id_step_instruction">Instruction</label>
-                    {{ form.step_instruction }}
-                </div>
-                {% endfor %}
-            </div>
+        <div class=" row third-image-background">
         </div>
-        <button type="button" id="cooking-instructions-form" class="btn btn-secondary">Add step</button>
-        <div id="recipe-tools-formset-container">
-            <div class="recipe_tools_formset">
-                {{ recipe_tools_formset.management_form }}
-                {% for form in recipe_tools_formset %}
-                <div class="recipe_tools_formset">
-                    {{ form.id }}
-                    <label for="id_step_name">Cooking tool (ex: measure cup)</label>
-                    {{ form.cooking_tool_name }}
-                </div>
-                {% endfor %}
-            </div>
+        <div class=" row fourth-image-background">
         </div>
-        <button type="button" id="recipe-tools-form" class="btn btn-secondary">Add tool</button>
-        <div id="recipe-similar-complementary-formset-container">
-            <div class="recipe_similar_complementary_formset">
-                {{ recipe_similar_complementary_formset.management_form }}
-                {% for form in recipe_similar_complementary_formset %}
-                <div class="recipe_similar_complementary_formset">
-                    {{ form.id }}
-                    <label for="id_step_name">Similar/complementary recipe name</label>
-                    {{ form.complementary_recipe_name }}
-                    <label for="id_step_name">Similar/complementary url</label>
-                    {{ form.complementary_recipe_link_unsigned_users }}
-                </div>
-                {% endfor %}
-            </div>
+        <div class=" row fifth-image-background">
         </div>
-        <button type="button" id="recipe-similar-complementary-form" class="btn btn-secondary">Add similar recipe</button>
-        <br>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
-</body>
+        <div class=" row sixth-image-background">
+        </div>
+    </body>
+    <footer>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'recipes/js/javascript.js' %}"></script>
+
+</main>
 
 </html>
