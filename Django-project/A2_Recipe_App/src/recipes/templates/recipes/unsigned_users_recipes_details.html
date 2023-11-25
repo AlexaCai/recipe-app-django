@@ -233,6 +233,7 @@
             <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-10">
                 <h1 class="text-center detailed-recipe-titles instructions-section">Tools needed</h1>
                 <br>
+                {% if object.recipe_tools.all|length > 0 %}
                 <div class="row">
                     {% for tool in object.recipe_tools.all %}
                     <div class="col-xl-4 col-lg-6 col-md-6">
@@ -251,6 +252,9 @@
                     </div>
                     {% endfor %}
                 </div>
+                {% else %}
+                <p class="detailed-page-text-content text-center">No recipe tools listed.</p>
+                {% endif %}
             </div>
             <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
             </div>
@@ -309,10 +313,13 @@
                         {% for comment in object.comments.all %}
                         <li class="justify-content-between users-comments-section">
                             <div class="ms-2 me-auto">
-                                <div class="fw-bold users-comments-title text-center">
-                                    Written by {{ comment.user }} <br>
+                                <div class="users-comments-title text-center">
+                                    Written by <b>{{ comment.user }}</b><br>
                                     On {{ comment.created_at }}
                                 </div>
+                                {% if comment.updated_at != comment.created_at %}
+                                <p>Modified on {{ comment.updated_at }}</p>
+                                {% endif %}
                                 <div class="users-comments-text">
                                     <br>
                                     {{ comment.text }}
@@ -351,59 +358,35 @@
                     </div>
                     <div class="col-8 text-center">
                         <br>
-                        <h4>Want to create your own recipes and share it with the world?
+                        <h4 class="footer-text">Want to create your own recipes and share it with the world?
                             Proud of one of your local recipe delight? <br><br></h4>
-                        <h4 class="footer-buttons-action-call">Submit your recipe to our catalog right now quickly and
+                        <h4 class="footer-buttons-action-call footer-text">Submit your recipe to our catalog right now quickly and
                             easily.</h4> <br>
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
                                 </div>
                                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
-                                    <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
-                                        data-bs-target="#submitModal">
-                                        Submit recipe
-                                    </button>
+                                    <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
                                 </div>
                                 <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="SubmitModalLabel">Submit</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Test</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <br>
                         <br>
-                        <h4>Want to create your own list of recipes?
+                        <h4 class="footer-text">Want to create your own list of recipes?
                             Want to create your own list of favorite from our catalog?
                             Want to add comments on recipes? <br><br></h4>
-                        <h4 class="footer-buttons-action-call">Create an account now! Its free and it only takes 2
+                        <h4 class="footer-buttons-action-call footer-text">Create an account now! Its free and it only takes 2
                             minutes.</h4><br>
                         <div class="row">
                             <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
-                                <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
-                                    data-bs-target="#signupModal">
+                                <a class="welcome-page-login-signup-button btn btn-dark" href="{% url 'accounts:signup' %}">
                                     Sign up
-                                </button>
+                                </a>
                             </div>
                             <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
                             </div>

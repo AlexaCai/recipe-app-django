@@ -70,6 +70,13 @@
                     <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Advanced search
                     </button>
+                    <br>
+                    <br>
+                    <br>
+                    <h1 class="search-title">
+                        Submit your recipe
+                    </h1>
+                    <button type="button" class="btn btn-light" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -195,6 +202,9 @@
                     </div>
                     <div class="col-8 text-center">
                         <br>
+                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <br>
+                        <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
@@ -251,6 +261,9 @@
                     </div>
                     <div class="col-8 text-center">
                         <br>
+                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <br>
+                        <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
@@ -304,6 +317,9 @@
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center">
+                        <br>
+                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <br>
                         <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
@@ -359,6 +375,9 @@
                     </div>
                     <div class="col-8 text-center">
                         <br>
+                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <br>
+                        <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
@@ -412,6 +431,9 @@
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center">
+                        <br>
+                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <br>
                         <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
@@ -469,6 +491,9 @@
                     </div>
                     <div class="col-8 text-center">
                         <br>
+                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <br>
+                        <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
@@ -522,6 +547,9 @@
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center">
+                        <br>
+                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <br>
                         <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
@@ -594,28 +622,9 @@
                                     <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
                                     </div>
                                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
-                                        <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal" data-bs-target="#submitModal">
-                                            Submit recipe
-                                        </button>
+                                        <button type="button" class="btn btn-dark w-100" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
                                     </div>
                                     <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="SubmitModalLabel">Submit</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Test</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Submit</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -252,7 +252,6 @@
     margin-bottom: 30px;
 }
 
-
 .recipes-continent-title-section {
     font-family: 'Cinzel', sans-serif;
     text-align: center;
@@ -269,13 +268,13 @@
 
 @media (max-width: 450px) {
     .icon-legend {
-        font-size: 12px;
+        font-size: 15px;
     }
 }
 
-@media (max-width: 280px) {
+@media (max-width: 300px) {
     .icon-legend {
-        font-size: 10px;
+        font-size: 13px;
     }
 }
 
@@ -638,9 +637,9 @@
     margin-bottom: 50px;
     background: url("../../../media/detailed-recipe-page-background2.jpg") center/cover no-repeat;
     padding: 10px;
-    border: solid 1px black;
     border-radius: 10px;
     text-align: center;
+    word-wrap: break-word;
 }
 
 .users-comments-title {
@@ -697,6 +696,12 @@
 .footer-background {
     background: url("../../../media/detailed-recipe-page-background1.jpg") center/cover no-repeat;
     border: solid 3px black;
+}
+
+@media (max-width: 350px) {
+    .footer-text {
+    font-size: 18px;
+    }   
 }
 
 .website-share-icons {

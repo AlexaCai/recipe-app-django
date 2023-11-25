@@ -118,6 +118,115 @@
 
 /* CSS for profile page */
 
+
+.recipe-page-intro-section {
+    background: url("../../../media/profile-page-background.jpg") center/cover no-repeat;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding: 100px 0;
+    height: 140vh;
+}
+
+@media (max-width: 325px) {
+    .recipe-page-intro-section {
+        padding-top: 40px;
+    }
+}
+
+.intro-text {
+    font-family: 'Lobster', sans-serif;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin: 10px auto;
+    max-width: 80%;
+    border-radius: 10px;
+}
+
+@media (max-width: 750px) {
+    .intro-text {
+        margin-bottom: 40px;
+    }
+}
+
+.intro-search-box {
+    background-color: rgba(250, 250, 250, 0.9);
+    padding: 20px;
+    margin: 10px auto;
+    max-width: 60%;
+    border-radius: 10px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    margin-top: 5%;
+}
+
+@media (max-width: 500px) {
+    .intro-search-box {
+        max-width: 80%;
+    }
+}
+
+.profile-page-title {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 800;
+}
+
+.create-recipe-form-group-space {
+    margin-bottom: 20px;
+}
+
+.create-recipe-form-subtitle {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
+}
+
+.create-recipe-form-directives {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.icon-legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 3px;
+    font-size: 20px;
+}
+
+@media (max-width: 450px) {
+    .icon-legend {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 280px) {
+    .icon-legend {
+        font-size: 10px;
+    }
+}
+
+.vertical-line {
+    margin: 0 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+@media (max-width: 350px) {
+    .vertical-line {
+        margin: 0 8px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 280px) {
+    .vertical-line {
+        margin: 0 6px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+
 .card-general-padding {
     padding: 20px;
     padding-bottom: 15px;
