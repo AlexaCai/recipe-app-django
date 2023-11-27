@@ -19,6 +19,20 @@ class SearchAllergensForm(forms.Form):
    
    chart_type = forms.ChoiceField(choices=CHART__CHOICES)
 
+unit_measure_choices = (
+    ("ml - milliliter", "ml - Milliliter"),
+    ("fl oz - fluid ounce", "fl oz - Fluid Ounce"),
+    ("tbsp - tablespoon", "tbsp - Tablespoon"),
+    ("tsp - teaspoon", "tsp - Teaspoon"),
+    ("L - liter", "L - Liter"),
+    ("pt - pint", "pt - Pint"),
+    ("g - gram", "g - Gram"),
+    ("oz - ounce", "oz - Ounce"),
+    ("lb - pound", "lb - Pound"),
+    ("kg - kilogram", "kg - Kilogram"),
+    ("unit", "Unit"),
+    ("units", "Units"),
+)
    
 country_choices = (
     ("afghan", "Afghan"),
@@ -256,8 +270,8 @@ class UserSubmitRecipe(forms.ModelForm):
     cooking_time = forms.IntegerField(required=True)
     number_of_portions = forms.IntegerField(required=True)
     recipe_estimated_cost = forms.DecimalField(required=True, max_digits=5, decimal_places=2)
-    origin_country = forms.ChoiceField(choices=country_choices, required=False, widget=forms.Select(attrs={'id': 'id_origin_country_update'}))
-    recipe_category = forms.ChoiceField(choices=category_choices, required=False, widget=forms.Select(attrs={'id': 'id_recipe_category_update'}))
+    origin_country = forms.ChoiceField(choices=country_choices, required=True, widget=forms.Select(attrs={'id': 'id_origin_country_update'}))
+    recipe_category = forms.ChoiceField(choices=category_choices, required=True, widget=forms.Select(attrs={'id': 'id_recipe_category_update'}))
     pic = forms.ImageField(required=False)
 
     class Meta:
@@ -265,6 +279,9 @@ class UserSubmitRecipe(forms.ModelForm):
         fields = ['recipe_name', 'cooking_time', 'description', 'special_note', 'number_of_portions', 'recipe_estimated_cost', 'origin_country', 'recipe_category', 'pic']
 
 class RecipeIngredientsForm(forms.ModelForm):
+
+    unit_of_measurement = forms.ChoiceField(choices=unit_measure_choices, required=False, widget=forms.Select(attrs={'id': 'id_unit_of_measurement_update'}))
+
     class Meta:
         model = RecipeIngredients
         fields = ['ingredient_name', 'quantity', 'unit_of_measurement', 'possible_substitute', 'substitue_special_note']

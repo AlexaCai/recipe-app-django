@@ -74,7 +74,7 @@
                             <textarea id="id_description" class="form-control" name="description" rows="4" placeholder="e.g.: Tacos al pastor is a traditional mexican dish..." required></textarea>
                         </div>
                         <div class="form-group form-group-space">
-                            <label for="id_special_note"><b>Special note</b> - Optional field</label>
+                            <label for="id_special_note"><b>Special note</b> - Optional</label>
                             <textarea id="id_special_note" class="form-control" name="special_note" rows="4" placeholder="e.g.: If you don't have pork, you can always use..."></textarea>
                         </div>
                         <div class="form-group form-group-space">
@@ -129,11 +129,11 @@
                                             </div>
                                             <div
                                                 class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-home-page">
-                                                <span>-Picture that is not blurry</span> <br>
-                                                <span>-Picture with good light</span> <br>
-                                                <span>-Picture in landscape mode only (horizontal)</span> <br>
-                                                <span>-Picture that only shows the recipe (e.g. no people in the photo)</span> <br>
-                                                <span>-1920 x 1280 photos are preferred, but picture of other sizes can still be submitted. Our team will take care of resizing the photo if necessary.</span><br><br>
+                                                <span>-Not blurry</span> <br>
+                                                <span>-Good light</span> <br>
+                                                <span>-Landscape mode (horizontal)</span> <br>
+                                                <span>-Only shows the recipe (e.g. no people)</span> <br><br>
+                                                <span>*1920 x 1280 size are preferred, but picture of other sizes can still be submitted. Our team will take care of resizing the photo if necessary.</span><br><br>
                                                 <h4 class="modal-title-home-page">Important note</h4>
                                                 <span>If you submit a picture taken from the web, <span style="text-decoration: underline;"><b>make sure the photo is copyright free</b></span></span>
                                             </div>
@@ -173,11 +173,11 @@
                                             </select>
                                         </div>
                                         <div class="form-group form-group-space">
-                                            <label for="{{ form.possible_substitute.id_for_label }}"><b>Possible substitute</b> - Optional field</label>
+                                            <label for="{{ form.possible_substitute.id_for_label }}"><b>Possible substitute</b> - Optional</label>
                                             <input type="text" id="{{ form.possible_substitute.auto_id }}" class="form-control" name="{{ form.possible_substitute.html_name }}" placeholder="e.g.: Pitas">
                                         </div>
                                         <div class="form-group form-group-space">
-                                            <label for="{{ form.substitue_special_note.id_for_label }}"><b>Substitute special note</b> - Optional field</label>
+                                            <label for="{{ form.substitue_special_note.id_for_label }}"><b>Substitute special note</b> - Optional</label>
                                             <textarea id="{{ form.substitue_special_note.auto_id }}" class="form-control" name="{{ form.substitue_special_note.html_name }}" rows="6" placeholder="e.g.: If tortillas are not available, pitas can be used to..."></textarea>
                                         </div>
                                     </div>
@@ -198,8 +198,8 @@
                                 <div class="allergen_formset">
                                     {{ form.id }}
                                     <div class="form-group form-group-space">
-                                        <label for="{{ form.allergen.id_for_label }}"><b>Allergen</b> - Optional field</label>
-                                            <input type="text" id="{{ form.allergen.auto_id }}" class="form-control" name="{{ form.allergen.html_name }}" placeholder="e.g.: coriander">
+                                        <label for="{{ form.allergen.id_for_label }}"><b>Allergen</b> - Optional</label>
+                                            <input type="text" id="{{ form.allergen.auto_id }}" class="form-control" name="{{ form.allergen.html_name }}" placeholder="e.g.: Coriander">
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -215,17 +215,17 @@
                         <h5 class="submit-recipe-form-directives">*Ensure to provide enough directions*</h5>
                         <br>
                         <div id="cooking-instructions-formset-container">
-\                               {{ cooking_instructions_formset.management_form }}
+                               {{ cooking_instructions_formset.management_form }}
                                 {% for form in cooking_instructions_formset %}
                                 <div class="cooking_instructions_formset">
                                     {{ form.id }}
                                     <div class="form-group form-group-space">
                                         <label for="{{ form.step_name.id_for_label }}"><b>Step - Required field</b></label>
-                                            <input type="text" id="{{ form.step_name.auto_id }}" class="form-control" name="{{ form.step_name.html_name }}" placeholder="e.g.: Step 1 - Preparing" required>
+                                            <input type="text" id="{{ form.step_name.auto_id }}" class="form-control" name="{{ form.step_name.html_name }}" placeholder="e.g.: Preparing the meat" required>
                                     </div>
                                     <div class="form-group form-group-space">
                                         <label for="{{ form.step_instruction.id_for_label }}"><b>Description - Field required</b></label>
-                                            <input type="text" id="{{ form.step_instruction.auto_id }}" class="form-control" name="{{ form.step_instruction.html_name }}" placeholder="e.g.: Marinate the meat for..." required>
+                                            <input type="text" id="{{ form.step_instruction.auto_id }}" class="form-control" name="{{ form.step_instruction.html_name }}" placeholder="e.g.: Marinate the meat for 6 hours with..." required>
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -235,7 +235,7 @@
                         <br>
                         <br>
                         <br>
-                        <button type="button" id="remove-instructions-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last instruction</button>
+                        <button type="button" id="remove-instructions-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last step</button>
                         <h2 class="page-subtitle">Cooking tools</h2>
                         <h5 class="submit-recipe-form-directives">*Enter only one cooking tool at time*</h5>
                         <br>
@@ -256,8 +256,8 @@
                         <br>
                         <br>
                         <br>
-                        <button type="button" id="remove-tools-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last instruction</button>
-                        <h2 class="page-subtitle">Similar recipes</h2>
+                        <button type="button" id="remove-tools-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last tool</button>
+                        <h2 class="page-subtitle">Similar recipe(s)</h2>
                         <h5 class="submit-recipe-form-directives">*Enter only one similar recipe at time*</h5>
                         <br>
                         <div id="recipe-similar-complementary-formset-container">
@@ -266,12 +266,12 @@
                                 <div class="recipe_similar_complementary_formset">
                                     {{ form.id }}
                                     <div class="form-group form-group-space">
-                                        <label for="{{ form.complementary_recipe_name.id_for_label }}"><b>Similar recipe</b> - Optional field</label>
+                                        <label for="{{ form.complementary_recipe_name.id_for_label }}"><b>Similar recipe</b> - Optional</label>
                                             <input type="text" id="{{ form.complementary_recipe_name.auto_id }}" class="form-control" name="{{ form.complementary_recipe_name.html_name }}" placeholder="e.g: Tacos suadero">
                                     </div>
                                     <div class="form-group form-group-space">
-                                        <label for="{{ form.complementary_recipe_link_unsigned_users.id_for_label }}"><b>Similar recipe url</b> - Optional field</label>
-                                            <input type="text" id="{{ form.complementary_recipe_link_unsigned_users.auto_id }}" class="form-control" name="{{ form.complementary_recipe_link_unsigned_users.html_name }}" placeholder="http://tablespoondiscovery/recipes-detail-unsigned-users/7">
+                                        <label for="{{ form.complementary_recipe_link_unsigned_users.id_for_label }}"><b>Similar recipe url</b> - Optional</label>
+                                            <input type="text" id="{{ form.complementary_recipe_link_unsigned_users.auto_id }}" class="form-control" name="{{ form.complementary_recipe_link_unsigned_users.html_name }}" placeholder="e.g.: http://tablespoondiscovery/recipes-detail-unsigned-users/7">
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -285,6 +285,10 @@
                         <br>
                         <br>
                         <button type="submit" value="submit" class="btn btn-dark">Submit recipe</button>
+                        <br>
+                        <br>
+                        <br>
+                        <p class="recipe-submit-page-submission-information">Note: Our team reserves the right to not publish a submitted recipe if it is very similar to an existing recipe from our catalog or if its information is incomplete / not clear enough. Our team also reserves the right to edit a submitted recipe to bring it up to our quality standard if necessary. Our goal is to offer the best user experience by publishing recipes with complete and quality information.</p>
                     </form>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-1">
