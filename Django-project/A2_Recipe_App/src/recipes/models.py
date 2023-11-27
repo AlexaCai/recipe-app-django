@@ -349,8 +349,8 @@ class RecipeToolsNeeded(models.Model):
 class RecipeSimilarComplementary(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe_complementary")
     complementary_recipe_name = models.CharField(max_length=100, blank=True)
-    complementary_recipe_link_unsigned_users = models.URLField(max_length=500, blank=True)
-    complementary_recipe_link_signed_users = models.URLField(max_length=500, blank=True)
+    complementary_recipe_link_unsigned_users = models.CharField(max_length=500, blank=True)
+    complementary_recipe_link_signed_users = models.CharField(max_length=500, blank=True)
     similar_recipe_pic = models.ImageField(upload_to="recipes", default="no_picture.jpg")
 
     def clean(self):
