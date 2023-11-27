@@ -68,16 +68,16 @@
                                 </div>
                                 <div
                                     class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 home-page-buttons-bottom-padding">
-                                    <a class="welcome-page-login-signup-button btn btn-dark w-100"
-                                        href="{% url 'recipes:recipes_list_signed_users' %}">
-                                        See recipes
+                                    <a href="{% url 'recipes:user_submit_recipe' %}"
+                                        class="btn btn-dark w-100">
+                                        Submit recipe
                                     </a>
                                 </div>
                                 <div
                                     class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 home-page-buttons-bottom-padding">
-                                    <a href="{% url 'recipes:user_submit_recipe' %}"
-                                        class="btn btn-dark w-100">
-                                        Submit another recipe
+                                    <a class="welcome-page-login-signup-button btn btn-dark w-100"
+                                        href="{% url 'recipes:recipes_list_signed_users' %}">
+                                        See recipes
                                     </a>
                                 </div>
                             </div>
@@ -106,13 +106,14 @@
                                                         if it does not already exist in our catalog and it appears
                                                         complete, it will be published shortly.</p>
                                                     <br>
-                                                    <p><b>*Note:</b> Among the reasons which could explain non-publication:</p>
-                                                    <br>
-                                                    <span>-Already existing recipe</span> <br>
+                                                    <p>*****</p>
+                                                    <p>Among the reasons which could explain non-publication:</p>
+                                                    <span>-Recipe already exist in our catalog</span> <br>
+                                                    <span>-Recipe too similar to an existing one</span> <br>
                                                     <span>-Missing information</span> <br>
                                                     <span>-Recipe not detailed enough</span> <br>
-                                                    <span>-Any other reason which would not allow the suggested recipe to
-                                                        have the required level of quality</span>
+                                                    <span>-Any other reason which would not allow the submitted recipe to
+                                                        have the required level of our quality standards</span>
                                                 </div>
                                                 <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                                 </div>
