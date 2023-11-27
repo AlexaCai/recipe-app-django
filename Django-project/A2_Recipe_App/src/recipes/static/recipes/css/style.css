@@ -731,34 +731,11 @@
 
 /* CSS for the submit recipe page */
 
+
 .first-image-background-submit-page {
     background: url("../../../media/pears-background.jpg") center/cover no-repeat;
-    height: 119vh;
+    height: 160vh;
     margin: 0;
-}
-
-.second-image-background {
-    background: url("../../../media/strawberry-background.jpg") center/cover no-repeat;
-    height: 119vh;
-    margin: 0;
-}
-
-.third-image-background {
-    background: url("../../../media/blueberries-background.jpg") center/cover no-repeat;
-    height: 119vh;
-    margin: 0;
-}
-
-.fourth-image-background {
-    background: url("../../../media/oranges-background.jpg") center/cover no-repeat;
-    height: 119vh;
-    margin: 0;
-}
-
-.submit-recipe-form-background {
-    background: rgba(255, 255, 255, 0.7);
-    padding-top: 80px;
-    padding-bottom: 80px;
 }
 
 .page-title {
@@ -772,11 +749,51 @@
     font-weight: 600;
 }
 
+.submit-recipe-form-background {
+    background: rgba(255, 255, 255, 0.85);
+    padding-top: 80px;
+    padding-bottom: 80px;
+    height: 160vh;
+}
+
+@media (max-width: 362px) {
+    .submit-recipe-form-background {
+        height: 160vh; 
+    }
+}
+
 .submit-recipe-form {
-    padding-left: 30px;
-    padding-right: 30px;
-    height: 2955px; 
+    padding-left: 40px;
+    padding-right: 40px;
+    height: 120vh; 
     overflow-y: auto;
+}
+
+@media (max-width: 450px) {
+    .submit-recipe-form {
+        padding-left: 30px;
+        padding-right: 30px;
+        height: 120vh; 
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 362px) {
+    .submit-recipe-form {
+        padding-left: 20px;
+        padding-right: 20px;
+        height: 115vh; 
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 278px) {
+    .submit-recipe-form {
+        padding-left: 20px;
+        padding-right: 20px;
+        height: 110vh; 
+        overflow-y: auto;
+    }
 }
 
 .form-group-space {
@@ -789,7 +806,123 @@
     text-decoration: underline;
 }
 
-/* CSS for the sucess submit recipe page */
+.submit-recipe-page-picture-direction {
+    color: red;
+    font-weight: bold;
+}
+
+.submit-recipe-page-picture-modal {
+    font-weight: bold;
+}
+
+.second-image-background {
+    background: url("../../../media/strawberry-background.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130vh; 
+}
+
+.third-image-background {
+    background: url("../../../media/blueberries-background.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130vh; 
+}
+
+.fourth-image-background {
+    background: url("../../../media/oranges-background.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130vh; 
+}
+
+.fifth-image-background {
+    background: url("../../../media/lemon-background2.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130vh; 
+}
+
+.sixth-image-background {
+    background: url("../../../media/watermelon-background.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130vh; 
+}
+
+.seventh-image-background {
+    background: url("../../../media/coconut-background.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130vh; 
+}
+
+.recipe-submit-page-fruit-background {
+    background-color: rgba(255, 255, 255, 0.90);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.recipe-submit-page-fruit-quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    position: relative;
+}
+
+.fruit-quote {
+    font-family: 'Lobster', sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+}
+
+@media (max-width: 425px) {
+    .fruit-quote {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 350px) {
+    .fruit-quote {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 350px) {
+    .fruit-quote {
+        font-size: 30px;
+    }
+}
+
+.fruit-quote-author {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
+}
+
+@media (max-width: 350px) {
+    .fruit-quote-author {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 300px) {
+    .fruit-quote-author {
+        font-size: 17px;
+    }
+}
+
+/* CSS for the succcess submit recipe page */
 
 .image-background-recipe-submit-success-page {
     background: url("../../../media/cherries-background.jpg") center/cover no-repeat;

@@ -55,9 +55,9 @@
     <body>
         <div class="first-image-background-submit-page text-center justify-content-center">
             <div class="row">
-                <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-1">
                 </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 submit-recipe-form-background">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-8 col-10 submit-recipe-form-background">
                     <h1 class="page-title">Submit a recipe</h1>
                     <br>
                     <h3 class="page-subtitle">Basic information</h3>
@@ -108,9 +108,45 @@
                             </select>
                         </div>
                         <div class="form-group form-group-space">
-                            <label for="id_pic"><b>Recipe picture - Field required</b></label>
+                            <label for="id_pic"><b>Recipe picture - Field required</b> <br>
+                            <span class="submit-recipe-page-picture-direction">*Ensure to provide copyright free / good quality picture*</span><span> - </span>                        
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#recipeSubmitPictureInfoModal" class="submit-recipe-page-picture-modal">What's a good picture?</a></label>
                             <input type="file" id="id_pic" name="pic" class="form-control">
                         </div>  
+                        <div class="modal fade" id="recipeSubmitPictureInfoModal" tabindex="-1"
+                            aria-labelledby="recipeSubmitPictureInfoModal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="home-page-modal-head">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4 class="modal-title-home-page">What's a good picture?</h4>
+                                        <div class="row">
+                                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                            </div>
+                                            <div
+                                                class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-home-page">
+                                                <span>-Picture that is not blurry</span> <br>
+                                                <span>-Picture with good light</span> <br>
+                                                <span>-Picture in landscape mode only (horizontal)</span> <br>
+                                                <span>-Picture that only shows the recipe (e.g. no people in the photo)</span> <br>
+                                                <span>-1920 x 1280 photos are preferred, but picture of other sizes can still be submitted. Our team will take care of resizing the photo if necessary.</span><br><br>
+                                                <h4 class="modal-title-home-page">Important note</h4>
+                                                <span>If you submit a picture taken from the web, <span style="text-decoration: underline;"><b>make sure the photo is copyright free</b></span></span>
+                                            </div>
+                                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-dark"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <br>
                         <h3 class="page-subtitle">Ingredients</h3>
                         <h5 class="submit-recipe-form-directives">*Enter only one ingredient at time*</h5>
@@ -175,7 +211,7 @@
                         <br>
                         <h3 class="page-subtitle">Instructions</h3>
                         <h5 class="submit-recipe-form-directives">*Enter only one step/description at time*</h5>
-                        <h5 class="submit-recipe-form-directives">*Make sure to give enough directions*</h5>
+                        <h5 class="submit-recipe-form-directives">*Ensure to provide enough directions*</h5>
                         <br>
                         <div id="cooking-instructions-formset-container">
                             <div class="cooking_instructions_formset">
@@ -249,19 +285,78 @@
                         <button type="submit" value="submit" class="btn btn-dark">Submit recipe</button>
                     </form>
                 </div>
-                <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-1">
                 </div>
             </div>
         </div>
-        <div class=" row second-image-background">
+        <div class="second-image-background">
+            <div class="row recipe-submit-page-fruit-quote">
+                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-10">
+                    <div class="recipe-submit-page-fruit-background">
+                        <h1 class="fruit-quote">"Instead of past, present, and future, I'd prefer chocolate, vanilla and strawberry"                            "</h1>
+                            <br>
+                        <h2 class="fruit-quote-author">-Ashleigh Brilliant</h2>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class=" row third-image-background">
+        <div class="third-image-background">
+            <div class="row recipe-submit-page-fruit-quote">
+                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-10">
+                    <div class="recipe-submit-page-fruit-background">
+                        <h1 class="fruit-quote">"He had a crush on a blueberry bush once"</h1>
+                            <br>
+                        <h2 class="fruit-quote-author">-Rick Riordan</h2>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class=" row fourth-image-background">
+        <div class="fourth-image-background">
+            <div class="row recipe-submit-page-fruit-quote">
+                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-10">
+                    <div class="recipe-submit-page-fruit-background">
+                        <h1 class="fruit-quote">"Little things. The thought of losing them makes them unbearably dear […]. The quarter moon, the taste of an orange. The smell of the pages of a new book."</h1>
+                            <br>
+                        <h2 class="fruit-quote-author">-Patricia Gaffney</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fifth-image-background">
+            <div class="row recipe-submit-page-fruit-quote">
+                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-10">
+                    <div class="recipe-submit-page-fruit-background">
+                        <h1 class="fruit-quote">"When life gives you lemons, don’t make lemonade, make pink lemonade. Be unique."</h1>
+                            <br>
+                        <h2 class="fruit-quote-author">-Wanda Sykes</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sixth-image-background">
+            <div class="row recipe-submit-page-fruit-quote">
+                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-10">
+                    <div class="recipe-submit-page-fruit-background">
+                        <h1 class="fruit-quote">"A watermelon that breaks open by itself tastes better than one cut with a knife."</h1>
+                            <br>
+                        <h2 class="fruit-quote-author">-Hualing Nieh Engle</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="seventh-image-background">
+            <div class="row recipe-submit-page-fruit-quote">
+                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-10">
+                    <div class="recipe-submit-page-fruit-background">
+                        <h1 class="fruit-quote">"The two basic items necessary to sustain life are sunshine and coconut milk."</h1>
+                            <br>
+                        <h2 class="fruit-quote-author">-Dustin Hoffman</h2>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
     <footer>
-
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
