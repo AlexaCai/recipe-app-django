@@ -60,17 +60,18 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-8 col-10 submit-recipe-form-background">
                     <h1 class="page-title">Submit a recipe</h1>
                     <br>
-                    <h3 class="page-subtitle">Basic information</h3>
                     <br>
                     <form method="post" enctype="multipart/form-data" class="submit-recipe-form">
                         {% csrf_token %}
+                        <h2 class="page-subtitle">Basic information</h2>
+                        <br>
                         <div class="form-group form-group-space">
                             <label for="id_recipe_name"><b>Recipe name - Field required</b></label>
                             <input type="text" id="id_recipe_name" class="form-control" name="recipe_name" placeholder="e.g.: Tacos al pastor" required>
                         </div>
                         <div class="form-group form-group-space">
                             <label for="id_description"><b>Description - Field required</b></label>
-                            <textarea id="id_description" class="form-control" name="description" rows="4" placeholder="e.g.: Tacos al pastor use traditional Mexican adobada..."></textarea>
+                            <textarea id="id_description" class="form-control" name="description" rows="4" placeholder="e.g.: Tacos al pastor is a traditional mexican dish..." required></textarea>
                         </div>
                         <div class="form-group form-group-space">
                             <label for="id_special_note"><b>Special note</b> - Optional field</label>
@@ -109,9 +110,9 @@
                         </div>
                         <div class="form-group form-group-space">
                             <label for="id_pic"><b>Recipe picture - Field required</b> <br>
-                            <span class="submit-recipe-page-picture-direction">*Ensure to provide copyright free / good quality picture*</span><span> - </span>                        
+                            <span class="submit-recipe-page-picture-direction">*Ensure to provide copyright free / good quality picture*</span><br>                       
                             <a href="#" data-bs-toggle="modal" data-bs-target="#recipeSubmitPictureInfoModal" class="submit-recipe-page-picture-modal">What's a good picture?</a></label>
-                            <input type="file" id="id_pic" name="pic" class="form-control">
+                            <input type="file" id="id_pic" name="pic" class="form-control" required>
                         </div>  
                         <div class="modal fade" id="recipeSubmitPictureInfoModal" tabindex="-1"
                             aria-labelledby="recipeSubmitPictureInfoModal" aria-hidden="true">
@@ -148,7 +149,7 @@
                             </div>
                         </div>
                         <br>
-                        <h3 class="page-subtitle">Ingredients</h3>
+                        <h2 class="page-subtitle">Ingredients</h2>
                         <h5 class="submit-recipe-form-directives">*Enter only one ingredient at time*</h5>
                         <br>                     
                         <div id="ingredients-formset-container">
@@ -188,7 +189,9 @@
                         <button type="button" id="add-form" class="btn btn-dark">Add Ingredient</button>
                         <br>
                         <br>
-                        <h3 class="page-subtitle">Allergen(s)</h3>
+                        <br>
+                        <button type="button" id="remove-ingredient-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last ingredient</button>
+                        <h2 class="page-subtitle">Allergen(s)</h2>
                         <h5 class="submit-recipe-form-directives">*Enter only one allergen at time*</h5>
                         <br>
                         <div id="allergens-formset-container">
@@ -209,7 +212,7 @@
                         <button type="button" id="allergen-form" class="btn btn-dark">Add allergen</button>
                         <br>
                         <br>
-                        <h3 class="page-subtitle">Instructions</h3>
+                        <h2 class="page-subtitle">Instructions</h2>
                         <h5 class="submit-recipe-form-directives">*Enter only one step/description at time*</h5>
                         <h5 class="submit-recipe-form-directives">*Ensure to provide enough directions*</h5>
                         <br>
@@ -235,7 +238,7 @@
                         <button type="button" id="cooking-instructions-form" class="btn btn-dark">Add step</button>
                         <br>
                         <br>
-                        <h3 class="page-subtitle">Cooking tools</h3>
+                        <h2 class="page-subtitle">Cooking tools</h2>
                         <h5 class="submit-recipe-form-directives">*Enter only one cooking tool at time*</h5>
                         <br>
                         <div id="recipe-tools-formset-container">
@@ -256,7 +259,7 @@
                         <button type="button" id="recipe-tools-form" class="btn btn-dark">Add tool</button>
                         <br>
                         <br>
-                        <h3 class="page-subtitle">Similar recipes</h3>
+                        <h2 class="page-subtitle">Similar recipes</h2>
                         <h5 class="submit-recipe-form-directives">*Enter only one similar recipe at time*</h5>
                         <br>
                         <div id="recipe-similar-complementary-formset-container">
