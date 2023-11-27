@@ -153,10 +153,9 @@
                         <h5 class="submit-recipe-form-directives">*Enter only one ingredient at time*</h5>
                         <br>                     
                         <div id="ingredients-formset-container">
-                            <div class="formset">
                                 {{ formset.management_form }}
                                 {% for form in formset %}
-                                    <div class="formset">
+                                    <div class="ingredients_formset">
                                         {{ form.id }}
                                         <div class="form-group form-group-space">
                                             <label for="{{ form.ingredient_name.id_for_label }}"><b>Ingredient - Field required</b></label>
@@ -183,10 +182,9 @@
                                         </div>
                                     </div>
                                 {% endfor %}
-                            </div>
                         </div>
                         <br>
-                        <button type="button" id="add-form" class="btn btn-dark">Add Ingredient</button>
+                        <button type="button" id="ingredient-form" class="btn btn-dark">Add Ingredient</button>
                         <br>
                         <br>
                         <br>
@@ -195,7 +193,6 @@
                         <h5 class="submit-recipe-form-directives">*Enter only one allergen at time*</h5>
                         <br>
                         <div id="allergens-formset-container">
-                            <div class="allergen_formset">
                                 {{ allergens_formset.management_form }}
                                 {% for form in allergens_formset %}
                                 <div class="allergen_formset">
@@ -206,19 +203,19 @@
                                     </div>
                                 </div>
                                 {% endfor %}
-                            </div>
                         </div>
                         <br>
                         <button type="button" id="allergen-form" class="btn btn-dark">Add allergen</button>
                         <br>
                         <br>
+                        <br>
+                        <button type="button" id="remove-allergen-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last allergen</button>
                         <h2 class="page-subtitle">Instructions</h2>
                         <h5 class="submit-recipe-form-directives">*Enter only one step/description at time*</h5>
                         <h5 class="submit-recipe-form-directives">*Ensure to provide enough directions*</h5>
                         <br>
                         <div id="cooking-instructions-formset-container">
-                            <div class="cooking_instructions_formset">
-                                {{ cooking_instructions_formset.management_form }}
+\                               {{ cooking_instructions_formset.management_form }}
                                 {% for form in cooking_instructions_formset %}
                                 <div class="cooking_instructions_formset">
                                     {{ form.id }}
@@ -232,17 +229,17 @@
                                     </div>
                                 </div>
                                 {% endfor %}
-                            </div>
                         </div>
                         <br>
                         <button type="button" id="cooking-instructions-form" class="btn btn-dark">Add step</button>
                         <br>
                         <br>
+                        <br>
+                        <button type="button" id="remove-instructions-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last instruction</button>
                         <h2 class="page-subtitle">Cooking tools</h2>
                         <h5 class="submit-recipe-form-directives">*Enter only one cooking tool at time*</h5>
                         <br>
                         <div id="recipe-tools-formset-container">
-                            <div class="recipe_tools_formset">
                                 {{ recipe_tools_formset.management_form }}
                                 {% for form in recipe_tools_formset %}
                                 <div class="recipe_tools_formset">
@@ -253,17 +250,17 @@
                                     </div>
                                 </div>
                                 {% endfor %}
-                            </div>
                         </div>
                         <br>
                         <button type="button" id="recipe-tools-form" class="btn btn-dark">Add tool</button>
                         <br>
                         <br>
+                        <br>
+                        <button type="button" id="remove-tools-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last instruction</button>
                         <h2 class="page-subtitle">Similar recipes</h2>
                         <h5 class="submit-recipe-form-directives">*Enter only one similar recipe at time*</h5>
                         <br>
                         <div id="recipe-similar-complementary-formset-container">
-                            <div class="recipe_similar_complementary_formset">
                                 {{ recipe_similar_complementary_formset.management_form }}
                                 {% for form in recipe_similar_complementary_formset %}
                                 <div class="recipe_similar_complementary_formset">
@@ -278,11 +275,13 @@
                                     </div>
                                 </div>
                                 {% endfor %}
-                            </div>
                         </div>
                         <br>
                         <button type="button" id="recipe-similar-complementary-form" class="btn btn-dark">Add similar
                             recipe</button>
+                        <br>
+                        <button type="button" id="remove-similar-recipe-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 40px; margin-top: 40px;">Remove last recipe</button><br>
+                        <span>*****</span>
                         <br>
                         <br>
                         <button type="submit" value="submit" class="btn btn-dark">Submit recipe</button>
@@ -296,7 +295,7 @@
             <div class="row recipe-submit-page-fruit-quote">
                 <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-10">
                     <div class="recipe-submit-page-fruit-background">
-                        <h1 class="fruit-quote">"Instead of past, present, and future, I'd prefer chocolate, vanilla and strawberry"                            "</h1>
+                        <h1 class="fruit-quote">"Instead of past, present, and future, I'd prefer chocolate, vanilla and strawberry"</h1>
                             <br>
                         <h2 class="fruit-quote-author">-Ashleigh Brilliant</h2>
                     </div>

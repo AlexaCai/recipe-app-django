@@ -402,13 +402,3 @@ def user_submit_recipe(request):
         'recipe_tools_formset': recipe_tools_formset,
         'recipe_similar_complementary_formset': recipe_similar_complementary_formset
     })
-
-# def user_submit_recipe_redirection_success(request):
-#     response = user_submit_recipe(request)
-#     if response.status_code in [302, 200]:
-#         return render(request, 'accounts/recipe_submitted_success.html')
-
-# def user_submit_recipe_redirection_failed(request):
-#     response = user_submit_recipe(request)
-#     if response.status_code not in [302, 200]:
-#         return render(request, 'accounts/recipe_submitted_failed.html')
