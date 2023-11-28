@@ -295,33 +295,3 @@ function updateFormsetManagementForm(formsetContainer, formCount) {
 }
 
 
-
-
-
-
-
-// Logic used to fill the update form with the data from the recipe that the user wants to update.
-function fillUpdateForm(recipeName, description, specialNote, cookingTime, numberOfPortions, estimatedCost, originCountry, recipeCategory, recipePic) {
-    document.getElementById('id_recipe_name_update').value = recipeName;
-    document.getElementById('id_description_update').value = description;
-    document.getElementById('id_special_note_update').value = specialNote;
-    document.getElementById('id_cooking_time_update').value = cookingTime;
-    document.getElementById('id_number_of_portions_update').value = numberOfPortions;
-    document.getElementById('id_recipe_estimated_cost_update').value = estimatedCost;
-
-    var originCountryDropdown = document.getElementById('id_origin_country_update');
-    for (var i = 0; i < originCountryDropdown.options.length; i++) {
-        if (originCountryDropdown.options[i].value === originCountry) {
-            originCountryDropdown.options[i].selected = true;
-            break;
-        }
-    }
-
-    var recipeCategoryDropdown = document.getElementById('id_recipe_category_update');
-    for (var i = 0; i < recipeCategoryDropdown.options.length; i++) {
-        if (recipeCategoryDropdown.options[i].value === recipeCategory) {
-            recipeCategoryDropdown.options[i].selected = true;
-            break;
-        }
-    }
-}
