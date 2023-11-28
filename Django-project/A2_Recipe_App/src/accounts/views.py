@@ -4,9 +4,10 @@ from django.contrib.auth import authenticate, login, logout
 # Django Form for authentication
 from django.contrib.auth.forms import AuthenticationForm
 from accounts.forms import UserAdminCreationForm  
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from recipes.models import Recipe
 from .forms import UserCreatePrivateRecipe, RecipeIngredientsFormSet, RecipeAllergensFormSet, RecipeCookingInstructionsFormSet
+from django.urls import reverse
 
 def signup_view(request):
     if request.method == 'POST':
@@ -162,28 +163,24 @@ def user_private_recipe_update(request, id):
     recipe = get_object_or_404(Recipe, id=id)
 
     if request.method == 'POST':
-        recipe_form = UserCreatePrivateRecipe(request.POST, request.FILES, instance=recipe)
-        ingredients_formset = RecipeIngredientsFormSet(request.POST, instance=recipe)
-        allergens_formset = RecipeAllergensFormSet(request.POST, instance=recipe)
-        cooking_instructions_formset = RecipeCookingInstructionsFormSet(request.POST, instance=recipe)
+        form = UserCreatePrivateRecipe(request.POST, request.FILES, instance=recipe)
+        formset = RecipeIngredientsFormSet(request.POST, prefix='formset', instance=recipe)
+        allergens_formset = RecipeAllergensFormSet(request.POST, prefix='allergens', instance=recipe)
+        cooking_instructions_formset = RecipeCookingInstructionsFormSet(request.POST, prefix='cooking_instructions', instance=recipe)
 
-        if recipe_form.is_valid() and ingredients_formset.is_valid() and allergens_formset.is_valid() and cooking_instructions_formset.is_valid():
-            recipe_form.save()
-            ingredients_formset.save()
+        if form.is_valid() and formset.is_valid() and allergens_formset.is_valid() and cooking_instructions_formset.is_valid():
+            print('Form is valid')
+            print("Form Data:", request.POST)
+            form.save()
+            formset.save()
             allergens_formset.save()
             cooking_instructions_formset.save()
 
-            return HttpResponseRedirect(request.META['HTTP_REFERER'])
+            return redirect('accounts:profile')
     else:
-        recipe_form = UserCreatePrivateRecipe(instance=recipe)
-        ingredients_formset = RecipeIngredientsFormSet(instance=recipe)
-        allergens_formset = RecipeAllergensFormSet(instance=recipe)
-        cooking_instructions_formset = RecipeCookingInstructionsFormSet(instance=recipe)
+        form = UserCreatePrivateRecipe(instance=recipe)
+        formset = RecipeIngredientsFormSet(prefix='formset', instance=recipe)
+        allergens_formset = RecipeAllergensFormSet(prefix='allergens', instance=recipe)
+        cooking_instructions_formset = RecipeCookingInstructionsFormSet(prefix='cooking_instructions', instance=recipe)
 
-    return render(request, 'accounts/profile.html', {
-        'recipe_form': recipe_form,
-        'ingredients_formset': ingredients_formset,
-        'allergens_formset': allergens_formset,
-        'cooking_instructions_formset': cooking_instructions_formset,
-        'recipe': recipe
-    })
+    return render(request, 'accounts/profile.html', {'form': form, 'formset': formset, 'allergens_formset': allergens_formset, 'cooking_instructions_formset': cooking_instructions_formset, 'recipe': recipe})

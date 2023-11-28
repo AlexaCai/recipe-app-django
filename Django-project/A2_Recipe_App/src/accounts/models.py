@@ -98,5 +98,3 @@ class User(AbstractBaseUser):
             "Is the user an active member?"
             return self._is_active
 
-
-
