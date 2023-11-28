@@ -308,27 +308,20 @@ function fillUpdateForm(recipeName, description, specialNote, cookingTime, numbe
     document.getElementById('id_cooking_time_update').value = cookingTime;
     document.getElementById('id_number_of_portions_update').value = numberOfPortions;
     document.getElementById('id_recipe_estimated_cost_update').value = estimatedCost;
-    document.getElementById('id_pic_update').value = recipePic;
 
     var originCountryDropdown = document.getElementById('id_origin_country_update');
     for (var i = 0; i < originCountryDropdown.options.length; i++) {
-        console.log('Option:', originCountryDropdown.options[i].value);
         if (originCountryDropdown.options[i].value === originCountry) {
-            console.log('Match found for originCountry:', originCountry);
             originCountryDropdown.options[i].selected = true;
             break;
         }
     }
-    console.log('Setting value for originCountry: ', originCountry);
 
     var recipeCategoryDropdown = document.getElementById('id_recipe_category_update');
     for (var i = 0; i < recipeCategoryDropdown.options.length; i++) {
-        console.log('Option:', recipeCategoryDropdown.options[i].value);
         if (recipeCategoryDropdown.options[i].value === recipeCategory) {
-            console.log('Match found for recipeCategory:', recipeCategory);
             recipeCategoryDropdown.options[i].selected = true;
             break;
         }
     }
-    console.log('Setting value for recipeCategory: ', recipeCategory);
 }

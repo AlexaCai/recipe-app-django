@@ -142,7 +142,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group create-recipe-form-group-space">
-                                    <label for="id_pic"><b>Recipe picture - Field required</b></label>
+                                    <label for="id_pic"><b>Recipe picture - Field required</b></label><br>
+                                    <span style="color: red;">*Pictures are automatically resized to 1920x1280. For a better visual, upload images in landscape mode.</span>
                                     <input type="file" id="id_pic" name="pic" class="form-control">
                                 </div>
                                 <br>
@@ -375,8 +376,7 @@
                         </div>
                         <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#updatePrivateRecipe"
-                                onclick="fillUpdateForm('{{ object.recipe_name }}', '{{ object.description }}', '{{ object.special_note }}', '{{ object.cooking_time }}', '{{ object.number_of_portions }}', '{{ object.recipe_estimated_cost }}', '{{ object.origin_country }}', '{{ object.recipe_category }}', '{{ object.pic }}')">
+                                data-bs-target="#updatePrivateRecipe">
                                 Update
                             </button>
                         </div>
@@ -518,8 +518,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Save
-                                                changes</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
                                         </div>
                                     </form>
                                 </div>
@@ -528,7 +527,7 @@
                     </div>
                 </div>
                 {% empty %}
-                <h5 class="text-center"> <br> No created recipes available.</h5>
+                <h5 class="text-center"><br> No created recipes available.</h5>
                 {% endfor %}
             </div>
             <br>

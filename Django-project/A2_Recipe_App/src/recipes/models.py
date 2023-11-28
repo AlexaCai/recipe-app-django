@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.shortcuts import reverse
 from django.conf import settings
+from PIL import Image
 
 
 
@@ -265,6 +266,18 @@ class Recipe(models.Model):
     creation_date = models.DateField(auto_now_add=True)
     pic = models.ImageField(upload_to="recipes", default="no_picture.jpg")
     favorites = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='favorites', default=None, blank=True)
+
+    # Used to automatically resize uploaded images to 1920x1280 pixels
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        img = Image.open(self.pic.path)
+
+        image_size = (1920, 1280)
+
+        if img.size != image_size:
+            img = img.resize(image_size)
+            img.save(self.pic.path)
 
     def calculate_difficulty(self):
         ingredient_count = self.recipe_ingredients.count()

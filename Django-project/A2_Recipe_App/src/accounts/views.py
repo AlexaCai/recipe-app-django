@@ -7,7 +7,6 @@ from accounts.forms import UserAdminCreationForm
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from recipes.models import Recipe
 from .forms import UserCreatePrivateRecipe, RecipeIngredientsFormSet, RecipeAllergensFormSet, RecipeCookingInstructionsFormSet
-from django.urls import reverse
 
 def signup_view(request):
     if request.method == 'POST':
@@ -174,13 +173,7 @@ def user_private_recipe_update(request, id):
             allergens_formset.save()
             cooking_instructions_formset.save()
 
-            profile_url = reverse('accounts:profile')
-            return HttpResponseRedirect(profile_url)
-        
-        else:
-            print(recipe_form.errors)
-            print('Error')
-
+            return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
         recipe_form = UserCreatePrivateRecipe(instance=recipe)
         ingredients_formset = RecipeIngredientsFormSet(instance=recipe)
