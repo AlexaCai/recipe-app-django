@@ -452,63 +452,70 @@
                                         <div id="ingredients-formset-update-container">
                                             {{ formset.management_form }}
                                             {% for form in formset %}
-                                                <div class="form-group">
-                                                    <label for="{{ form.ingredient_name.id_for_label }}">Ingredient:</label>
-                                                    {{ form.ingredient_name }}
+                                            <div class="ingredients_formset">
+                                                {{ form.id }}
+                                                <div class="form-group create-recipe-form-group-space">
+                                                    <label for="{{ form.ingredient_name.id_for_label }}"><b>Ingredient - Field required</b></label>
+                                                    <input type="text" id="{{ form.prefix }}-ingredient_name" class="form-control" name="{{ form.prefix }}-ingredient_name" placeholder="e.g.: Tortillas" required>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="{{ form.quantity.id_for_label }}">Quantity:</label>
-                                                    {{ form.quantity }}
+                                                <div class="form-group create-recipe-form-group-space">
+                                                    <label for="{{ form.quantity.id_for_label }}"><b>Quantity - Field required (only number)</b></label>
+                                                    <input type="number" id="{{ form.prefix }}-quantity" class="form-control" name="{{ form.prefix }}-quantity" placeholder="e.g.: 25" required>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="{{ form.unit_of_measurement.id_for_label }}">Measurement Unit:</label>
-                                                    {{ form.unit_of_measurement }}
+                                                <div class="form-group create-recipe-form-group-space">
+                                                    <label for="{{ form.unit_of_measurement.id_for_label }}"><b>Measurement unit - Field required</b></label>
+                                                    <select name="{{ form.prefix }}-unit_of_measurement" id="{{ form.prefix }}-unit_of_measurement" class="form-select">
+                                                        {% for choice in form.unit_of_measurement.field.choices %}
+                                                        <option value="{{ choice.0 }}">{{choice.1 }}</option>
+                                                        {% endfor %}
+                                                    </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="{{ form.possible_substitute.id_for_label }}">Substitute:</label>
-                                                    {{ form.possible_substitute }}
+                                                <div class="form-group create-recipe-form-group-space">
+                                                    <label for="{{ form.possible_substitute.id_for_label }}"><b>Possible substitute</b> - Optional</label>
+                                                    <input type="text" id="{{ form.prefix }}-possible_substitute" class="form-control" name="{{ form.prefix }}-possible_substitute" placeholder="e.g.: Pitas">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="{{ form.substitue_special_note.id_for_label }}">Substitute Special Note:</label>
-                                                    {{ form.substitue_special_note }}
+                                                <div class="form-group create-recipe-form-group-space">
+                                                    <label for="{{ form.substitue_special_note.id_for_label }}"><b>Substitute special note</b> - Optional</label>
+                                                    <textarea id="{{ form.prefix }}-substitue_special_note" class="form-control" name="{{ form.prefix }}-substitue_special_note" rows="6" placeholder="e.g.: If tortillas are not available, pitas can be used to..."></textarea>
                                                 </div>
+                                            </div>
                                             {% endfor %}
-                                        </div>                                        
+                                        </div>                                                                        
                                         <button type="button" id="add-ingredient-update-form"
-                                            class="btn btn-secondary">Add
-                                            Ingredient</button>
+                                            class="btn btn-secondary">Add Ingredient</button>
                                         <br>
                                         <br>
                                         <div id="allergens-formset-update-container">
-                                            <div class="allergen_formset">
-                                                {{ allergens_formset.management_form }}
-                                                {% for form in allergens_formset %}
+                                            {{ allergens_formset.management_form }}
+                                            {% for form in allergens_formset %}
                                                 <div class="allergen_formset">
                                                     {{ form.id }}
-                                                    <label for="id_allergen">Allergen</label>
-                                                    {{ form.allergen }}
+                                                    <div class="form-group create-recipe-form-group-space">
+                                                        <label for="{{ form.allergen.id_for_label }}"><b>Allergen</b></label>
+                                                        <input type="text" id="{{ form.prefix }}-allergen" class="form-control" name="{{ form.prefix }}-allergen" placeholder="e.g.: Coriander" required>
+                                                    </div>
                                                 </div>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                        <button type="button" id="allergen-update-form" class="btn btn-secondary">Add
-                                            allergen</button>
+                                            {% endfor %}
+                                        </div>                                                                    
+                                        <button type="button" id="allergen-update-form" class="btn btn-secondary">Add allergen</button>
                                         <br>
                                         <br>
                                         <div id="cooking-instructions-formset-update-container">
-                                            <div class="cooking_instructions_formset">
                                                 {{ cooking_instructions_formset.management_form }}
                                                 {% for form in cooking_instructions_formset %}
                                                 <div class="cooking_instructions_formset">
                                                     {{ form.id }}
-                                                    <label for="id_step_name">Step</label>
-                                                    {{ form.step_name }}
-                                                    <label for="id_step_instruction">Instruction</label>
-                                                    {{ form.step_instruction }}
+                                                    <div class="form-group create-recipe-form-group-space">
+                                                        <label for="{{ form.step_name.id_for_label }}"><b>Step</b></label>
+                                                        <input type="text" id="{{ form.prefix }}-step_name" class="form-control" name="{{ form.prefix }}-step_name" placeholder="e.g.: Prep" required>
+                                                    </div>
+                                                    <div class="form-group create-recipe-form-group-space">
+                                                        <label for="{{ form.step_instruction.id_for_label }}"><b>Instruction</b></label>
+                                                        <input type="text" id="{{ form.prefix }}-step_instruction" class="form-control" name="{{ form.prefix }}-step_instruction" placeholder="e.g.: Marinate the meat..." required>
+                                                    </div>
                                                 </div>
                                                 {% endfor %}
                                             </div>
-                                        </div>
                                         <button type="button" id="cooking-instructions-update-form"
                                             class="btn btn-secondary">Add
                                             step</button>
