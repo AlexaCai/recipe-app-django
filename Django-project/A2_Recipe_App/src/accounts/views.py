@@ -7,6 +7,7 @@ from accounts.forms import UserAdminCreationForm
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from recipes.models import Recipe
 from .forms import UserCreatePrivateRecipe, RecipeIngredientsFormSet, RecipeAllergensFormSet, RecipeCookingInstructionsFormSet
+from django.urls import reverse
 
 def signup_view(request):
     if request.method == 'POST':
@@ -158,7 +159,38 @@ def user_private_recipe_new(request):
     return render(request, 'accounts/profile.html', {'form': form, 'formset': formset, 'allergens_formset': allergens_formset, 'cooking_instructions_formset': cooking_instructions_formset})
 
 
-# def user_private_recipe_update(request, recipe_id):
-#     existing_recipe = Recipe.objects.get(pk=recipe_id)
-#     form = UserCreatePrivateRecipe(instance=existing_recipe)
-#     return render(request, 'profile.html', {'existing_recipe': existing_recipe, 'form': form})
+def user_private_recipe_update(request, id):
+    recipe = get_object_or_404(Recipe, id=id)
+
+    if request.method == 'POST':
+        recipe_form = UserCreatePrivateRecipe(request.POST, request.FILES, instance=recipe)
+        ingredients_formset = RecipeIngredientsFormSet(request.POST, instance=recipe)
+        allergens_formset = RecipeAllergensFormSet(request.POST, instance=recipe)
+        cooking_instructions_formset = RecipeCookingInstructionsFormSet(request.POST, instance=recipe)
+
+        if recipe_form.is_valid() and ingredients_formset.is_valid() and allergens_formset.is_valid() and cooking_instructions_formset.is_valid():
+            recipe_form.save()
+            ingredients_formset.save()
+            allergens_formset.save()
+            cooking_instructions_formset.save()
+
+            profile_url = reverse('accounts:profile')
+            return HttpResponseRedirect(profile_url)
+        
+        else:
+            print(recipe_form.errors)
+            print('Error')
+
+    else:
+        recipe_form = UserCreatePrivateRecipe(instance=recipe)
+        ingredients_formset = RecipeIngredientsFormSet(instance=recipe)
+        allergens_formset = RecipeAllergensFormSet(instance=recipe)
+        cooking_instructions_formset = RecipeCookingInstructionsFormSet(instance=recipe)
+
+    return render(request, 'accounts/profile.html', {
+        'recipe_form': recipe_form,
+        'ingredients_formset': ingredients_formset,
+        'allergens_formset': allergens_formset,
+        'cooking_instructions_formset': cooking_instructions_formset,
+        'recipe': recipe
+    })

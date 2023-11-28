@@ -1,6 +1,8 @@
 // Logic used to add dynamically more forms/lines to the ingredients formset on frontend, to allow users
 // to add as much ingredients to their recipe as they want when SUBMITTING recipes.
 document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOMContentLoaded fired'); // Add this line
+
     var formsetContainer = document.getElementById('ingredients-formset-container');
     var addFormButton = document.getElementById('ingredient-form');
     var removeFormButton = document.getElementById('remove-ingredient-form');

@@ -170,6 +170,12 @@
     font-weight: 800;
 }
 
+.home-page-modal-head {
+    display: flex;
+    padding: 20px;
+    justify-content: flex-end;
+}
+
 .create-recipe-form-group-space {
     margin-bottom: 20px;
 }
