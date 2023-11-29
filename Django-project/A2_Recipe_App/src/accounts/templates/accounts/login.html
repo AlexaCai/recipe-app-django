@@ -21,7 +21,7 @@
 <main>
     <header>
         <div class="header-display">
-            <nav class="navbar navbar-expand-md navbar-light nav justify-content-end">
+            <nav class="navbar navbar-expand-md navbar-light justify-content-end">
                 <div class="logo-container">
                     <img src="../../../media/temporary-logo.jpg" alt="ac-logo" class="logo-image">
                 </div>
@@ -52,37 +52,56 @@
                     <div class="action-box-1">
                         <h1 class="website-title">A tablespoon of discovery</h1>
                         <br>
-                        <h2 class="login-signup-logout-pages-subtitle">Log in</h2>
+                        <h2 class="page-main-message">Log in</h2>
                         <br>
                         <div class="container">
+                            {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {% for error in form.non_field_errors %}
+                                <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
                             <div class="row">
                                 <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2">
                                 </div>
-                                {% if error_message %}
-                                {{error_message}}
-                                {% endif %}
                                 <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-8">
-                                    <form action="{% url 'accounts:login' %}" method="POST" class="row justify-content-center">
+                                    <form action="{% url 'accounts:login' %}" method="POST"
+                                        class="row justify-content-center">
                                         {% csrf_token %}
                                         <h5>Email</h5>
                                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12 login-form">
                                             <div class="input-group input-group-lg">
                                                 <input id="username-field" name="{{ form.username.name }}" type="text"
-                                                    class="form-control"
-                                                    aria-label="username-login" aria-describedby="username-field">
+                                                    class="form-control" aria-label="username-login"
+                                                    aria-describedby="email-field">
                                             </div>
+                                            {% if form.username.errors %}
+                                            <div class="alert alert-danger">
+                                                {% for error in form.username.errors %}
+                                                <p>{{ error }}</p>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
                                         </div>
                                         <h5>Password</h5>
                                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12 login-form">
                                             <div class="input-group input-group-lg">
                                                 <input id="password-field" name="{{ form.password.name }}"
-                                                    type="password" class="form-control"
-                                                    aria-label="password-login" aria-describedby="password-field">
+                                                    type="password" class="form-control" aria-label="password-login"
+                                                    aria-describedby="password-field">
                                             </div>
+                                            {% if form.password.errors %}
+                                            <div class="alert alert-danger">
+                                                {% for error in form.password.errors %}
+                                                <p>{{ error }}</p>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
                                         </div>
                                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-10">
-                                            <button type="submit" class="btn btn-dark mt-3 advanced-search-modal-button"
-                                                id="button-addon3" data-bs-dismiss="modal">Login</button>
+                                            <button type="submit" class="btn btn-dark mt-3" id="login-button"
+                                                data-bs-dismiss="modal">Login</button>
                                         </div>
                                     </form>
                                 </div>
@@ -94,7 +113,6 @@
                 </div>
             </div>
         </div>
-
     </body>
 
     <footer>
