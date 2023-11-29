@@ -52,7 +52,7 @@ def login_view(request):
 # define a function view called logout_view that takes a request from user
 def logout_view(request):
     logout(request)
-    return render(request, 'accounts/success.html')
+    return render(request, 'accounts/logout.html')
 
 
 def delete_account(request):

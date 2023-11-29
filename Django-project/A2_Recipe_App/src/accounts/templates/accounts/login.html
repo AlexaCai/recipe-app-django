@@ -55,13 +55,18 @@
                         <h2 class="page-main-message">Log in</h2>
                         <br>
                         <div class="container">
-                            {% if form.non_field_errors %}
-                            <div class="alert alert-danger">
-                                {% for error in form.non_field_errors %}
-                                <p>{{ error }}</p>
-                                {% endfor %}
+                            <div class="row">
+                                {% if form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong>Error(s):</strong>
+                                    <ul class="error-message">
+                                        {% for error in form.non_field_errors %}
+                                        <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
                             </div>
-                            {% endif %}
                             <div class="row">
                                 <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2">
                                 </div>

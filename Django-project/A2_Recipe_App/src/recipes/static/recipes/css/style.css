@@ -59,8 +59,8 @@
 }
 
 .image-background {
-    background: url("../../../media/welcome-page-background.jpg") center/cover no-repeat;
-    height: 120vh;
+    background: url("../../../media/landing-pages-background.jpg") center/cover no-repeat;
+    height: 125vh;
     margin: 0;
 }
 

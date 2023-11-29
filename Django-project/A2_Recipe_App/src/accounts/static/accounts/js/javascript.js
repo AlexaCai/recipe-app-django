@@ -293,5 +293,3 @@ function updateFormsetManagementForm(formsetContainer, formCount) {
         totalFormsInput.value = formCount;
     }
 }
-
-

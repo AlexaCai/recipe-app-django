@@ -1,4 +1,4 @@
-/* CSS for the login, signup and logout pages */
+/* CSS code shared for all accounts app templates */
 
 .header-display {
     padding: 20px;
@@ -59,18 +59,17 @@
 }
 
 .image-background {
-    background: url("../../../media/welcome-page-background.jpg") center/cover no-repeat;
-    height: 120vh;
+    background: url("../../../media/landing-pages-background.jpg") center/cover no-repeat;
+    height: 125vh;
     margin: 0;
 }
 
 .action-boxes {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 90vh;
-    margin: 0;
+    margin-top: 30px;
 }
 
 .action-box-1 {
@@ -79,6 +78,8 @@
     padding: 20px;
     background-color: rgb(255, 255, 255, 0.80);
     border-radius: 10px;
+    align-self: flex-start; 
+    margin-top: 40px;
 }
 
 .website-title {
@@ -99,21 +100,77 @@
     }
 }
 
-.login-signup-logout-pages-subtitle {
+.page-main-message {
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
 }
 
 @media (max-width: 355px) {
-    .login-signup-logout-pages-subtitle {
+    .page-main-message {
         font-size: 25px;
     }
 }
 
 @media (max-width: 300px) {
-    .login-signup-logout-pages-subtitle {
+    .page-main-message {
         font-size: 20px;
     }
+}
+
+.error-message {
+    padding-left: unset
+}
+
+/* CSS for login page precisly */
+
+.login-form {
+    margin-bottom: 20px;
+}
+
+/* CSS for signup page precisly */
+
+.signup-page-image-background {
+    background: url("../../../media/landing-pages-background.jpg") center/cover no-repeat;
+    height: 125vh;
+    margin: 0;
+}
+
+@media (max-width: 1120px) {
+    .signup-page-image-background {
+        height: 135vh;
+    }
+}
+
+@media (max-width: 325px) {
+    .signup-page-image-background {
+        height: 140vh;
+    }
+}
+
+.signup-form {
+    margin-bottom: 20px;
+}
+
+/* CSS for logout page precisly */
+
+.logout-page-action-boxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    height: 90vh; 
+}
+
+.logout-page-action-box-1 {
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    background-color: rgb(255, 255, 255, 0.80);
+    border-radius: 10px;
+}
+
+.logout-page-buttons-bottom-margin {
+    margin-bottom: 20px;
 }
 
 /* CSS for delete page */
@@ -124,17 +181,14 @@
 
 /* CSS for profile page */
 
-
-.recipe-page-intro-section {
+.profile-page-image-background {
     background: url("../../../media/profile-page-background.jpg") center/cover no-repeat;
-    text-align: center;
-    color: rgb(0, 0, 0);
     padding: 100px 0;
     height: 140vh;
 }
 
 @media (max-width: 325px) {
-    .recipe-page-intro-section {
+    .profile-page-image-background {
         padding-top: 40px;
     }
 }
@@ -154,24 +208,22 @@
     }
 }
 
-.intro-search-box {
+.profile-page-create-recipe-box {
     background-color: rgba(250, 250, 250, 0.95);
     padding: 20px;
     margin: 10px auto;
     max-width: 60%;
     border-radius: 10px;
-    text-align: center;
-    color: rgb(0, 0, 0);
     margin-top: 5%;
 }
 
 @media (max-width: 500px) {
-    .intro-search-box {
+    .profile-page-create-recipe-box {
         max-width: 80%;
     }
 }
 
-.profile-page-title {
+.profile-page-call-to-action {
     font-family: 'Cinzel', sans-serif;
     font-weight: 800;
 }
