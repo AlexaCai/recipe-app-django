@@ -690,12 +690,10 @@
 
 .footer-padding {
     margin-top: 80px;
-    padding: 8px;
 }
 
 .footer-background {
     background: url("../../../media/detailed-recipe-page-background1.jpg") center/cover no-repeat;
-    border: solid 3px black;
 }
 
 @media (max-width: 350px) {

@@ -228,25 +228,9 @@
     font-weight: 800;
 }
 
-.home-page-modal-head {
-    display: flex;
-    padding: 20px;
-    justify-content: flex-end;
-}
-
-.create-recipe-form-group-space {
-    margin-bottom: 20px;
-}
-
-.create-recipe-form-subtitle {
+.profile-page-title {
     font-family: 'Cinzel', sans-serif;
-    font-weight: 600;
-}
-
-.create-recipe-form-directives {
-    color: rgb(255, 0, 0);
-    font-weight: bold;
-    text-decoration: underline;
+    font-weight: 800;
 }
 
 .icon-legend {
@@ -269,35 +253,29 @@
     }
 }
 
-.vertical-line {
+.icon-separator-vertical-line {
     margin: 0 20px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 @media (max-width: 350px) {
-    .vertical-line {
+    .icon-separator-vertical-line {
         margin: 0 8px;
-        font-weight: bold;
         font-size: 20px;
     }
 }
 
 @media (max-width: 280px) {
-    .vertical-line {
+    .icon-separator-vertical-line {
         margin: 0 6px;
-        font-weight: bold;
         font-size: 20px;
     }
 }
 
-.card-general-padding {
+.recipe-card-padding {
     padding: 20px;
     padding-bottom: 15px;
-}
-
-.card-bottom-padding {
-    padding-bottom: 50px;
 }
 
 .card-text {
@@ -331,7 +309,7 @@
     }
 }
 
-.line-background {
+.recipe-card-quick-info-display {
     background: rgba(255, 255, 255, 0.97);
     padding: 10px;
     margin: 5px 0;
@@ -343,21 +321,21 @@
 }
 
 @media (max-width: 450px) {
-    .line-background {
+    .recipe-card-quick-info-display {
         font-size: 15px;
         padding: 5px;
     }
 }
 
 @media (max-width: 350px) {
-    .line-background {
+    .recipe-card-quick-info-display {
         font-size: 14px;
         padding: 4px;
     }
 }
 
 @media (max-width: 350px) {
-    .line-background {
+    .recipe-card-quick-info-display {
         font-size: 12px;
         padding: 4px;
     }
@@ -368,7 +346,6 @@
     height: 20px;
     margin-right: 5px;
 }
-
 
 @media (max-width: 450px) {
     .card-icons {
@@ -396,22 +373,77 @@
 }
 
 
+
+
+
+
+
+
+.profile-page-modal-head {
+    display: flex;
+    padding: 20px;
+    justify-content: flex-end;
+}
+
+.create-recipe-form-group-space {
+    margin-bottom: 20px;
+}
+
+.create-recipe-form-subtitle {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
+}
+
+.create-recipe-form-directives {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+
+
 .footer-padding {
-    margin-top: 80px;
-    padding: 8px;
+    margin-top: 40px;
 }
 
 .footer-background {
     background: url("../../../media/detailed-recipe-page-background1.jpg") center/cover no-repeat;
-    border: solid 3px black;
+}
+
+.share-website-text {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: bold;
 }
 
 .website-share-icons {
     border-radius: 4px;
 }
 
+.webpage-share-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.webpage-share-icons a {
+    margin: 0 5px;
+}
+
+@media (max-width: 350px) {
+    .webpage-share-icons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 350px) {
+    .webpage-share-icons a {
+        margin-top: 15px;
+    }
+}
+
 .back-to-top-link {
-    margin-bottom: 70px;
     font-size: 20px;
     color: black;
 }
@@ -428,7 +460,6 @@
 
 .footer-buttons-action-call {
     text-decoration: underline;
-    font-weight: 600;
 }
 
 .profile-page-section-bottom-margin {

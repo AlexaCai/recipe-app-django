@@ -22,7 +22,7 @@
 <main>
     <header id="topsection">
         <div class="header-display">
-            <nav class="navbar navbar-expand-md navbar-light nav justify-content-end">
+            <nav class="navbar navbar-expand-md navbar-light justify-content-end">
                 <div class="logo-container">
                     <img src="../../../media/temporary-logo.jpg" alt="ac-logo" class="logo-image">
                 </div>
@@ -51,35 +51,35 @@
 
     <body>
         <div>
-            <div class="recipe-page-intro-section">
+            <div class="profile-page-image-background">
                 <div class="intro-text">
-                    <h1 class="text-center profile-title">Welcome to your profile page</h1>
+                    <h1 class="text-center">Welcome to your profile page</h1>
                 </div>
-                <div class="intro-search-box">
+                <div class="profile-page-create-recipe-box">
                     <div class="text-center">
-                        <h3 class="profile-page-title">Create your own recipes</h3>
+                        <h3 class="profile-page-call-to-action">Create your own recipes</h3>
                         <p>(These recipes will only be seen by you and won't be public)</p>
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3 col-3">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3 col-2">
                         </div>
-                        <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center">
+                        <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-8 d-flex justify-content-center">
                             <button type="button" class="btn btn-dark btn-md" data-bs-toggle="modal"
                                 data-bs-target="#createPrivateRecipe">
                                 Create recipe
                             </button>
                         </div>
-                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3 col-3">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3 col-2">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="createPrivateRecipe" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="createPrivateRecipe" tabindex="-1" aria-labelledby="createPrivateRecipeLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                     <div class="modal-content text-center">
-                        <div class="home-page-modal-head">
+                        <div class="profile-page-modal-head">
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -277,13 +277,14 @@
             <br>
             <br>
             <h1 class="text-center profile-page-title">Created recipes</h1>
+            <br>
             <div class="icon-legend">
                 <img src="../../../media/flag-icon.png" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
-                <span class="vertical-line">|</span>
+                <span class="icon-separator-vertical-line">|</span>
                 <img src="../../../media/difficulty-icon.png" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
-                <span class="vertical-line">|</span>
+                <span class="icon-separator-vertical-line">|</span>
                 <img src="../../../media/category-icon.png" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
             </div>
@@ -292,15 +293,16 @@
                 </div>
                 <div class="col-8 text-center">
                     <br>
-                    <br>
                     <a href="#topsection" class="back-to-top-link">Back to top</a>
+                    <br>
+                    <br>
                 </div>
                 <div class="col">
                 </div>
             </div>
-            <div class="row card-general-padding">
+            <div class="row recipe-card-padding">
                 {% for object in created_recipes %}
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 card-general-padding">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 recipe-card-padding">
                     <div class="card text-bg-dark">
                         <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                         <div class="card-img-overlay">
@@ -310,18 +312,18 @@
                                         <h5 class="card-title">{{ object.recipe_name }}</h5>
                                     </a>
                                 </div>
-                                <div class="line-background">
+                                <div class="recipe-card-quick-info-display">
                                     <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon">
                                     <span>{{ object.origin_country }}</span>
                                 </div>
                                 <br>
-                                <div class="line-background">
+                                <div class="recipe-card-quick-info-display">
                                     <img src="../../../media/difficulty-icon.png" class="card-icons"
                                         alt="difficulty-icon">
                                     <span>{{ object.difficulty }}</span>
                                 </div>
                                 <br>
-                                <div class="line-background">
+                                <div class="recipe-card-quick-info-display">
                                     <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon">
                                     <span>{{ object.recipe_category }}</span>
                                 </div>
@@ -345,7 +347,7 @@
                         aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content text-center">
-                                <div class="home-page-modal-head">
+                                <div class="profile-page-modal-head">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -354,8 +356,7 @@
                                     <div class="row">
                                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                         </div>
-                                        <div
-                                            class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-home-page text-center">
+                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 text-center">
                                             <p>Are you sure you want to delete this recipe? This action is
                                                 irreversible.</p>
                                         </div>
@@ -388,7 +389,7 @@
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                             <div class="modal-content text-center">
-                                <div class="home-page-modal-head">
+                                <div class="profile-page-modal-head">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -398,41 +399,47 @@
                                     <form method="POST" enctype="multipart/form-data" class="post-form"
                                         action="{% url 'accounts:user_private_recipe_update' id=object.id %}">
                                         {% csrf_token %}
-                                        <div class="form-group">
-                                            <label for="id_recipe_name">Recipe Name:</label>
+                                        <div class="form-group create-recipe-form-group-space">
+                                            <label for="id_recipe_name"><b>Recipe name - Field required</b></label>
                                             <input type="text" id="id_recipe_name_update" class="form-control"
                                                 name="recipe_name" value="{{ object.recipe_name }}" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="id_description">Description:</label>
+                                        <div class="form-group create-recipe-form-group-space">
+                                            <label for="id_description"><b>Description - Field required</b></label>
                                             <input type="text" id="id_description_update" class="form-control"
                                                 name="description" value="{{ object.description }}" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="id_special_note">Special note:</label>
+                                        <div class="form-group create-recipe-form-group-space">
+                                            <label for="id_special_note"><b>Special note</b> - Optional</label>
                                             <input type="text" id="id_special_note_update" class="form-control"
                                                 name="special_note" value="{{ object.special_note }}" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="id_cooking_time">Cooking Time:</label>
+                                        <div class="form-group create-recipe-form-group-space">
+                                            <label for="id_cooking_time"><b>Cooking Time - Field required (only number)
+                                                </b></label>
                                             <input type="number" id="id_cooking_time_update" class="form-control"
                                                 name="cooking_time" value="{{ object.cooking_time }}" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="id_number_of_portions">Number of Portions:</label>
+                                        <div class="form-group create-recipe-form-group-space">
+                                            <label for="id_number_of_portions"><b>Number of Portions - Field required
+                                                    (only
+                                                    number)</b></label>
                                             <input type="number" id="id_number_of_portions_update" class="form-control"
                                                 name="number_of_portions" value="{{ object.number_of_portions }}"
                                                 required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="id_recipe_estimated_cost">Estimated cost:</label>
+                                        <div class="form-group create-recipe-form-group-space">
+                                            <label for="id_recipe_estimated_cost"><b>Estimated cost ($) - Field required
+                                                    (only
+                                                    number)</b></label>
                                             <input type="number" id="id_recipe_estimated_cost_update"
                                                 class="form-control" name="recipe_estimated_cost"
                                                 value="{{ object.recipe_estimated_cost }}" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="{{ form.origin_country.id_for_label }}">Origin
-                                                country:</label>
+                                        <div class="form-group create-recipe-form-group-space">
+                                            <label for="{{ form.origin_country.id_for_label }}"><b>Origin country -
+                                                    Field
+                                                    required</b></label>
                                             <select name="{{ form.origin_country.html_name }}"
                                                 id="{{ form.origin_country.auto_id }}" class="form-select">
                                                 {% for choice in form.origin_country.field.choices %}
@@ -440,9 +447,10 @@
                                                 {% endfor %}
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="{{ form.recipe_category.id_for_label }}">Recipe
-                                                category:</label>
+                                        <div class="form-group create-recipe-form-group-space">
+                                            <label for="{{ form.recipe_category.id_for_label }}"><b>Recipe category -
+                                                    Field
+                                                    required</b></label>
                                             <select name="{{ form.recipe_category.html_name }}"
                                                 id="{{ form.recipe_category.auto_id }}" class="form-select">
                                                 {% for choice in form.recipe_category.field.choices %}
@@ -450,8 +458,8 @@
                                                 {% endfor %}
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="id_pic">Recipe picture:</label>
+                                        <div class="form-group create-recipe-form-group-space">
+                                            <label for="id_pic"><b>Recipe picture - Field required</b></label>
                                             <input type="file" id="id_pic_update" name="pic" class="form-control">
                                         </div>
                                         <br>
@@ -600,36 +608,38 @@
                     </div>
                 </div>
                 {% empty %}
-                <h5 class="text-center"><br> No created recipes available.</h5>
+                <h5 class="text-center">No created recipes available.</h5>
                 {% endfor %}
             </div>
             <br>
             <br>
             <h1 class="text-center profile-page-title">Favorite recipes</h1>
+            <br>
             <div class="icon-legend">
                 <img src="../../../media/flag-icon.png" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
-                <span class="vertical-line">|</span>
+                <span class="icon-separator-vertical-line">|</span>
                 <img src="../../../media/difficulty-icon.png" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
-                <span class="vertical-line">|</span>
+                <span class="icon-separator-vertical-line">|</span>
                 <img src="../../../media/category-icon.png" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
             </div>
-            <div class="row back-to-top">
+            <div class="row">
                 <div class="col-2">
                 </div>
                 <div class="col-8 text-center">
                     <br>
-                    <br>
                     <a href="#topsection" class="back-to-top-link">Back to top</a>
+                    <br>
+                    <br>
                 </div>
                 <div class="col">
                 </div>
             </div>
-            <div class="row card-general-padding">
+            <div class="row recipe-card-padding">
                 {% for object in favorite_recipes %}
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 card-general-padding">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 recipe-card-padding">
                     <div class="card text-bg-dark">
                         <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                         <div class="card-img-overlay">
@@ -639,18 +649,18 @@
                                         <h5 class="card-title">{{ object.recipe_name }}</h5>
                                     </a>
                                 </div>
-                                <div class="line-background">
+                                <div class="recipe-card-quick-info-display">
                                     <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon">
                                     <span>{{ object.origin_country }}</span>
                                 </div>
                                 <br>
-                                <div class="line-background">
+                                <div class="recipe-card-quick-info-display">
                                     <img src="../../../media/difficulty-icon.png" class="card-icons"
                                         alt="difficulty-icon">
                                     <span>{{ object.difficulty }}</span>
                                 </div>
                                 <br>
-                                <div class="line-background">
+                                <div class="recipe-card-quick-info-display">
                                     <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon">
                                     <span>{{ object.recipe_category }}</span>
                                 </div>
@@ -678,11 +688,13 @@
             <br>
             <div class="text-center">
                 <h1 class="profile-page-title">Delete account</h1>
+                <br>
+                <br>
                 <div class="row">
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center">
-                        <button type="button" class="btn btn-danger w-33" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-danger w-50" data-bs-toggle="modal"
                             data-bs-target="#deleteRecipeModal{{ object.id }}">
                             Delete
                         </button>
@@ -694,7 +706,7 @@
                     aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content text-center">
-                            <div class="home-page-modal-head">
+                            <div class="profile-page-modal-head">
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -703,8 +715,7 @@
                                 <div class="row">
                                     <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                     </div>
-                                    <div
-                                        class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-home-page text-center">
+                                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 text-center">
                                         <p>Are you sure you want to delete this account? This action is
                                             irreversible.</p>
                                     </div>
@@ -748,18 +759,17 @@
                         <h4>Want to create your own recipes and share it with the world?
                             Proud of one of your local recipe delight? <br><br></h4>
                         <h4 class="footer-buttons-action-call">Submit your recipe to our catalog right now quickly
-                            and
-                            easily.</h4> <br>
+                            and easily.</h4> <br><br>
                         <div class="container">
                             <div class="row">
-                                <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-1">
                                 </div>
-                                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-10">
                                     <button type="button" class="btn btn-dark w-100"
                                         onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit
                                         recipe</button>
                                 </div>
-                                <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-1">
                                 </div>
                             </div>
                         </div>
@@ -774,12 +784,12 @@
                         <br>
                         <p>*****</p>
                         <br>
-                        <h4 class="detailed-page-share-text">Share recipe</h4>
+                        <h4 class="share-website-text">Share website</h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
-                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style detailed-page-share-icons">
+                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style webpage-share-icons">
                             <a href="https://www.addtoany.com/share#url=http%3A%2F%2F127.0.0.1%3A8000%2Fhome%2F&amp;title="
                                 target="_blank"><img src="https://static.addtoany.com/buttons/a2a.svg" width="32"
                                     height="32" style="background-color:#0166ff" class="website-share-icons"></a>
