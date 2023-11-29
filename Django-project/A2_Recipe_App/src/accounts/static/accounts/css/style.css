@@ -173,13 +173,13 @@
     margin-bottom: 20px;
 }
 
-/* CSS for delete page */
+/* CSS for delete page precisly */
 
 .delete-page-buttons-bottom-margin {
     margin-bottom: 20px;
 }
 
-/* CSS for profile page */
+/* CSS for profile page precisly */
 
 .profile-page-image-background {
     background: url("../../../media/profile-page-background.jpg") center/cover no-repeat;
@@ -372,13 +372,6 @@
     margin-top: 20px;
 }
 
-
-
-
-
-
-
-
 .profile-page-modal-head {
     display: flex;
     padding: 20px;
@@ -399,9 +392,6 @@
     font-weight: bold;
     text-decoration: underline;
 }
-
-
-
 
 .footer-padding {
     margin-top: 40px;
