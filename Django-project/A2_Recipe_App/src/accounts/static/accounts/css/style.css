@@ -121,13 +121,13 @@
     padding-left: unset
 }
 
-/* CSS for login page precisly */
+/* CSS for login page precisely */
 
 .login-form {
     margin-bottom: 20px;
 }
 
-/* CSS for signup page precisly */
+/* CSS for signup page precisely */
 
 .signup-page-image-background {
     background: url("../../../media/landing-pages-background.jpg") center/cover no-repeat;
@@ -151,7 +151,7 @@
     margin-bottom: 20px;
 }
 
-/* CSS for logout page precisly */
+/* CSS for logout page precisely */
 
 .logout-page-action-boxes {
     display: flex;
@@ -173,13 +173,29 @@
     margin-bottom: 20px;
 }
 
-/* CSS for delete page precisly */
+/* CSS for delete page precisely */
+
+.delete-account-page-action-boxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    height: 90vh; 
+}
+
+.delete-account-page-action-box-1 {
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    background-color: rgb(255, 255, 255, 0.80);
+    border-radius: 10px;
+}
 
 .delete-page-buttons-bottom-margin {
     margin-bottom: 20px;
 }
 
-/* CSS for profile page precisly */
+/* CSS for profile page precisely */
 
 .profile-page-image-background {
     background: url("../../../media/profile-page-background.jpg") center/cover no-repeat;
