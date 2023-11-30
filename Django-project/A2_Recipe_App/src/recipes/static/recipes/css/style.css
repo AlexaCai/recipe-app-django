@@ -1,4 +1,4 @@
-/* CSS for the welcome page */
+/* CSS code shared for all recipes app templates */
 
 .header-display {
     padding: 20px;
@@ -58,24 +58,21 @@
     font-weight: bold;
 }
 
+/* CSS for the welcome page precisely */
+
 .image-background {
     background: url("../../../media/landing-pages-background.jpg") center/cover no-repeat;
     height: 125vh;
-    margin: 0;
 }
 
 .welcome-boxes {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 90vh;
-    margin: 0;
 }
 
 .welcome-box-1 {
     text-align: center;
-    position: relative;
     padding: 20px;
     background-color: rgb(255, 255, 255, 0.80);
     border-radius: 10px;
@@ -83,7 +80,6 @@
 
 .website-title {
     font-family: 'Lobster', sans-serif;
-    font-weight: 400;
     font-size: 50px;
 }
 
@@ -95,7 +91,7 @@
 
 @media (max-width: 300px) {
     .website-title {
-        font-size: 30px;
+        font-size: 35px;
     }
 }
 
@@ -106,7 +102,7 @@
 
 @media (max-width: 355px) {
     .website-subtitle {
-        font-size: 25px;
+        font-size: 22px;
     }
 }
 
@@ -120,11 +116,6 @@
     .home-page-buttons-bottom-padding {
         padding-bottom: 10px;
     }
-}
-
-.welcome-page-login-signup-button {
-    color: white;
-    text-decoration: none;
 }
 
 .welcome-box-2 {
@@ -142,10 +133,8 @@
 
 .modal-title-home-page {
     font-family: 'Cinzel', sans-serif;
-    text-align: center;
     font-weight: 600;
     padding-bottom: 10px;
-    color: black;
 }
 
 .modal-text-home-page {
