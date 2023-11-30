@@ -1,18 +1,15 @@
 from django import forms
+from django.forms import inlineformset_factory
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from .models import User
 from recipes.models import Recipe, RecipeIngredients, RecipeAllergens, RecipeCookingInstructions
-from django.forms import inlineformset_factory
-
 
 User = get_user_model()
 
 class UserAdminCreationForm(forms.ModelForm):
-    """
-    A form for creating new users. Includes all the required
-    fields, plus a repeated password.
-    """
+
+    # Form for creating new users. Includes all the required fields, plus a repeated password.
     password = forms.CharField(widget=forms.PasswordInput)
     password_2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
 
@@ -21,9 +18,8 @@ class UserAdminCreationForm(forms.ModelForm):
         fields = ['full_name', 'email']
 
     def clean(self):
-        '''
-        Verify both passwords match.
-        '''
+        
+        # Verify both passwords match.
         cleaned_data = super().clean()
         password = cleaned_data.get("password")
         password_2 = cleaned_data.get("password_2")
@@ -39,12 +35,10 @@ class UserAdminCreationForm(forms.ModelForm):
             user.save()
         return user
 
-
 class UserAdminChangeForm(forms.ModelForm):
-    """A form for updating users. Includes all the fields on
-    the user, but replaces the password field with admin's
-    password hash display field.
-    """
+
+    # Form for updating users. Includes all the fields on the user, but replaces the password field
+    # with admin's password hash display field.
     password = ReadOnlyPasswordHashField()
 
     class Meta:
@@ -52,16 +46,11 @@ class UserAdminChangeForm(forms.ModelForm):
         fields = ['full_name', 'email', 'password', '_is_active', 'admin']
 
     def clean_password(self):
-        # Regardless of what the user provides, return the initial value.
-        # This is done here, rather than on the field, because the
-        # field does not have access to the initial value
         return self.initial["password"]
     
 class RegisterForm(forms.ModelForm):
-    """
-    A form for creating new users. Includes all the required
-    fields, plus a repeated password.
-    """
+    
+    # Form for creating new users. Includes all the required fields, plus a repeated password.
     password = forms.CharField(widget=forms.PasswordInput)
     password_2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
 
@@ -70,9 +59,8 @@ class RegisterForm(forms.ModelForm):
         fields = ['full_name', 'email']
 
     def clean(self):
-        '''
-        Verify both passwords match.
-        '''
+        
+        # Verify both passwords match.
         cleaned_data = super().clean()
         password = cleaned_data.get("password")
         password_2 = cleaned_data.get("password_2")
@@ -84,7 +72,7 @@ class RegisterForm(forms.ModelForm):
         # Save the provided password in hashed format
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password"])
-        user._is_active = False # send confirmation email
+        user._is_active = False 
         if commit:
             user.save()
         return user

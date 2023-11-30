@@ -1,33 +1,32 @@
-from django.shortcuts import render, redirect
-# Django authentication libraries
+from django.shortcuts import render, redirect, get_object_or_404, redirect, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
-# Django Form for authentication
 from django.contrib.auth.forms import AuthenticationForm
-from accounts.forms import UserAdminCreationForm  
-from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
+from .forms import UserAdminCreationForm, UserCreatePrivateRecipe, RecipeIngredientsFormSet, RecipeAllergensFormSet, RecipeCookingInstructionsFormSet
 from recipes.models import Recipe, RecipeIngredients
-from .forms import UserCreatePrivateRecipe, RecipeIngredientsFormSet, RecipeAllergensFormSet, RecipeCookingInstructionsFormSet
-from django.urls import reverse
 
 def signup_view(request):
     if request.method == 'POST':
-        form = UserAdminCreationForm(request.POST)  # Use the custom form
+        # Form taken from forms.py
+        form = UserAdminCreationForm(request.POST) 
+
         if form.is_valid():
             form.save()
-            print("User created successfully")
             return redirect('accounts:login')
+        
         else:
             print("User creation failed")
             print(form.errors)
+            
     else:
-        form = UserAdminCreationForm()  # Use the custom form
+        # Form taken from forms.py
+        form = UserAdminCreationForm()  
 
     return render(request, 'accounts/signup.html', {'form': form})
 
 
-# define a function view called login_view that takes a request from user
 def login_view(request):
     error_message = None
+    # Default Django form for handling user authentication
     form = AuthenticationForm()
 
     if request.method == "POST":
@@ -41,15 +40,15 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 return redirect("recipes:recipes_list_signed_users")
+            
         else:
             error_message = "ooops.. something went wrong"
 
-    # prepare data to send from view to template
+    # Prepare data to send from view.py to template.html
     context = {"form": form, "error_message": error_message}
     return render(request, "accounts/login.html", context)
 
 
-# define a function view called logout_view that takes a request from user
 def logout_view(request):
     logout(request)
     return render(request, 'accounts/logout.html')
@@ -61,7 +60,7 @@ def delete_account(request):
     return render(request, 'accounts/account-deleted.html')
 
 
-# Allow to display the user's profile page.
+# Function to display the user's profile page information
 def profile_view(request):
     favorite_recipes = favorite_list(request)
     created_recipes = created_recipe(request)
@@ -83,35 +82,29 @@ def profile_view(request):
         }
     )
 
+
 # Used to add or remove recipes from the user's favorites.
 def favorite_add(request, id):
     recipe = get_object_or_404(Recipe, id=id)
 
     if recipe.favorites.filter(id=request.user.id).exists():
         recipe.favorites.remove(request.user)
-        print(f'Recipe removed from favorites. Recipe ID: {id}, User: {request.user}, User_ID: {request.user.id}')
     else:
         recipe.favorites.add(request.user)
-        print(f'Recipe added to favorites. Recipe ID: {id}, User: {request.user}, User_ID: {request.user.id}')
 
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
-# Used to display recipes that are favorited by the user.
+# Used to display recipes that are favorited by user.
 def favorite_list(request):
     favorites = request.user.favorites.all()
-    print(f'These are the favorites: {favorites}')
-
     favorite_recipes = Recipe.objects.filter(favorites=request.user)
-    print(f'These are the new favorites: {favorite_recipes}')
-
     return favorite_recipes
 
 
-# Used to display recipes that are favorited by the user.
+# Used to display recipes that are created by user.
 def created_recipe(request):
     created_recipes = request.user.created_recipes.all()
-    print(f'These are the user created recipes: {created_recipes}')
     return created_recipes
 
 
@@ -128,12 +121,6 @@ def user_private_recipe_new(request):
         allergens_formset = RecipeAllergensFormSet(request.POST, prefix='allergens')
         cooking_instructions_formset = RecipeCookingInstructionsFormSet(request.POST, prefix='cooking_instructions')
 
-        print("Form Data:", request.POST)
-        print("Form Files:", request.FILES)
-        print("Formset Data:", formset.data)
-        print("Allergens Formset Data:", allergens_formset.data)
-        print("Cooking Instructions Formset Data:", cooking_instructions_formset.data)
-
         if form.is_valid() and formset.is_valid() and allergens_formset.is_valid() and cooking_instructions_formset.is_valid():
             recipe = form.save(commit=False)
             recipe.user = request.user
@@ -149,6 +136,7 @@ def user_private_recipe_new(request):
             cooking_instructions_formset.save()
 
             return HttpResponseRedirect(request.META['HTTP_REFERER'])
+        
         else:
             print(form.errors)
             print(formset.errors)
@@ -160,7 +148,6 @@ def user_private_recipe_new(request):
         formset = RecipeIngredientsFormSet(prefix='formset')
         allergens_formset = RecipeAllergensFormSet(prefix='allergens')
         cooking_instructions_formset = RecipeCookingInstructionsFormSet(prefix='cooking_instructions')
-
 
     return render(request, 'accounts/profile.html', {'form': form, 'formset': formset, 'allergens_formset': allergens_formset, 'cooking_instructions_formset': cooking_instructions_formset})
 

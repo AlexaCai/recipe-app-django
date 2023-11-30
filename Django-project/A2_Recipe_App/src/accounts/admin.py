@@ -5,7 +5,6 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .forms import UserAdminCreationForm, UserAdminChangeForm
 from recipes.models import Recipe
 
-
 User = get_user_model()
 
 class UserAdmin(BaseUserAdmin):
@@ -17,16 +16,15 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ['id', 'full_name', 'email', 'admin']
+    list_display = ['id', 'full_name', 'email', 'timestamp', 'admin']
     list_filter = ['admin', 'staff', '_is_active']
     fieldsets = (
-        (None, {'fields': ('id', 'full_name', 'email', 'password')}),
-        # ('User info', {'fields': ('full_name',)}),
-        ('Favorite recipes', {'fields': ('favorite_recipes', 'user_created_recipes')}),
+        (None, {'fields': ('id', 'full_name', 'email', 'password', 'timestamp')}),
+        ('Favorite and created recipes', {'fields': ('favorite_recipes', 'user_created_recipes')}),
         ('Permissions', {'fields': ('admin','staff','_is_active')}),
     )
 
-    readonly_fields = ['id', 'full_name', 'email', 'password']
+    readonly_fields = ['id', 'full_name', 'email', 'password', 'timestamp']
 
     add_fieldsets = (
         (None, {
@@ -38,10 +36,13 @@ class UserAdmin(BaseUserAdmin):
     ordering = ['email']
     filter_horizontal = ()
 
-    def formfield_for_manytomany(self, db_field, request, **kwargs):
-        if db_field.name == 'user_created_recipes':
-            kwargs['queryset'] = Recipe.objects.filter(user=request.user)
-        return super().formfield_for_manytomany(db_field, request, **kwargs)
+    # Used to display the favorite and created recipes for each user in Django admin interface
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        if obj is not None:
+            form.base_fields['favorite_recipes'].queryset = Recipe.objects.filter(favorites=obj)
+            form.base_fields['user_created_recipes'].queryset = Recipe.objects.filter(user=obj)
+        return form
 
 admin.site.register(User, UserAdmin)
 

@@ -3,7 +3,7 @@ from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager)
 from recipes.models import Recipe
 
 class UserManager(BaseUserManager):
-    # Creates and saves a User with the given email and password.
+    # Creates and saves a user with the given email and password.
     def create_user(self, email, full_name, password=None, is_active=True, is_staff=False, is_admin=False):
         if not email:
             raise ValueError('Users must have an email address')
@@ -34,7 +34,7 @@ class UserManager(BaseUserManager):
         )
         return user
     
-        # Creates and saves a staff user with the given email and password.
+    # Creates and saves a staff user with the given email and password.
     def create_superuser(self, email, full_name, password=None):
         user = self.create_user(
             email,
@@ -52,7 +52,6 @@ class User(AbstractBaseUser):
         staff = models.BooleanField(default=False) 
         admin = models.BooleanField(default=False)
         timestamp = models.DateTimeField(auto_now_add=True)
-
         favorite_recipes = models.ManyToManyField(Recipe, related_name='user_favorite_recipes',  default=[], blank=True)
         user_created_recipes = models.ManyToManyField(Recipe, related_name='created_by',  default=[], blank=True)
 
