@@ -217,7 +217,7 @@
                     </div>
                 </div>             
                 <div class="row card-general-padding">
-                    {% with country_list="american, bahamian, barbadian, canadian, cuban, dominican, dominican republic, grenadian, haitian, jamaican, mexican, saint kitts and nevis, saint lucian, saint vincent and the grenadines, trinidadian and tobagonian" %}
+                    {% with country_list="american, bahamian, barbadian, canadian, cuban, dominican, dominican rep., grenadian, haitian, jamaican, mexican, st kitts & nevis, saint lucian, st vincent & grenadines, trinidadian & tobagonian" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
                     {% if object.origin_country in country_list_split and object.is_public %}
@@ -641,7 +641,7 @@
                     </div>
                 </div>  
                 <div class="row card-general-padding">
-                    {% with country_list="australian, fijian, kiribatian, marshallese, micronesian, nauruan, new zealand, palauan, papua new guinean, samoan, solomon islands, tongan, tuvaluan, vanuatuan" %}
+                    {% with country_list="australian, fijian, kiribatian, marshallese, micronesian, nauruan, new zealand, palauan, papua new gui., samoan, solomon islands, tongan, tuvaluan, vanuatuan" %}
                     {% with country_list_split=country_list|slice:" " %}
                     {% for object in object_list %}
                     {% if object.origin_country in country_list_split and object.is_public %}
@@ -657,6 +657,78 @@
                                     <br>
                                     <div class="line-background">
                                     <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon" ><span>{{ object.difficulty }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-md-2 col-sm-1 col-1">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-10 d-flex justify-content-center">
+                                {% if object in request.user.favorites.all %}
+                                    <a href="{% url 'accounts:favorite_add' object.id %}" class="btn btn-danger recipes-list-page-add-to-favorite-button">Remove from favorite</a>
+                                {% else %}
+                                    <a href="{% url 'accounts:favorite_add' object.id %}" class="btn btn-dark recipes-list-page-add-to-favorite-button">Add to favorite</a>
+                                {% endif %}
+                            </div> 
+                            <div class="col-xl-3 col-lg-3 col-md-2 col-sm-1 col-1">
+                            </div>  
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endwith %}
+                    {% endwith %}
+                </div>
+            </div>
+            <div class="default-content">
+                <br>
+                <br>
+                <br>
+                <h1 class="recipes-continent-title-section">Mixed / No category</h1>
+                <div class="icon-legend">
+                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <span class="vertical-line">|</span>
+                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>   
+                <div class="row back-to-top">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-8 text-center">
+                        <br>
+                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <br>
+                        <br>
+                        <a href="#topsection" class="back-to-top-link">Back to top</a>
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>             
+                <div class="row card-general-padding">
+                    {% with country_list="no category, mixed" %}
+                    {% with country_list_split=country_list|slice:" " %}
+                    {% for object in object_list %}
+                    {% if object.origin_country in country_list_split and object.is_public %}
+                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                        <div class="card text-bg-dark">
+                            <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
+                            <div class="card-img-overlay">
+                                <div class="card-text">
+                                    <div>
+                                        <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
+                                    </div>
+                                    <div class="line-background">
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    </div>
+                                    <br>
+                                    <div class="line-background">
+                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                                     </div>
                                     <br>
                                     <div class="line-background">
