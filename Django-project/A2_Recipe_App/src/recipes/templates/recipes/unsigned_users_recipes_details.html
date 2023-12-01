@@ -22,7 +22,7 @@
 <main>
     <header id="topsection">
         <div class="header-display">
-            <nav class="navbar navbar-expand-md navbar-light nav justify-content-end">
+            <nav class="navbar navbar-expand-md navbar-light justify-content-end">
                 <div class="logo-container">
                     <img src="../../../media/temporary-logo.jpg" alt="ac-logo" class="logo-image">
                 </div>
@@ -47,23 +47,21 @@
     </header>
 
     <body>
-        <div class="detailed-page-recipe-intro-padding">
+        <div>
             <div
-                class="row basic-recipe-info-section text-center align-items-center detailed-page-recipe-intro-background">
+                class="row text-center align-items-center justify-content-center detailed-page-recipe-intro-background">
                 <div class="col-xl-1 d-none d-lg-block">
                 </div>
-
-                <div class="col-xl-6 col-lg-10 col-md-10 col-sm-10 col-12">
+                <div class="col-xl-6 col-lg-10 col-md-10 col-sm-10 col-10">
                     <img src="{{ object.pic.url }}" class="img-fluid detailed-page-image" alt="recipe-image" />
                 </div>
-
-                <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-12">
+                <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-10">
                     <div class="row text-center">
                         <div class="col-12">
                             <h1 class="detailed-recipe-titles">{{ object.recipe_name }}</h1>
                         </div>
                     </div>
-                    <div class="row text-center recipe-icon-centered">
+                    <div class="row text-center justify-content-center">
                         <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-12">
                             <div class="recipe-icon-text">
                                 <img src="../../../media/flag-icon.png" class="detailed-page-icon"
@@ -81,7 +79,7 @@
                         <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-12">
                             <div class="recipe-icon-text">
                                 <img src="../../../media/difficulty-icon.png" class="detailed-page-icon"
-                                    alt="difficulty-icon"><span>{{ object.difficulty }}</span>
+                                    alt="level-icon"><span>{{ object.difficulty }}</span>
                             </div>
                             <div class="recipe-icon-text">
                                 <img src="../../../media/number-portion-icon.png" class="detailed-page-icon"
@@ -96,12 +94,12 @@
                     <br>
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="detailed-page-share-text">Share recipe</h4>
+                            <h4 class="website-share-links-title">Share recipe</h4>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 detailed-page-section-bottom-margin d-flex justify-content-center">
-                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style detailed-page-share-icons">
+                        <div class="col-12 intro-section-bottom-margin d-flex justify-content-center">
+                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style website-share-icons">
                                 <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
                                 <a class="a2a_button_whatsapp"></a>
                                 <a class="a2a_button_facebook"></a>
@@ -114,17 +112,16 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-1 d-none d-lg-block">
                 </div>
             </div>
         </div>
 
-        <div class="row detailed-page-section-bottom-margin">
+        <div class="row section-bottom-margin">
             <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
             <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
-                <h1 class="text-center detailed-recipe-titles unsigned-users-detailed-page-description-title">
+                <h1 class="text-center detailed-recipe-titles detailed-page-description-title-margin-top">
                     Description</h1>
                 <br>
                 <p class="detailed-page-text-content">{{ object.description }}</p>
@@ -133,7 +130,7 @@
             </div>
         </div>
 
-        <div class="row detailed-page-section-bottom-margin">
+        <div class="row section-bottom-margin">
             <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
             <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
@@ -142,17 +139,17 @@
                 <br>
                 <p class="detailed-page-text-content">{{ object.special_note }}</p>
                 {% else %}
-                <p class="detailed-page-text-content text-center">No special notes.</p>
+                <p class="text-center">No special notes.</p>
                 {% endif %}
             </div>
             <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
             </div>
         </div>
 
-        <div class="row text-center ingredients-instructions-section detailed-page-section-bottom-margin">
+        <div class="row text-center ingredients-instructions-section">
             <div class="col-xl-2">
             </div>
-            <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-xs-10 detailed-page-section-bottom-margin">
+            <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-12 section-bottom-margin">
                 <h1 class="text-center detailed-recipe-titles">Ingredients</h1>
                 <br>
                 {% for ingredient in object.recipe_ingredients.all %}
@@ -189,11 +186,11 @@
                 {% endfor %}
             </div>
 
-            <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                <h1 class="text-center detailed-recipe-titles instructions-section">Instructions</h1>
+            <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-12 section-bottom-margin">
+                <h1 class="text-center detailed-recipe-titles">Instructions</h1>
                 <br>
                 {% for instructions in object.recipe_instructions.all %}
-                <div class="row instructions-section-bottom-margin ingredients-instructions-section-padding">
+                <div class="row ingredients-instructions-section-padding">
                     <div class="col-xl-1">
                     </div>
                     <div class="col-xl-10">
@@ -213,25 +210,15 @@
                 </div>
                 {% endfor %}
             </div>
-
             <div class="col-xl-2">
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 section-break-line d-xl-none">
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 d-xl-none">
-            </div>
-        </div>
-
-        <div class="row detailed-page-section-bottom-margin">
+        <div class="row section-bottom-margin">
             <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
             </div>
-            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-10">
-                <h1 class="text-center detailed-recipe-titles instructions-section">Tools needed</h1>
+            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-12">
+                <h1 class="text-center detailed-recipe-titles">Tools needed</h1>
                 <br>
                 {% if object.recipe_tools.all|length > 0 %}
                 <div class="row">
@@ -239,10 +226,9 @@
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <ol class="list-group cooking-tools-padding">
                             <li
-                                class="list-group-item justify-content-between align-items-start instruction-list-margin">
+                                class="list-group-item justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
-                                    <div class="fw-bold text detailed-page-text-content text-center">{{
-                                        tool.cooking_tool_name }}</div>
+                                    <div class="fw-bold detailed-page-text-content text-center">{{ tool.cooking_tool_name }}</div>
                                     <br>
                                     <br>
                                     <img src="{{ tool.cooking_tool_pic.url }}" class="img-fluid" alt="recipe-image" />
@@ -260,7 +246,7 @@
             </div>
         </div>
 
-        <div class="row detailed-page-section-bottom-margin">
+        <div class="row section-bottom-margin">
             <div class="col-xl-2 col-lg-1 col-md-2 col-sm-2 col-1">
             </div>
             <div class="col-xl-8 col-lg-10 col-md-8 col-sm-8 col-10">
@@ -277,13 +263,11 @@
                                     <div>
                                         {% if '/recipes-detail-unsigned-users/' in request.path %}
                                         <a href="{{ recipe.complementary_recipe_link_unsigned_users }}">
-                                            <h5 class="detailed-page-similar-recipe-card-title">{{
-                                                recipe.complementary_recipe_name }}</h5>
+                                            <h5 class="detailed-page-similar-recipe-card-title">{{ recipe.complementary_recipe_name }}</h5>
                                         </a>
                                         {% elif '/recipes-detail-signed-users/' in request.path %}
                                         <a href="{{ recipe.complementary_recipe_link_signed_users }}">
-                                            <h5 class="detailed-page-similar-recipe-card-title">{{
-                                                recipe.complementary_recipe_name }}</h5>
+                                            <h5 class="detailed-page-similar-recipe-card-title">{{ recipe.complementary_recipe_name }}</h5>
                                         </a>
                                         {% endif %}
                                     </div>
@@ -301,7 +285,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row section-bottom-margin">
             <div class="col-xl-2 col-lg-2 col-md-1 col-sm-1 col-1">
             </div>
             <div class="col-xl-8 col-lg-8 col-md-10 col-sm-10 col-10">
@@ -358,18 +342,20 @@
                     </div>
                     <div class="col-8 text-center">
                         <br>
-                        <h4 class="footer-text">Want to create your own recipes and share it with the world?
+                        <h4 class="footer-text">Want to share your own recipes with the world?
                             Proud of one of your local recipe delight? <br><br></h4>
                         <h4 class="footer-buttons-action-call footer-text">Submit your recipe to our catalog right now quickly and
-                            easily.</h4> <br>
+                            easily.</h4><br><br>
                         <div class="container">
                             <div class="row">
-                                <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-2">
                                 </div>
-                                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
-                                    <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-8">
+                                    <button type="button" class="btn btn-dark w-100"
+                                        onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit
+                                        recipe</button>
                                 </div>
-                                <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-2">
                                 </div>
                             </div>
                         </div>
@@ -379,36 +365,15 @@
                             Want to create your own list of favorite from our catalog?
                             Want to add comments on recipes? <br><br></h4>
                         <h4 class="footer-buttons-action-call footer-text">Create an account now! Its free and it only takes 2
-                            minutes.</h4><br>
+                            minutes.</h4><br><br>
                         <div class="row">
-                            <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-2">
                             </div>
-                            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
-                                <a class="welcome-page-login-signup-button btn btn-dark" href="{% url 'accounts:signup' %}">
-                                    Sign up
-                                </a>
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-8">
+                                <button type="button" class="btn btn-dark w-100"
+                                onclick="window.location.href='{% url 'accounts:signup' %}'">Sign up</button>
                             </div>
-                            <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
-                            </div>
-                        </div>
-                        <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="signupModalLabel">Sign up</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Test</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Sign up</button>
-                                    </div>
-                                </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-2">
                             </div>
                         </div>
                     </div>
@@ -422,12 +387,12 @@
                         <br>
                         <p>*****</p>
                         <br>
-                        <h4 class="detailed-page-share-text">Share recipe</h4>
+                        <h4 class="website-share-links-title">Share recipe</h4>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 detailed-page-section-bottom-margin d-flex justify-content-center">
-                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style detailed-page-share-icons">
+                    <div class="col-12 section-bottom-margin d-flex justify-content-center">
+                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style website-share-icons">
                             <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
                             <a class="a2a_button_whatsapp"></a>
                             <a class="a2a_button_facebook"></a>
@@ -442,12 +407,12 @@
 
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h4 class="detailed-page-share-text">Share website</h4>
+                        <h4 class="website-share-links-title">Share website</h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
-                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style detailed-page-share-icons">
+                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style website-share-icons">
                             <a href="https://www.addtoany.com/share#url=http%3A%2F%2F127.0.0.1%3A8000%2Fhome%2F&amp;title="
                                 target="_blank"><img src="https://static.addtoany.com/buttons/a2a.svg" width="32"
                                     height="32" style="background-color:#0166ff" class="website-share-icons"></a>
@@ -474,7 +439,7 @@
                     </div>
                 </div>
 
-                <div class="row back-to-top">
+                <div class="row">
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center back-to-top-link-bottom-margin">
@@ -491,6 +456,7 @@
             </div>
         </div>
     </footer>
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

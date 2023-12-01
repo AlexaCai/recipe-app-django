@@ -170,7 +170,7 @@ function displaySearchResults(data) {
                 <span>***</span>
                 <br>
                 <br>
-                <span>If you still can't find your recipe, it's a sign! <a href="placeholder">Submit your recipe to us</a> so that we can display it for all users to enjoy. It's simple and it takes 2 minutes.</span>
+                <span>If you still can't find your recipe, it's a sign! <a href="/recipes-submit/"> Submit your recipe to us</a> so that we can display it for all users to enjoy. It's simple and it takes 2 minutes.</span>
                 <br>
                 <br>
                 <span>***</span>
@@ -202,9 +202,9 @@ function displaySearchResults(data) {
         <div class="icon-legend">
             <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
             <span class="vertical-line">|</span>
-            <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+            <img src="../../../media/difficulty-icon.png" alt="level-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
             <span class="vertical-line">|</span>
-            <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+            <img src="../../../media/category-icon.png" alt="category-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
         </div> 
         <br>
         <br>
@@ -239,16 +239,16 @@ function displaySearchResults(data) {
                     <img src="${recipe.pic}" class="img-fluid" alt="recipe-image">
                     <div class="card-img-overlay">
                         <div class="card-text">
-                        <a href="${recipeUrl}"><h5 class="card-title">${recipe.recipe_name}</h5></a>
-                            <div class="line-background">
+                        <a href="${recipeUrl}"><h5 class="card-title-custom">${recipe.recipe_name}</h5></a>
+                            <div class="recipe-card-quick-info">
                                 <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>${recipe.recipe_origin_country}</span>
                             </div>
                             <br>
-                            <div class="line-background">
+                            <div class="recipe-card-quick-info">
                                 <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>${recipe.recipe_difficulty}</span>
                             </div>
                             <br>
-                            <div class="line-background">
+                            <div class="recipe-card-quick-info">
                                 <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>${recipe.recipe_category}</span>
                             </div>
                         </div>

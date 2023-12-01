@@ -22,7 +22,7 @@
 <main>
     <header id="topsection">
         <div class="header-display">
-            <nav class="navbar navbar-expand-md navbar-light nav justify-content-end">
+            <nav class="navbar navbar-expand-md navbar-light justify-content-end">
                 <div class="logo-container">
                     <img src="../../../media/temporary-logo.jpg" alt="ac-logo" class="logo-image">
                 </div>
@@ -52,7 +52,7 @@
                         infinite wealth of culinary and cultural delights
                     </h1>
                 </div>
-                <div class="intro-search-box">
+                <div class="intro-section-search-box">
                     <h1 class="search-title">
                         Search recipes
                     </h1>
@@ -60,24 +60,28 @@
                     <form class="row justify-content-center" role="search">
                         <div class="col-md-10">
                             <div class="input-group">
-                                <input id="recipe-search-by-name-input" type="text" class="form-control main-search-field" placeholder="Enter a recipe"
+                                <input id="recipe-search-by-name-input" type="text"
+                                    class="form-control main-search-field" placeholder="Enter a recipe"
                                     aria-label="Search" aria-describedby="button-addon2">
-                                <button class="btn btn-light main-search-field" type="button" id="button-addon2">Search</button>
+                                <button class="btn btn-light main-search-field" type="button"
+                                    id="button-addon2">Search</button>
                             </div>
                         </div>
                     </form>
                     <br>
-                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                        data-bs-target="#advancedSearchModal">
                         Advanced search
                     </button>
                     <br>
                     <br>
                     <br>
-                    <h1 class="search-title">
+                    <h1 class="submit-title">
                         Submit your recipe
                     </h1>
-                    <button type="button" class="btn btn-light" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <button type="button" class="btn btn-light"
+                        onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                    <div class="modal fade" id="advancedSearchModal" tabindex="-1" aria-labelledby="advancedSearchModal"
                         aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
@@ -90,29 +94,34 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                                             <p class="modal-advanced-search-content">Country</p>
-                                            <select class="form-select" id="filter-option-selected1" aria-label="Default select example">
+                                            <select class="form-select" id="filter-option-selected1"
+                                                aria-label="Default select example">
                                                 <option value="">Select an origin country</option>
                                                 {% for object in object_list|dictsort:"origin_country" %}
-                                                    {% ifchanged %}
-                                                        <option value="{{ object.origin_country }}">{{ object.origin_country }}</option>
-                                                    {% endifchanged %}
+                                                {% ifchanged %}
+                                                <option value="{{ object.origin_country }}">{{ object.origin_country }}
+                                                </option>
+                                                {% endifchanged %}
                                                 {% endfor %}
-                                              </select>
+                                            </select>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                                             <p class="modal-advanced-search-content">Category</p>
-                                            <select class="form-select" id="filter-option-selected2" aria-label="Default select example">
+                                            <select class="form-select" id="filter-option-selected2"
+                                                aria-label="Default select example">
                                                 <option value="">Select a category</option>
                                                 {% for object in object_list|dictsort:"recipe_category" %}
-                                                    {% ifchanged %}
-                                                        <option value="{{ object.recipe_category }}">{{ object.recipe_category }}</option>
-                                                    {% endifchanged %}
+                                                {% ifchanged %}
+                                                <option value="{{ object.recipe_category }}">{{ object.recipe_category
+                                                    }}</option>
+                                                {% endifchanged %}
                                                 {% endfor %}
-                                              </select>
+                                            </select>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                                             <p class="modal-advanced-search-content">Cooking time</p>
-                                            <select class="form-select" id="filter-option-selected3" aria-label="Default select example">
+                                            <select class="form-select" id="filter-option-selected3"
+                                                aria-label="Default select example">
                                                 <option value="">Select a cooking time</option>
                                                 <option value="1">15 min or less</option>
                                                 <option value="2">30 min or less</option>
@@ -123,17 +132,20 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                                             <p class="modal-advanced-search-content">Estimated cost</p>
-                                            <select class="form-select" id="filter-option-selected4" aria-label="Default select example">
+                                            <select class="form-select" id="filter-option-selected4"
+                                                aria-label="Default select example">
                                                 <option value="">Select an estimated cost</option>
                                                 <option value="1">5$ or less</option>
                                                 <option value="2">10$ or less</option>
                                                 <option value="3">20$ or less</option>
                                                 <option value="4">30$ or less</option>
                                                 <option value="5">30$ or more</option>
-                                              </select>
+                                            </select>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-dark advanced-search-modal-button" id="advanced-search-filters-modal-button" data-bs-dismiss="modal">Search</button>
+                                    <button type="button" class="btn btn-dark advanced-search-modal-button"
+                                        id="advanced-search-filters-modal-button"
+                                        data-bs-dismiss="modal">Search</button>
                                     <br>
                                     <span class="modal-advanced-search-content">***</span>
                                     <br>
@@ -142,22 +154,26 @@
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                             <span class="modal-advanced-search-content">Ingredients</span>
-                                            <p class="modal-advanced-search-content" style="font-size: 15px;">*When searching with more than one ingredient, each ingredients must be separeted by a comma</p>
+                                            <p class="modal-advanced-search-content" style="font-size: 15px;">*When
+                                                searching with more than one ingredient, each ingredients must be
+                                                separeted by a comma</p>
                                             <form class="row justify-content-center" role="search">
                                                 <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
                                                     <div class="input-group input-group-lg">
-                                                        <input id="recipe-search-by-ingredients-input" type="text" class="form-control" placeholder="Ingredient(s): chicken, rice, tomato"
-                                                            aria-label="Search" aria-describedby="button-addon3">                                                    
+                                                        <input id="recipe-search-by-ingredients-input" type="text"
+                                                            class="form-control"
+                                                            placeholder="Ingredient(s): chicken, rice, tomato"
+                                                            aria-label="Search" aria-describedby="button-addon3">
                                                     </div>
                                                 </div>
                                             </form>
-                                            <button type="button" class="btn btn-dark advanced-search-modal-button" id="button-addon3" data-bs-dismiss="modal">Search</button>
+                                            <button type="button" class="btn btn-dark advanced-search-modal-button"
+                                                id="button-addon3" data-bs-dismiss="modal">Search</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-dark"
-                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
@@ -165,17 +181,18 @@
                 </div>
             </div>
 
-            <br>
-            <br>
-            <h4>Search by allergens</h4>
-            <p>Enter allergen(s) to eliminate/remove recipes based on that critera.</p>
-            <p>All recipes returned <b>will not</b> contains this/these allergens.</p>
-            <p>If you want to enter more than one allergen, separeted each one with a comma.</p>
-            <form action="" method="POST">
-                {% csrf_token %}
-                {{form}}
-                <button type="submit">search</button>
-            </form> 
+            <div class="text-center">
+                <br>
+                <br>
+                <h4>Search by allergens</h4>
+                <p>Enter allergen(s) to eliminate/remove recipes based on that critera.</p>
+                <p>All recipes returned <b>will not</b> contains this/these allergens.</p>
+                <p>If you want to enter more than one allergen, separeted each one with a comma.</p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form}}
+                    <button type="submit">search</button>
+                </form>
                 <br>
                 {% if recipes_df %}
                 {{recipes_df|safe}}
@@ -184,32 +201,39 @@
                 {% else %}
                 <h3> no data</h3>
                 {% endif %}
-                
+            </div>
+
+
             <div class="default-content">
                 <br>
                 <br>
                 <br>
                 <h1 class="recipes-continent-title-section">North America</h1>
                 <div class="icon-legend">
-                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <img src="../../../media/flag-icon.png" alt="flag-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <img src="../../../media/difficulty-icon.png" alt="level-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
-                </div>   
-                <div class="row back-to-top">
+                    <img src="../../../media/category-icon.png" alt="category-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>
+                <div class="row">
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center">
                         <br>
-                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <button type="button" class="btn btn-dark"
+                            onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit
+                            recipe</button>
                         <br>
                         <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
                     </div>
-                </div>             
+                </div>
                 <div class="row card-general-padding">
                     {% with country_list="american, bahamian, barbadian, canadian, cuban, dominican, dominican rep., grenadian, haitian, jamaican, mexican, st kitts & nevis, saint lucian, st vincent & grenadines, trinidadian & tobagonian" %}
                     {% with country_list_split=country_list|slice:" " %}
@@ -221,18 +245,23 @@
                             <div class="card-img-overlay">
                                 <div class="card-text">
                                     <div>
-                                        <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
+                                        <a href="{{object.get_absolute_url}}">
+                                            <h5 class="card-title-custom">{{ object.recipe_name }}</h5>
+                                        </a>
                                     </div>
-                                    <div class="line-background">
-                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/flag-icon.png" class="card-icons"
+                                            alt="flag-icon"><span>{{ object.origin_country }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon"><span>{{ object.difficulty }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/difficulty-icon.png" class="card-icons"
+                                            alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/category-icon.png" class="card-icons"
+                                            alt="category-icon"><span>{{ object.recipe_category }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -250,25 +279,30 @@
                 <br>
                 <h1 class="recipes-continent-title-section">Central America</h1>
                 <div class="icon-legend">
-                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <img src="../../../media/flag-icon.png" alt="flag-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <img src="../../../media/difficulty-icon.png" alt="level-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                    <img src="../../../media/category-icon.png" alt="category-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
                 </div>
-                <div class="row back-to-top">
+                <div class="row">
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center">
                         <br>
-                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <button type="button" class="btn btn-dark"
+                            onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit
+                            recipe</button>
                         <br>
                         <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
                     </div>
-                </div>                
+                </div>
                 <div class="row card-general-padding">
                     {% with country_list="belizean, costa rican, salvadoran, guatemalan, honduran, nicaraguan, panamanian" %}
                     {% with country_list_split=country_list|slice:" " %}
@@ -279,17 +313,24 @@
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                             <div class="card-img-overlay">
                                 <div class="card-text">
-                                    <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
-                                    <div class="line-background">
-                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <div>
+                                        <a href="{{object.get_absolute_url}}">
+                                            <h5 class="card-title-custom">{{ object.recipe_name }}</h5>
+                                        </a>
+                                    </div>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/flag-icon.png" class="card-icons"
+                                            alt="flag-icon"><span>{{ object.origin_country }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon" ><span>{{ object.difficulty }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/difficulty-icon.png" class="card-icons"
+                                            alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/category-icon.png" class="card-icons"
+                                            alt="category-icon"><span>{{ object.recipe_category }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -307,25 +348,30 @@
                 <br>
                 <h1 class="recipes-continent-title-section">South America</h1>
                 <div class="icon-legend">
-                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <img src="../../../media/flag-icon.png" alt="flag-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <img src="../../../media/difficulty-icon.png" alt="level-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
-                </div> 
-                <div class="row back-to-top">
+                    <img src="../../../media/category-icon.png" alt="category-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>
+                <div class="row">
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center">
                         <br>
-                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <button type="button" class="btn btn-dark"
+                            onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit
+                            recipe</button>
                         <br>
                         <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
                     </div>
-                </div>  
+                </div>
                 <div class="row card-general-padding">
                     {% with country_list="argentine, bolivian, brazilian, chilean, colombian, peruvian, ecuadorian, guyanese, paraguayan, surinamese, uruguaya, venezuelan" %}
                     {% with country_list_split=country_list|slice:" " %}
@@ -336,17 +382,24 @@
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                             <div class="card-img-overlay">
                                 <div class="card-text">
-                                    <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
-                                    <div class="line-background">
-                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <div>
+                                        <a href="{{object.get_absolute_url}}">
+                                            <h5 class="card-title-custom">{{ object.recipe_name }}</h5>
+                                        </a>
+                                    </div>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/flag-icon.png" class="card-icons"
+                                            alt="flag-icon"><span>{{ object.origin_country }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon" ><span>{{ object.difficulty }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/difficulty-icon.png" class="card-icons"
+                                            alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/category-icon.png" class="card-icons"
+                                            alt="category-icon"><span>{{ object.recipe_category }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -364,25 +417,30 @@
                 <br>
                 <h1 class="recipes-continent-title-section">Europe</h1>
                 <div class="icon-legend">
-                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <img src="../../../media/flag-icon.png" alt="flag-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <img src="../../../media/difficulty-icon.png" alt="level-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
-                </div>                
-                <div class="row back-to-top">
+                    <img src="../../../media/category-icon.png" alt="category-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>
+                <div class="row">
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center">
                         <br>
-                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <button type="button" class="btn btn-dark"
+                            onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit
+                            recipe</button>
                         <br>
                         <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
                     </div>
-                </div>  
+                </div>
                 <div class="row card-general-padding">
                     {% with country_list="albanian, andorran, austrian, belarusian, belgian, bosnian, british, bulgarian, croatian, cyprio, czech, danish, dutch, estonian, finnish, french, german, greek, hungarian, icelandic, irish, italian, latvian, liechtensteiner, lithuanian, luxembourgish, macedonian, maltese, moldovan, monegasque, montenegrin, norwegian, polish, portuguese, romanian, russian, sammarinese, serbian, slovak, slovenian, spanish, swedish, swiss, turkish, ukrainian " %}
                     {% with country_list_split=country_list|slice:" " %}
@@ -393,17 +451,24 @@
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                             <div class="card-img-overlay">
                                 <div class="card-text">
-                                    <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
-                                    <div class="line-background">
-                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <div>
+                                        <a href="{{object.get_absolute_url}}">
+                                            <h5 class="card-title-custom">{{ object.recipe_name }}</h5>
+                                        </a>
+                                    </div>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/flag-icon.png" class="card-icons"
+                                            alt="flag-icon"><span>{{ object.origin_country }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon" ><span>{{ object.difficulty }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/difficulty-icon.png" class="card-icons"
+                                            alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/category-icon.png" class="card-icons"
+                                            alt="category-icon"><span>{{ object.recipe_category }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -421,25 +486,30 @@
                 <br>
                 <h1 class="recipes-continent-title-section">Africa</h1>
                 <div class="icon-legend">
-                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <img src="../../../media/flag-icon.png" alt="flag-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <img src="../../../media/difficulty-icon.png" alt="level-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
-                </div>                
-                <div class="row back-to-top">
+                    <img src="../../../media/category-icon.png" alt="category-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>
+                <div class="row">
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center">
                         <br>
-                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <button type="button" class="btn btn-dark"
+                            onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit
+                            recipe</button>
                         <br>
                         <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
                     </div>
-                </div>  
+                </div>
                 <div class="row card-general-padding">
                     {% with country_list="algerian, angolan, beninese, botswanan, burkinabe, burundian, cameroonian, cape verdean, central african, chadian, comoran, congolese, djiboutian, egyptian, equ. guinean, eritrean, ethiopian, gabonese, gambian, ghanaian, guinean, guinea-bi., ivorian, kenyan, lesotho, liberian, libyan, malagasy, malawian, malian, mauritanian, mauritian, moroccan, mozambican, namibian, niger, nigerian, rwandan, sao tomean, senegalese, seychellois, sierra leonean, somali, south african, south sudanese, sudanese, swazi, tanzanian, togolese, tunisian, ugandan, zambian, zimbabwean" %}
                     {% with country_list_split=country_list|slice:" " %}
@@ -451,18 +521,23 @@
                             <div class="card-img-overlay">
                                 <div class="card-text">
                                     <div>
-                                        <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
+                                        <a href="{{object.get_absolute_url}}">
+                                            <h5 class="card-title-custom">{{ object.recipe_name }}</h5>
+                                        </a>
                                     </div>
-                                    <div class="line-background">
-                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/flag-icon.png" class="card-icons"
+                                            alt="flag-icon"><span>{{ object.origin_country }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon" ><span>{{ object.difficulty }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/difficulty-icon.png" class="card-icons"
+                                            alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/category-icon.png" class="card-icons"
+                                            alt="category-icon"><span>{{ object.recipe_category }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -480,25 +555,30 @@
                 <br>
                 <h1 class="recipes-continent-title-section">Asia</h1>
                 <div class="icon-legend">
-                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <img src="../../../media/flag-icon.png" alt="flag-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <img src="../../../media/difficulty-icon.png" alt="level-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
-                </div>                
-                <div class="row back-to-top">
+                    <img src="../../../media/category-icon.png" alt="category-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>
+                <div class="row">
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center">
                         <br>
-                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <button type="button" class="btn btn-dark"
+                            onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit
+                            recipe</button>
                         <br>
                         <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
                     </div>
-                </div>  
+                </div>
                 <div class="row card-general-padding">
                     {% with country_list="afghan, armenian, azerbaijani, bahraini, bangladeshi, bhutanese, bruneian, burmese, cambodian, chinese, emirati, filipino, georgian, indian, indonesian, iranian, iraqi, israeli, japanese, jordanian, kazakhstani, kuwaiti, kyrgyz, laotian, lebanese, malaysian, maldivian, mongolian, nepalese, omani, pakistani, palestinian, qatari, saudi arabian, singaporean, south korean, sri lankan, syrian, taiwanese, tajik, east timorese, turkmen, uzbek, vietnamese, yemeni" %}
                     {% with country_list_split=country_list|slice:" " %}
@@ -509,17 +589,24 @@
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                             <div class="card-img-overlay">
                                 <div class="card-text">
-                                    <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
-                                    <div class="line-background">
-                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <div>
+                                        <a href="{{object.get_absolute_url}}">
+                                            <h5 class="card-title-custom">{{ object.recipe_name }}</h5>
+                                        </a>
+                                    </div>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/flag-icon.png" class="card-icons"
+                                            alt="flag-icon"><span>{{ object.origin_country }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon" ><span>{{ object.difficulty }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/difficulty-icon.png" class="card-icons"
+                                            alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/category-icon.png" class="card-icons"
+                                            alt="category-icon"><span>{{ object.recipe_category }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -537,25 +624,30 @@
                 <br>
                 <h1 class="recipes-continent-title-section">Oceania</h1>
                 <div class="icon-legend">
-                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <img src="../../../media/flag-icon.png" alt="flag-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <img src="../../../media/difficulty-icon.png" alt="level-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
-                </div>                
-                <div class="row back-to-top">
+                    <img src="../../../media/category-icon.png" alt="category-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>
+                <div class="row">
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center">
                         <br>
-                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <button type="button" class="btn btn-dark"
+                            onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit
+                            recipe</button>
                         <br>
                         <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
                     </div>
-                </div>  
+                </div>
                 <div class="row card-general-padding">
                     {% with country_list="australian, fijian, kiribatian, marshallese, micronesian, nauruan, new zealand, palauan, papua new gui., samoan, solomon islands, tongan, tuvaluan, vanuatuan" %}
                     {% with country_list_split=country_list|slice:" " %}
@@ -566,17 +658,24 @@
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
                             <div class="card-img-overlay">
                                 <div class="card-text">
-                                    <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
-                                    <div class="line-background">
-                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <div>
+                                        <a href="{{object.get_absolute_url}}">
+                                            <h5 class="card-title-custom">{{ object.recipe_name }}</h5>
+                                        </a>
+                                    </div>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/flag-icon.png" class="card-icons"
+                                            alt="flag-icon"><span>{{ object.origin_country }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon" ><span>{{ object.difficulty }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/difficulty-icon.png" class="card-icons"
+                                            alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/category-icon.png" class="card-icons"
+                                            alt="category-icon"><span>{{ object.recipe_category }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -594,25 +693,30 @@
                 <br>
                 <h1 class="recipes-continent-title-section">Mixed / No category</h1>
                 <div class="icon-legend">
-                    <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+                    <img src="../../../media/flag-icon.png" alt="flag-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+                    <img src="../../../media/difficulty-icon.png" alt="level-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
                     <span class="vertical-line">|</span>
-                    <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
-                </div>   
-                <div class="row back-to-top">
+                    <img src="../../../media/category-icon.png" alt="category-icon"
+                        style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+                </div>
+                <div class="row">
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center">
                         <br>
-                        <button type="button" class="btn btn-dark" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
+                        <button type="button" class="btn btn-dark"
+                            onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit
+                            recipe</button>
                         <br>
                         <br>
                         <a href="#topsection" class="back-to-top-link">Back to top</a>
                     </div>
                     <div class="col">
                     </div>
-                </div>             
+                </div>
                 <div class="row card-general-padding">
                     {% with country_list="no category, mixed" %}
                     {% with country_list_split=country_list|slice:" " %}
@@ -624,18 +728,23 @@
                             <div class="card-img-overlay">
                                 <div class="card-text">
                                     <div>
-                                        <a href ="{{object.get_absolute_url}}"><h5 class="card-title">{{ object.recipe_name }}</h5></a>
+                                        <a href="{{object.get_absolute_url}}">
+                                            <h5 class="card-title-custom">{{ object.recipe_name }}</h5>
+                                        </a>
                                     </div>
-                                    <div class="line-background">
-                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/flag-icon.png" class="card-icons"
+                                            alt="flag-icon"><span>{{ object.origin_country }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon"><span>{{ object.difficulty }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/difficulty-icon.png" class="card-icons"
+                                            alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                                     </div>
                                     <br>
-                                    <div class="line-background">
-                                    <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>{{ object.recipe_category }}</span>
+                                    <div class="recipe-card-quick-info">
+                                        <img src="../../../media/category-icon.png" class="card-icons"
+                                            alt="category-icon"><span>{{ object.recipe_category }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -653,6 +762,7 @@
 
         </div>
     </body>
+
     <footer>
         <div class="footer-padding">
             <div class="footer-background">
@@ -673,56 +783,38 @@
                     </div>
                     <div class="col-8 text-center">
                         <br>
-                        <h4>Want to create your own recipes and share it with the world?
+                        <h4 class="footer-text">Want to share your own recipes with the world?
                             Proud of one of your local recipe delight? <br><br></h4>
-                            <h4 class="footer-buttons-action-call">Submit your recipe to our catalog right now quickly and easily.</h4> <br>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
-                                    </div>
-                                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
-                                        <button type="button" class="btn btn-dark w-100" onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit recipe</button>
-                                    </div>
-                                    <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
-                                    </div>
+                        <h4 class="footer-buttons-action-call footer-text">Submit your recipe to our catalog right now quickly and
+                            easily.</h4><br><br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-2">
                                 </div>
-                            </div>
-                        <br>
-                        <br>
-                        <h4>Want to create your own list of recipes?
-                            Want to create your own list of favorite from our catalog?
-                            Want to add comments on recipes? <br><br></h4> 
-                            <h4 class="footer-buttons-action-call">Create an account now! Its free and it only takes 2 minutes.</h4><br>
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
-                            </div>
-                            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-8">
-                                <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
-                                    data-bs-target="#signupModal">
-                                    Sign up
-                                </button>
-                            </div>
-                            <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-8">
+                                    <button type="button" class="btn btn-dark w-100"
+                                        onclick="window.location.href='{% url 'recipes:user_submit_recipe' %}'">Submit
+                                        recipe</button>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-2">
+                                </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="signupModalLabel">Sign up</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Test</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Sign up</button>
-                                    </div>
-                                </div>
+                        <br>
+                        <br>
+                        <h4 class="footer-text">Want to create your own list of recipes?
+                            Want to create your own list of favorite from our catalog?
+                            Want to add comments on recipes? <br><br></h4>
+                        <h4 class="footer-buttons-action-call footer-text">Create an account now! Its free and it only takes 2
+                            minutes.</h4><br><br>
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-2">
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-8">
+                                <button type="button" class="btn btn-dark w-100"
+                                onclick="window.location.href='{% url 'accounts:signup' %}'">Sign up</button>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-2">
                             </div>
                         </div>
                     </div>
@@ -736,12 +828,12 @@
                         <br>
                         <p>*****</p>
                         <br>
-                        <h4 class="detailed-page-share-text">Share recipe</h4>
+                        <h4 class="website-share-links-title">Share recipe</h4>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 detailed-page-section-bottom-margin d-flex justify-content-center">
-                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style detailed-page-share-icons">
+                    <div class="col-12 section-bottom-margin d-flex justify-content-center">
+                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style website-share-icons">
                             <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
                             <a class="a2a_button_whatsapp"></a>
                             <a class="a2a_button_facebook"></a>
@@ -756,12 +848,12 @@
 
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h4 class="detailed-page-share-text">Share website</h4>
+                        <h4 class="website-share-links-title">Share website</h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
-                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style detailed-page-share-icons">
+                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style website-share-icons">
                             <a href="https://www.addtoany.com/share#url=http%3A%2F%2F127.0.0.1%3A8000%2Fhome%2F&amp;title="
                                 target="_blank"><img src="https://static.addtoany.com/buttons/a2a.svg" width="32"
                                     height="32" style="background-color:#0166ff" class="website-share-icons"></a>
@@ -788,7 +880,7 @@
                     </div>
                 </div>
 
-                <div class="row back-to-top">
+                <div class="row">
                     <div class="col-2">
                     </div>
                     <div class="col-8 text-center back-to-top-link-bottom-margin">
@@ -805,6 +897,7 @@
             </div>
         </div>
     </footer>
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -815,7 +908,7 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
     <script src="{% static 'recipes/js/javascript.js' %}"></script>
-    
+
 </main>
 
 </html>
