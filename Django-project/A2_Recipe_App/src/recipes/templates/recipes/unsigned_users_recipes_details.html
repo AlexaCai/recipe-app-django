@@ -171,8 +171,7 @@
                                     <div>
                                         {% if ingredient.possible_substitute %}
                                         <br>
-                                        <span class="ingredient-fields">Possible substitute: {{
-                                            ingredient.possible_substitute }}</span> <br>
+                                        <span class="ingredient-fields">Possible substitute: {{ ingredient.possible_substitute }}</span> <br>
                                         {% endif %}
                                         <span>{{ ingredient.substitue_special_note }}</span>
                                     </div>
@@ -225,8 +224,7 @@
                     {% for tool in object.recipe_tools.all %}
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <ol class="list-group cooking-tools-padding">
-                            <li
-                                class="list-group-item justify-content-between align-items-start">
+                            <li class="list-group-item justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                     <div class="fw-bold detailed-page-text-content text-center">{{ tool.cooking_tool_name }}</div>
                                     <br>
@@ -250,7 +248,7 @@
             <div class="col-xl-2 col-lg-1 col-md-2 col-sm-2 col-1">
             </div>
             <div class="col-xl-8 col-lg-10 col-md-8 col-sm-8 col-10">
-                <h1 class="text-center detailed-recipe-titles instructions-section">Related recipes</h1>
+                <h1 class="text-center detailed-recipe-titles">Related recipes</h1>
                 <br>
                 {% if object.recipe_complementary.all|length > 0 %}
                 <div class="row">
@@ -467,6 +465,7 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
     <script src="{% static 'recipes/js/javascript.js' %}"></script>
+    
 </main>
 
 </html>
