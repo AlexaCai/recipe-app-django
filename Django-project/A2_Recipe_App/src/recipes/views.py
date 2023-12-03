@@ -1,22 +1,22 @@
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from .models import Recipe, RecipeComments, RecipeIngredients, RecipeAllergens, RecipeCookingInstructions, RecipeToolsNeeded, RecipeSimilarComplementary
 from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from .forms import SearchAllergensForm, UserSubmitRecipe, RecipeIngredientsForm, RecipeAllergensForm, RecipeCookingInstructionsForm, RecipeToolsForm, RecipeSimilarComplementaryForm
+from django.forms import inlineformset_factory
 import pandas as pd
 from django.db.models import Q
 from .utils import get_chart
 from django.utils import timezone
-from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from django.forms import inlineformset_factory
 from django.core.mail import EmailMessage
-from django.shortcuts import redirect
 
 
-# Functions used to return appropriate views/html template for the recipes app depending on the URL
+
+# Functions used to return appropriate views/html template for the recipes app depending on
+# the URL
 def home(request):
     return render(request, "recipes/home.html")
 
@@ -234,7 +234,7 @@ def search_recipes_by_ingredients(request):
     # Retrieves the 'query' parameter from the GET request
     search_query = request.GET.get("query")
     # Splits the search query (a comma-separated list of ingredients) into individual ingredients \
-    # and stores them in a list called 'ingredients'. The strip() function is used to remove \
+    # and stores them in a list called 'ingredients'. The strip() is used to remove \
     # any leading or trailing whitespaces from each ingredient.
     ingredients = [ingredient.strip() for ingredient in search_query.split(",")]
 
@@ -288,7 +288,7 @@ def update_comment(request, id):
     comment.save()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
-
+# Logic allowing users to submit a recipe by email via the web app (submit recipe page)
 def user_submit_recipe(request):
     RecipeIngredientsFormSet = inlineformset_factory(Recipe, RecipeIngredients, form=RecipeIngredientsForm, extra=1, can_delete=True)
     RecipeAllergensFormSet = inlineformset_factory(Recipe, RecipeAllergens, form=RecipeAllergensForm, extra=1, can_delete=True)
