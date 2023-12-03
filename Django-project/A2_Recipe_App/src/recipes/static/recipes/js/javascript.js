@@ -1,13 +1,11 @@
-//***Logic below to handle the main search functionality
+//***Logic below to handle the main recipe search bar functionality (search by name)
 
-document.getElementById('button-addon2').addEventListener('click', function () {
-    console.log('Button clicked');
+document.getElementById('search-recipe-by-name-button').addEventListener('click', function () {
     performMainSearch();
 });
 
 function performMainSearch() {
     var searchQuery = document.getElementById('recipe-search-by-name-input').value;
-    console.log(searchQuery)
 
     if (!searchQuery) {
         console.log('Search query is empty');
@@ -30,26 +28,22 @@ function performMainSearch() {
 //***Logic below to handle the advanced search functionality - with filters
 
 document.getElementById('advanced-search-filters-modal-button').addEventListener('click', function () {
-    console.log('Button clicked');
     performSearchByFilters();
 });
 
 function performSearchByFilters() {
     var searchFilter1 = document.getElementById('filter-option-selected1').value;
-    console.log(searchFilter1)
     var searchFilter2 = document.getElementById('filter-option-selected2').value;
-    console.log(searchFilter2)
     var searchFilter3 = document.getElementById('filter-option-selected3').value;
-    console.log(searchFilter3)
     var searchFilter4 = document.getElementById('filter-option-selected4').value;
-    console.log(searchFilter4)
 
     if (!searchFilter1 && !searchFilter2 && !searchFilter3 && !searchFilter4) {
         console.log('Search query is empty');
         return;
     }
 
-    //***Used to build a URL dynamically based on how many and which filters are selected by users
+    //***Used to build a URL dynamically based on how many and which filters are selected 
+    //***by users
     var url = '/search-recipe-filters/?';
 
     if (searchFilter1) {
@@ -101,14 +95,12 @@ function performSearchByFilters() {
 
 //***Logic below to handle the advanced search functionality - by ingredients
 
-document.getElementById('button-addon3').addEventListener('click', function () {
-    console.log('Button clicked');
+document.getElementById('search-recipe-by-ingredient-button').addEventListener('click', function () {
     performIngredientsSearch();
 });
 
 function performIngredientsSearch() {
     var searchQuery = document.getElementById('recipe-search-by-ingredients-input').value;
-    console.log(searchQuery)
 
     if (!searchQuery) {
         console.log('Search query is empty');
@@ -128,8 +120,8 @@ function performIngredientsSearch() {
 
 
 
-//***Function below used to change dynamically the recipes UI to display the searched results, whether it \
-//***is a search by name, by filters or by ingredients.
+//***Function below used to change dynamically the recipes list UI to display the searched 
+//***results, whether it is a search by name, by filters or by ingredients.
 
 function displaySearchResults(data) {
     var recipes = data.recipes;
@@ -211,7 +203,6 @@ function displaySearchResults(data) {
         <div class="search-result-not-found">
             <button type="button" class="btn btn-danger" onclick="clearSearch()">Clear search</button>
             <br>
-            <br>
         </div>
         `;
 
@@ -256,14 +247,6 @@ function displaySearchResults(data) {
                 </div>
             `;
 
-            var currentPath = window.location.pathname;
-            
-            if (currentPath.includes('/recipes-list-signed-users/')) {
-                var buttonContainer = document.createElement('div');
-                buttonContainer.className = 'd-flex justify-content-center';
-                buttonContainer.innerHTML = '<button type="button" class="btn btn-dark recipes-list-page-add-to-favorite-button">Add to favorite</button>';
-                recipeCard.appendChild(buttonContainer);
-            }
             recipeRow.appendChild(recipeCard);
         });
         searchResultsContainer.appendChild(recipeRow);
@@ -272,8 +255,8 @@ function displaySearchResults(data) {
 
 
 
-//***Function below used to hide the default content sections and display the search results section
-//***dynamically when users are doing researches. 
+//***Function below used to hide the default recipes list UI and display the search results
+//***UI dynamically when users are doing researches. 
 
 function showSearchResultsSection() {
     var defaultContentSections = document.getElementsByClassName('default-content');
@@ -288,7 +271,8 @@ function showSearchResultsSection() {
 
 
 
-//***Function below used to return to main recipes list page when users click on the clear search button
+//***Function below used to return to main recipes list UI when users click on the clear 
+//***search button.
 
 function clearSearch() {
     var searchInput = document.getElementById('recipe-search-by-name-input');
@@ -305,8 +289,8 @@ function clearSearch() {
 }
 
 
-//***Code to ensure smooth transition in the page when user click on the back to top link at the \
-//***bottom of the detailed page.
+//***Code to ensure smooth transition in the pages when users click on the 'back to top'
+//***link at the bottom of the pages.
 
 function scrollToSection(event, targetSectionId) {
     event.preventDefault();

@@ -1,4 +1,4 @@
-from django import forms    #import django forms
+from django import forms
 from recipes.models import Recipe, RecipeIngredients, RecipeAllergens, RecipeCookingInstructions, RecipeToolsNeeded, RecipeSimilarComplementary
 from django.forms import inlineformset_factory
 

@@ -62,9 +62,9 @@
                             <div class="input-group">
                                 <input id="recipe-search-by-name-input" type="text"
                                     class="form-control main-search-field" placeholder="Enter a recipe"
-                                    aria-label="Search" aria-describedby="button-addon2">
+                                    aria-label="Search" aria-describedby="search-recipe-by-name-button">
                                 <button class="btn btn-light main-search-field" type="button"
-                                    id="button-addon2">Search</button>
+                                    id="search-recipe-by-name-button">Search</button>
                             </div>
                         </div>
                     </form>
@@ -112,8 +112,7 @@
                                                 <option value="">Select a category</option>
                                                 {% for object in object_list|dictsort:"recipe_category" %}
                                                 {% ifchanged %}
-                                                <option value="{{ object.recipe_category }}">{{ object.recipe_category
-                                                    }}</option>
+                                                <option value="{{ object.recipe_category }}">{{ object.recipe_category }}</option>
                                                 {% endifchanged %}
                                                 {% endfor %}
                                             </select>
@@ -163,12 +162,12 @@
                                                         <input id="recipe-search-by-ingredients-input" type="text"
                                                             class="form-control"
                                                             placeholder="Ingredient(s): chicken, rice, tomato"
-                                                            aria-label="Search" aria-describedby="button-addon3">
+                                                            aria-label="Search" aria-describedby="search-recipe-by-ingredient-button">
                                                     </div>
                                                 </div>
                                             </form>
                                             <button type="button" class="btn btn-dark advanced-search-modal-button"
-                                                id="button-addon3" data-bs-dismiss="modal">Search</button>
+                                                id="search-recipe-by-ingredient-button" data-bs-dismiss="modal">Search</button>
                                         </div>
                                     </div>
                                 </div>

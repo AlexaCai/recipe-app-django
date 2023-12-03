@@ -1,7 +1,6 @@
 // Logic used to add dynamically more forms/lines to the ingredients formset on frontend, to allow users
 // to add as much ingredients to their recipe as they want when SUBMITTING recipes.
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('DOMContentLoaded fired'); // Add this line
 
     var formsetContainer = document.getElementById('ingredients-formset-container');
     var addFormButton = document.getElementById('ingredient-form');
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add form when "ingredient-form" button is clicked
     addFormButton.addEventListener('click', function () {
-        console.log('Button Clicked');
         var formsets = formsetContainer.getElementsByClassName('ingredients_formset');
         var lastFormset = formsets[formsets.length - 1];
         var newFormset = lastFormset.cloneNode(true);
@@ -67,7 +65,6 @@ function updateRemoveIngredientButton() {
     var removeFormButton = document.getElementById('remove-ingredient-form');
 
     var formsets = formsetContainer.getElementsByClassName('ingredients_formset');
-    console.log('Number of formsets:', formsets.length);
 
     if (formsets.length > 1) {
         removeFormButton.style.display = 'inline-block';
@@ -86,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updateRemoveAllergensButton();
 
     addFormButton.addEventListener('click', function () {
-        console.log('Button Clicked');
         var formsets = formsetContainer.getElementsByClassName('allergen_formset');
         var lastFormset = formsets[formsets.length - 1];
         var newFormset = lastFormset.cloneNode(true);
@@ -128,7 +124,6 @@ function updateRemoveAllergensButton() {
     var removeFormButton = document.getElementById('remove-allergen-form');
 
     var formsets = formsetContainer.getElementsByClassName('allergen_formset');
-    console.log('Number of formsets:', formsets.length);
 
     if (formsets.length > 1) {
         removeFormButton.style.display = 'inline-block';
@@ -147,7 +142,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updateRemoveInstructionsButton();
 
     addFormButton.addEventListener('click', function () {
-        console.log('Button Clicked');
         var formsets = formsetContainer.getElementsByClassName('cooking_instructions_formset');
         var lastFormset = formsets[formsets.length - 1];
         var newFormset = lastFormset.cloneNode(true);
@@ -189,7 +183,6 @@ function updateRemoveInstructionsButton() {
     var removeFormButton = document.getElementById('remove-instructions-form');
 
     var formsets = formsetContainer.getElementsByClassName('cooking_instructions_formset');
-    console.log('Number of formsets:', formsets.length);
 
     if (formsets.length > 1) {
         removeFormButton.style.display = 'inline-block';
@@ -208,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updateRemoveCookingToolsButton();
 
     addFormButton.addEventListener('click', function () {
-        console.log('Button Clicked');
         var formsets = formsetContainer.getElementsByClassName('recipe_tools_formset');
         var lastFormset = formsets[formsets.length - 1];
         var newFormset = lastFormset.cloneNode(true);
@@ -250,7 +242,6 @@ function updateRemoveCookingToolsButton() {
     var removeFormButton = document.getElementById('remove-tools-form');
 
     var formsets = formsetContainer.getElementsByClassName('recipe_tools_formset');
-    console.log('Number of formsets:', formsets.length);
 
     if (formsets.length > 1) {
         removeFormButton.style.display = 'inline-block';
@@ -269,7 +260,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updateRemoveSimilarRecipeButton();
 
     addFormButton.addEventListener('click', function () {
-        console.log('Button Clicked');
         var formsets = formsetContainer.getElementsByClassName('recipe_similar_complementary_formset');
         var lastFormset = formsets[formsets.length - 1];
         var newFormset = lastFormset.cloneNode(true);
@@ -311,7 +301,6 @@ function updateRemoveSimilarRecipeButton() {
     var removeFormButton = document.getElementById('remove-similar-recipe-form');
 
     var formsets = formsetContainer.getElementsByClassName('recipe_similar_complementary_formset');
-    console.log('Number of formsets:', formsets.length);
 
     if (formsets.length > 1) {
         removeFormButton.style.display = 'inline-block';
@@ -320,6 +309,11 @@ function updateRemoveSimilarRecipeButton() {
     }
 }
 
+// Used to update the names of the input fields in a formset when a new formset is added or
+// an existing one is removed. This is necessary for the names of the input fields in 
+// formsets to follow a specific pattern, which includes an index number. This function 
+// takes a form and an index number as parameters, selects all input fields in the form that
+// have a name attribute, and updates the index number in their names.
 function updateFormInputNames(form, formIndex) {
     var inputs = form.querySelectorAll('[name]');
     inputs.forEach(function (input) {
@@ -328,6 +322,8 @@ function updateFormInputNames(form, formIndex) {
     });
 }
 
+// Used to update the TOTAL_FORMS field in the formset management form. This field keep 
+// track of how many forms are in a formset.
 function updateFormsetManagementForm(formsetContainer, formCount) {
     var totalFormsInput = formsetContainer.querySelector('input[name$="TOTAL_FORMS"]');
     

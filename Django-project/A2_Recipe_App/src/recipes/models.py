@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.shortcuts import reverse
 from django.conf import settings
@@ -296,6 +295,7 @@ class Recipe(models.Model):
         return self.calculate_difficulty()
         
     # Display the url as a property, not an input field
+    # Generate url used for unsigned users
     @property
     def recipe_url(self):
         return self.get_absolute_url()
@@ -303,6 +303,8 @@ class Recipe(models.Model):
     def get_absolute_url(self):
        return reverse ('recipes:recipes_detail_unsigned_users', kwargs={'pk': self.pk})
     
+    # Display the url as a property, not an input field
+    # Generate url used for signed users
     @property
     def recipe_url_signed_users(self):
         return self.get_absolute_url_signed_users()
