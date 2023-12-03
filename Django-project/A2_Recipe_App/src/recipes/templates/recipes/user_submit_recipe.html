@@ -22,7 +22,7 @@
 <main>
     <header id="topsection">
         <div class="header-display">
-            <nav class="navbar navbar-expand-md navbar-light nav justify-content-end">
+            <nav class="navbar navbar-expand-md navbar-light justify-content-end">
                 <div class="logo-container">
                     <img src="../../../media/temporary-logo.jpg" alt="ac-logo" class="logo-image">
                 </div>
@@ -35,16 +35,30 @@
                             <a class="nav-link" href="{% url 'recipes:home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'recipes:recipes_list_signed_users' %}">Recipes</a>
+                            {% if user.is_authenticated %}
+                            <a class="nav-link" href="{% url 'recipes:recipes_list_signed_users' %}">
+                                See recipes
+                            </a>
+                            {% else %}
+                            <a class="nav-link" href="{% url 'recipes:recipes_list_unsigned_users' %}">
+                                See recipes
+                            </a>
+                            {% endif %}                        
                         </li>
                         <li class="nav-item">
+                            {% if user.is_authenticated %}
                             <a class="nav-link" href="{% url 'accounts:profile' %}">Profile</a>
+                            {% endif %}
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#projects-section">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{%url 'accounts:logout' %}">Logout</a>
+                            {% if user.is_authenticated %}
+                            <a class="nav-link" href="{% url 'accounts:logout' %}">
+                                Logout
+                            </a>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>
@@ -118,23 +132,23 @@
                             aria-labelledby="recipeSubmitPictureInfoModal" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
-                                    <div class="home-page-modal-head">
+                                    <div class="submit-recipe-page-modal-head">
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <h4 class="modal-title-home-page">What's a good picture?</h4>
+                                        <h4 class="modal-title-submit-recipe-page">What's a good picture?</h4>
                                         <div class="row">
                                             <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                             </div>
                                             <div
-                                                class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-home-page">
+                                                class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-submit-recipe-page">
                                                 <span>-Not blurry</span> <br>
                                                 <span>-Good light</span> <br>
                                                 <span>-Landscape mode (horizontal)</span> <br>
                                                 <span>-Only shows the recipe (e.g. no people)</span> <br><br>
                                                 <span>*1920 x 1280 size are preferred, but picture of other sizes can still be submitted. Our team will take care of resizing the photo if necessary.</span><br><br>
-                                                <h4 class="modal-title-home-page">Important note</h4>
+                                                <h4 class="modal-title-submit-recipe-page">Important note</h4>
                                                 <span>If you submit a picture taken from the web, <span style="text-decoration: underline;"><b>make sure the photo is copyright free</b></span></span>
                                             </div>
                                             <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">

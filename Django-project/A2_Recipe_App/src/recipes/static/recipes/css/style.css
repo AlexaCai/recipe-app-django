@@ -743,7 +743,6 @@
 .submit-recipe-form-background {
     background: rgba(255, 255, 255, 0.85);
     padding-top: 80px;
-    padding-bottom: 80px;
     height: 160vh;
 }
 
@@ -791,24 +790,6 @@
     margin-bottom: 20px;
 }
 
-.submit-recipe-form-directives {
-    color: rgb(255, 0, 0);
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-@media (max-width: 650px) {
-    .submit-recipe-form-directives {
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 400px) {
-    .submit-recipe-form-directives {
-        font-size: 16px;
-    }
-}
-
 .submit-recipe-page-picture-direction {
     color: red;
     font-weight: bold;
@@ -830,8 +811,48 @@
     }
 }
 
+.submit-recipe-page-modal-head {
+    display: flex;
+    padding: 20px;
+    justify-content: flex-end;
+}
+
+.modal-title-submit-recipe-page {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.modal-text-submit-recipe-page {
+    font-size: 20px;
+}
+
+@media (max-width: 400px) {
+    .modal-text-submit-recipe-page {
+        font-size: 16px;
+    }
+}
+
+.submit-recipe-form-directives {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+@media (max-width: 650px) {
+    .submit-recipe-form-directives {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    .submit-recipe-form-directives {
+        font-size: 16px;
+    }
+}
+
 .recipe-submit-page-submission-information {
-    display: flex; /* This is necessary for justify-content to work */
+    display: flex; 
     justify-content: center; 
 }
 
@@ -890,20 +911,15 @@
 }
 
 .recipe-submit-page-fruit-quote {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 90vh;
     width: 100%;
-    margin: 0;
     text-align: center;
-    position: relative;
 }
 
 .fruit-quote {
     font-family: 'Lobster', sans-serif;
-    font-weight: 400;
     font-size: 50px;
 }
 
@@ -942,6 +958,10 @@
     }
 }
 
+
+
+
+
 /* CSS for the succcess submit recipe page */
 
 .image-background-recipe-submit-success-page {
@@ -950,10 +970,44 @@
     margin: 0;
 }
 
+.buttons-bottom-padding {
+    padding-bottom: 10px;
+}
+
+.success-page-modal-head {
+    display: flex;
+    padding: 20px;
+    justify-content: flex-end;
+}
+
+.modal-title-success-page {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.modal-text-success-page {
+    font-size: 20px;
+}
+
+@media (max-width: 400px) {
+    .modal-text-submit-recipe-page {
+        font-size: 16px;
+    }
+}
+
+
+
+
+
 /* CSS for the failed submit recipe page */
 
 .image-background-recipe-submit-failed-page {
     background: url("../../../media/lemon-background.jpg") center/cover no-repeat;
     height: 120vh;
     margin: 0;
+}
+
+.buttons-bottom-padding {
+    padding-bottom: 10px;
 }

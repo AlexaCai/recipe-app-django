@@ -370,7 +370,7 @@ def user_submit_recipe(request):
                 })
 
             email = EmailMessage(
-                f'New recipe submitted from {request.user.email}',
+                f'New recipe submitted from {request.user.email if request.user.is_authenticated else "Unsigned user"}',
                 html,
                 'atablespoonofdiscovery@gmail.com',
                 ['atablespoonofdiscovery@gmail.com'],
