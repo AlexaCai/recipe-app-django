@@ -326,15 +326,26 @@
     padding-bottom: 50px;
 }
 
+.card {
+    position: relative;
+}
+
 .card-text {
     color: black;
+    position: absolute;
+    padding: 15px;
+}
+
+.card-title {
+    position: absolute;
 }
 
 .card-title-custom {
     font-family: 'Cinzel', sans-serif;
-    font-weight: 600;
+    font-weight: bold;
+    font-size: 22px;
     background-color: rgb(255, 255, 255, 0.97);
-    padding: 10px;
+    padding: 10px 30px;
     color: black;
     border: solid 1px black;
     border-radius: 10px;
@@ -347,14 +358,14 @@
 @media (max-width: 450px) {
     .card-title-custom {
         font-size: 18px;
-        padding: 5px;
+        padding: 8px 20px;
     }
 }
 
-@media (max-width: 280px) {
+@media (max-width: 300px) {
     .card-title-custom {
-        font-size: 12px;
-        padding: 4px;
+        font-size: 16px;
+        padding: 4px 20px;
     }
 }
 
@@ -388,7 +399,7 @@
 
 .recipe-card-quick-info {
     background: rgba(255, 255, 255, 0.97);
-    padding: 10px;
+    padding: 8px;
     margin: 5px 0;
     border-radius: 10px;
     display: inline-block;

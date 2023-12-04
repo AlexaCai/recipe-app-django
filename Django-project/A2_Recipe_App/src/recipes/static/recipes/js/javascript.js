@@ -225,27 +225,30 @@ function displaySearchResults(data) {
             }
 
             recipeCard.innerHTML = `
-                <br>
-                <div class="card text-bg-dark">
+            <div class="card text-bg-dark">
+                <a href="${recipeUrl}">
                     <img src="${recipe.pic}" class="img-fluid" alt="recipe-image">
-                    <div class="card-img-overlay">
-                        <div class="card-text">
-                        <a href="${recipeUrl}"><h5 class="card-title-custom">${recipe.recipe_name}</h5></a>
-                            <div class="recipe-card-quick-info">
-                                <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>${recipe.recipe_origin_country}</span>
-                            </div>
-                            <br>
-                            <div class="recipe-card-quick-info">
-                                <img src="../../../media/difficulty-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>${recipe.recipe_difficulty}</span>
-                            </div>
-                            <br>
-                            <div class="recipe-card-quick-info">
-                                <img src="../../../media/category-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>${recipe.recipe_category}</span>
-                            </div>
-                        </div>
+                </a>                                
+                <div class="card-text">
+                    <div>
+                        <a href="${recipeUrl}">
+                            <h5 class="card-title-custom">${recipe.recipe_name}</h5>
+                        </a>
+                    </div>
+                    <div class="recipe-card-quick-info">
+                        <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>${recipe.origin_country}</span>
+                    </div>
+                    <br>
+                    <div class="recipe-card-quick-info">
+                        <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon"><span>${recipe.difficulty}</span>
+                    </div>
+                    <br>
+                    <div class="recipe-card-quick-info">
+                        <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>${recipe.recipe_category}</span>
                     </div>
                 </div>
-            `;
+            </div>
+        `;
 
             recipeRow.appendChild(recipeCard);
         });
