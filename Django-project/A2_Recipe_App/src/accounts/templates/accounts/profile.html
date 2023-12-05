@@ -198,13 +198,15 @@
                                     {% endfor %}
                                 </div>
                                 <br>
-                                <button type="button" id="add-ingredient-form" class="btn btn-dark">Add Ingredient</button>
+                                <button type="button" id="add-ingredient-form" class="btn btn-dark">Add
+                                    Ingredient</button>
                                 <br>
                                 <br>
                                 <br>
                                 <div class="d-flex justify-content-center">
-                                <button type="button" id="remove-ingredient-form" class="btn btn-danger remove-button"
-                                    style="display:none; margin-bottom: 60px;">Remove last ingredient</button>
+                                    <button type="button" id="remove-ingredient-form"
+                                        class="btn btn-danger remove-button"
+                                        style="display:none; margin-bottom: 60px;">Remove last ingredient</button>
                                 </div>
                                 <h3 class="create-recipe-form-subtitle">Allergen(s)</h3>
                                 <h5 class="create-recipe-form-directives">*Enter only one allergen at time*</h5>
@@ -229,8 +231,8 @@
                                 <br>
                                 <br>
                                 <div class="d-flex justify-content-center">
-                                <button type="button" id="remove-allergen-form" class="btn btn-danger remove-button"
-                                    style="display:none; margin-bottom: 60px;">Remove last allergen</button>
+                                    <button type="button" id="remove-allergen-form" class="btn btn-danger remove-button"
+                                        style="display:none; margin-bottom: 60px;">Remove last allergen</button>
                                 </div>
                                 <h3 class="create-recipe-form-subtitle">Instructions</h3>
                                 <h5 class="create-recipe-form-directives">*Enter only one step/description at time*</h5>
@@ -264,8 +266,9 @@
                                 <br>
                                 <br>
                                 <div class="d-flex justify-content-center">
-                                <button type="button" id="remove-cooking-instruction-form" class="btn btn-danger remove-button"
-                                    style="display:none; margin-bottom: 60px;">Remove last step</button>
+                                    <button type="button" id="remove-cooking-instruction-form"
+                                        class="btn btn-danger remove-button"
+                                        style="display:none; margin-bottom: 60px;">Remove last step</button>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
@@ -282,7 +285,7 @@
             <br>
             <br>
             <br>
-            <h1 class="text-center profile-page-title">Created recipes</h1>
+            <h1 class="text-center profile-page-title" id="createdRecipes">Created recipes</h1>
             <br>
             <div class="icon-legend">
                 <img src="../../../media/flag-icon.png" alt="flag-icon"
@@ -308,11 +311,12 @@
             </div>
             <div class="row recipe-card-padding">
                 {% for object in created_recipes %}
-                <div class="col-xl-4 col-lg-6 col-sm-12 recipe-card-padding">
+                <div
+                    class="col-xl-4 col-lg-6 col-sm-12 recipe-card-padding {% if forloop.counter > 6 %}recipe-card-hidden{% endif %}">
                     <div class="card text-bg-dark">
                         <a href="{{object.get_absolute_url_signed_users}}">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
-                        </a>                                
+                        </a>
                         <div class="card-text">
                             <div>
                                 <a href="{{object.get_absolute_url_signed_users}}">
@@ -320,8 +324,8 @@
                                 </a>
                             </div>
                             <div class="recipe-card-quick-info">
-                                <img src="../../../media/flag-icon.png" class="card-icons"
-                                    alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{
+                                    object.origin_country }}</span>
                             </div>
                             <br>
                             <div class="recipe-card-quick-info">
@@ -612,6 +616,36 @@
                         </div>
                     </div>
                 </div>
+
+                {% if forloop.last %}
+                <div class="row showMoreButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButton">
+                            Show More
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if forloop.last %}
+                <div class="row hideExtraCardsButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButton"
+                            style="display: none;">
+                            Reduce
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                {% endif %}
+                
                 {% empty %}
                 <h5 class="text-center">No created recipes available.</h5>
                 {% endfor %}
@@ -648,7 +682,7 @@
                     <div class="card text-bg-dark">
                         <a href="{{object.get_absolute_url_signed_users}}">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
-                        </a>                                
+                        </a>
                         <div class="card-text">
                             <div>
                                 <a href="{{object.get_absolute_url_signed_users}}">
@@ -656,8 +690,7 @@
                                 </a>
                             </div>
                             <div class="recipe-card-quick-info">
-                                <img src="../../../media/flag-icon.png" class="card-icons"
-                                    alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                             </div>
                             <br>
                             <div class="recipe-card-quick-info">
@@ -676,7 +709,7 @@
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center">
-                            <div id="favourite-section">
+                            <div id="favourite-section" class="favorite-card-remove-button-margin">
                                 <a href="{% url 'accounts:favorite_add' object.id %}" class="btn btn-danger">Remove</a>
                             </div>
                         </div>

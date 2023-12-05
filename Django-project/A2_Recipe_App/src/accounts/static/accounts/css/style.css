@@ -289,6 +289,24 @@
     }
 }
 
+.recipe-card-hidden {
+    display: none;
+}
+
+.row.showMoreButtonRow {
+    --bs-gutter-x: 0;
+    margin-top: 40px;
+}
+
+.row.hideExtraCardsButtonRow {
+    --bs-gutter-x: 0;
+    margin-top: 40px;
+}
+
+.favorite-card-remove-button-margin {
+    margin-bottom: 20px;
+}
+
 .recipe-card-padding {
     padding: 20px;
     padding-bottom: 15px;

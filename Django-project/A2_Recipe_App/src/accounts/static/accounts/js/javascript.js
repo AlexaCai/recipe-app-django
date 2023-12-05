@@ -95,3 +95,71 @@ function updateFormsetManagementForm(formsetContainer, formCount) {
         totalFormsInput.value = formCount;
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize visible card count
+    var visibleCardCount = 6;
+
+    // Function to show additional cards
+    function showMoreCards() {
+        // Initialize hidden cards here
+        var hiddenCards = document.querySelectorAll('.recipe-card-hidden');
+        for (var i = 0; i < hiddenCards.length && i < 6; i++) {
+            hiddenCards[i].classList.remove('recipe-card-hidden');
+            visibleCardCount++;
+        }
+
+        // Hide the "Show More" button if the number of cards shown is not 6
+        if (i < 6) {
+            document.getElementById('showMoreButton').style.display = 'none';
+            document.getElementById('hideExtraCardButton').style.display = 'block';
+        }
+
+        // Append a new "Show More" button after the newly revealed cards
+        appendShowMoreButton();
+    }
+
+    // Function to hide extra cards
+    function hideExtraCards() {
+        // Select all cards
+        var cards = document.querySelectorAll('.recipe-card-padding');
+        for (var i = 7; i < cards.length; i++) {
+            cards[i].classList.add('recipe-card-hidden');
+        }
+
+        // Update the visible card count
+        visibleCardCount = 6;
+
+        // Hide the "Hide" button and show the "Show More" button
+        document.getElementById('hideExtraCardButton').style.display = 'none';
+        document.getElementById('showMoreButton').style.display = 'block';
+    }
+
+    // Attach click event to the initial "Show More" button
+    document.getElementById('showMoreButton').addEventListener('click', showMoreCards);
+
+    // Attach click event to the "Hide" button
+    document.getElementById('hideExtraCardButton').addEventListener('click', hideExtraCards);
+});
+
+
+function scrollToSection(event, targetSectionId) {
+    event.preventDefault();
+    var targetSection = document.querySelector(targetSectionId);
+    var offset = targetSection.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+    });
+}
+
+var backToTopLink1 = document.querySelector('.back-to-top a');
+var backToCreatedRecipes = document.querySelector('#hideExtraCardButton');
+
+backToTopLink1.addEventListener('click', function (event) {
+    scrollToSection(event, '#topsection');
+});
+
+backToCreatedRecipes.addEventListener('click', function (event) {
+    scrollToSection(event, '#createdRecipes');
+});
