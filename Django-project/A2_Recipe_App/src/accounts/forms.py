@@ -88,8 +88,10 @@ unit_measure_choices = (
     ("oz - ounce", "oz - Ounce"),
     ("lb - pound", "lb - Pound"),
     ("kg - kilogram", "kg - Kilogram"),
+    ("cup", "Cup"),
     ("unit", "Unit"),
     ("units", "Units"),
+    ("to taste", "To Taste"),
 )
     
 country_choices = (

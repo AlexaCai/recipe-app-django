@@ -17,8 +17,10 @@ unit_measure_choices = (
     ("oz - ounce", "oz - Ounce"),
     ("lb - pound", "lb - Pound"),
     ("kg - kilogram", "kg - Kilogram"),
+    ("cup", "Cup"),
     ("unit", "Unit"),
     ("units", "Units"),
+    ("to taste", "To Taste"),
 )
 
 country_choices = (
@@ -356,6 +358,17 @@ class RecipeToolsNeeded(models.Model):
     class Meta:
         verbose_name = "Recipe required tool"
         verbose_name_plural = "Recipe required tool"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        img = Image.open(self.cooking_tool_pic.path)
+
+        image_size = (1920, 1280)
+
+        if img.size != image_size:
+            img = img.resize(image_size)
+            img.save(self.cooking_tool_pic.path)
 
 # Allow user to add similar recipes when creating a recipe
 class RecipeSimilarComplementary(models.Model):
