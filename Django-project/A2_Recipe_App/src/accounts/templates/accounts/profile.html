@@ -309,10 +309,10 @@
                 <div class="col">
                 </div>
             </div>
-            <div class="row recipe-card-padding">
+            <div class="row recipe-card-padding created-recipe-card">
                 {% for object in created_recipes %}
                 <div
-                    class="col-xl-4 col-lg-6 col-sm-12 recipe-card-padding {% if forloop.counter > 6 %}recipe-card-hidden{% endif %}">
+                    class="col-xl-4 col-lg-6 col-sm-12 recipe-card-padding created-recipe-card {% if forloop.counter > 6 %}created-recipe-card-hidden{% endif %}">
                     <div class="card text-bg-dark">
                         <a href="{{object.get_absolute_url_signed_users}}">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -324,8 +324,7 @@
                                 </a>
                             </div>
                             <div class="recipe-card-quick-info">
-                                <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{
-                                    object.origin_country }}</span>
+                                <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                             </div>
                             <br>
                             <div class="recipe-card-quick-info">
@@ -622,7 +621,7 @@
                     <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
-                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButton">
+                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonCreatedRecipe">
                             Show More
                         </button>
                     </div>
@@ -636,7 +635,7 @@
                     <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
-                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButton"
+                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonCreatedRecipe"
                             style="display: none;">
                             Reduce
                         </button>
@@ -645,14 +644,14 @@
                     </div>
                 </div>
                 {% endif %}
-                
+
                 {% empty %}
                 <h5 class="text-center">No created recipes available.</h5>
                 {% endfor %}
             </div>
             <br>
             <br>
-            <h1 class="text-center profile-page-title">Favorite recipes</h1>
+            <h1 class="text-center profile-page-title" id="favoriteRecipes">Favorite recipes</h1>
             <br>
             <div class="icon-legend">
                 <img src="../../../media/flag-icon.png" alt="flag-icon"
@@ -676,9 +675,10 @@
                 <div class="col">
                 </div>
             </div>
-            <div class="row recipe-card-padding">
+            <div class="row recipe-card-padding favorite-recipe-card">
                 {% for object in favorite_recipes %}
-                <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                <div
+                    class="col-xl-4 col-lg-6 col-sm-12 recipe-card-padding favorite-recipe-card {% if forloop.counter > 6 %}favorite-recipe-card-hidden{% endif %}">
                     <div class="card text-bg-dark">
                         <a href="{{object.get_absolute_url_signed_users}}">
                             <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -717,6 +717,36 @@
                         </div>
                     </div>
                 </div>
+
+                {% if forloop.last %}
+                <div class="row showMoreButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonFavoriteRecipe">
+                            Show More
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if forloop.last %}
+                <div class="row hideExtraCardsButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonFavoriteRecipe"
+                            style="display: none;">
+                            Reduce
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                {% endif %}
+
                 {% empty %}
                 <h5 class="text-center">No favorite recipes yet.</h5>
                 {% endfor %}

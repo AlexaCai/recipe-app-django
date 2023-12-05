@@ -289,7 +289,11 @@
     }
 }
 
-.recipe-card-hidden {
+.created-recipe-card-hidden {
+    display: none;
+}
+
+.favorite-recipe-card-hidden {
     display: none;
 }
 

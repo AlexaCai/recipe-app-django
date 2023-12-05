@@ -96,53 +96,97 @@ function updateFormsetManagementForm(formsetContainer, formCount) {
     }
 }
 
+
+
+// Function for the 'show more' and 'reduce' buttons on the created recipes section of 
+// profile page
 document.addEventListener("DOMContentLoaded", function () {
     // Initialize visible card count
     var visibleCardCount = 6;
 
-    // Function to show additional cards
     function showMoreCards() {
-        // Initialize hidden cards here
-        var hiddenCards = document.querySelectorAll('.recipe-card-hidden');
+        // Initialize hidden cards
+        var hiddenCards = document.querySelectorAll('.created-recipe-card-hidden');
         for (var i = 0; i < hiddenCards.length && i < 6; i++) {
-            hiddenCards[i].classList.remove('recipe-card-hidden');
+            hiddenCards[i].classList.remove('created-recipe-card-hidden');
             visibleCardCount++;
         }
 
         // Hide the "Show More" button if the number of cards shown is not 6
         if (i < 6) {
-            document.getElementById('showMoreButton').style.display = 'none';
-            document.getElementById('hideExtraCardButton').style.display = 'block';
+            document.getElementById('showMoreButtonCreatedRecipe').style.display = 'none';
+            document.getElementById('hideExtraCardButtonCreatedRecipe').style.display = 'block';
         }
-
-        // Append a new "Show More" button after the newly revealed cards
-        appendShowMoreButton();
     }
 
-    // Function to hide extra cards
     function hideExtraCards() {
-        // Select all cards
-        var cards = document.querySelectorAll('.recipe-card-padding');
+        var cards = document.querySelectorAll('.created-recipe-card');
         for (var i = 7; i < cards.length; i++) {
-            cards[i].classList.add('recipe-card-hidden');
+            cards[i].classList.add('created-recipe-card-hidden');
         }
 
-        // Update the visible card count
         visibleCardCount = 6;
 
-        // Hide the "Hide" button and show the "Show More" button
-        document.getElementById('hideExtraCardButton').style.display = 'none';
-        document.getElementById('showMoreButton').style.display = 'block';
+        document.getElementById('hideExtraCardButtonCreatedRecipe').style.display = 'none';
+        document.getElementById('showMoreButtonCreatedRecipe').style.display = 'block';
     }
 
-    // Attach click event to the initial "Show More" button
-    document.getElementById('showMoreButton').addEventListener('click', showMoreCards);
+    document.getElementById('showMoreButtonCreatedRecipe').addEventListener('click', showMoreCards);
+    document.getElementById('hideExtraCardButtonCreatedRecipe').addEventListener('click', hideExtraCards);
 
-    // Attach click event to the "Hide" button
-    document.getElementById('hideExtraCardButton').addEventListener('click', hideExtraCards);
+        // Hide the "Show More" button if the number of cards is less than or equal to 6
+        var cards = document.querySelectorAll('.created-recipe-card');
+        if (cards.length <= 7) {
+            document.getElementById('showMoreButtonCreatedRecipe').style.display = 'none';
+        }
 });
 
 
+
+// Function for the 'show more' and 'reduce' buttons on the favorite recipes section of 
+// profile page
+document.addEventListener("DOMContentLoaded", function () {
+
+    var visibleCardCount = 6;
+
+    function showMoreCards() {
+        var hiddenCards = document.querySelectorAll('.favorite-recipe-card-hidden');
+        for (var i = 0; i < hiddenCards.length && i < 6; i++) {
+            hiddenCards[i].classList.remove('favorite-recipe-card-hidden');
+            visibleCardCount++;
+        }
+
+        if (i < 6) {
+            document.getElementById('showMoreButtonFavoriteRecipe').style.display = 'none';
+            document.getElementById('hideExtraCardButtonFavoriteRecipe').style.display = 'block';
+        }
+    }
+
+    function hideExtraCards() {
+        var cards = document.querySelectorAll('.favorite-recipe-card');
+        for (var i = 7; i < cards.length; i++) {
+            cards[i].classList.add('favorite-recipe-card-hidden');
+        }
+
+        visibleCardCount = 6;
+
+        document.getElementById('hideExtraCardButtonFavoriteRecipe').style.display = 'none';
+        document.getElementById('showMoreButtonFavoriteRecipe').style.display = 'block';
+    }
+
+    document.getElementById('showMoreButtonFavoriteRecipe').addEventListener('click', showMoreCards);
+    document.getElementById('hideExtraCardButtonFavoriteRecipe').addEventListener('click', hideExtraCards);
+
+    var cards = document.querySelectorAll('.favorite-recipe-card');
+    if (cards.length <= 7) {
+        document.getElementById('showMoreButtonFavoriteRecipe').style.display = 'none';
+    }
+});
+
+
+
+// Function to bring back smoothly users to the top of a section when clicking on a link or
+// button
 function scrollToSection(event, targetSectionId) {
     event.preventDefault();
     var targetSection = document.querySelector(targetSectionId);
@@ -153,13 +197,18 @@ function scrollToSection(event, targetSectionId) {
     });
 }
 
-var backToTopLink1 = document.querySelector('.back-to-top a');
-var backToCreatedRecipes = document.querySelector('#hideExtraCardButton');
+    var backToTopLink1 = document.querySelector('.back-to-top a');
+    var backToCreatedRecipes = document.querySelector('#hideExtraCardButtonCreatedRecipe');
+    var backToFavoriteRecipes = document.querySelector('#hideExtraCardButtonFavoriteRecipe');
 
-backToTopLink1.addEventListener('click', function (event) {
-    scrollToSection(event, '#topsection');
-});
+    backToTopLink1.addEventListener('click', function (event) {
+        scrollToSection(event, '#topsection');
+    });
 
-backToCreatedRecipes.addEventListener('click', function (event) {
-    scrollToSection(event, '#createdRecipes');
-});
+    backToCreatedRecipes.addEventListener('click', function (event) {
+        scrollToSection(event, '#createdRecipes');
+    });
+
+    backToFavoriteRecipes.addEventListener('click', function (event) {
+        scrollToSection(event, '#favoriteRecipes');
+    });
