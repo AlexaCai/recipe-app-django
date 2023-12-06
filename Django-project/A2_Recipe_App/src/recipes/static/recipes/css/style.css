@@ -562,6 +562,7 @@
 .detailed-page-similar-recipe-card-title {
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
+    font-size: 22px;
     background-color: rgb(255, 255, 255, 0.97);
     padding: 10px;
     color: black;
@@ -571,14 +572,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%; 
 }
 
-@media (max-width: 325px) {
+@media (max-width: 360px) {
     .detailed-page-similar-recipe-card-title {
         font-size: 16px;
-        padding: 4px;
+        padding: 10px;
     }
 }
+
+.card-text-similar-recipe {
+    color: black;
+    position: absolute;
+    padding: 15px;
+    width: 100%; 
+}
+
 
 .comments-list {
     list-style: none;
