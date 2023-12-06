@@ -279,22 +279,28 @@
                 {% if object.recipe_complementary.all|length > 0 %}
                 <div class="row">
                     {% for recipe in object.recipe_complementary.all %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                    <div class="col-xl-6 col-lg-6 col-sm-12 card-general-padding">
                         <div class="card text-bg-dark">
-                            <img src="{{ recipe.similar_recipe_pic.url }}" class="img-fluid" alt="recipe-image">
-                            <div class="card-img-overlay">
-                                <div class="card-text">
-                                    <div>
-                                        {% if '/recipes-detail-unsigned-users/' in request.path %}
-                                        <a href="{{ recipe.complementary_recipe_link_unsigned_users }}">
-                                            <h5 class="detailed-page-similar-recipe-card-title">{{ recipe.complementary_recipe_name }}</h5>
-                                        </a>
-                                        {% elif '/recipes-detail-signed-users/' in request.path %}
-                                        <a href="{{ recipe.complementary_recipe_link_signed_users }}">
-                                            <h5 class="detailed-page-similar-recipe-card-title">{{ recipe.complementary_recipe_name }}</h5>
-                                        </a>
-                                        {% endif %}
-                                    </div>
+                            {% if '/recipes-detail-unsigned-users/' in request.path %}
+                            <a href="{{recipe.complementary_recipe_link_unsigned_users}}">
+                                <img src="{{ recipe.similar_recipe_pic.url }}" class="img-fluid" alt="recipe-image">
+                            </a>   
+                            {% elif '/recipes-detail-signed-users/' in request.path %}
+                            <a href="{{recipe.complementary_recipe_link_signed_users}}">
+                                <img src="{{ recipe.similar_recipe_pic.url }}" class="img-fluid" alt="recipe-image">
+                            </a>  
+                            {% endif %}
+                            <div class="card-text-similar-recipe d-flex justify-content-center">
+                                <div class="title-container">
+                                    {% if '/recipes-detail-unsigned-users/' in request.path %}
+                                    <a href="{{ recipe.complementary_recipe_link_unsigned_users }}">
+                                        <h5 class="detailed-page-similar-recipe-card-title">{{ recipe.complementary_recipe_name }}</h5>
+                                    </a>
+                                    {% elif '/recipes-detail-signed-users/' in request.path %}
+                                    <a href="{{ recipe.complementary_recipe_link_signed_users }}">
+                                        <h5 class="detailed-page-similar-recipe-card-title">{{ recipe.complementary_recipe_name }}</h5>
+                                    </a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
