@@ -232,11 +232,11 @@ function displaySearchResults(data) {
                         </a>
                     </div>
                     <div class="recipe-card-quick-info">
-                        <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>${recipe.origin_country}</span>
+                        <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>${recipe.recipe_origin_country}</span>
                     </div>
                     <br>
                     <div class="recipe-card-quick-info">
-                        <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon"><span>${recipe.difficulty}</span>
+                        <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon"><span>${recipe.recipe_difficulty}</span>
                     </div>
                     <br>
                     <div class="recipe-card-quick-info">
@@ -467,6 +467,185 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+// Function for the 'show more' and 'reduce' buttons on the africa recipes section
+document.addEventListener("DOMContentLoaded", function () {
+
+    var visibleCardCount = 7;
+    var cards = document.querySelectorAll('.africa-recipes');
+
+    function showMoreCards() {
+        var hiddenCards = document.querySelectorAll('.africa-recipes-hidden');
+        for (var i = 0; i < hiddenCards.length && i < 6; i++) {
+            hiddenCards[i].classList.remove('africa-recipes-hidden');
+            visibleCardCount++;
+        }
+
+        if (visibleCardCount >= cards.length) {
+            document.getElementById('showMoreButtonAfrica').style.display = 'none';
+            document.getElementById('hideExtraCardButtonAfrica').style.display = 'block';
+        }
+    }
+
+    function hideExtraCards() {
+        for (var i = visibleCardCount - 1; i >= 7; i--) {
+            cards[i].classList.add('africa-recipes-hidden');
+        }
+    
+        visibleCardCount = 7;
+    
+        document.getElementById('hideExtraCardButtonAfrica').style.display = 'none';
+        document.getElementById('showMoreButtonAfrica').style.display = 'block';
+    }
+
+    if (cards.length > visibleCardCount) {
+        for (var i = visibleCardCount; i < cards.length; i++) {
+            cards[i].classList.add('africa-recipes-hidden');
+        }
+        document.getElementById('showMoreButtonAfrica').style.display = 'block';
+    } else {
+        document.getElementById('showMoreButtonAfrica').style.display = 'none';
+    }
+
+    document.getElementById('showMoreButtonAfrica').addEventListener('click', showMoreCards);
+    document.getElementById('hideExtraCardButtonAfrica').addEventListener('click', hideExtraCards);
+});
+
+
+
+// Function for the 'show more' and 'reduce' buttons on the asia recipes section
+document.addEventListener("DOMContentLoaded", function () {
+
+    var visibleCardCount = 7;
+    var cards = document.querySelectorAll('.asia-recipes');
+
+    function showMoreCards() {
+        var hiddenCards = document.querySelectorAll('.asia-recipes-hidden');
+        for (var i = 0; i < hiddenCards.length && i < 6; i++) {
+            hiddenCards[i].classList.remove('asia-recipes-hidden');
+            visibleCardCount++;
+        }
+
+        if (visibleCardCount >= cards.length) {
+            document.getElementById('showMoreButtonAsia').style.display = 'none';
+            document.getElementById('hideExtraCardButtonAsia').style.display = 'block';
+        }
+    }
+
+    function hideExtraCards() {
+        for (var i = visibleCardCount - 1; i >= 7; i--) {
+            cards[i].classList.add('asia-recipes-hidden');
+        }
+    
+        visibleCardCount = 7;
+    
+        document.getElementById('hideExtraCardButtonAsia').style.display = 'none';
+        document.getElementById('showMoreButtonAsia').style.display = 'block';
+    }
+
+    if (cards.length > visibleCardCount) {
+        for (var i = visibleCardCount; i < cards.length; i++) {
+            cards[i].classList.add('asia-recipes-hidden');
+        }
+        document.getElementById('showMoreButtonAsia').style.display = 'block';
+    } else {
+        document.getElementById('showMoreButtonAsia').style.display = 'none';
+    }
+
+    document.getElementById('showMoreButtonAsia').addEventListener('click', showMoreCards);
+    document.getElementById('hideExtraCardButtonAsia').addEventListener('click', hideExtraCards);
+});
+
+
+
+// Function for the 'show more' and 'reduce' buttons on the oceania recipes section
+document.addEventListener("DOMContentLoaded", function () {
+
+    var visibleCardCount = 7;
+    var cards = document.querySelectorAll('.oceania-recipes');
+
+    function showMoreCards() {
+        var hiddenCards = document.querySelectorAll('.oceania-recipes-hidden');
+        for (var i = 0; i < hiddenCards.length && i < 6; i++) {
+            hiddenCards[i].classList.remove('oceania-recipes-hidden');
+            visibleCardCount++;
+        }
+
+        if (visibleCardCount >= cards.length) {
+            document.getElementById('showMoreButtonOceania').style.display = 'none';
+            document.getElementById('hideExtraCardButtonOceania').style.display = 'block';
+        }
+    }
+
+    function hideExtraCards() {
+        for (var i = visibleCardCount - 1; i >= 7; i--) {
+            cards[i].classList.add('oceania-recipes-hidden');
+        }
+    
+        visibleCardCount = 7;
+    
+        document.getElementById('hideExtraCardButtonOceania').style.display = 'none';
+        document.getElementById('showMoreButtonOceania').style.display = 'block';
+    }
+
+    if (cards.length > visibleCardCount) {
+        for (var i = visibleCardCount; i < cards.length; i++) {
+            cards[i].classList.add('oceania-recipes-hidden');
+        }
+        document.getElementById('showMoreButtonOceania').style.display = 'block';
+    } else {
+        document.getElementById('showMoreButtonOceania').style.display = 'none';
+    }
+
+    document.getElementById('showMoreButtonOceania').addEventListener('click', showMoreCards);
+    document.getElementById('hideExtraCardButtonOceania').addEventListener('click', hideExtraCards);
+});
+
+
+
+// Function for the 'show more' and 'reduce' buttons on the mixed / other recipes section
+document.addEventListener("DOMContentLoaded", function () {
+
+    var visibleCardCount = 7;
+    var cards = document.querySelectorAll('.other-recipes');
+
+    function showMoreCards() {
+        var hiddenCards = document.querySelectorAll('.other-recipes-hidden');
+        for (var i = 0; i < hiddenCards.length && i < 6; i++) {
+            hiddenCards[i].classList.remove('other-recipes-hidden');
+            visibleCardCount++;
+        }
+
+        if (visibleCardCount >= cards.length) {
+            document.getElementById('showMoreButtonOther').style.display = 'none';
+            document.getElementById('hideExtraCardButtonOther').style.display = 'block';
+        }
+    }
+
+    function hideExtraCards() {
+        for (var i = visibleCardCount - 1; i >= 7; i--) {
+            cards[i].classList.add('other-recipes-hidden');
+        }
+    
+        visibleCardCount = 7;
+    
+        document.getElementById('hideExtraCardButtonOther').style.display = 'none';
+        document.getElementById('showMoreButtonOther').style.display = 'block';
+    }
+
+    if (cards.length > visibleCardCount) {
+        for (var i = visibleCardCount; i < cards.length; i++) {
+            cards[i].classList.add('other-recipes-hidden');
+        }
+        document.getElementById('showMoreButtonOther').style.display = 'block';
+    } else {
+        document.getElementById('showMoreButtonOther').style.display = 'none';
+    }
+
+    document.getElementById('showMoreButtonOther').addEventListener('click', showMoreCards);
+    document.getElementById('hideExtraCardButtonOther').addEventListener('click', hideExtraCards);
+});
+
+
 //***Code to ensure smooth transition in the pages when users click on the 'back to top'
 //***link at the bottom of the pages.
 function scrollToSection(event, targetSectionId) {
@@ -502,4 +681,24 @@ backToSouthAmericaRecipes.addEventListener('click', function (event) {
 var backToEuropeRecipes = document.querySelector('#hideExtraCardButtonEurope');
 backToEuropeRecipes.addEventListener('click', function (event) {
     scrollToSection(event, '#europeRecipes');
+});
+
+var backToAfricaRecipes = document.querySelector('#hideExtraCardButtonAfrica');
+backToAfricaRecipes.addEventListener('click', function (event) {
+    scrollToSection(event, '#africaRecipes');
+});
+
+var backToAsiaRecipes = document.querySelector('#hideExtraCardButtonAsia');
+backToAsiaRecipes.addEventListener('click', function (event) {
+    scrollToSection(event, '#asiaRecipes');
+});
+
+var backToOceaniaRecipes = document.querySelector('#hideExtraCardButtonOceania');
+backToOceaniaRecipes.addEventListener('click', function (event) {
+    scrollToSection(event, '#oceaniaRecipes');
+});
+
+var backToOtherRecipes = document.querySelector('#hideExtraCardButtonOther');
+backToOtherRecipes.addEventListener('click', function (event) {
+    scrollToSection(event, '#otherRecipes');
 });

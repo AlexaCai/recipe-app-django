@@ -333,6 +333,21 @@
     display: none;
 }
 
+.africa-recipes-hidden {
+    display: none;
+}
+
+.asia-recipes-hidden {
+    display: none;
+}
+
+.oceania-recipes-hidden {
+    display: none;
+}
+
+.other-recipes-hidden {
+    display: none;
+}
 
 .row.showMoreButtonRow {
     --bs-gutter-x: 0;

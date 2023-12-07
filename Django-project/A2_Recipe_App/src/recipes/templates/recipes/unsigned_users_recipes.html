@@ -111,7 +111,8 @@
                                                 <option value="">Select a category</option>
                                                 {% for object in object_list|dictsort:"recipe_category" %}
                                                 {% ifchanged %}
-                                                <option value="{{ object.recipe_category }}">{{ object.recipe_category }}</option>
+                                                <option value="{{ object.recipe_category }}">{{ object.recipe_category
+                                                    }}</option>
                                                 {% endifchanged %}
                                                 {% endfor %}
                                             </select>
@@ -161,12 +162,14 @@
                                                         <input id="recipe-search-by-ingredients-input" type="text"
                                                             class="form-control"
                                                             placeholder="Ingredient(s): chicken, rice, tomato"
-                                                            aria-label="Search" aria-describedby="search-recipe-by-ingredient-button">
+                                                            aria-label="Search"
+                                                            aria-describedby="search-recipe-by-ingredient-button">
                                                     </div>
                                                 </div>
                                             </form>
                                             <button type="button" class="btn btn-dark advanced-search-modal-button"
-                                                id="search-recipe-by-ingredient-button" data-bs-dismiss="modal">Search</button>
+                                                id="search-recipe-by-ingredient-button"
+                                                data-bs-dismiss="modal">Search</button>
                                         </div>
                                     </div>
                                 </div>
@@ -238,11 +241,12 @@
                     {% for object in object_list %}
                     {% if object.origin_country in north_america_country_list %}
                     {% with north_america_counter=north_america_counter|add:1 %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding north-america-recipes {% if counter > 6 %}north-america-recipes-hidden{% endif %}">
+                    <div
+                        class="col-xl-4 col-lg-6 col-sm-12 card-general-padding north-america-recipes {% if counter > 6 %}north-america-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
-                            </a>                                
+                            </a>
                             <div class="card-text">
                                 <div>
                                     <a href="{{object.get_absolute_url}}">
@@ -250,8 +254,7 @@
                                     </a>
                                 </div>
                                 <div class="recipe-card-quick-info">
-                                    <img src="../../../media/flag-icon.png" class="card-icons"
-                                        alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                                 </div>
                                 <br>
                                 <div class="recipe-card-quick-info">
@@ -333,11 +336,12 @@
                     {% for object in object_list %}
                     {% if object.origin_country in central_america_country_list %}
                     {% with central_america_counter=central_america_counter|add:1 %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding central-america-recipes {% if central_america_counter > 6 %}central-america-recipes-hidden{% endif %}">
+                    <div
+                        class="col-xl-4 col-lg-6 col-sm-12 card-general-padding central-america-recipes {% if central_america_counter > 6 %}central-america-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
-                            </a>                                
+                            </a>
                             <div class="card-text">
                                 <div>
                                     <a href="{{object.get_absolute_url}}">
@@ -345,8 +349,7 @@
                                     </a>
                                 </div>
                                 <div class="recipe-card-quick-info">
-                                    <img src="../../../media/flag-icon.png" class="card-icons"
-                                        alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                                 </div>
                                 <br>
                                 <div class="recipe-card-quick-info">
@@ -391,7 +394,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="default-content">
                 <br>
                 <br>
@@ -428,11 +431,12 @@
                     {% for object in object_list %}
                     {% if object.origin_country in south_america_country_list %}
                     {% with south_america_counter=south_america_counter|add:1 %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding south-america-recipes {% if south_america_counter > 6 %}south-america-recipes-hidden{% endif %}">
+                    <div
+                        class="col-xl-4 col-lg-6 col-sm-12 card-general-padding south-america-recipes {% if south_america_counter > 6 %}south-america-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
-                            </a>                                
+                            </a>
                             <div class="card-text">
                                 <div>
                                     <a href="{{object.get_absolute_url}}">
@@ -440,8 +444,7 @@
                                     </a>
                                 </div>
                                 <div class="recipe-card-quick-info">
-                                    <img src="../../../media/flag-icon.png" class="card-icons"
-                                        alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                                 </div>
                                 <br>
                                 <div class="recipe-card-quick-info">
@@ -455,35 +458,36 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        {% endwith %}
-                        {% endif %}
-                        {% endfor %}
-                        {% endwith %}
-                        {% endwith %}
                     </div>
-                    <div class="row showMoreButtonRow">
-                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
-                            <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonSouthAmerica">
-                                Show More
-                            </button>
-                        </div>
-                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
-                        </div>
+                    {% endwith %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endwith %}
+                    {% endwith %}
+                </div>
+                <div class="row showMoreButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
                     </div>
-                    <div class="row hideExtraCardsButtonRow">
-                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
-                            <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonSouthAmerica"
-                                style="display: none;">
-                                Reduce
-                            </button>
-                        </div>
-                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
-                        </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonSouthAmerica">
+                            Show More
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                <div class="row hideExtraCardsButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonSouthAmerica"
+                            style="display: none;">
+                            Reduce
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
             </div>
 
             <div class="default-content">
@@ -522,11 +526,12 @@
                     {% for object in object_list %}
                     {% if object.origin_country in europe_country_list %}
                     {% with europe_counter=europe_counter|add:1 %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding europe-recipes {% if south_america_counter > 6 %}europe-recipes-hidden{% endif %}">
+                    <div
+                        class="col-xl-4 col-lg-6 col-sm-12 card-general-padding europe-recipes {% if south_america_counter > 6 %}europe-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
-                            </a>                                
+                            </a>
                             <div class="card-text">
                                 <div>
                                     <a href="{{object.get_absolute_url}}">
@@ -534,8 +539,7 @@
                                     </a>
                                 </div>
                                 <div class="recipe-card-quick-info">
-                                    <img src="../../../media/flag-icon.png" class="card-icons"
-                                        alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                                 </div>
                                 <br>
                                 <div class="recipe-card-quick-info">
@@ -549,42 +553,43 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        {% endwith %}
-                        {% endif %}
-                        {% endfor %}
-                        {% endwith %}
-                        {% endwith %}
                     </div>
-                    <div class="row showMoreButtonRow">
-                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
-                            <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonEurope">
-                                Show More
-                            </button>
-                        </div>
-                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
-                        </div>
+                    {% endwith %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endwith %}
+                    {% endwith %}
+                </div>
+                <div class="row showMoreButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
                     </div>
-                    <div class="row hideExtraCardsButtonRow">
-                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
-                            <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonEurope"
-                                style="display: none;">
-                                Reduce
-                            </button>
-                        </div>
-                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
-                        </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonEurope">
+                            Show More
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                <div class="row hideExtraCardsButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonEurope"
+                            style="display: none;">
+                            Reduce
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
             </div>
 
             <div class="default-content">
                 <br>
                 <br>
                 <br>
-                <h1 class="recipes-continent-title-section">Africa</h1>
+                <h1 class="recipes-continent-title-section" id="africaRecipes">Africa</h1>
                 <div class="icon-legend">
                     <img src="../../../media/flag-icon.png" alt="flag-icon"
                         style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
@@ -610,16 +615,18 @@
                     <div class="col">
                     </div>
                 </div>
-                <div class="row card-general-padding">
-                    {% with country_list="algerian, angolan, beninese, botswanan, burkinabe, burundian, cameroonian, cape verdean, central african, chadian, comoran, congolese, djiboutian, egyptian, equ. guinean, eritrean, ethiopian, gabonese, gambian, ghanaian, guinean, guinea-bi., ivorian, kenyan, lesotho, liberian, libyan, malagasy, malawian, malian, mauritanian, mauritian, moroccan, mozambican, namibian, niger, nigerian, rwandan, sao tomean, senegalese, seychellois, sierra leonean, somali, south african, south sudanese, sudanese, swazi, tanzanian, togolese, tunisian, ugandan, zambian, zimbabwean" %}
-                    {% with country_list_split=country_list|slice:" " %}
+                <div class="row card-general-padding africa-recipes">
+                    {% with africa_country_list="algerian, angolan, beninese, botswanan, burkinabe, burundian, cameroonian, cape verdean, central african, chadian, comoran, congolese, djiboutian, egyptian, equ. guinean, eritrean, ethiopian, gabonese, gambian, ghanaian, guinean, guinea-bi., ivorian, kenyan, lesotho, liberian, libyan, malagasy, malawian, malian, mauritanian, mauritian, moroccan, mozambican, namibian, niger, nigerian, rwandan, sao tomean, senegalese, seychellois, sierra leonean, somali, south african, south sudanese, sudanese, swazi, tanzanian, togolese, tunisian, ugandan, zambian, zimbabwean" %}
+                    {% with africa_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split and object.is_public %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                    {% if object.origin_country in africa_country_list %}
+                    {% with africa_counter=africa_counter|add:1 %}
+                    <div
+                        class="col-xl-4 col-lg-6 col-sm-12 card-general-padding africa-recipes {% if africa_counter > 6 %}africa-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
-                            </a>                                
+                            </a>
                             <div class="card-text">
                                 <div>
                                     <a href="{{object.get_absolute_url}}">
@@ -627,8 +634,7 @@
                                     </a>
                                 </div>
                                 <div class="recipe-card-quick-info">
-                                    <img src="../../../media/flag-icon.png" class="card-icons"
-                                        alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                                 </div>
                                 <br>
                                 <div class="recipe-card-quick-info">
@@ -643,17 +649,43 @@
                             </div>
                         </div>
                     </div>
+                    {% endwith %}
                     {% endif %}
                     {% endfor %}
                     {% endwith %}
                     {% endwith %}
                 </div>
+                <div class="row showMoreButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonAfrica">
+                            Show More
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                <div class="row hideExtraCardsButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonAfrica"
+                            style="display: none;">
+                            Reduce
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
             </div>
+
+
             <div class="default-content">
                 <br>
                 <br>
                 <br>
-                <h1 class="recipes-continent-title-section">Asia</h1>
+                <h1 class="recipes-continent-title-section" id="asiaRecipes">Asia</h1>
                 <div class="icon-legend">
                     <img src="../../../media/flag-icon.png" alt="flag-icon"
                         style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
@@ -679,16 +711,18 @@
                     <div class="col">
                     </div>
                 </div>
-                <div class="row card-general-padding">
-                    {% with country_list="afghan, armenian, azerbaijani, bahraini, bangladeshi, bhutanese, bruneian, burmese, cambodian, chinese, emirati, filipino, georgian, indian, indonesian, iranian, iraqi, israeli, japanese, jordanian, kazakhstani, kuwaiti, kyrgyz, laotian, lebanese, malaysian, maldivian, mongolian, nepalese, omani, pakistani, palestinian, qatari, saudi arabian, singaporean, south korean, sri lankan, syrian, taiwanese, tajik, east timorese, turkmen, uzbek, vietnamese, yemeni" %}
-                    {% with country_list_split=country_list|slice:" " %}
+                <div class="row card-general-padding asia-recipes">
+                    {% with asia_country_list="afghan, armenian, azerbaijani, bahraini, bangladeshi, bhutanese, bruneian, burmese, cambodian, chinese, emirati, filipino, georgian, indian, indonesian, iranian, iraqi, israeli, japanese, jordanian, kazakhstani, kuwaiti, kyrgyz, laotian, lebanese, malaysian, maldivian, mongolian, nepalese, omani, pakistani, palestinian, qatari, saudi arabian, singaporean, south korean, sri lankan, syrian, taiwanese, tajik, east timorese, turkmen, uzbek, vietnamese, yemeni" %}
+                    {% with asia_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split and object.is_public %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                    {% if object.origin_country in asia_country_list %}
+                    {% with asia_counter=asia_counter|add:1 %}
+                    <div
+                        class="col-xl-4 col-lg-6 col-sm-12 card-general-padding asia-recipes {% if asia_counter > 6 %}asia-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
-                            </a>                                
+                            </a>
                             <div class="card-text">
                                 <div>
                                     <a href="{{object.get_absolute_url}}">
@@ -696,8 +730,7 @@
                                     </a>
                                 </div>
                                 <div class="recipe-card-quick-info">
-                                    <img src="../../../media/flag-icon.png" class="card-icons"
-                                        alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                                 </div>
                                 <br>
                                 <div class="recipe-card-quick-info">
@@ -712,17 +745,42 @@
                             </div>
                         </div>
                     </div>
+                    {% endwith %}
                     {% endif %}
                     {% endfor %}
                     {% endwith %}
                     {% endwith %}
                 </div>
+                <div class="row showMoreButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonAsia">
+                            Show More
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                <div class="row hideExtraCardsButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonAsia"
+                            style="display: none;">
+                            Reduce
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
             </div>
+
             <div class="default-content">
                 <br>
                 <br>
                 <br>
-                <h1 class="recipes-continent-title-section">Oceania</h1>
+                <h1 class="recipes-continent-title-section" id="oceaniaRecipes">Oceania</h1>
                 <div class="icon-legend">
                     <img src="../../../media/flag-icon.png" alt="flag-icon"
                         style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
@@ -748,16 +806,18 @@
                     <div class="col">
                     </div>
                 </div>
-                <div class="row card-general-padding">
-                    {% with country_list="australian, fijian, kiribatian, marshallese, micronesian, nauruan, new zealand, palauan, papua new gui., samoan, solomon islands, tongan, tuvaluan, vanuatuan" %}
-                    {% with country_list_split=country_list|slice:" " %}
+                <div class="row card-general-padding oceania-recipes">
+                    {% with oceania_country_list="australian, fijian, kiribatian, marshallese, micronesian, nauruan, new zealand, palauan, papua new gui., samoan, solomon islands, tongan, tuvaluan, vanuatuan" %}
+                    {% with oceania_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split and object.is_public %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                    {% if object.origin_country in oceania_country_list %}
+                    {% with oceania_counter=oceania_counter|add:1 %}
+                    <div
+                        class="col-xl-4 col-lg-6 col-sm-12 card-general-padding oceania-recipes {% if oceania_counter > 6 %}oceania-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
-                            </a>                                
+                            </a>
                             <div class="card-text">
                                 <div>
                                     <a href="{{object.get_absolute_url}}">
@@ -765,8 +825,7 @@
                                     </a>
                                 </div>
                                 <div class="recipe-card-quick-info">
-                                    <img src="../../../media/flag-icon.png" class="card-icons"
-                                        alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                                 </div>
                                 <br>
                                 <div class="recipe-card-quick-info">
@@ -781,17 +840,42 @@
                             </div>
                         </div>
                     </div>
+                    {% endwith %}
                     {% endif %}
                     {% endfor %}
                     {% endwith %}
                     {% endwith %}
                 </div>
+                <div class="row showMoreButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonOceania">
+                            Show More
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                <div class="row hideExtraCardsButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonOceania"
+                            style="display: none;">
+                            Reduce
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
             </div>
+
             <div class="default-content">
                 <br>
                 <br>
                 <br>
-                <h1 class="recipes-continent-title-section">Mixed / No category</h1>
+                <h1 class="recipes-continent-title-section" id="otherRecipes">Mixed / No category</h1>
                 <div class="icon-legend">
                     <img src="../../../media/flag-icon.png" alt="flag-icon"
                         style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
@@ -817,16 +901,18 @@
                     <div class="col">
                     </div>
                 </div>
-                <div class="row card-general-padding">
-                    {% with country_list="no category, mixed" %}
-                    {% with country_list_split=country_list|slice:" " %}
+                <div class="row card-general-padding other-recipes">
+                    {% with other_country_list="no category, mixed" %}
+                    {% with other_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split and object.is_public %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                    {% if object.origin_country in other_country_list %}
+                    {% with other_counter=other_counter|add:1 %}
+                    <div
+                        class="col-xl-4 col-lg-6 col-sm-12 card-general-padding other-recipes {% if other_counter > 6 %}other-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
-                            </a>                                
+                            </a>
                             <div class="card-text">
                                 <div>
                                     <a href="{{object.get_absolute_url}}">
@@ -834,8 +920,7 @@
                                     </a>
                                 </div>
                                 <div class="recipe-card-quick-info">
-                                    <img src="../../../media/flag-icon.png" class="card-icons"
-                                        alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                    <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                                 </div>
                                 <br>
                                 <div class="recipe-card-quick-info">
@@ -850,10 +935,34 @@
                             </div>
                         </div>
                     </div>
+                    {% endwith %}
                     {% endif %}
                     {% endfor %}
                     {% endwith %}
                     {% endwith %}
+                </div>
+                <div class="row showMoreButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonOther">
+                            Show More
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                <div class="row hideExtraCardsButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonOther"
+                            style="display: none;">
+                            Reduce
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
                 </div>
             </div>
 
@@ -885,7 +994,8 @@
                         <br>
                         <h4 class="footer-text">Want to share your own recipes with the world?
                             Proud of one of your local recipe delight? <br><br></h4>
-                        <h4 class="footer-buttons-action-call footer-text">Submit your recipe to our catalog right now quickly and
+                        <h4 class="footer-buttons-action-call footer-text">Submit your recipe to our catalog right now
+                            quickly and
                             easily.</h4><br><br>
                         <div class="container">
                             <div class="row">
@@ -905,14 +1015,15 @@
                         <h4 class="footer-text">Want to create your own list of recipes?
                             Want to create your own list of favorite from our catalog?
                             Want to add comments on recipes? <br><br></h4>
-                        <h4 class="footer-buttons-action-call footer-text">Create an account now! Its free and it only takes 2
+                        <h4 class="footer-buttons-action-call footer-text">Create an account now! Its free and it only
+                            takes 2
                             minutes.</h4><br><br>
                         <div class="row">
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-2">
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-8">
                                 <button type="button" class="btn btn-dark w-100"
-                                onclick="window.location.href='{% url 'accounts:signup' %}'">Sign up</button>
+                                    onclick="window.location.href='{% url 'accounts:signup' %}'">Sign up</button>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-2">
                             </div>
@@ -997,7 +1108,7 @@
             </div>
         </div>
     </footer>
-    
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
