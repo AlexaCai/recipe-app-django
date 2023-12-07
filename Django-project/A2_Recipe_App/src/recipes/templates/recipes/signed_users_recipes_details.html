@@ -336,14 +336,10 @@
                                 {% if comment.updated_at != comment.created_at %}
                                 <p>Modified on {{ comment.updated_at }}</p>
                                 {% endif %}
-                                <br>
                                 <div class="users-comments-text">
                                     <br>
                                     {{ comment.text }}
                                 </div>
-                                <br>
-                                <br>
-                                <br>
                                 {% if comment.user == request.user %}
                                 {% csrf_token %}
                                 <div class="row">
@@ -351,13 +347,15 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center">
                                         <div class="col">
+                                            <br>
                                             <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal"
                                                 data-bs-target="#deleteCommentModal{{ object.id }}{{ comment.id }}">
                                                 Delete
                                             </button>
                                         </div>
-                                        <span class="vertical-line">|</span>
+                                        <span class="vertical-line"> <br>|</span>
                                         <div class="col">
+                                            <br>
                                             <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
                                                 data-bs-target="#updateCommentModal{{ object.id }}{{ comment.id }}">
                                                 Update
@@ -398,7 +396,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <br>
                                 <div class="modal fade" id="updateCommentModal{{ object.id }}{{ comment.id }}"
                                     tabindex="-1" aria-labelledby="updateCommentModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
