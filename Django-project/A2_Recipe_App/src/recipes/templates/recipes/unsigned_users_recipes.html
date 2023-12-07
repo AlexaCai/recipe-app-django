@@ -242,7 +242,7 @@
                     {% if object.origin_country in north_america_country_list %}
                     {% with north_america_counter=north_america_counter|add:1 %}
                     <div
-                        class="col-xl-4 col-lg-6 col-sm-12 card-general-padding north-america-recipes {% if counter > 6 %}north-america-recipes-hidden{% endif %}">
+                        class="col-xl-4 col-lg-6 col-sm-12 card-general-padding north-america-recipes {% if north_america_counter > 6 %}north-america-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -292,7 +292,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
                         <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonNorthAmerica"
                             style="display: none;">
-                            Reduce
+                            Show less
                         </button>
                     </div>
                     <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
@@ -387,7 +387,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
                         <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonCentralAmerica"
                             style="display: none;">
-                            Reduce
+                            Show less
                         </button>
                     </div>
                     <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
@@ -482,7 +482,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
                         <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonSouthAmerica"
                             style="display: none;">
-                            Reduce
+                            Show less
                         </button>
                     </div>
                     <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
@@ -577,7 +577,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
                         <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonEurope"
                             style="display: none;">
-                            Reduce
+                            Show less
                         </button>
                     </div>
                     <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
@@ -672,7 +672,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
                         <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonAfrica"
                             style="display: none;">
-                            Reduce
+                            Show less
                         </button>
                     </div>
                     <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
@@ -768,7 +768,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
                         <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonAsia"
                             style="display: none;">
-                            Reduce
+                            Show less
                         </button>
                     </div>
                     <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
@@ -863,7 +863,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
                         <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonOceania"
                             style="display: none;">
-                            Reduce
+                            Show less
                         </button>
                     </div>
                     <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
@@ -958,7 +958,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
                         <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonOther"
                             style="display: none;">
-                            Reduce
+                            Show less
                         </button>
                     </div>
                     <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">

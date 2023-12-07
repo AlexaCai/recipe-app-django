@@ -332,6 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
 // Logic for the 'show more' and 'reduce' buttons on the central america recipes section
 document.addEventListener("DOMContentLoaded", function () {
 
