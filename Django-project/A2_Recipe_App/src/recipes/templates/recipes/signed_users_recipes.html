@@ -245,7 +245,7 @@
                     {% with north_america_country_list="american, bahamian, barbadian, canadian, cuban, dominican, dominican rep., grenadian, haitian, jamaican, mexican, st kitts & nevis, saint lucian, st vincent & grenadines, trinidadian & tobagonian" %}
                     {% with north_america_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in north_america_country_list %}
+                    {% if object.origin_country in north_america_country_list and object.is_public %}
                     {% with north_america_counter=north_america_counter|add:1 %}
                     <div
                         class="col-xl-4 col-lg-6 col-sm-12 card-general-padding north-america-recipes {% if counter > 6 %}north-america-recipes-hidden{% endif %}">
@@ -357,7 +357,7 @@
                     {% with central_america_country_list="belizean, costa rican, salvadoran, guatemalan, honduran, nicaraguan, panamanian" %}
                     {% with central_america_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in central_america_country_list %}
+                    {% if object.origin_country in central_america_country_list and object.is_public %}
                     {% with central_america_counter=central_america_counter|add:1 %}
                     <div
                         class="col-xl-4 col-lg-6 col-sm-12 card-general-padding central-america-recipes {% if central_america_counter > 6 %}central-america-recipes-hidden{% endif %}">
@@ -468,7 +468,7 @@
                     {% with south_america_country_list="argentine, bolivian, brazilian, chilean, colombian, peruvian, ecuadorian, guyanese, paraguayan, surinamese, uruguaya, venezuelan" %}
                     {% with south_america_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in south_america_country_list %}
+                    {% if object.origin_country in south_america_country_list and object.is_public %}
                     {% with south_america_counter=south_america_counter|add:1 %}
                     <div
                         class="col-xl-4 col-lg-6 col-sm-12 card-general-padding south-america-recipes {% if south_america_counter > 6 %}south-america-recipes-hidden{% endif %}">
@@ -579,7 +579,7 @@
                     {% with europe_country_list="albanian, andorran, austrian, belarusian, belgian, bosnian, british, bulgarian, croatian, cyprio, czech, danish, dutch, estonian, finnish, french, german, greek, hungarian, icelandic, irish, italian, latvian, liechtensteiner, lithuanian, luxembourgish, macedonian, maltese, moldovan, monegasque, montenegrin, norwegian, polish, portuguese, romanian, russian, sammarinese, serbian, slovak, slovenian, spanish, swedish, swiss, turkish, ukrainian " %}
                     {% with europe_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in europe_country_list %}
+                    {% if object.origin_country in europe_country_list and object.is_public %}
                     {% with europe_counter=europe_counter|add:1 %}
                     <div
                         class="col-xl-4 col-lg-6 col-sm-12 card-general-padding europe-recipes {% if south_america_counter > 6 %}europe-recipes-hidden{% endif %}">
@@ -690,7 +690,7 @@
                     {% with africa_country_list="algerian, angolan, beninese, botswanan, burkinabe, burundian, cameroonian, cape verdean, central african, chadian, comoran, congolese, djiboutian, egyptian, equ. guinean, eritrean, ethiopian, gabonese, gambian, ghanaian, guinean, guinea-bi., ivorian, kenyan, lesotho, liberian, libyan, malagasy, malawian, malian, mauritanian, mauritian, moroccan, mozambican, namibian, niger, nigerian, rwandan, sao tomean, senegalese, seychellois, sierra leonean, somali, south african, south sudanese, sudanese, swazi, tanzanian, togolese, tunisian, ugandan, zambian, zimbabwean" %}
                     {% with africa_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in africa_country_list %}
+                    {% if object.origin_country in africa_country_list and object.is_public %}
                     {% with africa_counter=africa_counter|add:1 %}
                     <div
                         class="col-xl-4 col-lg-6 col-sm-12 card-general-padding africa-recipes {% if africa_counter > 6 %}africa-recipes-hidden{% endif %}">
@@ -801,7 +801,7 @@
                     {% with asia_country_list="afghan, armenian, azerbaijani, bahraini, bangladeshi, bhutanese, bruneian, burmese, cambodian, chinese, emirati, filipino, georgian, indian, indonesian, iranian, iraqi, israeli, japanese, jordanian, kazakhstani, kuwaiti, kyrgyz, laotian, lebanese, malaysian, maldivian, mongolian, nepalese, omani, pakistani, palestinian, qatari, saudi arabian, singaporean, south korean, sri lankan, syrian, taiwanese, tajik, east timorese, turkmen, uzbek, vietnamese, yemeni" %}
                     {% with asia_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in asia_country_list %}
+                    {% if object.origin_country in asia_country_list and object.is_public %}
                     {% with asia_counter=asia_counter|add:1 %}
                     <div
                         class="col-xl-4 col-lg-6 col-sm-12 card-general-padding asia-recipes {% if asia_counter > 6 %}asia-recipes-hidden{% endif %}">
@@ -912,7 +912,7 @@
                     {% with oceania_country_list="australian, fijian, kiribatian, marshallese, micronesian, nauruan, new zealand, palauan, papua new gui., samoan, solomon islands, tongan, tuvaluan, vanuatuan" %}
                     {% with oceania_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in oceania_country_list %}
+                    {% if object.origin_country in oceania_country_list and object.is_public %}
                     {% with oceania_counter=oceania_counter|add:1 %}
                     <div
                         class="col-xl-4 col-lg-6 col-sm-12 card-general-padding oceania-recipes {% if oceania_counter > 6 %}oceania-recipes-hidden{% endif %}">
@@ -1023,7 +1023,7 @@
                     {% with other_country_list="no category, mixed" %}
                     {% with other_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in other_country_list %}
+                    {% if object.origin_country in other_country_list and object.is_public %}
                     {% with other_counter=other_counter|add:1 %}
                     <div
                         class="col-xl-4 col-lg-6 col-sm-12 card-general-padding other-recipes {% if other_counter > 6 %}other-recipes-hidden{% endif %}">
