@@ -1,7 +1,11 @@
 //***Logic below to handle the main recipe search bar functionality (search by name)
-document.getElementById('search-recipe-by-name-button').addEventListener('click', function () {
-    performMainSearch();
-});
+var searchButton = document.getElementById('search-recipe-by-name-button');
+
+if (searchButton) {
+    searchButton.addEventListener('click', function () {
+        performMainSearch();
+    });
+}
 
 function performMainSearch() {
     var searchQuery = document.getElementById('recipe-search-by-name-input').value;
@@ -25,9 +29,13 @@ function performMainSearch() {
 
 
 //***Logic below to handle the advanced search functionality - with filters
-document.getElementById('advanced-search-filters-modal-button').addEventListener('click', function () {
-    performSearchByFilters();
-});
+var advancedSearchButton = document.getElementById('advanced-search-filters-modal-button');
+
+if (advancedSearchButton) {
+    advancedSearchButton.addEventListener('click', function () {
+        performSearchByFilters();
+    });
+}
 
 function performSearchByFilters() {
     var searchFilter1 = document.getElementById('filter-option-selected1').value;
@@ -92,9 +100,13 @@ function performSearchByFilters() {
 
 
 //***Logic below to handle the advanced search functionality - by ingredients
-document.getElementById('search-recipe-by-ingredient-button').addEventListener('click', function () {
-    performIngredientsSearch();
-});
+var ingredientSearchButton = document.getElementById('search-recipe-by-ingredient-button');
+
+if (ingredientSearchButton) {
+    ingredientSearchButton.addEventListener('click', function () {
+        performIngredientsSearch();
+    });
+}
 
 function performIngredientsSearch() {
     var searchQuery = document.getElementById('recipe-search-by-ingredients-input').value;
@@ -317,17 +329,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('showMoreButtonNorthAmerica').style.display = 'block';
     }
 
-    if (cards.length > visibleCardCount) {
-        for (var i = visibleCardCount; i < cards.length; i++) {
-            cards[i].classList.add('north-america-recipes-hidden');
-        }
-        document.getElementById('showMoreButtonNorthAmerica').style.display = 'block';
-    } else {
-        document.getElementById('showMoreButtonNorthAmerica').style.display = 'none';
-    }
+    var showMoreButtonNorthAmerica = document.getElementById('showMoreButtonNorthAmerica');
+    var hideExtraCardButtonNorthAmerica = document.getElementById('hideExtraCardButtonNorthAmerica');
 
-    document.getElementById('showMoreButtonNorthAmerica').addEventListener('click', showMoreCards);
-    document.getElementById('hideExtraCardButtonNorthAmerica').addEventListener('click', hideExtraCards);
+    if (showMoreButtonNorthAmerica && hideExtraCardButtonNorthAmerica) {
+        if (cards.length > visibleCardCount) {
+            for (var i = visibleCardCount; i < cards.length; i++) {
+                cards[i].classList.add('north-america-recipes-hidden');
+            }
+            showMoreButtonNorthAmerica.style.display = 'block';
+        } else {
+            showMoreButtonNorthAmerica.style.display = 'none';
+        }
+
+        showMoreButtonNorthAmerica.addEventListener('click', showMoreCards);
+        hideExtraCardButtonNorthAmerica.addEventListener('click', hideExtraCards);
+    }
 });
 
 
@@ -363,17 +380,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('showMoreButtonCentralAmerica').style.display = 'block';
     }
 
-    if (cards.length > visibleCardCount) {
-        for (var i = visibleCardCount; i < cards.length; i++) {
-            cards[i].classList.add('central-america-recipes-hidden');
+    var showMoreButtonCentralAmerica = document.getElementById('showMoreButtonCentralAmerica');
+    var hideExtraCardButtonCentralAmerica = document.getElementById('hideExtraCardButtonCentralAmerica');
+    
+    if (showMoreButtonCentralAmerica && hideExtraCardButtonCentralAmerica) {
+        if (cards.length > visibleCardCount) {
+            for (var i = visibleCardCount; i < cards.length; i++) {
+                cards[i].classList.add('central-america-recipes-hidden');
+            }
+            showMoreButtonCentralAmerica.style.display = 'block';
+        } else {
+            showMoreButtonCentralAmerica.style.display = 'none';
         }
-        document.getElementById('showMoreButtonCentralAmerica').style.display = 'block';
-    } else {
-        document.getElementById('showMoreButtonCentralAmerica').style.display = 'none';
+    
+        showMoreButtonCentralAmerica.addEventListener('click', showMoreCards);
+        hideExtraCardButtonCentralAmerica.addEventListener('click', hideExtraCards);
     }
-
-    document.getElementById('showMoreButtonCentralAmerica').addEventListener('click', showMoreCards);
-    document.getElementById('hideExtraCardButtonCentralAmerica').addEventListener('click', hideExtraCards);
 });
 
 
@@ -408,17 +430,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('showMoreButtonSouthAmerica').style.display = 'block';
     }
 
-    if (cards.length > visibleCardCount) {
-        for (var i = visibleCardCount; i < cards.length; i++) {
-            cards[i].classList.add('south-america-recipes-hidden');
+    var showMoreButtonSouthAmerica = document.getElementById('showMoreButtonSouthAmerica');
+    var hideExtraCardButtonSouthAmerica = document.getElementById('hideExtraCardButtonSouthAmerica');
+    
+    if (showMoreButtonSouthAmerica && hideExtraCardButtonSouthAmerica) {
+        if (cards.length > visibleCardCount) {
+            for (var i = visibleCardCount; i < cards.length; i++) {
+                cards[i].classList.add('south-america-recipes-hidden');
+            }
+            showMoreButtonSouthAmerica.style.display = 'block';
+        } else {
+            showMoreButtonSouthAmerica.style.display = 'none';
         }
-        document.getElementById('showMoreButtonSouthAmerica').style.display = 'block';
-    } else {
-        document.getElementById('showMoreButtonSouthAmerica').style.display = 'none';
+    
+        showMoreButtonSouthAmerica.addEventListener('click', showMoreCards);
+        hideExtraCardButtonSouthAmerica.addEventListener('click', hideExtraCards);
     }
-
-    document.getElementById('showMoreButtonSouthAmerica').addEventListener('click', showMoreCards);
-    document.getElementById('hideExtraCardButtonSouthAmerica').addEventListener('click', hideExtraCards);
 });
 
 
@@ -453,17 +480,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('showMoreButtonEurope').style.display = 'block';
     }
 
-    if (cards.length > visibleCardCount) {
-        for (var i = visibleCardCount; i < cards.length; i++) {
-            cards[i].classList.add('europe-recipes-hidden');
+    var showMoreButtonEurope = document.getElementById('showMoreButtonEurope');
+    var hideExtraCardButtonEurope = document.getElementById('hideExtraCardButtonEurope');
+    
+    if (showMoreButtonEurope && hideExtraCardButtonEurope) {
+        if (cards.length > visibleCardCount) {
+            for (var i = visibleCardCount; i < cards.length; i++) {
+                cards[i].classList.add('europe-recipes-hidden');
+            }
+            showMoreButtonEurope.style.display = 'block';
+        } else {
+            showMoreButtonEurope.style.display = 'none';
         }
-        document.getElementById('showMoreButtonEurope').style.display = 'block';
-    } else {
-        document.getElementById('showMoreButtonEurope').style.display = 'none';
+    
+        showMoreButtonEurope.addEventListener('click', showMoreCards);
+        hideExtraCardButtonEurope.addEventListener('click', hideExtraCards);
     }
-
-    document.getElementById('showMoreButtonEurope').addEventListener('click', showMoreCards);
-    document.getElementById('hideExtraCardButtonEurope').addEventListener('click', hideExtraCards);
 });
 
 
@@ -498,17 +530,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('showMoreButtonAfrica').style.display = 'block';
     }
 
-    if (cards.length > visibleCardCount) {
-        for (var i = visibleCardCount; i < cards.length; i++) {
-            cards[i].classList.add('africa-recipes-hidden');
+    var showMoreButtonAfrica = document.getElementById('showMoreButtonAfrica');
+    var hideExtraCardButtonAfrica = document.getElementById('hideExtraCardButtonAfrica');
+    
+    if (showMoreButtonAfrica && hideExtraCardButtonAfrica) {
+        if (cards.length > visibleCardCount) {
+            for (var i = visibleCardCount; i < cards.length; i++) {
+                cards[i].classList.add('africa-recipes-hidden');
+            }
+            showMoreButtonAfrica.style.display = 'block';
+        } else {
+            showMoreButtonAfrica.style.display = 'none';
         }
-        document.getElementById('showMoreButtonAfrica').style.display = 'block';
-    } else {
-        document.getElementById('showMoreButtonAfrica').style.display = 'none';
+    
+        showMoreButtonAfrica.addEventListener('click', showMoreCards);
+        hideExtraCardButtonAfrica.addEventListener('click', hideExtraCards);
     }
-
-    document.getElementById('showMoreButtonAfrica').addEventListener('click', showMoreCards);
-    document.getElementById('hideExtraCardButtonAfrica').addEventListener('click', hideExtraCards);
 });
 
 
@@ -543,17 +580,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('showMoreButtonAsia').style.display = 'block';
     }
 
-    if (cards.length > visibleCardCount) {
-        for (var i = visibleCardCount; i < cards.length; i++) {
-            cards[i].classList.add('asia-recipes-hidden');
+    var showMoreButtonAsia = document.getElementById('showMoreButtonAsia');
+    var hideExtraCardButtonAsia = document.getElementById('hideExtraCardButtonAsia');
+    
+    if (showMoreButtonAsia && hideExtraCardButtonAsia) {
+        if (cards.length > visibleCardCount) {
+            for (var i = visibleCardCount; i < cards.length; i++) {
+                cards[i].classList.add('asia-recipes-hidden');
+            }
+            showMoreButtonAsia.style.display = 'block';
+        } else {
+            showMoreButtonAsia.style.display = 'none';
         }
-        document.getElementById('showMoreButtonAsia').style.display = 'block';
-    } else {
-        document.getElementById('showMoreButtonAsia').style.display = 'none';
+    
+        showMoreButtonAsia.addEventListener('click', showMoreCards);
+        hideExtraCardButtonAsia.addEventListener('click', hideExtraCards);
     }
-
-    document.getElementById('showMoreButtonAsia').addEventListener('click', showMoreCards);
-    document.getElementById('hideExtraCardButtonAsia').addEventListener('click', hideExtraCards);
 });
 
 
@@ -588,17 +630,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('showMoreButtonOceania').style.display = 'block';
     }
 
-    if (cards.length > visibleCardCount) {
-        for (var i = visibleCardCount; i < cards.length; i++) {
-            cards[i].classList.add('oceania-recipes-hidden');
+    var showMoreButtonOceania = document.getElementById('showMoreButtonOceania');
+    var hideExtraCardButtonOceania = document.getElementById('hideExtraCardButtonOceania');
+    
+    if (showMoreButtonOceania && hideExtraCardButtonOceania) {
+        if (cards.length > visibleCardCount) {
+            for (var i = visibleCardCount; i < cards.length; i++) {
+                cards[i].classList.add('oceania-recipes-hidden');
+            }
+            showMoreButtonOceania.style.display = 'block';
+        } else {
+            showMoreButtonOceania.style.display = 'none';
         }
-        document.getElementById('showMoreButtonOceania').style.display = 'block';
-    } else {
-        document.getElementById('showMoreButtonOceania').style.display = 'none';
+    
+        showMoreButtonOceania.addEventListener('click', showMoreCards);
+        hideExtraCardButtonOceania.addEventListener('click', hideExtraCards);
     }
-
-    document.getElementById('showMoreButtonOceania').addEventListener('click', showMoreCards);
-    document.getElementById('hideExtraCardButtonOceania').addEventListener('click', hideExtraCards);
 });
 
 
@@ -633,17 +680,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('showMoreButtonOther').style.display = 'block';
     }
 
-    if (cards.length > visibleCardCount) {
-        for (var i = visibleCardCount; i < cards.length; i++) {
-            cards[i].classList.add('other-recipes-hidden');
+    var showMoreButtonOther = document.getElementById('showMoreButtonOther');
+    var hideExtraCardButtonOther = document.getElementById('hideExtraCardButtonOther');
+    
+    if (showMoreButtonOther && hideExtraCardButtonOther) {
+        if (cards.length > visibleCardCount) {
+            for (var i = visibleCardCount; i < cards.length; i++) {
+                cards[i].classList.add('other-recipes-hidden');
+            }
+            showMoreButtonOther.style.display = 'block';
+        } else {
+            showMoreButtonOther.style.display = 'none';
         }
-        document.getElementById('showMoreButtonOther').style.display = 'block';
-    } else {
-        document.getElementById('showMoreButtonOther').style.display = 'none';
+    
+        showMoreButtonOther.addEventListener('click', showMoreCards);
+        hideExtraCardButtonOther.addEventListener('click', hideExtraCards);
     }
-
-    document.getElementById('showMoreButtonOther').addEventListener('click', showMoreCards);
-    document.getElementById('hideExtraCardButtonOther').addEventListener('click', hideExtraCards);
 });
 
 
@@ -660,46 +712,64 @@ function scrollToSection(event, targetSectionId) {
 }
 
 var backToTopLink1 = document.querySelector('.back-to-top-link');
-backToTopLink1.addEventListener('click', function (event) {
-    scrollToSection(event, '#topsection');
-});
+if (backToTopLink1) {
+    backToTopLink1.addEventListener('click', function (event) {
+        scrollToSection(event, '#topsection');
+    });
+}
 
 var backToNorthAmericaRecipes = document.querySelector('#hideExtraCardButtonNorthAmerica');
-backToNorthAmericaRecipes.addEventListener('click', function (event) {
-    scrollToSection(event, '#northAmericaRecipes');
-});
+if (backToNorthAmericaRecipes) {
+    backToNorthAmericaRecipes.addEventListener('click', function (event) {
+        scrollToSection(event, '#northAmericaRecipes');
+    });
+}
 
 var backToCentralAmericaRecipes = document.querySelector('#hideExtraCardButtonCentralAmerica');
-backToCentralAmericaRecipes.addEventListener('click', function (event) {
-    scrollToSection(event, '#centralAmericaRecipes');
-});
+if (backToCentralAmericaRecipes) {
+    backToCentralAmericaRecipes.addEventListener('click', function (event) {
+        scrollToSection(event, '#centralAmericaRecipes');
+    });
+}
 
 var backToSouthAmericaRecipes = document.querySelector('#hideExtraCardButtonSouthAmerica');
-backToSouthAmericaRecipes.addEventListener('click', function (event) {
-    scrollToSection(event, '#southAmericaRecipes');
-});
+if (backToSouthAmericaRecipes) {
+    backToSouthAmericaRecipes.addEventListener('click', function (event) {
+        scrollToSection(event, '#southAmericaRecipes');
+    });
+}
 
 var backToEuropeRecipes = document.querySelector('#hideExtraCardButtonEurope');
-backToEuropeRecipes.addEventListener('click', function (event) {
-    scrollToSection(event, '#europeRecipes');
-});
+if (backToEuropeRecipes) {
+    backToEuropeRecipes.addEventListener('click', function (event) {
+        scrollToSection(event, '#europeRecipes');
+    });
+}
 
 var backToAfricaRecipes = document.querySelector('#hideExtraCardButtonAfrica');
-backToAfricaRecipes.addEventListener('click', function (event) {
-    scrollToSection(event, '#africaRecipes');
-});
+if (backToAfricaRecipes) {
+    backToAfricaRecipes.addEventListener('click', function (event) {
+        scrollToSection(event, '#africaRecipes');
+    });
+}
 
 var backToAsiaRecipes = document.querySelector('#hideExtraCardButtonAsia');
-backToAsiaRecipes.addEventListener('click', function (event) {
-    scrollToSection(event, '#asiaRecipes');
-});
+if (backToAsiaRecipes) {
+    backToAsiaRecipes.addEventListener('click', function (event) {
+        scrollToSection(event, '#asiaRecipes');
+    });
+}
 
 var backToOceaniaRecipes = document.querySelector('#hideExtraCardButtonOceania');
-backToOceaniaRecipes.addEventListener('click', function (event) {
-    scrollToSection(event, '#oceaniaRecipes');
-});
+if (backToOceaniaRecipes) {
+    backToOceaniaRecipes.addEventListener('click', function (event) {
+        scrollToSection(event, '#oceaniaRecipes');
+    });
+}
 
 var backToOtherRecipes = document.querySelector('#hideExtraCardButtonOther');
-backToOtherRecipes.addEventListener('click', function (event) {
-    scrollToSection(event, '#otherRecipes');
-});
+if (backToOtherRecipes) {
+    backToOtherRecipes.addEventListener('click', function (event) {
+        scrollToSection(event, '#otherRecipes');
+    });
+}
