@@ -211,6 +211,7 @@ function displaySearchResults(data) {
         <div class="search-result-not-found">
             <button type="button" class="btn btn-danger" onclick="clearSearch()">Clear search</button>
             <br>
+            <br>
         </div>
         `;
 
