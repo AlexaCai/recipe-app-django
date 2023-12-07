@@ -299,7 +299,7 @@ function clearSearch() {
 
 
 
-// Logic for the 'show more' and 'reduce' buttons on the north america recipes section
+//***Logic for the 'show more' and 'reduce' buttons on the north america recipes section
 document.addEventListener("DOMContentLoaded", function () {
 
     var visibleCardCount = 7;
@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Logic for the 'show more' and 'reduce' buttons on the central america recipes section
+//***Logic for the 'show more' and 'reduce' buttons on the central america recipes section
 document.addEventListener("DOMContentLoaded", function () {
 
     var visibleCardCount = 7;
@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Logic for the 'show more' and 'reduce' buttons on the south america recipes section
+//***Logic for the 'show more' and 'reduce' buttons on the south america recipes section
 document.addEventListener("DOMContentLoaded", function () {
 
     var visibleCardCount = 7;
@@ -450,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Function for the 'show more' and 'reduce' buttons on the europe recipes section
+//***Function for the 'show more' and 'reduce' buttons on the europe recipes section
 document.addEventListener("DOMContentLoaded", function () {
 
     var visibleCardCount = 7;
@@ -500,7 +500,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Function for the 'show more' and 'reduce' buttons on the africa recipes section
+//***Function for the 'show more' and 'reduce' buttons on the africa recipes section
 document.addEventListener("DOMContentLoaded", function () {
 
     var visibleCardCount = 7;
@@ -550,7 +550,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Function for the 'show more' and 'reduce' buttons on the asia recipes section
+//***Function for the 'show more' and 'reduce' buttons on the asia recipes section
 document.addEventListener("DOMContentLoaded", function () {
 
     var visibleCardCount = 7;
@@ -600,7 +600,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Function for the 'show more' and 'reduce' buttons on the oceania recipes section
+//***Function for the 'show more' and 'reduce' buttons on the oceania recipes section
 document.addEventListener("DOMContentLoaded", function () {
 
     var visibleCardCount = 7;
@@ -650,7 +650,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Function for the 'show more' and 'reduce' buttons on the mixed / other recipes section
+//***Function for the 'show more' and 'reduce' buttons on the mixed / other recipes section
 document.addEventListener("DOMContentLoaded", function () {
 
     var visibleCardCount = 7;
