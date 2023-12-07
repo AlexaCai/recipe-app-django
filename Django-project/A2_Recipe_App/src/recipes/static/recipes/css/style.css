@@ -317,6 +317,33 @@
     }
 }
 
+.north-america-recipes-hidden {
+    display: none;
+}
+
+.central-america-recipes-hidden {
+    display: none;
+}
+
+.south-america-recipes-hidden {
+    display: none;
+}
+
+.europe-recipes-hidden {
+    display: none;
+}
+
+
+.row.showMoreButtonRow {
+    --bs-gutter-x: 0;
+    margin-top: 40px;
+}
+
+.row.hideExtraCardsButtonRow {
+    --bs-gutter-x: 0;
+    margin-top: 40px;
+}
+
 .card-general-padding {
     padding: 20px;
     padding-bottom: 15px;

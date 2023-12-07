@@ -14,7 +14,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'recipes/css/style.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="{% static 'recipes/js/javascript.js' %}" defer></script>
     <title>Cuisine atlas</title>
     <link rel="shortcut icon" href="../../../media/temporary-logo.jpg" type="image/x-icon">
 </head>
@@ -207,7 +206,7 @@
                 <br>
                 <br>
                 <br>
-                <h1 class="recipes-continent-title-section">North America</h1>
+                <h1 class="recipes-continent-title-section" id="northAmericaRecipes">North America</h1>
                 <div class="icon-legend">
                     <img src="../../../media/flag-icon.png" alt="flag-icon"
                         style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
@@ -233,12 +232,13 @@
                     <div class="col">
                     </div>
                 </div>
-                <div class="row card-general-padding">
-                    {% with country_list="american, bahamian, barbadian, canadian, cuban, dominican, dominican rep., grenadian, haitian, jamaican, mexican, st kitts & nevis, saint lucian, st vincent & grenadines, trinidadian & tobagonian" %}
-                    {% with country_list_split=country_list|slice:" " %}
+                <div class="row card-general-padding north-america-recipes">
+                    {% with north_america_country_list="american, bahamian, barbadian, canadian, cuban, dominican, dominican rep., grenadian, haitian, jamaican, mexican, st kitts & nevis, saint lucian, st vincent & grenadines, trinidadian & tobagonian" %}
+                    {% with north_america_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split and object.is_public %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                    {% if object.origin_country in north_america_country_list %}
+                    {% with north_america_counter=north_america_counter|add:1 %}
+                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding north-america-recipes {% if counter > 6 %}north-america-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -266,17 +266,42 @@
                             </div>
                         </div>
                     </div>
+                    {% endwith %}
                     {% endif %}
                     {% endfor %}
                     {% endwith %}
                     {% endwith %}
                 </div>
+                <div class="row showMoreButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonNorthAmerica">
+                            Show More
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                <div class="row hideExtraCardsButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonNorthAmerica"
+                            style="display: none;">
+                            Reduce
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
             </div>
+
             <div class="default-content">
                 <br>
                 <br>
                 <br>
-                <h1 class="recipes-continent-title-section">Central America</h1>
+                <h1 class="recipes-continent-title-section" id="centralAmericaRecipes">Central America</h1>
                 <div class="icon-legend">
                     <img src="../../../media/flag-icon.png" alt="flag-icon"
                         style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
@@ -302,12 +327,13 @@
                     <div class="col">
                     </div>
                 </div>
-                <div class="row card-general-padding">
-                    {% with country_list="belizean, costa rican, salvadoran, guatemalan, honduran, nicaraguan, panamanian" %}
-                    {% with country_list_split=country_list|slice:" " %}
+                <div class="row card-general-padding central-america-recipes">
+                    {% with central_america_country_list="belizean, costa rican, salvadoran, guatemalan, honduran, nicaraguan, panamanian" %}
+                    {% with central_america_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split and object.is_public %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                    {% if object.origin_country in central_america_country_list %}
+                    {% with central_america_counter=central_america_counter|add:1 %}
+                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding central-america-recipes {% if central_america_counter > 6 %}central-america-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -335,17 +361,42 @@
                             </div>
                         </div>
                     </div>
+                    {% endwith %}
                     {% endif %}
                     {% endfor %}
                     {% endwith %}
                     {% endwith %}
                 </div>
+                <div class="row showMoreButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonCentralAmerica">
+                            Show More
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
+                <div class="row hideExtraCardsButtonRow">
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonCentralAmerica"
+                            style="display: none;">
+                            Reduce
+                        </button>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                    </div>
+                </div>
             </div>
+            
             <div class="default-content">
                 <br>
                 <br>
                 <br>
-                <h1 class="recipes-continent-title-section">South America</h1>
+                <h1 class="recipes-continent-title-section" id="southAmericaRecipes">South America</h1>
                 <div class="icon-legend">
                     <img src="../../../media/flag-icon.png" alt="flag-icon"
                         style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
@@ -371,12 +422,13 @@
                     <div class="col">
                     </div>
                 </div>
-                <div class="row card-general-padding">
-                    {% with country_list="argentine, bolivian, brazilian, chilean, colombian, peruvian, ecuadorian, guyanese, paraguayan, surinamese, uruguaya, venezuelan" %}
-                    {% with country_list_split=country_list|slice:" " %}
+                <div class="row card-general-padding south-america-recipes">
+                    {% with south_america_country_list="argentine, bolivian, brazilian, chilean, colombian, peruvian, ecuadorian, guyanese, paraguayan, surinamese, uruguaya, venezuelan" %}
+                    {% with south_america_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split and object.is_public %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                    {% if object.origin_country in south_america_country_list %}
+                    {% with south_america_counter=south_america_counter|add:1 %}
+                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding south-america-recipes {% if south_america_counter > 6 %}south-america-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -403,18 +455,42 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        {% endwith %}
+                        {% endif %}
+                        {% endfor %}
+                        {% endwith %}
+                        {% endwith %}
                     </div>
-                    {% endif %}
-                    {% endfor %}
-                    {% endwith %}
-                    {% endwith %}
-                </div>
+                    <div class="row showMoreButtonRow">
+                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                            <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonSouthAmerica">
+                                Show More
+                            </button>
+                        </div>
+                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                        </div>
+                    </div>
+                    <div class="row hideExtraCardsButtonRow">
+                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                            <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonSouthAmerica"
+                                style="display: none;">
+                                Reduce
+                            </button>
+                        </div>
+                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                        </div>
             </div>
+
             <div class="default-content">
                 <br>
                 <br>
                 <br>
-                <h1 class="recipes-continent-title-section">Europe</h1>
+                <h1 class="recipes-continent-title-section" id="europeRecipes">Europe</h1>
                 <div class="icon-legend">
                     <img src="../../../media/flag-icon.png" alt="flag-icon"
                         style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
@@ -440,12 +516,13 @@
                     <div class="col">
                     </div>
                 </div>
-                <div class="row card-general-padding">
-                    {% with country_list="albanian, andorran, austrian, belarusian, belgian, bosnian, british, bulgarian, croatian, cyprio, czech, danish, dutch, estonian, finnish, french, german, greek, hungarian, icelandic, irish, italian, latvian, liechtensteiner, lithuanian, luxembourgish, macedonian, maltese, moldovan, monegasque, montenegrin, norwegian, polish, portuguese, romanian, russian, sammarinese, serbian, slovak, slovenian, spanish, swedish, swiss, turkish, ukrainian " %}
-                    {% with country_list_split=country_list|slice:" " %}
+                <div class="row card-general-padding europe-recipes">
+                    {% with europe_country_list="albanian, andorran, austrian, belarusian, belgian, bosnian, british, bulgarian, croatian, cyprio, czech, danish, dutch, estonian, finnish, french, german, greek, hungarian, icelandic, irish, italian, latvian, liechtensteiner, lithuanian, luxembourgish, macedonian, maltese, moldovan, monegasque, montenegrin, norwegian, polish, portuguese, romanian, russian, sammarinese, serbian, slovak, slovenian, spanish, swedish, swiss, turkish, ukrainian " %}
+                    {% with europe_counter=0 %}
                     {% for object in object_list %}
-                    {% if object.origin_country in country_list_split and object.is_public %}
-                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding">
+                    {% if object.origin_country in europe_country_list %}
+                    {% with europe_counter=europe_counter|add:1 %}
+                    <div class="col-xl-4 col-lg-6 col-sm-12 card-general-padding europe-recipes {% if south_america_counter > 6 %}europe-recipes-hidden{% endif %}">
                         <div class="card text-bg-dark">
                             <a href="{{object.get_absolute_url}}">
                                 <img src="{{ object.pic.url }}" class="img-fluid" alt="recipe-image">
@@ -472,13 +549,37 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        {% endwith %}
+                        {% endif %}
+                        {% endfor %}
+                        {% endwith %}
+                        {% endwith %}
                     </div>
-                    {% endif %}
-                    {% endfor %}
-                    {% endwith %}
-                    {% endwith %}
-                </div>
+                    <div class="row showMoreButtonRow">
+                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                            <button type="button" class="btn btn-outline-dark w-75" id="showMoreButtonEurope">
+                                Show More
+                            </button>
+                        </div>
+                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                        </div>
+                    </div>
+                    <div class="row hideExtraCardsButtonRow">
+                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-10 d-flex justify-content-center">
+                            <button type="button" class="btn btn-outline-danger w-75" id="hideExtraCardButtonEurope"
+                                style="display: none;">
+                                Reduce
+                            </button>
+                        </div>
+                        <div class="col-xl-4 col-lg-3 col-md-3 col-sm-2 col-1">
+                        </div>
             </div>
+
             <div class="default-content">
                 <br>
                 <br>
