@@ -162,10 +162,37 @@
                 <br>
                 <p class="detailed-page-text-content">{{ object.special_note }}</p>
                 {% else %}
-                <p class="text-center">No special notes.</p>
+                <p class="detailed-page-text-content text-center">No special notes.</p>
                 {% endif %}
             </div>
             <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+            </div>
+        </div>
+
+        <div class="row section-bottom-margin">
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
+            </div>
+            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-10">
+                <h1 class="text-center detailed-recipe-titles">Potential allergen(s)</h1>
+                <br>
+                {% if object.recipe_allergens.all|length > 0 %}
+                <div class="row">
+                    <div class="ms-2 me-auto">
+                        <div class="detailed-page-text-content text-center">
+                            {% for allergen in object.recipe_allergens.all %}
+                            <strong>{{ allergen.allergen }}{% if not forloop.last %}, {% endif %}</strong>
+                            {% endfor %}
+                        </div>
+                        <br>
+                        <p class="detailed-page-text-content">*This list is just a simple overview. There could be other allergenic products. If you have food allergies or intolerances, always read the contents of each ingredient to make sure it is safe for you.</p>
+                    </div>
+                </div>
+                {% else %}
+                <p class="detailed-page-text-content text-center">No potential allergen known.</p>
+                <p class="detailed-page-text-content text-center">*If you have food allergies or intolerances, always read the contents of each ingredient to make sure it is safe for you. This list of potential allergens may not be exhaustive.</p>
+                {% endif %}
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-1">
             </div>
         </div>
 
