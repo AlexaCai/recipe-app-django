@@ -117,8 +117,7 @@
                                                 <option value="">Select a category</option>
                                                 {% for object in object_list|dictsort:"recipe_category" %}
                                                 {% ifchanged %}
-                                                <option value="{{ object.recipe_category }}">{{ object.recipe_category
-                                                    }}</option>
+                                                <option value="{{ object.recipe_category }}">{{ object.recipe_category }}</option>
                                                 {% endifchanged %}
                                                 {% endfor %}
                                             </select>
