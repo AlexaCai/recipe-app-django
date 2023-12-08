@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, redirect, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import UserAdminCreationForm, UserCreatePrivateRecipe, RecipeIngredientsFormSet, RecipeAllergensFormSet, RecipeCookingInstructionsFormSet
 from recipes.models import Recipe, RecipeIngredients
@@ -61,6 +62,7 @@ def delete_account(request):
 
 
 # Function to display the user's profile page information
+@login_required
 def profile_view(request):
     favorite_recipes = favorite_list(request)
     created_recipes = created_recipe(request)
