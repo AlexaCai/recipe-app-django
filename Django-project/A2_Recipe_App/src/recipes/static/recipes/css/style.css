@@ -693,9 +693,9 @@
 
 
 .detailed-page-modal-head {
-    font-family: 'Cinzel', sans-serif;
-    font-weight: 600;
-    padding-bottom: 10px;
+    display: flex;
+    padding: 20px;
+    justify-content: flex-end;
 }
 
 .detailed-page-modal-text {
