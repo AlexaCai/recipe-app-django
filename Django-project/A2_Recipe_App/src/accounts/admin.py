@@ -17,11 +17,11 @@ class UserAdmin(BaseUserAdmin):
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
     list_display = ['id', 'full_name', 'email', 'timestamp', 'admin']
-    list_filter = ['admin', 'staff', '_is_active']
+    list_filter = ['admin', 'staff', 'is_active']
     fieldsets = (
         (None, {'fields': ('id', 'full_name', 'email', 'password', 'timestamp')}),
         ('Favorite and created recipes', {'fields': ('favorite_recipes', 'user_created_recipes')}),
-        ('Permissions', {'fields': ('admin','staff','_is_active')}),
+        ('Permissions', {'fields': ('admin','staff','is_active')}),
     )
 
     readonly_fields = ['id', 'full_name', 'email', 'password', 'timestamp']

@@ -42,15 +42,16 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # Application definition
 
 INSTALLED_APPS = [
+    #recipe-application-related apps
+    'recipes',
+    'accounts',
+    # default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #recipe-application-related apps
-    'recipes',
-    'accounts',
 ]
 
 AUTH_USER_MODEL = 'accounts.User' #changes the default Django built-in user model to our custom user model
