@@ -65,7 +65,7 @@
 /* CSS for the welcome page precisely */
 
 .image-background {
-    background: url("../../../media/landing-pages-background.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/landing-pages-background.jpg") center/cover no-repeat;
     height: 125vh;
 }
 
@@ -152,7 +152,7 @@
 /* CSS for the recipes list page (unsigned and signed versions) */
 
 .recipe-page-intro-section {
-    background: url("../../../media/recipe-list-page-background.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/recipe-list-page-background.jpg") center/cover no-repeat;
     text-align: center;
     color: white;
     padding: 100px 0;
@@ -481,7 +481,7 @@
 /* CSS for the detailed recipe page */
 
 .detailed-page-recipe-intro-background {
-    background: url("../../../media/detailed-recipe-page-background1.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/green-background.jpg") center/cover no-repeat;
 }
 
 .detailed-page-image {
@@ -639,7 +639,7 @@
 
 .users-comments-section {
     margin-bottom: 50px;
-    background: url("../../../media/detailed-recipe-page-background2.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/detailed-recipe-page-background2.jpg") center/cover no-repeat;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
@@ -720,7 +720,7 @@
 }
 
 .footer-background {
-    background: url("../../../media/detailed-recipe-page-background1.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/green-background.jpg") center/cover no-repeat;
 }
 
 @media (max-width: 350px) {
@@ -787,7 +787,7 @@
 /* CSS for the submit recipe page */
 
 .first-image-background-submit-page {
-    background: url("../../../media/pears-background.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/pears-background.jpg") center/cover no-repeat;
     height: 160vh;
     margin: 0;
 }
@@ -920,7 +920,7 @@
 }
 
 .second-image-background {
-    background: url("../../../media/strawberry-background.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/strawberry-background.jpg") center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -928,7 +928,7 @@
 }
 
 .third-image-background {
-    background: url("../../../media/blueberries-background.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/blueberries-background.jpg") center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -936,7 +936,7 @@
 }
 
 .fourth-image-background {
-    background: url("../../../media/oranges-background.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/oranges-background.jpg") center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -944,7 +944,7 @@
 }
 
 .fifth-image-background {
-    background: url("../../../media/lemon-background2.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/lemon-background2.jpg") center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -952,7 +952,7 @@
 }
 
 .sixth-image-background {
-    background: url("../../../media/watermelon-background.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/watermelon-background.jpg") center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -960,7 +960,7 @@
 }
 
 .seventh-image-background {
-    background: url("../../../media/coconut-background.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/coconut-background.jpg") center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1028,7 +1028,7 @@
 /* CSS for the succcess submit recipe page */
 
 .image-background-recipe-submit-success-page {
-    background: url("../../../media/cherries-background.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/cherries-background.jpg") center/cover no-repeat;
     height: 120vh;
     margin: 0;
 }
@@ -1066,7 +1066,7 @@
 /* CSS for the failed submit recipe page */
 
 .image-background-recipe-submit-failed-page {
-    background: url("../../../media/lemon-background.jpg") center/cover no-repeat;
+    background: url("../../recipes/img/lemon-background.jpg") center/cover no-repeat;
     height: 120vh;
     margin: 0;
 }
