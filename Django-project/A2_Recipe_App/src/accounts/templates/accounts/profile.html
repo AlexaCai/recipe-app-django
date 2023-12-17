@@ -16,7 +16,8 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="{% static 'accounts/js/javascript.js' %}" defer></script>
     <title>Cuisine atlas</title>
-    <link rel="shortcut icon" href="../../../media/website-logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'accounts/img/website-logo.png' %}" type="image/x-icon">
+    <link rel="manifest" href="{% static 'recipes/manifest.json' %}">
 </head>
 
 <main>
@@ -24,7 +25,7 @@
         <div class="header-display">
             <nav class="navbar navbar-expand-md navbar-light justify-content-end">
                 <div class="logo-container">
-                    <img src="../../../media/website-logo.png" alt="ac-logo" class="logo-image">
+                    <img src="{% static 'accounts/img/website-logo.png' %}" alt="ac-logo" class="logo-image">
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -288,13 +289,13 @@
             <h1 class="text-center profile-page-title" id="createdRecipes">Created recipes</h1>
             <br>
             <div class="icon-legend">
-                <img src="../../../media/flag-icon.png" alt="flag-icon"
+                <img src="{% static 'accounts/img/flag-icon.png' %}" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
                 <span class="icon-separator-vertical-line">|</span>
-                <img src="../../../media/difficulty-icon.png" alt="flag-icon"
+                <img src="{% static 'accounts/img/difficulty-icon.png' %}" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
                 <span class="icon-separator-vertical-line">|</span>
-                <img src="../../../media/category-icon.png" alt="flag-icon"
+                <img src="{% static 'accounts/img/difficulty-icon.png' %}" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
             </div>
             <div class="row back-to-top">
@@ -324,16 +325,16 @@
                                 </a>
                             </div>
                             <div class="recipe-card-quick-info">
-                                <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                <img src="{% static 'accounts/img/flag-icon.png' %}" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                             </div>
                             <br>
                             <div class="recipe-card-quick-info">
-                                <img src="../../../media/difficulty-icon.png" class="card-icons"
+                                <img src="{% static 'accounts/img/difficulty-icon.png' %}" class="card-icons"
                                     alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                             </div>
                             <br>
                             <div class="recipe-card-quick-info">
-                                <img src="../../../media/category-icon.png" class="card-icons"
+                                <img src="{% static 'accounts/img/category-icon.png' %}" class="card-icons"
                                     alt="category-icon"><span>{{ object.recipe_category }}</span>
                             </div>
                         </div>
@@ -656,13 +657,13 @@
             <h1 class="text-center profile-page-title" id="favoriteRecipes">Favorite recipes</h1>
             <br>
             <div class="icon-legend">
-                <img src="../../../media/flag-icon.png" alt="flag-icon"
+                <img src="{% static 'accounts/img/flag-icon.png' %}" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
                 <span class="icon-separator-vertical-line">|</span>
-                <img src="../../../media/difficulty-icon.png" alt="flag-icon"
+                <img src="{% static 'accounts/img/difficulty-icon.png' %}" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
                 <span class="icon-separator-vertical-line">|</span>
-                <img src="../../../media/category-icon.png" alt="flag-icon"
+                <img src="{% static 'accounts/img/category-icon.png' %}" alt="flag-icon"
                     style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
             </div>
             <div class="row">
@@ -692,16 +693,16 @@
                                 </a>
                             </div>
                             <div class="recipe-card-quick-info">
-                                <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
+                                <img src="{% static 'accounts/img/flag-icon.png' %}" class="card-icons" alt="flag-icon"><span>{{ object.origin_country }}</span>
                             </div>
                             <br>
                             <div class="recipe-card-quick-info">
-                                <img src="../../../media/difficulty-icon.png" class="card-icons"
+                                <img src="{% static 'accounts/img/difficulty-icon.png' %}" class="card-icons"
                                     alt="difficulty-icon"><span>{{ object.difficulty }}</span>
                             </div>
                             <br>
                             <div class="recipe-card-quick-info">
-                                <img src="../../../media/category-icon.png" class="card-icons"
+                                <img src="{% static 'accounts/img/category-icon.png' %}" class="card-icons"
                                     alt="category-icon"><span>{{ object.recipe_category }}</span>
                             </div>
                         </div>

@@ -59,7 +59,7 @@
 }
 
 .image-background {
-    background: url("../../../media/landing-pages-background.jpg") center/cover no-repeat;
+    background: url("../../accounts/img/landing-pages-background.jpg") center/cover no-repeat;
     height: 125vh;
     margin: 0;
 }
@@ -130,7 +130,7 @@
 /* CSS for signup page precisely */
 
 .signup-page-image-background {
-    background: url("../../../media/landing-pages-background.jpg") center/cover no-repeat;
+    background: url("../../accounts/img/landing-pages-background.jpg") center/cover no-repeat;
     height: 125vh;
     margin: 0;
 }
@@ -198,7 +198,7 @@
 /* CSS for profile page precisely */
 
 .profile-page-image-background {
-    background: url("../../../media/profile-page-background.jpg") center/cover no-repeat;
+    background: url("../../accounts/img/profile-page-background.jpg") center/cover no-repeat;
     padding: 100px 0;
     height: 140vh;
 }
@@ -448,7 +448,7 @@
 }
 
 .footer-background {
-    background: url("../../../media/detailed-recipe-page-background1.jpg") center/cover no-repeat;
+    background: url("../../accounts/img/green-background.jpg") center/cover no-repeat;
 }
 
 .share-website-text {
