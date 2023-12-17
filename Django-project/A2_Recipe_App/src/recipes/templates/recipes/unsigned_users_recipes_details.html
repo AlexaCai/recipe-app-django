@@ -16,7 +16,8 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="{% static 'recipes/js/javascript.js' %}" defer></script>
     <title>Cuisine atlas</title>
-    <link rel="shortcut icon" href="../../../media/website-logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'recipes/img/website-logo.png' %}" type="image/x-icon">
+    <link rel="manifest" href="{% static 'recipes/manifest.json' %}">
 </head>
 
 <main>
@@ -24,7 +25,7 @@
         <div class="header-display">
             <nav class="navbar navbar-expand-md navbar-light justify-content-end">
                 <div class="logo-container">
-                    <img src="../../../media/website-logo.png" alt="ac-logo" class="logo-image">
+                    <img src="{% static 'recipes/img/website-logo.png' %}" alt="ac-logo" class="logo-image">
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -64,29 +65,29 @@
                     <div class="row text-center justify-content-center">
                         <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-12">
                             <div class="recipe-icon-text">
-                                <img src="../../../media/flag-icon.png" class="detailed-page-icon"
+                                <img src="{% static 'recipes/img/flag-icon.png' %}" class="detailed-page-icon"
                                     alt="flag-icon"><span>{{ object.origin_country }}</span>
                             </div>
                             <div class="recipe-icon-text">
-                                <img src="../../../media/category-icon.png" class="detailed-page-icon"
+                                <img src="{% static 'recipes/img/category-icon.png' %}" class="detailed-page-icon"
                                     alt="category-icon"><span>{{ object.recipe_category }}</span>
                             </div>
                             <div class="recipe-icon-text">
-                                <img src="../../../media/cooking-time-icon.png" class="detailed-page-icon"
+                                <img src="{% static 'recipes/img/cooking-time-icon.png' %}" class="detailed-page-icon"
                                     alt="cooking-time-icon"><span>{{ object.cooking_time }} min</span>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-6 col-md-6 col-sm-10 col-12">
                             <div class="recipe-icon-text">
-                                <img src="../../../media/difficulty-icon.png" class="detailed-page-icon"
+                                <img src="{% static 'recipes/img/difficulty-icon.png' %}" class="detailed-page-icon"
                                     alt="level-icon"><span>{{ object.difficulty }}</span>
                             </div>
                             <div class="recipe-icon-text">
-                                <img src="../../../media/number-portion-icon.png" class="detailed-page-icon"
+                                <img src="{% static 'recipes/img/number-portion-icon.png' %}" class="detailed-page-icon"
                                     alt="number-portion-icon"><span>{{ object.number_of_portions }} portions</span>
                             </div>
                             <div class="recipe-icon-text">
-                                <img src="../../../media/dollar-icon.png" class="detailed-page-icon"
+                                <img src="{% static 'recipes/img/dollar-icon.png' %}" class="detailed-page-icon"
                                     alt="dollar-icon"><span>{{ object.recipe_estimated_cost }}</span>
                             </div>
                         </div>
