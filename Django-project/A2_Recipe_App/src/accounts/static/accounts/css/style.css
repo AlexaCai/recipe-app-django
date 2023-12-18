@@ -128,10 +128,17 @@
 }
 
 .white-background-bottom-padding {
-    padding-bottom: 146px;
+    padding-bottom: 120px;
+}
+
+.signup-link {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .forgot-password-link {
+    color:black;
     font-size: 18px;
     font-weight: bold;
 }
