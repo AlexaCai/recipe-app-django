@@ -116,6 +116,12 @@
     }
 }
 
+@media (min-width: 576px) {
+    .download-app-button-modal {
+        padding-bottom: 25px;
+    }
+}
+
 @media (max-width: 575px) {
     .home-page-buttons-bottom-padding {
         padding-bottom: 10px;
@@ -145,7 +151,12 @@
     font-size: 20px;
 }
 
-
+@media (max-width: 450px) {
+    .download-app-icon {
+        height: 100px;
+        width: 100px;
+    }
+}
 
 
 

@@ -78,38 +78,112 @@
                             </div>
                         </div>
                         <div class="welcome-box-2">
-                            <button type="button" class="btn btn-dark w-33" data-bs-toggle="modal"
-                                data-bs-target="#signupquestionModal">
-                                Why signing up?
-                            </button>
-                            <div class="modal fade" id="signupquestionModal" tabindex="-1"
-                                aria-labelledby="signupquestionModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="home-page-modal-head">
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h4 class="modal-title-home-page">Why signing up?</h4>
-                                            <div class="row">
-                                                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
-                                                </div>
-                                                <div
-                                                    class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-home-page">
-                                                    <p>Signed up users can create their own list of recipes, add recipes
-                                                        from our catalog to their list of favorite and comment on
-                                                        recipes.</p>
-                                                </div>
-                                                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-2 col-md-2 col-sm-2 col-12">
+                                    </div>
+                                    <div
+                                        class="col-xl-6 col-lg-8 col-md-8 col-sm-8 col-12 home-page-buttons-bottom-padding download-app-button-modal">
+                                        <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
+                                            data-bs-target="#downloadAppModal">
+                                            Download the app version
+                                        </button>
+                                        <div class="modal fade" id="downloadAppModal" tabindex="-1"
+                                            aria-labelledby="downloadAppModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="home-page-modal-head">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h4 class="modal-title-home-page">Download the app version</h4>
+                                                        <div class="row">
+                                                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                                            </div>
+                                                            <div
+                                                                class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-home-page">
+                                                                <p>Want to access your favorite recipes even more
+                                                                    easily on your computer or mobile? Download the
+                                                                    Cuisine Atlas app version in two simple
+                                                                    steps.</p>
+                                                            </div>
+                                                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <h4 class="modal-title-home-page">Instructions</h4>
+                                                        <p class="modal-text-home-page"><b>Step 1-</b> Look inside the
+                                                            navigation bar of your browser at the far right, and click
+                                                            on the
+                                                            following icon:</p>
+                                                        <img src="{% static 'recipes/img/download-app-icon.png' %}"
+                                                            alt="download-app-icon" class="download-app-icon">
+                                                        <p class="modal-text-home-page"><b>Step 2-</b> In the pop-up that
+                                                            appears, click “install”</p>
+                                                        <p class="modal-text-home-page">Cuisine Atlas is now
+                                                            installed and you can access it simply by clicking on the
+                                                            icon on your mobile or desktop. If you want, you can also
+                                                            pin the app to your desktop taskbar or place it on your mobile home
+                                                            screen.</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-dark"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-dark"
-                                                data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-2 col-md-2 col-sm-2 col-12">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-3 col-md-3 col-sm-3 col-12">
+                                    </div>
+                                    <div
+                                        class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 home-page-buttons-bottom-padding">
+                                        <button type="button" class="btn btn-dark w-100" data-bs-toggle="modal"
+                                            data-bs-target="#signupquestionModal">
+                                            Why signing up?
+                                        </button>
+                                        <div class="modal fade" id="signupquestionModal" tabindex="-1"
+                                            aria-labelledby="signupquestionModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="home-page-modal-head">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h4 class="modal-title-home-page">Why signing up?</h4>
+                                                        <div class="row">
+                                                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                                            </div>
+                                                            <div
+                                                                class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 modal-text-home-page">
+                                                                <p>Signed up users can create their own list of recipes,
+                                                                    add
+                                                                    recipes
+                                                                    from our catalog to their list of favorite and
+                                                                    comment
+                                                                    on
+                                                                    recipes.</p>
+                                                            </div>
+                                                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-dark"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-3 col-md-3 col-sm-3 col-12">
                                 </div>
                             </div>
                         </div>
