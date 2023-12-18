@@ -127,6 +127,15 @@
     margin-bottom: 20px;
 }
 
+.white-background-bottom-padding {
+    padding-bottom: 146px;
+}
+
+.forgot-password-link {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 /* CSS for signup page precisely */
 
 .signup-page-image-background {
