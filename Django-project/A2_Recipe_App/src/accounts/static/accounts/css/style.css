@@ -127,7 +127,7 @@
     margin-bottom: 20px;
 }
 
-.white-background-bottom-padding {
+.login-page-white-background-bottom-padding {
     padding-bottom: 120px;
 }
 
@@ -166,6 +166,69 @@
 .signup-form {
     margin-bottom: 20px;
 }
+
+/* CSS for the forgot password pages precisely */
+
+.reset-password-form {
+    margin-bottom: 20px;
+}
+
+.reset-password-page1-white-background-bottom-padding {
+    padding-bottom: 161px;
+}
+
+@media (max-width: 310px) {
+    .reset-password-page1-white-background-bottom-padding {
+        padding-bottom: 20px;
+    }
+}
+
+.reset-password-email-confirmation-sent-message {
+    padding-bottom: 35px;
+}
+
+@media (max-width: 300px) {
+    .reset-password-email-confirmation-sent-message {
+        font-size: 16px;
+    }
+}
+
+.reset-password-page2-white-background-bottom-padding {
+    padding-bottom: 249px;
+}
+
+@media (max-width: 400px) {
+    .reset-password-page2-white-background-bottom-padding {
+        padding-bottom: 200px;
+    }
+}
+
+@media (max-width: 310px) {
+    .reset-password-page2-white-background-bottom-padding {
+        padding-bottom: 150px;
+    }
+}
+
+@media (max-width: 285px) {
+    .reset-password-page2-white-background-bottom-padding {
+        padding-bottom: 30px;
+    }
+}
+
+.reset-password-page3-white-background-bottom-padding {
+    padding-bottom: 238px;
+}
+
+@media (max-width: 285px) {
+    .reset-password-page3-white-background-bottom-padding {
+        padding-bottom: 110px;
+    }
+}
+
+.reset-password-page4-white-background-bottom-padding {
+    padding-bottom: 263px;
+}
+
 
 /* CSS for logout page precisely */
 

@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from .models import User
 from recipes.models import Recipe, RecipeIngredients, RecipeAllergens, RecipeCookingInstructions
+from django.contrib.auth.forms import PasswordResetForm
 
 User = get_user_model()
 
@@ -76,7 +77,19 @@ class RegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-
+    
+# Used to customize the fields that are required when users want to reset their passwords.
+class MyPasswordResetForm(PasswordResetForm):
+    
+    new_password1 = forms.CharField(
+        label="Enter new password",
+        widget=forms.PasswordInput,
+    )
+    new_password2 = forms.CharField(
+        label="Enter new password confirmation",
+        widget=forms.PasswordInput,
+    )
+    
 unit_measure_choices = (
     ("ml - milliliter", "ml - Milliliter"),
     ("fl oz - fluid ounce", "fl oz - Fluid Ounce"),
