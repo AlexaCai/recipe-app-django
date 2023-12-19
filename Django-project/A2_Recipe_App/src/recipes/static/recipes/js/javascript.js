@@ -200,11 +200,11 @@ function displaySearchResults(data) {
         <br>
         <h1 class="recipes-continent-title-section">Search results</h1> 
         <div class="icon-legend">
-            <img src="../../../media/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
-            <span class="vertical-line">|</span>
-            <img src="../../../media/difficulty-icon.png" alt="level-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
-            <span class="vertical-line">|</span>
-            <img src="../../../media/category-icon.png" alt="category-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
+        <img src="/static/recipes/img/flag-icon.png" alt="flag-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Country</span>
+        <span class="vertical-line">|</span>
+        <img src="/static/recipes/img/difficulty-icon.png" alt="level-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Difficulty</span>
+        <span class="vertical-line">|</span>
+        <img src="/static/recipes/img/category-icon.png" alt="category-icon" style="width: 20px; height: 20px; margin-right: 5px;"><span>Category</span>
         </div> 
         <br>
         <br>
@@ -245,15 +245,15 @@ function displaySearchResults(data) {
                         </a>
                     </div>
                     <div class="recipe-card-quick-info">
-                        <img src="../../../media/flag-icon.png" class="card-icons" alt="flag-icon"><span>${recipe.recipe_origin_country}</span>
+                        <img src="/static/recipes/img/flag-icon.png" class="card-icons" alt="flag-icon"><span>${recipe.recipe_origin_country}</span>
                     </div>
                     <br>
                     <div class="recipe-card-quick-info">
-                        <img src="../../../media/difficulty-icon.png" class="card-icons" alt="difficulty-icon"><span>${recipe.recipe_difficulty}</span>
+                        <img src="/static/recipes/img/difficulty-icon.png" class="card-icons" alt="difficulty-icon"><span>${recipe.recipe_difficulty}</span>
                     </div>
                     <br>
                     <div class="recipe-card-quick-info">
-                        <img src="../../../media/category-icon.png" class="card-icons" alt="category-icon"><span>${recipe.recipe_category}</span>
+                        <img src="/static/recipes/img/difficulty-icon.png" class="card-icons" alt="category-icon"><span>${recipe.recipe_category}</span>
                     </div>
                 </div>
             </div>
