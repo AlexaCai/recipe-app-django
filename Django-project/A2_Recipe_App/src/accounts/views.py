@@ -152,31 +152,3 @@ def user_private_recipe_new(request):
         cooking_instructions_formset = RecipeCookingInstructionsFormSet(prefix='cooking_instructions')
 
     return render(request, 'accounts/profile.html', {'form': form, 'formset': formset, 'allergens_formset': allergens_formset, 'cooking_instructions_formset': cooking_instructions_formset})
-
-
-def user_private_recipe_update(request, id):
-    recipe = get_object_or_404(Recipe, id=id)
-
-    if request.method == 'POST':
-        form = UserCreatePrivateRecipe(request.POST, request.FILES, instance=recipe)
-        formset = RecipeIngredientsFormSet(request.POST, prefix='formset', queryset=RecipeIngredients.objects.filter(recipe=recipe), instance=recipe)
-        allergens_formset = RecipeAllergensFormSet(request.POST, prefix='allergens', instance=recipe)
-        cooking_instructions_formset = RecipeCookingInstructionsFormSet(request.POST, prefix='cooking_instructions', instance=recipe)
-
-        if form.is_valid() and formset.is_valid() and allergens_formset.is_valid() and cooking_instructions_formset.is_valid():
-            form.save()
-            formset.save()
-            allergens_formset.save()
-            cooking_instructions_formset.save()
-
-            for form in formset:
-                print(f"Form ID: {form.instance.id}")
-
-            return redirect('accounts:profile')
-    else:
-        form = UserCreatePrivateRecipe(instance=recipe)
-        formset = RecipeIngredientsFormSet(prefix='formset', queryset=RecipeIngredients.objects.filter(recipe=recipe), instance=recipe)
-        allergens_formset = RecipeAllergensFormSet(prefix='allergens', instance=recipe)
-        cooking_instructions_formset = RecipeCookingInstructionsFormSet(prefix='cooking_instructions', instance=recipe)
-
-    return render(request, 'accounts/profile.html', {'form': form, 'formset': formset, 'allergens_formset': allergens_formset, 'cooking_instructions_formset': cooking_instructions_formset, 'recipe': recipe})
