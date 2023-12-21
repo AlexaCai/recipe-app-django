@@ -105,20 +105,18 @@
                                         placeholder="e.g.: If you don't have pork, you can always use..."></textarea>
                                 </div>
                                 <div class="form-group create-recipe-form-group-space">
-                                    <label for="id_cooking_time"><b>Cooking Time - Field required (only number)
+                                    <label for="id_cooking_time"><b>Cooking Time - Field required (number only)
                                         </b></label>
                                     <input type="number" id="id_cooking_time" class="form-control" name="cooking_time"
                                         placeholder="e.g.: 30" required>
                                 </div>
                                 <div class="form-group create-recipe-form-group-space">
-                                    <label for="id_number_of_portions"><b>Number of Portions - Field required (only
-                                            number)</b></label>
+                                    <label for="id_number_of_portions"><b>Number of portions - Field required (number only)</b></label>
                                     <input type="number" id="id_number_of_portions" class="form-control"
                                         name="number_of_portions" placeholder="e.g.: 6" required>
                                 </div>
                                 <div class="form-group create-recipe-form-group-space">
-                                    <label for="id_recipe_estimated_cost"><b>Estimated cost ($) - Field required (only
-                                            number)</b></label>
+                                    <label for="id_recipe_estimated_cost"><b>Estimated cost ($) - Field required (number only)</b></label>
                                     <input type="number" id="id_recipe_estimated_cost" class="form-control"
                                         name="recipe_estimated_cost" placeholder="e.g.: 15" required>
                                 </div>
@@ -150,7 +148,7 @@
                                 </div>
                                 <br>
                                 <h3 class="create-recipe-form-subtitle">Ingredients</h3>
-                                <h5 class="create-recipe-form-directives">*Enter only one ingredient at time*</h5>
+                                <h5 class="create-recipe-form-directives">*Enter only one ingredient at a time*</h5>
                                 <br>
                                 <div id="ingredients-formset-container">
                                     {{ formset.management_form }}
@@ -166,7 +164,7 @@
                                         </div>
                                         <div class="form-group create-recipe-form-group-space">
                                             <label for="{{ form.quantity.id_for_label }}"><b>Quantity - Field required
-                                                    (only number)</b></label>
+                                                    (number only)</b></label>
                                             <input type="number" id="{{ form.quantity.auto_id }}" class="form-control"
                                                 name="{{ form.quantity.html_name }}" placeholder="e.g.: 25" required>
                                         </div>
@@ -210,7 +208,7 @@
                                         style="display:none; margin-bottom: 60px;">Remove last ingredient</button>
                                 </div>
                                 <h3 class="create-recipe-form-subtitle">Allergen(s)</h3>
-                                <h5 class="create-recipe-form-directives">*Enter only one allergen at time*</h5>
+                                <h5 class="create-recipe-form-directives">*Enter only one allergen at a time*</h5>
                                 <br>
                                 <div id="allergens-formset-container">
                                     {{ allergens_formset.management_form }}
@@ -236,7 +234,7 @@
                                         style="display:none; margin-bottom: 60px;">Remove last allergen</button>
                                 </div>
                                 <h3 class="create-recipe-form-subtitle">Instructions</h3>
-                                <h5 class="create-recipe-form-directives">*Enter only one step/description at time*</h5>
+                                <h5 class="create-recipe-form-directives">*Enter only one step/description at a time*</h5>
                                 <br>
                                 <div id="cooking-instructions-formset-container">
                                     {{ cooking_instructions_formset.management_form }}

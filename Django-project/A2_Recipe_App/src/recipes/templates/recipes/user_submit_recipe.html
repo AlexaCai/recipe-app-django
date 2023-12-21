@@ -93,17 +93,17 @@
                             <textarea id="id_special_note" class="form-control" name="special_note" rows="4" placeholder="e.g.: If you don't have pork, you can always use..."></textarea>
                         </div>
                         <div class="form-group form-group-space">
-                            <label for="id_cooking_time"><b>Cooking Time - Field required (only number) </b></label>
+                            <label for="id_cooking_time"><b>Cooking Time - Field required (number only) </b></label>
                             <input type="number" id="id_cooking_time" class="form-control" name="cooking_time" placeholder="e.g.: 30"
                                 required>
                         </div>
                         <div class="form-group form-group-space">
-                            <label for="id_number_of_portions"><b>Number of Portions - Field required (only number)</b></label>
+                            <label for="id_number_of_portions"><b>Number of portions - Field required (number only)</b></label>
                             <input type="number" id="id_number_of_portions" class="form-control"
                                 name="number_of_portions" placeholder="e.g.: 6" required>
                         </div>
                         <div class="form-group form-group-space">
-                            <label for="id_recipe_estimated_cost"><b>Estimated cost ($) - Field required (only number)</b></label>
+                            <label for="id_recipe_estimated_cost"><b>Estimated cost ($) - Field required (number only)</b></label>
                             <input type="number" id="id_recipe_estimated_cost" class="form-control"
                                 name="recipe_estimated_cost" placeholder="e.g.: 15" required>
                         </div>
@@ -165,7 +165,7 @@
                         </div>
                         <br>
                         <h2 class="page-subtitle">Ingredients</h2>
-                        <h5 class="submit-recipe-form-directives">*Enter only one ingredient at time*</h5>
+                        <h5 class="submit-recipe-form-directives">*Enter only one ingredient at a time*</h5>
                         <br>                     
                         <div id="ingredients-formset-container">
                                 {{ formset.management_form }}
@@ -177,7 +177,7 @@
                                                 <input type="text" id="{{ form.ingredient_name.auto_id }}" class="form-control" name="{{ form.ingredient_name.html_name }}" placeholder="e.g.: Tortillas" required>
                                         </div>
                                         <div class="form-group form-group-space">
-                                            <label for="{{ form.quantity.id_for_label }}"><b>Quantity - Field required (only number)</b></label>
+                                            <label for="{{ form.quantity.id_for_label }}"><b>Quantity - Field required (number only)</b></label>
                                                 <input type="number" id="{{ form.quantity.auto_id }}" class="form-control" name="{{ form.quantity.html_name }}" placeholder="e.g.: 25" required>                                            </div>
                                         <div class="form-group form-group-space">
                                             <label for="{{ form.unit_of_measurement.id_for_label }}"><b>Measurement unit - Field required</b></label>
@@ -205,7 +205,7 @@
                         <br>
                         <button type="button" id="remove-ingredient-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last ingredient</button>
                         <h2 class="page-subtitle">Allergen(s)</h2>
-                        <h5 class="submit-recipe-form-directives">*Enter only one allergen at time*</h5>
+                        <h5 class="submit-recipe-form-directives">*Enter only one allergen at a time*</h5>
                         <br>
                         <div id="allergens-formset-container">
                                 {{ allergens_formset.management_form }}
@@ -226,7 +226,7 @@
                         <br>
                         <button type="button" id="remove-allergen-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last allergen</button>
                         <h2 class="page-subtitle">Instructions</h2>
-                        <h5 class="submit-recipe-form-directives">*Enter only one step/description at time*</h5>
+                        <h5 class="submit-recipe-form-directives">*Enter only one step/description at a time*</h5>
                         <h5 class="submit-recipe-form-directives">*Ensure to provide enough directions*</h5>
                         <br>
                         <div id="cooking-instructions-formset-container">
@@ -252,7 +252,7 @@
                         <br>
                         <button type="button" id="remove-instructions-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last step</button>
                         <h2 class="page-subtitle">Cooking tools</h2>
-                        <h5 class="submit-recipe-form-directives">*Enter only one cooking tool at time*</h5>
+                        <h5 class="submit-recipe-form-directives">*Enter only one cooking tool at a time*</h5>
                         <br>
                         <div id="recipe-tools-formset-container">
                                 {{ recipe_tools_formset.management_form }}
@@ -273,7 +273,7 @@
                         <br>
                         <button type="button" id="remove-tools-form" class="btn btn-danger remove-button" style="display:none; margin-bottom: 60px;">Remove last tool</button>
                         <h2 class="page-subtitle">Similar recipe(s)</h2>
-                        <h5 class="submit-recipe-form-directives">*Enter only one similar recipe at time*</h5>
+                        <h5 class="submit-recipe-form-directives">*Enter only one similar recipe at a time*</h5>
                         <br>
                         <div id="recipe-similar-complementary-formset-container">
                                 {{ recipe_similar_complementary_formset.management_form }}
@@ -303,7 +303,7 @@
                         <br>
                         <br>
                         <br>
-                        <p class="recipe-submit-page-submission-information">Note: Our team reserves the right to not publish a submitted recipe if it is very similar to an existing recipe from our catalog or if its information is incomplete / not clear enough. Our team also reserves the right to edit a submitted recipe to bring it up to our quality standard if necessary. Our goal is to offer the best user experience by publishing recipes with complete and quality information.</p>
+                        <p class="recipe-submit-page-submission-information">Note: Our team reserves the right not to publish a submitted recipe if it is very similar to an existing recipe from our catalog or if its information is incomplete / not clear enough. Our team also reserves the right to edit a submitted recipe to bring it up to our quality standard if necessary. Our goal is to offer the best user experience by publishing recipes with complete and quality information.</p>
                     </form>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-1">

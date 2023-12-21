@@ -158,7 +158,7 @@ function displaySearchResults(data) {
             <br>
             <br>
             <div class="search-result-not-found">
-                <span>For recipes searched by name or ingredient name, make sure there's are not spelling mistake in your text.</span>
+                <span>For recipes searched by name or ingredient name, make sure there is no spelling mistake in your text.</span>
                 <br>
                 <br>
                 <span>***</span>
