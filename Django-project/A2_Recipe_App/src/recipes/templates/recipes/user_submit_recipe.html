@@ -52,7 +52,7 @@
                             {% endif %}
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#projects-section">About</a>
+                            <a class="nav-link" href="{% url 'recipes:about' %}">About</a>
                         </li>
                         <li class="nav-item">
                             {% if user.is_authenticated %}

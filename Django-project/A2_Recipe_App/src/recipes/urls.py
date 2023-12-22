@@ -2,6 +2,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 from .views import (
     home,
+    about,
     unsigned_user_redirect_recipes_list_page,
     signed_user_redirect_recipes_list_page,
     unsigned_user_redirect_recipes_detailed_page,
@@ -22,6 +23,10 @@ urlpatterns = [
     path("home/", 
          home, 
          name="home"
+    ),
+    path("about/", 
+         about, 
+         name="about"
     ),
     path(
         "recipes-list-unsigned-users/",

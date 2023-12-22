@@ -20,6 +20,9 @@ from django.core.mail import EmailMessage
 def home(request):
     return render(request, "recipes/home.html")
 
+def about(request):
+    return render(request, "recipes/about.html")
+
 class RecipeListViewUnsignedUsers(ListView):
     model = Recipe
     template_name = "recipes/unsigned_users_recipes.html"

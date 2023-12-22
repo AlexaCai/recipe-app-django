@@ -1036,7 +1036,7 @@
 
 
 
-/* CSS for the succcess submit recipe page */
+/* CSS for the success submit recipe page */
 
 .image-background-recipe-submit-success-page {
     background: url("../../recipes/img/cherries-background.jpg") center/cover no-repeat;
@@ -1084,4 +1084,15 @@
 
 .buttons-bottom-padding {
     padding-bottom: 10px;
+}
+
+
+
+
+/* CSS for the about page */
+
+.image-background-about-page {
+    background: url("../../recipes/img/lemon-background.jpg") center/cover no-repeat;
+    height: 120vh;
+    margin: 0;
 }
