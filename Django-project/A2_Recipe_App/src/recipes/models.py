@@ -1,7 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.shortcuts import reverse
+from django.conf import settings
+from PIL import Image
+
 
 
 unit_measure_choices = (
@@ -15,8 +17,10 @@ unit_measure_choices = (
     ("oz - ounce", "oz - Ounce"),
     ("lb - pound", "lb - Pound"),
     ("kg - kilogram", "kg - Kilogram"),
+    ("cup", "Cup"),
     ("unit", "Unit"),
     ("units", "Units"),
+    ("to taste", "To Taste"),
 )
 
 country_choices = (
@@ -69,7 +73,7 @@ country_choices = (
     ("danish", "Danish"),
     ("djiboutian", "Djiboutian"),
     ("dominican", "Dominican"),
-    ("dominican republic", "Dominican Republic"),
+    ("dominican rep.", "Dominican Rep."),
     ("dutch", "Dutch"),
     ("east timorese", "East Timorese"),
     ("ecuadorian", "Ecuadorian"),
@@ -155,7 +159,7 @@ country_choices = (
     ("palauan", "Palauan"),
     ("palestinian", "Palestinian"),
     ("panamanian", "Panamanian"),
-    ("papua new guinean", "Papua New Guinean"),
+    ("papua new gui.", "Papua New Gui."),
     ("paraguayan", "Paraguayan"),
     ("peruvian", "Peruvian"),
     ("polish", "Polish"),
@@ -164,9 +168,9 @@ country_choices = (
     ("romanian", "Romanian"),
     ("russian", "Russian"),
     ("rwandan", "Rwandan"),
-    ("saint kitts and nevis", "Saint Kitts and Nevis"),
+    ("st kitts & nevis", "St Kitts & Nevis"),
     ("saint lucian", "Saint Lucian"),
-    ("saint vincent and the grenadines", "Saint Vincent and the Grenadines"),
+    ("st vincent & grenadines", "St Vincent & Grenadines"),
     ("salvadoran", "Salvadoran"),
     ("sammarinese", "Sammarinese"),
     ("samoan", "Samoan"),
@@ -198,7 +202,7 @@ country_choices = (
     ("thai", "Thai"),
     ("togolese", "Togolese"),
     ("tongan", "Tongan"),
-    ("trinidadian and tobagonian", "Trinidadian and Tobagonian"),
+    ("trinidadian & tobagonian", "Trinidadian & Tobagonian"),
     ("tunisian", "Tunisian"),
     ("turkish", "Turkish"),
     ("turkmen", "Turkmen"),
@@ -213,8 +217,8 @@ country_choices = (
     ("yemeni", "Yemeni"),
     ("zambian", "Zambian"),
     ("zimbabwean", "Zimbabwean"),
-    ("other", "Other"),
     ("no category", "No Category"),
+    ("mixed", "Mixed"),
 )
 
 category_choices = (
@@ -251,7 +255,7 @@ category_choices = (
 
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=50)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, related_name='created_recipes')
     is_public = models.BooleanField(default=False)
     description = models.TextField(blank=True, help_text="This field is optional")
     special_note = models.TextField(blank=True, help_text="This field is optional")
@@ -262,6 +266,19 @@ class Recipe(models.Model):
     recipe_category = models.CharField(max_length=100, choices=category_choices, default="other", help_text="Select the category associated to this recipe",)
     creation_date = models.DateField(auto_now_add=True)
     pic = models.ImageField(upload_to="recipes", default="no_picture.jpg")
+    favorites = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='favorites', default=None, blank=True)
+
+    # Used to automatically resize uploaded images to 1920x1280 pixels
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        img = Image.open(self.pic.path)
+
+        image_size = (1920, 1280)
+
+        if img.size != image_size:
+            img = img.resize(image_size)
+            img.save(self.pic.path)
 
     def calculate_difficulty(self):
         ingredient_count = self.recipe_ingredients.count()
@@ -280,6 +297,7 @@ class Recipe(models.Model):
         return self.calculate_difficulty()
         
     # Display the url as a property, not an input field
+    # Generate url used for unsigned users
     @property
     def recipe_url(self):
         return self.get_absolute_url()
@@ -287,6 +305,8 @@ class Recipe(models.Model):
     def get_absolute_url(self):
        return reverse ('recipes:recipes_detail_unsigned_users', kwargs={'pk': self.pk})
     
+    # Display the url as a property, not an input field
+    # Generate url used for signed users
     @property
     def recipe_url_signed_users(self):
         return self.get_absolute_url_signed_users()
@@ -306,7 +326,6 @@ class RecipeIngredients(models.Model):
     possible_substitute = models.CharField(max_length=100, blank=True, help_text="Optional - Indicate here which ingredient could replace the one mentionned if not available")
     substitue_special_note = models.CharField(max_length=300, blank=True, help_text="This field is optional")
 
-    # Used to ensure that the name of this section in Django admin interface is written without an 's'
     class Meta:
         verbose_name = "Recipe ingredient"
         verbose_name_plural = "Recipe Ingredient"
@@ -316,7 +335,6 @@ class RecipeAllergens(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe_allergens")
     allergen = models.CharField(max_length=100)
 
-    # Used to ensure that the name of this section in Django admin interface is written without an 's'
     class Meta:
         verbose_name = "Recipe allergen"
         verbose_name_plural = "Recipe Allergen"
@@ -337,31 +355,41 @@ class RecipeToolsNeeded(models.Model):
     cooking_tool_name = models.CharField(max_length=100)
     cooking_tool_pic = models.ImageField(upload_to="cooking_tools", default="no_picture.jpg")
 
-
     class Meta:
         verbose_name = "Recipe required tool"
         verbose_name_plural = "Recipe required tool"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        img = Image.open(self.cooking_tool_pic.path)
+
+        image_size = (1920, 1280)
+
+        if img.size != image_size:
+            img = img.resize(image_size)
+            img.save(self.cooking_tool_pic.path)
 
 # Allow user to add similar recipes when creating a recipe
 class RecipeSimilarComplementary(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe_complementary")
     complementary_recipe_name = models.CharField(max_length=100, blank=True)
-    complementary_recipe_link_unsigned_users = models.URLField(max_length=500, blank=True)
-    complementary_recipe_link_signed_users = models.URLField(max_length=500, blank=True)
+    complementary_recipe_link_unsigned_users = models.CharField(max_length=500, blank=True)
+    complementary_recipe_link_signed_users = models.CharField(max_length=500, blank=True)
     similar_recipe_pic = models.ImageField(upload_to="recipes", default="no_picture.jpg")
 
     def clean(self):
         super().clean()
 
         if self.complementary_recipe_name:
-            # If complementary_recipe_name has a value, both complementary_recipe_link_unsigned_users and complementary_recipe_link_signed_users must also have a value
+            # If complementary_recipe_name has a value, both complementary_recipe_link_unsigned_users and complementary_recipe_link_signed_users must also have a value as well
             if not self.complementary_recipe_link_unsigned_users and not self.complementary_recipe_link_signed_users:
                 raise ValidationError({
                     "complementary_recipe_link_unsigned_users": "Complementary recipe link is required if complementary recipe name is provided.",
                     "complementary_recipe_link_signed_users": "Complementary recipe link is required if complementary recipe name is provided."
                 })
         else:
-            # If complementary_recipe_name is empty, both complementary_recipe_link_unsigned_users and complementary_recipe_link_signed_users should also be empty
+            # If complementary_recipe_name is empty, both complementary_recipe_link_unsigned_users and complementary_recipe_link_signed_users must also be empty
             if self.complementary_recipe_link_unsigned_users or self.complementary_recipe_link_signed_users:
                 raise ValidationError({
                     "complementary_recipe_name": "Complementary recipe name must be provided if a complementary recipe link is provided."
@@ -379,9 +407,10 @@ class RecipeSimilarComplementary(models.Model):
 # Model used to allow users to comment recipes
 class RecipeComments(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="comments")
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Recipe comment(s)"

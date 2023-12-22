@@ -24,6 +24,7 @@ class RecipeSimilarComplementaryInline(admin.TabularInline):
 class RecipeAdmin(admin.ModelAdmin):
     inlines = [RecipeIngredientsInline, RecipeAllergensInline, RecipeCookingInstructionsInline, RecipeToolsNeededInline, RecipeSimilarComplementaryInline] 
     readonly_fields = ('difficulty', 'creation_date', 'recipe_url', 'recipe_url_signed_users')
+    list_display = ('recipe_name', 'user', 'creation_date', 'is_public')  
 
     fieldsets = (
         ('Recipe basic information', {
@@ -34,5 +35,11 @@ class RecipeAdmin(admin.ModelAdmin):
         }),
     )
 
+class RecipeCommentsAdmin(admin.ModelAdmin):
+    list_display = ('recipe', 'user', 'text', 'created_at')
+    list_filter = ('recipe', 'user', 'created_at')
+    search_fields = ('recipe__recipe_name', 'user__username', 'text')
+    date_hierarchy = 'created_at'
+
 admin.site.register(Recipe, RecipeAdmin)
-admin.site.register(RecipeComments)
+admin.site.register(RecipeComments, RecipeCommentsAdmin)
