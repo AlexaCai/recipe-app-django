@@ -66,7 +66,13 @@
 .welcome-boxes {
     justify-content: center;
     align-items: center;
-    height: 85vh;
+    height: 80vh;
+}
+
+@media (max-width: 500px) {
+    .welcome-boxes {
+        height: unset;
+    }
 }
 
 .welcome-box-1 {
@@ -552,9 +558,9 @@
 }
 
 @media (max-width: 1199px) {
-.intro-section-bottom-margin {
-    margin-bottom: 80px;
- }
+    .intro-section-bottom-margin {
+        margin-bottom: 80px;
+    }
 }
 
 .detailed-page-add-favorite-button {
@@ -627,7 +633,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; 
+    height: 100%;
 }
 
 @media (max-width: 360px) {
@@ -641,7 +647,7 @@
     color: black;
     position: absolute;
     padding: 15px;
-    width: 100%; 
+    width: 100%;
 }
 
 
@@ -726,7 +732,7 @@
 
 
 
-/* CSS for the footer section in recipes list and detailed pages */ 
+/* CSS for the footer section in recipes list and detailed pages */
 
 .footer-padding {
     margin-top: 80px;
@@ -738,8 +744,8 @@
 
 @media (max-width: 350px) {
     .footer-text {
-    font-size: 18px;
-    }   
+        font-size: 18px;
+    }
 }
 
 .footer-buttons-action-call {
@@ -824,14 +830,14 @@
 
 @media (max-width: 362px) {
     .submit-recipe-form-background {
-        height: 160vh; 
+        height: 160vh;
     }
 }
 
 .submit-recipe-form {
     padding-left: 40px;
     padding-right: 40px;
-    height: 120vh; 
+    height: 120vh;
     overflow-y: auto;
 }
 
@@ -839,7 +845,7 @@
     .submit-recipe-form {
         padding-left: 30px;
         padding-right: 30px;
-        height: 120vh; 
+        height: 120vh;
         overflow-y: auto;
     }
 }
@@ -848,7 +854,7 @@
     .submit-recipe-form {
         padding-left: 20px;
         padding-right: 20px;
-        height: 115vh; 
+        height: 115vh;
         overflow-y: auto;
     }
 }
@@ -857,7 +863,7 @@
     .submit-recipe-form {
         padding-left: 20px;
         padding-right: 20px;
-        height: 110vh; 
+        height: 110vh;
         overflow-y: auto;
     }
 }
@@ -928,8 +934,8 @@
 }
 
 .recipe-submit-page-submission-information {
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
 }
 
 .second-image-background {
@@ -937,7 +943,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .third-image-background {
@@ -945,7 +951,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .fourth-image-background {
@@ -953,7 +959,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .fifth-image-background {
@@ -961,7 +967,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .sixth-image-background {
@@ -969,7 +975,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .seventh-image-background {
@@ -977,7 +983,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .recipe-submit-page-fruit-background {
