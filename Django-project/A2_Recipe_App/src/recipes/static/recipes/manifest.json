@@ -20,5 +20,19 @@
             "sizes": "512x512",
             "type": "image/png"
         }
+    ],
+    "screenshots": [
+        {
+            "src": "/static/recipes/img/screenshot-wide.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "purpose": "wide"
+        },
+        {
+            "src": "/static/recipes/img/screenshot-mobile.png",
+            "sizes": "750x850",
+            "type": "image/png",
+            "purpose": "any"
+        }
     ]
 }
