@@ -1,10 +1,10 @@
 /* CSS code shared for all recipes app templates */
 
 .header-display {
-    padding: 20px;
+    padding: 10px;
     padding-left: 40px;
     padding-right: 40px;
-    font-size: 20px;
+    font-size: 15px;
     background-color: rgb(255, 255, 255);
 }
 
@@ -29,7 +29,7 @@
 }
 
 .logo-image {
-    height: 100%;
+    height: 80%;
     width: auto;
     object-fit: contain;
 }
@@ -37,12 +37,6 @@
 @media (max-width: 900px) {
     .logo-image {
         margin-left: 0px;
-    }
-}
-
-@media (max-width: 325px) {
-    .logo-image {
-        height: 80%;
     }
 }
 
@@ -66,45 +60,53 @@
 
 .image-background {
     background: url("../../recipes/img/landing-pages-background.jpg") center/cover no-repeat;
-    height: 125vh;
+    height: 165vh;
 }
 
 .welcome-boxes {
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 80vh;
+}
+
+@media (max-width: 500px) {
+    .welcome-boxes {
+        height: unset;
+    }
 }
 
 .welcome-box-1 {
     text-align: center;
     padding: 20px;
-    background-color: rgb(255, 255, 255, 0.80);
+    background-color: rgb(255, 255, 255, 0.93);
     border-radius: 10px;
+    margin-top: 40px;
 }
 
 .website-title {
     font-family: 'Lobster', sans-serif;
-    font-size: 50px;
+    font-size: 45px;
 }
 
-@media (max-width: 405px) {
+@media (max-width: 375px) {
     .website-title {
-        font-size: 40px;
+        font-size: 30px;
     }
 }
 
 @media (max-width: 300px) {
     .website-title {
-        font-size: 35px;
+        font-size: 25px;
     }
 }
 
 .website-subtitle {
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
+    font-size: 28px;
 }
 
-@media (max-width: 355px) {
+@media (max-width: 375px) {
     .website-subtitle {
         font-size: 22px;
     }
@@ -130,14 +132,14 @@
 
 .welcome-box-2 {
     text-align: center;
-    padding-top: 40px;
-    margin-top: 50px;
-    border-top: 4px solid black;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 2px solid black;
 }
 
 .home-page-modal-head {
     display: flex;
-    padding: 20px;
+    padding: 15px;
     justify-content: flex-end;
 }
 
@@ -147,17 +149,46 @@
     padding-bottom: 10px;
 }
 
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
 .modal-text-home-page {
-    font-size: 20px;
+    font-size: 15px;
+}
+
+.download-app-desktop-icon {
+    height: 90px;
+    width: 90px;
+    padding-bottom: 10px;
+}
+
+@media (max-width: 450px) {
+    .download-app-desktop-icon {
+        height: 80px;
+        width: 70px;
+    }
+}
+
+.download-app-icon {
+    height: 90px;
+    width: 90px;
+    padding-bottom: 10px;
 }
 
 @media (max-width: 450px) {
     .download-app-icon {
-        height: 100px;
-        width: 100px;
+        height: 70px;
+        width: 70px;
     }
 }
 
+.install-mobile-icon {
+    height: 110px;
+    width: 260px;
+    padding-bottom: 10px;
+}
 
 
 /* CSS for the recipes list page (unsigned and signed versions) */
@@ -166,13 +197,13 @@
     background: url("../../recipes/img/recipe-list-page-background.jpg") center/cover no-repeat;
     text-align: center;
     color: white;
-    padding: 100px 0;
+    padding: 40px 0;
     height: 140vh;
 }
 
-@media (max-width: 325px) {
+@media (max-width: 359px) {
     .recipe-page-intro-section {
-        padding-top: 40px;
+        height: 280vh;
     }
 }
 
@@ -180,7 +211,7 @@
     font-family: 'Lobster', sans-serif;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
-    margin: 10px auto;
+    margin: 0px auto;
     max-width: 80%;
     border-radius: 10px;
 }
@@ -194,10 +225,15 @@
 .intro-section-search-box {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
-    margin: 10px auto;
+    margin: 40px auto;
     max-width: 60%;
     border-radius: 10px;
-    margin-top: 5%;
+}
+
+@media (max-width: 500px) {
+    .intro-section-search-box  {
+        max-width: 80%;
+    }
 }
 
 @media (max-width: 500px) {
@@ -217,21 +253,9 @@
     }
 }
 
-@media (max-width: 649px) {
-    .main-search-field {
-        height: 45px;
-    }
-}
-
-@media (min-width: 650px) {
-    .main-search-field {
-        height: 50px;
-    }
-}
-
 .advanced-search-modal-head {
     display: flex;
-    padding: 20px;
+    padding: 15px;
     justify-content: flex-end;
 }
 
@@ -250,30 +274,12 @@
 
 .advanced-search-modal-button {
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .search-result-not-found {
     text-align: center;
-    font-size: 25px;
-}
-
-@media (max-width: 700px) {
-    .search-result-not-found {
-        font-size: 23px;
-    }
-}
-
-@media (max-width: 450px) {
-    .search-result-not-found {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 280px) {
-    .search-result-not-found {
-        font-size: 18px;
-    }
+    font-size: 17px;
 }
 
 .submit-title {
@@ -291,7 +297,7 @@
     justify-content: center;
     align-items: center;
     padding-right: 3px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 @media (max-width: 450px) {
@@ -389,6 +395,12 @@
     padding: 15px;
 }
 
+@media (max-width: 300px) {
+    .card-text {
+        padding: 10px;
+    }
+}
+
 .card-title {
     position: absolute;
 }
@@ -396,7 +408,7 @@
 .card-title-custom {
     font-family: 'Cinzel', sans-serif;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 18px;
     background-color: rgb(255, 255, 255, 0.97);
     padding: 10px 30px;
     color: black;
@@ -408,14 +420,7 @@
     text-decoration: underline;
 }
 
-@media (max-width: 450px) {
-    .card-title-custom {
-        font-size: 18px;
-        padding: 8px 20px;
-    }
-}
-
-@media (max-width: 300px) {
+@media (max-width: 350px) {
     .card-title-custom {
         font-size: 15px;
         padding: 4px 10px;
@@ -423,31 +428,9 @@
 }
 
 .card-icons {
-    width: 20px;
-    height: 20px;
+    width: 13px;
+    height: 13px;
     margin-right: 5px;
-}
-
-
-@media (max-width: 450px) {
-    .card-icons {
-        width: 20px;
-        height: 20px;
-    }
-}
-
-@media (max-width: 350px) {
-    .card-icons {
-        width: 17px;
-        height: 17px;
-    }
-}
-
-@media (max-width: 300px) {
-    .card-icons {
-        width: 14px;
-        height: 12px;
-    }
 }
 
 .recipe-card-quick-info {
@@ -459,25 +442,17 @@
     margin-bottom: unset;
     border: solid 1px black;
     font-weight: bold;
+    font-size: 13px;
 }
 
 @media (max-width: 450px) {
     .recipe-card-quick-info {
-        font-size: 15px;
         padding: 5px;
     }
 }
 
 @media (max-width: 350px) {
     .recipe-card-quick-info {
-        font-size: 14px;
-        padding: 4px;
-    }
-}
-
-@media (max-width: 350px) {
-    .recipe-card-quick-info {
-        font-size: 12px;
         padding: 4px;
     }
 }
@@ -501,6 +476,14 @@
     border-radius: 15px;
 }
 
+@media (max-width: 500px) {
+    .detailed-page-image {
+        margin-bottom: 40px;
+        margin-top: 40px;
+        border-radius: 15px;
+    }
+}
+
 .detailed-recipe-titles {
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
@@ -520,7 +503,7 @@
 }
 
 .recipe-icon-text {
-    font-size: 15px;
+    font-size: 14px;
     background: rgba(255, 255, 255, 0.99);
     padding: 10px;
     margin: 5px 0;
@@ -539,8 +522,8 @@
 }
 
 .detailed-page-icon {
-    width: 20px;
-    height: 20px;
+    width: 17px;
+    height: 17px;
     margin-right: 5px;
 }
 
@@ -550,9 +533,9 @@
 }
 
 @media (max-width: 1199px) {
-.intro-section-bottom-margin {
-    margin-bottom: 80px;
- }
+    .intro-section-bottom-margin {
+        margin-bottom: 80px;
+    }
 }
 
 .detailed-page-add-favorite-button {
@@ -569,7 +552,7 @@
 }
 
 .detailed-page-text-content {
-    font-size: 20px;
+    font-size: 17px;
     text-align: justify;
 }
 
@@ -595,7 +578,7 @@
 
 .ingredient-list-margin-font-size {
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .ingredient-fields {
@@ -605,7 +588,7 @@
 
 .instruction-list-margin-font-size {
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .cooking-tools-padding {
@@ -615,7 +598,7 @@
 .detailed-page-similar-recipe-card-title {
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 18px;
     background-color: rgb(255, 255, 255, 0.97);
     padding: 10px;
     color: black;
@@ -625,7 +608,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; 
+    height: 100%;
 }
 
 @media (max-width: 360px) {
@@ -639,7 +622,7 @@
     color: black;
     position: absolute;
     padding: 15px;
-    width: 100%; 
+    width: 100%;
 }
 
 
@@ -658,29 +641,17 @@
 }
 
 .users-comments-title {
-    font-size: 23px;
-}
-
-@media (max-width: 500px) {
-    .users-comments-title {
-        font-size: 21px;
-    }
+    font-size: 18px;
 }
 
 @media (max-width: 300px) {
     .users-comments-title {
-        font-size: 19px;
+        font-size: 16px;
     }
 }
 
 .users-comments-text {
-    font-size: 21px;
-}
-
-@media (max-width: 500px) {
-    .users-comments-text {
-        font-size: 18px;
-    }
+    font-size: 18px;
 }
 
 .add-comment-title {
@@ -691,11 +662,14 @@
 .add-comment-box {
     width: 100%;
     padding: 15px;
-    font-size: 20px;
     font-weight: 500;
     background-color: #e4e4e4;
     border-radius: 10px;
     border: solid 0.5px black;
+}
+
+.delete-update-comment-button-spacing {
+    margin: 0px 20px;
 }
 
 .detailed-page-add-comment-button {
@@ -724,7 +698,7 @@
 
 
 
-/* CSS for the footer section in recipes list and detailed pages */ 
+/* CSS for the footer section in recipes list and detailed pages */
 
 .footer-padding {
     margin-top: 80px;
@@ -736,8 +710,8 @@
 
 @media (max-width: 350px) {
     .footer-text {
-    font-size: 18px;
-    }   
+        font-size: 18px;
+    }
 }
 
 .footer-buttons-action-call {
@@ -777,14 +751,8 @@
 }
 
 .back-to-top-link {
-    font-size: 20px;
+    font-size: 16px;
     color: black;
-}
-
-@media (max-width: 350px) {
-    .back-to-top-link {
-        font-size: 17px;
-    }
 }
 
 .back-to-top-link-bottom-margin {
@@ -801,6 +769,19 @@
     background: url("../../recipes/img/pears-background.jpg") center/cover no-repeat;
     height: 160vh;
     margin: 0;
+}
+
+@media (max-width: 392px) {
+    .first-image-background-submit-page {
+        height: 180vh;
+    }
+}
+
+
+@media (max-width: 359px) {
+    .first-image-background-submit-page {
+        height: 235vh;
+    }
 }
 
 .page-title {
@@ -820,16 +801,22 @@
     height: 160vh;
 }
 
-@media (max-width: 362px) {
+@media (max-width: 392px) {
     .submit-recipe-form-background {
-        height: 160vh; 
+        height: 180vh;
+    }
+}
+
+@media (max-width: 359px) {
+    .submit-recipe-form-background {
+        height: 235vh;
     }
 }
 
 .submit-recipe-form {
     padding-left: 40px;
     padding-right: 40px;
-    height: 120vh; 
+    height: 120vh;
     overflow-y: auto;
 }
 
@@ -837,7 +824,7 @@
     .submit-recipe-form {
         padding-left: 30px;
         padding-right: 30px;
-        height: 120vh; 
+        height: 120vh;
         overflow-y: auto;
     }
 }
@@ -846,7 +833,7 @@
     .submit-recipe-form {
         padding-left: 20px;
         padding-right: 20px;
-        height: 115vh; 
+        height: 115vh;
         overflow-y: auto;
     }
 }
@@ -855,7 +842,7 @@
     .submit-recipe-form {
         padding-left: 20px;
         padding-right: 20px;
-        height: 110vh; 
+        height: 110vh;
         overflow-y: auto;
     }
 }
@@ -887,7 +874,7 @@
 
 .submit-recipe-page-modal-head {
     display: flex;
-    padding: 20px;
+    padding: 15px;
     justify-content: flex-end;
 }
 
@@ -895,16 +882,6 @@
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
     padding-bottom: 10px;
-}
-
-.modal-text-submit-recipe-page {
-    font-size: 20px;
-}
-
-@media (max-width: 400px) {
-    .modal-text-submit-recipe-page {
-        font-size: 16px;
-    }
 }
 
 .submit-recipe-form-directives {
@@ -926,8 +903,8 @@
 }
 
 .recipe-submit-page-submission-information {
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
 }
 
 .second-image-background {
@@ -935,7 +912,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .third-image-background {
@@ -943,7 +920,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .fourth-image-background {
@@ -951,7 +928,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .fifth-image-background {
@@ -959,7 +936,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .sixth-image-background {
@@ -967,7 +944,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .seventh-image-background {
@@ -975,7 +952,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh; 
+    height: 130vh;
 }
 
 .recipe-submit-page-fruit-background {
@@ -997,21 +974,15 @@
     font-size: 50px;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 411px) {
     .fruit-quote {
-        font-size: 40px;
+        font-size: 24px;
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 359px) {
     .fruit-quote {
-        font-size: 35px;
-    }
-}
-
-@media (max-width: 350px) {
-    .fruit-quote {
-        font-size: 30px;
+        font-size: 22px;
     }
 }
 
@@ -1020,18 +991,18 @@
     font-weight: 600;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 411px) {
     .fruit-quote-author {
-        font-size: 20px;
+        font-size: 19px;
     }
 }
 
-@media (max-width: 300px) {
+
+@media (max-width: 359px) {
     .fruit-quote-author {
         font-size: 17px;
     }
 }
-
 
 
 
@@ -1050,7 +1021,7 @@
 
 .success-page-modal-head {
     display: flex;
-    padding: 20px;
+    padding: 15px;
     justify-content: flex-end;
 }
 
@@ -1058,10 +1029,6 @@
     font-family: 'Cinzel', sans-serif;
     font-weight: 600;
     padding-bottom: 10px;
-}
-
-.modal-text-success-page {
-    font-size: 20px;
 }
 
 @media (max-width: 400px) {
@@ -1092,7 +1059,35 @@
 /* CSS for the about page */
 
 .image-background-about-page {
-    background: url("../../recipes/img/lemon-background.jpg") center/cover no-repeat;
-    height: 120vh;
+    background: url("../../recipes/img/pepper-background.jpg") center/cover no-repeat;
+    height: 162vh;
     margin: 0;
+}
+
+@media (max-width: 900px) {
+    .image-background-about-page {
+        height: 180vh;
+    }
+}
+
+@media (max-width: 430px) {
+    .image-background-about-page {
+        height: 200vh;
+    }
+}
+
+@media (max-width: 415px) {
+    .image-background-about-page {
+        height: 250vh;
+    }
+}
+
+@media (max-width: 359px) {
+    .image-background-about-page {
+        height: 370vh;
+    }
+}
+
+.email-line-wrap {
+    word-wrap: break-word;
 }
